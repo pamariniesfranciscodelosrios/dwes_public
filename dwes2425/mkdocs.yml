@@ -28,5 +28,5 @@ plugins:
   exclude:
       glob:
         #- UD2_Lenguaje PHP/*
-        - UD2_Lenguaje PHP/Semana 2/*
+        - UD2_Lenguaje PHP/Semana 2/Entregable copy.md
         - UD2_Lenguaje PHP/plantilla y backup/*
