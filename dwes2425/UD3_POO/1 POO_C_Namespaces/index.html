@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../4%20D%20Generacion%20Dinamica%20Formularios/">
+        <link rel="prev" href="../1%20POO_B_PHP/">
       
       
-        <link rel="next" href="../Entregable/">
+        <link rel="next" href="../2%20B%20Tecnolog%C3%ADas%20y%20Frameworks/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>5 F Separación Logica Negocio - DWES 24-25 IES Francisco de los Ríos</title>
+        <title>1 POO C Namespaces - DWES 24-25 IES Francisco de los Ríos</title>
       
     
     
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#estructura-de-archivos" class="md-skip">
+        <a href="#ud-3-poo-en-el-lenguaje-php-namespaces-y-autoload" class="md-skip">
           Skip to content
         </a>
       
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5 F Separación Logica Negocio
+              1 POO C Namespaces
             
           </span>
         </div>
@@ -1041,11 +1041,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../1%20POO/" class="md-nav__link">
+      <a href="../1%20POO_A_Teoria/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1 POO
+    1 POO A Teoria
   </span>
   
 
@@ -1062,15 +1062,252 @@
   
   
     <li class="md-nav__item">
-      <a href="../1%20POO2_practicas/" class="md-nav__link">
+      <a href="../1%20POO_B_PHP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Prácticas de la UD3
+    1 POO B PHP
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1 POO C Namespaces
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1 POO C Namespaces
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ud-3-poo-en-el-lenguaje-php-namespaces-y-autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD 3 POO en el lenguaje PHP. Namespaces y Autoload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#espacios-de-nombres-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Espacios de Nombres en PHP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacios de Nombres en PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-namespaces-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Namespaces en PHP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-clases-con-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      1: Crear Clases con Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-usar-las-clases-con-namespaces-en-el-archivo-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      2: Usar las Clases con Namespaces en el Archivo Principal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-sin-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo sin use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beneficios-de-usar-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beneficios de Usar Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stl" class="md-nav__link">
+    <span class="md-ellipsis">
+      STL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autoload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-de-autoload-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Autoload en PHP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Autoload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo de Autoload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-archivos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-las-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      1: Crear las Clases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-autoload-en-indexphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      2: Configurar Autoload en index.php
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nota
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-entregable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad Entregable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1108,7 +1345,7 @@
         
   
   <span class="md-ellipsis">
-    C - Objetos y controles en el Servidor para generar el aspecto visual del cliente
+    3 C Objetos generar aspecto
   </span>
   
 
@@ -1143,132 +1380,81 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    5 F Separación Logica Negocio
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../5E%20Parametros%20Configuraci%C3%B3n%20Web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5 F Separación Logica Negocio
+    5E Parametros Configuración Web
   </span>
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#estructura-de-archivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Estructura de Archivos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-1-configuracion-del-estado-sesiones" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 1: Configuración del Estado (Sesiones)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-2-modelo-userphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 2: Modelo (User.php)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-3-controlador-usercontrollerphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 3: Controlador (UserController.php)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-4-vistas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 4: Vistas
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Paso 4: Vistas">
-      <ul class="md-nav__list">
+    <li class="md-nav__item">
+      <a href="../6F%20Separaci%C3%B3n%20L%C3%B3gica%20Negocio/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#viewsloginphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      views/login.php
-    </span>
-  </a>
   
-</li>
+  <span class="md-ellipsis">
+    6F Separación Lógica Negocio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7G%20Aplicado%20los%20principios%20POO/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#viewsdashboardphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      views/dashboard.php
-    </span>
-  </a>
   
-</li>
+  <span class="md-ellipsis">
+    7G Aplicado los principios POO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8H%20Documentaci%C3%B3n/" class="md-nav__link">
         
-      </ul>
-    </nav>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resumen-del-funcionamiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resumen del Funcionamiento
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    8H Documentación
+  </span>
   
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -1309,10 +1495,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
         
           
-          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1323,8 +1509,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13">
             <span class="md-nav__icon md-icon"></span>
             Semana1
           </label>
@@ -1344,10 +1530,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13_1" >
         
           
-          <label class="md-nav__link" for="__nav_5_9_1" id="__nav_5_9_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_13_1" id="__nav_5_13_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1358,8 +1544,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_9_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_9_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_13_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13_1">
             <span class="md-nav__icon md-icon"></span>
             1 POO
           </label>
@@ -1476,6 +1662,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ud-3-poo-en-el-lenguaje-php-namespaces-y-autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD 3 POO en el lenguaje PHP. Namespaces y Autoload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#espacios-de-nombres-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Espacios de Nombres en PHP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacios de Nombres en PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-namespaces-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Namespaces en PHP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#estructura-de-archivos" class="md-nav__link">
     <span class="md-ellipsis">
       Estructura de Archivos
@@ -1483,57 +1697,38 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-1-configuracion-del-estado-sesiones" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 1: Configuración del Estado (Sesiones)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-2-modelo-userphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 2: Modelo (User.php)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-3-controlador-usercontrollerphp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 3: Controlador (UserController.php)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-4-vistas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paso 4: Vistas
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Paso 4: Vistas">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#viewsloginphp" class="md-nav__link">
+  <a href="#1-crear-clases-con-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      views/login.php
+      1: Crear Clases con Namespaces
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#viewsdashboardphp" class="md-nav__link">
+  <a href="#2-usar-las-clases-con-namespaces-en-el-archivo-principal" class="md-nav__link">
     <span class="md-ellipsis">
-      views/dashboard.php
+      2: Usar las Clases con Namespaces en el Archivo Principal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-sin-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo sin use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beneficios-de-usar-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beneficios de Usar Namespaces
     </span>
   </a>
   
@@ -1545,9 +1740,102 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resumen-del-funcionamiento" class="md-nav__link">
+  <a href="#stl" class="md-nav__link">
     <span class="md-ellipsis">
-      Resumen del Funcionamiento
+      STL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autoload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-de-autoload-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Autoload en PHP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-autoload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Autoload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo de Autoload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-archivos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-las-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      1: Crear las Clases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-autoload-en-indexphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      2: Configurar Autoload en index.php
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nota
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-entregable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad Entregable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
     </span>
   </a>
   
@@ -1568,163 +1856,200 @@
                   
 
 
-  <h1>5 F Separación Logica Negocio</h1>
-
-<p>Para escribir aplicaciones web en PHP con <strong>mantenimiento de estado</strong> y <strong>separación de la lógica de negocio</strong>, es común utilizar patrones de diseño como <strong>MVC (Model-View-Controller)</strong>. Este patrón organiza el código en tres capas principales:</p>
-<ol>
-<li><strong>Modelo (Model)</strong>: Aquí se maneja la lógica de negocio, es decir, cómo se procesan los datos y las interacciones con la base de datos.</li>
-<li><strong>Vista (View)</strong>: Muestra la información al usuario (la interfaz de usuario).</li>
-<li><strong>Controlador (Controller)</strong>: Actúa como intermediario entre la vista y el modelo, gestionando las solicitudes del usuario y las respuestas del sistema.</li>
-</ol>
-<p>Para mantener el <strong>estado</strong> en una aplicación web, usamos sesiones o tokens (especialmente si es una API) para almacenar información del usuario a lo largo de sus interacciones con la aplicación.</p>
-<p>A continuación, presento un ejemplo simple de cómo implementar una aplicación con estado y lógica de negocio separada en PHP:</p>
+<h2 id="ud-3-poo-en-el-lenguaje-php-namespaces-y-autoload">UD 3 POO en el lenguaje PHP. Namespaces y Autoload</h2>
+<div class="admonition note">
+<p class="admonition-title">Desarrolla aplicaciones web identificando y aplicando mecanismos para separar el código de presentación de la lógica de negocio.</p>
+<blockquote>
+<ul>
+<li>A Se han analizado y utilizado mecanismos y frameworks que permiten realizar esta separación y sus características principales.</li>
+</ul>
+</blockquote>
+</div>
+<p><img alt="1731387798106" src="../image/1POO_C_Namespaces/1731387798106.png" /></p>
+<h1 id="espacios-de-nombres-en-php">Espacios de Nombres en PHP</h1>
+<p>En PHP, los <strong>namespaces</strong> (o espacios de nombres) son una forma de <strong>organizar el código y evitar conflictos</strong> entre nombres de clases, funciones o constantes cuando tienes múltiples archivos o bibliotecas que podrían usar nombres <strong>similares</strong>.</p>
+<ul>
+<li>Los namespaces son especialmente útiles en proyectos grandes o cuando usas varias <strong>bibliotecas</strong> en una misma aplicación.</li>
+<li>Se declaran en la primera línea mediante la palabra clave <strong>namespace</strong> seguida del nombre del espacio de nombres asignado (cada subnivel se separa con la barra invertida ):&lt;?php</li>
+</ul>
+<p><img alt="1731388053282" src="../image/1POO_C_Namespaces/1731388053282.png" /></p>
+<h3 id="uso-de-namespaces-en-php">Uso de Namespaces en PHP</h3>
+<p>Vamos a crear un ejemplo de aplicación que gestione diferentes tipos de usuarios: <code>Admin</code> y <code>Guest</code>.</p>
+<p>Estos estarán en su propio namespace dentro de una carpeta llamada <code>Users</code>.</p>
 <h3 id="estructura-de-archivos">Estructura de Archivos</h3>
-<p>Supongamos que tenemos una aplicación de autenticación de usuario. La estructura básica de archivos sería:</p>
-<div class="highlight"><pre><span></span><code>app/
-├── controllers/
-│   └── UserController.php
-├── models/
-│   └── User.php
-├── views/
-│   └── login.php
-│   └── dashboard.php
-└── index.php
+<p>Organizaremos el proyecto de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code>/project-root
+    /Users
+        Admin.php
+        Guest.php
+    main.php
 </code></pre></div>
-<h3 id="paso-1-configuracion-del-estado-sesiones">Paso 1: Configuración del Estado (Sesiones)</h3>
-<p>En el archivo principal <code>index.php</code>, iniciaremos las sesiones para mantener el estado.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">session_start</span><span class="p">();</span>
-
-<span class="k">require</span> <span class="s1">&#39;controllers/UserController.php&#39;</span><span class="p">;</span>
-
-<span class="nv">$controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserController</span><span class="p">();</span>
-<span class="nv">$controller</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">();</span>
-</code></pre></div>
-<h3 id="paso-2-modelo-userphp">Paso 2: Modelo (User.php)</h3>
-<p>El archivo <code>models/User.php</code> contiene la lógica de negocio para manejar los usuarios. Aquí incluimos métodos para verificar credenciales, entre otras cosas.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$users</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;1234&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5678&#39;</span><span class="p">]</span>
-    <span class="p">];</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">authenticate</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">users</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$username</span> <span class="o">&amp;&amp;</span> <span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$password</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="paso-3-controlador-usercontrollerphp">Paso 3: Controlador (UserController.php)</h3>
-<p>El controlador maneja la lógica de la aplicación. En este caso, se encarga de recibir la solicitud de inicio de sesión y redirigir al usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">&#39;models/User.php&#39;</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">UserController</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$userModel</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handleRequest</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="s1">&#39;login&#39;</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$action</span> <span class="o">===</span> <span class="s1">&#39;login&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showLogin</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$action</span> <span class="o">===</span> <span class="s1">&#39;authenticate&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">authenticateUser</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$action</span> <span class="o">===</span> <span class="s1">&#39;logout&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logout</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showDashboard</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">showLogin</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">require</span> <span class="s1">&#39;views/login.php&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">authenticateUser</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nv">$username</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
-        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">];</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userModel</span><span class="o">-&gt;</span><span class="na">authenticate</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$username</span><span class="p">;</span>
-            <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location: index.php?action=dashboard&#39;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">echo</span> <span class="s2">&quot;Credenciales incorrectas&quot;</span><span class="p">;</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showLogin</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">logout</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nb">session_destroy</span><span class="p">();</span>
-        <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location: index.php?action=login&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">showDashboard</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="k">require</span> <span class="s1">&#39;views/dashboard.php&#39;</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location: index.php?action=login&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="paso-4-vistas">Paso 4: Vistas</h3>
-<h4 id="viewsloginphp"><code>views/login.php</code></h4>
-<p>Esta es la vista para el formulario de inicio de sesión.</p>
-<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html lang=&quot;es&quot;&gt;</span>
-<span class="x">&lt;head&gt;</span>
-<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
-<span class="x">    &lt;title&gt;Login&lt;/title&gt;</span>
-<span class="x">&lt;/head&gt;</span>
-<span class="x">&lt;body&gt;</span>
-<span class="x">    &lt;h2&gt;Iniciar Sesión&lt;/h2&gt;</span>
-<span class="x">    &lt;form method=&quot;POST&quot; action=&quot;index.php?action=authenticate&quot;&gt;</span>
-<span class="x">        &lt;label for=&quot;username&quot;&gt;Usuario:&lt;/label&gt;</span>
-<span class="x">        &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; required&gt;</span>
-<span class="x">        &lt;br&gt;</span>
-<span class="x">        &lt;label for=&quot;password&quot;&gt;Contraseña:&lt;/label&gt;</span>
-<span class="x">        &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; required&gt;</span>
-<span class="x">        &lt;br&gt;</span>
-<span class="x">        &lt;button type=&quot;submit&quot;&gt;Ingresar&lt;/button&gt;</span>
-<span class="x">    &lt;/form&gt;</span>
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
-</code></pre></div>
-<h4 id="viewsdashboardphp"><code>views/dashboard.php</code></h4>
-<p>Esta vista muestra el contenido para un usuario autenticado.</p>
-<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html lang=&quot;es&quot;&gt;</span>
-<span class="x">&lt;head&gt;</span>
-<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
-<span class="x">    &lt;title&gt;Dashboard&lt;/title&gt;</span>
-<span class="x">&lt;/head&gt;</span>
-<span class="x">&lt;body&gt;</span>
-<span class="x">    &lt;h2&gt;Bienvenido, </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">!&lt;/h2&gt;</span>
-<span class="x">    &lt;p&gt;Este es el panel de control.&lt;/p&gt;</span>
-<span class="x">    &lt;a href=&quot;index.php?action=logout&quot;&gt;Cerrar sesión&lt;/a&gt;</span>
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
-</code></pre></div>
-<h3 id="resumen-del-funcionamiento">Resumen del Funcionamiento</h3>
+<h3 id="1-crear-clases-con-namespaces">1: Crear Clases con Namespaces</h3>
 <ol>
-<li><strong>Inicio de sesión</strong>: Al acceder a <code>index.php?action=login</code>, el usuario ve el formulario de inicio de sesión (<code>views/login.php</code>).</li>
-<li><strong>Autenticación</strong>: El formulario envía las credenciales al controlador, donde <code>UserController</code> llama a <code>authenticateUser()</code> para validar.</li>
-<li>Si las credenciales son correctas, se guarda el usuario en la sesión y se redirige a <code>dashboard</code>.</li>
-<li>Si son incorrectas, se muestra un mensaje de error y se vuelve a cargar el formulario.</li>
-<li><strong>Cerrar sesión</strong>: El enlace de cierre de sesión destruye la sesión y redirige de vuelta al formulario de inicio.</li>
+<li><strong>Definir la clase <code>Admin</code> en el archivo <code>Users/Admin.php</code></strong>:</li>
 </ol>
-<p>Esta estructura con <strong>MVC</strong> permite separar la lógica de negocio del almacenamiento de estado y de la presentación, haciendo que el código sea más organizado, mantenible y fácil de expandir.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Users</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Admin</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRole</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Administrador&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este archivo, definimos la clase <code>Admin</code> dentro del namespace <code>Users</code>. Ahora, para acceder a esta clase, necesitaremos usar <code>Users\Admin</code> en lugar de solo <code>Admin</code>.
+2. <strong>Definir la clase <code>Guest</code> en el archivo <code>Users/Guest.php</code></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Users</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Guest</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRole</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Invitado&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Similar a <code>Admin</code>, aquí definimos la clase <code>Guest</code> dentro del mismo namespace <code>Users</code>.</p>
+<h3 id="2-usar-las-clases-con-namespaces-en-el-archivo-principal">2: Usar las Clases con Namespaces en el Archivo Principal</h3>
+<p>En <code>main.php</code>, usaremos estas clases importándolas mediante <code>use</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">&#39;Users/Admin.php&#39;</span><span class="p">;</span>
+<span class="k">require_once</span> <span class="s1">&#39;Users/Guest.php&#39;</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Users\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Users\Guest</span><span class="p">;</span>
+
+<span class="nv">$admin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Admin</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;Rol del usuario: &quot;</span> <span class="o">.</span> <span class="nv">$admin</span><span class="o">-&gt;</span><span class="na">getRole</span><span class="p">();</span> <span class="c1">// Output: Rol del usuario: Administrador</span>
+
+<span class="nv">$guest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rol del usuario: &quot;</span> <span class="o">.</span> <span class="nv">$guest</span><span class="o">-&gt;</span><span class="na">getRole</span><span class="p">();</span> <span class="c1">// Output: Rol del usuario: Invitado</span>
+</code></pre></div>
+<ol>
+<li>En <code>main.php</code>, usamos <code>require_once</code> para incluir las clases <code>Admin</code> y <code>Guest</code>. Esto se hace para tener acceso a sus definiciones.</li>
+<li>La declaración <code>use Users\Admin;</code> y <code>use Users\Guest;</code> permite que PHP sepa que queremos utilizar las clases <code>Admin</code> y <code>Guest</code> dentro del namespace <code>Users</code>.</li>
+<li>Ahora, podemos crear instancias de <code>Admin</code> y <code>Guest</code> directamente con <code>new Admin()</code> y <code>new Guest()</code> sin necesidad de anteponer el namespace cada vez, gracias a <code>use</code>.</li>
+</ol>
+<h3 id="ejemplo-sin-use">Ejemplo sin <code>use</code></h3>
+<p>Alternativamente, podríamos omitir el <code>use</code> y llamar a las clases con el namespace completo:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">&#39;Users/Admin.php&#39;</span><span class="p">;</span>
+<span class="k">require_once</span> <span class="s1">&#39;Users/Guest.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$admin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Users\Admin</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;Rol del usuario: &quot;</span> <span class="o">.</span> <span class="nv">$admin</span><span class="o">-&gt;</span><span class="na">getRole</span><span class="p">();</span>
+
+<span class="nv">$guest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Users\Guest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rol del usuario: &quot;</span> <span class="o">.</span> <span class="nv">$guest</span><span class="o">-&gt;</span><span class="na">getRole</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="beneficios-de-usar-namespaces">Beneficios de Usar Namespaces</h3>
+<ul>
+<li><strong>Organización</strong>: Mantienes tu código bien organizado, especialmente en proyectos grandes.</li>
+<li><strong>Evitar conflictos</strong>: Previene conflictos de nombres, lo que es útil cuando usas varias bibliotecas que pueden tener clases con nombres similares.</li>
+<li><strong>Mejora de legibilidad</strong>: Los namespaces clarifican a qué módulo o componente pertenece cada clase.</li>
+</ul>
+<p>Los namespaces en PHP permiten organizar y encapsular código para evitar conflictos y hacer que el código sea más mantenible y fácil de entender, especialmente en aplicaciones con muchas clases y funciones.</p>
+<h1 id="stl">STL</h1>
+<p>La <strong>librería estándar de PHP</strong> (Standard PHP Library, SPL) es un conjunto de clases e interfaces integradas que proporciona funcionalidades comunes y utilidades para facilitar tareas comunes en PHP, como manipulación de datos, estructuras de datos (pilas, colas, listas), iteradores, excepciones, funciones para manejo de archivos, entre otras. SPL es parte nativa de PHP y no requiere instalación adicional, ofreciendo herramientas muy útiles para trabajar con algoritmos y estructuras de datos.</p>
+<p>Uno de los componentes comunes de SPL es la clase <code>SplStack</code>, que permite manejar una pila (estructura de datos en la que los elementos se apilan y se desapilan en orden inverso, LIFO: Last In, First Out).</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Crear una nueva pila</span>
+<span class="nv">$stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SplStack</span><span class="p">();</span>
+
+<span class="c1">// Añadir elementos a la pila</span>
+<span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="s2">&quot;Primer elemento&quot;</span><span class="p">);</span>
+<span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="s2">&quot;Segundo elemento&quot;</span><span class="p">);</span>
+<span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="s2">&quot;Tercer elemento&quot;</span><span class="p">);</span>
+
+<span class="c1">// Desapilar elementos (se eliminarán en orden inverso)</span>
+<span class="k">echo</span> <span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">pop</span><span class="p">();</span> <span class="c1">// Output: Tercer elemento</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">pop</span><span class="p">();</span> <span class="c1">// Output: Segundo elemento</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$stack</span><span class="o">-&gt;</span><span class="na">pop</span><span class="p">();</span> <span class="c1">// Output: Primer elemento</span>
+</code></pre></div>
+<ul>
+<li><code>SplStack</code> se usa para crear una pila.</li>
+<li><code>push()</code> añade elementos a la pila.</li>
+<li><code>pop()</code> elimina y devuelve el último elemento añadido a la pila.</li>
+</ul>
+<p>SPL facilita el uso de estructuras como pilas, colas, listas, y muchos otros patrones de uso común en programación, sin tener que implementarlos manualmente.</p>
+<p><img alt="1731388537452" src="../image/1POO_C_Namespaces/1731388537452.png" /></p>
+<ul>
+<li><a href="https://www.php.net/manual/es/intro.spl.php">https://www.php.net/manual/es/intro.spl.php </a></li>
+<li><a href="https://www.imaginacolombia.com/articulos/7-librerias-de-php-que-todo-desarrollador-web-deberia-conocer">Artículo 7 librerías PHP</a></li>
+</ul>
+<h1 id="autoload">Autoload</h1>
+<p>El autoload en PHP permite <strong>cargar automáticamente las clases</strong> cuando se necesitan, sin tener que hacer <code>require</code> o <code>include</code> manualmente cada vez que se utiliza una clase. Esto facilita la organización y escalabilidad del código, especialmente en aplicaciones grandes.</p>
+<p><img alt="1731388537452" src="../image/1POO_C_Namespaces/1731388537452.png" /></p>
+<ul>
+<li><a href="https://www.php.net/manual/es/intro.spl.php">https://www.php.net/manual/es/intro.spl.php </a></li>
+<li><a href="https://www.imaginacolombia.com/articulos/7-librerias-de-php-que-todo-desarrollador-web-deberia-conocer">Artículo 7 librerías PHP</a></li>
+</ul>
+<h3 id="implementacion-de-autoload-en-php">Implementación de Autoload en PHP</h3>
+<p>La función <code>spl_autoload_register()</code> es la forma recomendada en PHP para registrar una función de autoload. Esta función se encargará de incluir el archivo que contiene la clase cuando se intenta instanciar esa clase.</p>
+<h3 id="ejemplo-de-autoload">Ejemplo de Autoload</h3>
+<p>Imaginemos que tenemos una aplicación con varias clases organizadas en archivos separados en una carpeta <code>classes</code>.</p>
+<h4 id="estructura-de-archivos_1">Estructura de Archivos</h4>
+<div class="highlight"><pre><span></span><code>/project-root
+    /classes
+        User.php
+        Product.php
+    index.php
+</code></pre></div>
+<h4 id="1-crear-las-clases">1: Crear las Clases</h4>
+<ol>
+<li><strong>Archivo <code>classes/User.php</code></strong>:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Clase User cargada.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. <strong>Archivo <code>classes/Product.php</code></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Product</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Clase Product cargada.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-configurar-autoload-en-indexphp">2: Configurar Autoload en <code>index.php</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Registrar la función de autoload</span>
+<span class="nb">spl_autoload_register</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$className</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">include</span> <span class="s1">&#39;classes/&#39;</span> <span class="o">.</span> <span class="nv">$className</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// Instanciar las clases</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>    <span class="c1">// Output: Clase User cargada.</span>
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Product</span><span class="p">();</span> <span class="c1">// Output: Clase Product cargada.</span>
+</code></pre></div>
+<ol>
+<li>La función <code>spl_autoload_register()</code> recibe una función anónima que se ejecuta automáticamente cuando PHP encuentra una clase que no ha sido incluida.</li>
+<li>Esta función toma el nombre de la clase (<code>$className</code>), construye la ruta al archivo (<code>classes/$className.php</code>), e incluye ese archivo.</li>
+<li>Al instanciar <code>new User()</code> y <code>new Product()</code>, el autoload busca automáticamente los archivos <code>User.php</code> y <code>Product.php</code> en la carpeta <code>classes</code>, los carga, e imprime los mensajes definidos en sus constructores.</li>
+</ol>
+<h3 id="nota">Nota</h3>
+<div class="admonition warning">
+<p class="admonition-title">Nota</p>
+<p>Este método de autoload es básico. En proyectos grandes, es recomendable usar estándares como<strong>PSR-4</strong> junto con <strong>Composer</strong> para gestionar el autoload de manera más estructurada.</p>
+<p>FUNCIONA siempre que los nombres de los archivos se llamen como las clases.</p>
+</div>
+<p>El autoloading simplifica el mantenimiento y la organización de proyectos PHP, ya que reduce la necesidad de incluir manualmente cada archivo de clase en la aplicación.</p>
+<p><a href="https://www.php.net/manual/en/function.spl-autoload-register.php">Referencia en PHP Manual</a></p>
+<p><a href="https://www.youtube.com/watch?v=lP1hbkNA2uc">Autoload en PHP 8 Tutors Code Free</a></p>
+<iframe width="779" height="438" src="https://www.youtube.com/embed/lP1hbkNA2uc" title="30 - Autoload en PHP - Curso PHP 8 desde cero (actualizado)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h1 id="actividad-entregable">Actividad Entregable</h1>
+<div class="admonition success">
+<p class="admonition-title">Entregable</p>
+<p>Tienes la info en la sección "<a href="../Entregable/">Actividad entregable</a>"</p>
+</div>
+<h1 id="referencias">Referencias</h1>
+<p><a href="https://www.php.net/manual/en/">PHP Documentation</a></p>
+<p><a href="https://phptherightway.com/">PHP The Right Way</a></p>
 
 
 
@@ -1754,7 +2079,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../4%20D%20Generacion%20Dinamica%20Formularios/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4 D Generacion Dinamica Formularios">
+          <a href="../1%20POO_B_PHP/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1 POO B PHP">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1764,20 +2089,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                4 D Generacion Dinamica Formularios
+                1 POO B PHP
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Entregable/" class="md-footer__link md-footer__link--next" aria-label="Next: Objetivos &amp;amp; Entregable UD3">
+          <a href="../2%20B%20Tecnolog%C3%ADas%20y%20Frameworks/" class="md-footer__link md-footer__link--next" aria-label="Next: 2 B Tecnologías y Frameworks">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Objetivos &amp; Entregable UD3
+                2 B Tecnologías y Frameworks
               </div>
             </div>
             <div class="md-footer__button md-icon">
