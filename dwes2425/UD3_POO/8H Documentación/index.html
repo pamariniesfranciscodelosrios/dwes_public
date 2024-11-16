@@ -20,7 +20,7 @@
     
     
       
-        <title>8H Documentación - DWES 24-25 IES Francisco de los Ríos</title>
+        <title>UD 3 Documentando el código de PHP - DWES 24-25 IES Francisco de los Ríos</title>
       
     
     
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ud-3-documentacion" class="md-skip">
+        <a href="#ud-3-documentando-el-codigo-de-php" class="md-skip">
           Skip to content
         </a>
       
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8H Documentación
+              UD 3 Documentando el código de PHP
             
           </span>
         </div>
@@ -1236,53 +1236,18 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    8H Documentación
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    8H Documentación
+    UD 3 Documentando el código de PHP
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ud-3-documentacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      UD 3 Documentación
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1443,6 +1408,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Semana1/1%20POO/8_MayorMenor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 MayorMenor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Semana1/1%20POO/9_Coche/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 Coche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1483,23 +1490,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ud-3-documentacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      UD 3 Documentación
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1514,17 +1506,365 @@
                   
 
 
-  <h1>8H Documentación</h1>
-
-<h2 id="ud-3-documentacion">UD 3 Documentación</h2>
+<h1 id="ud-3-documentando-el-codigo-de-php">UD 3 Documentando el código de PHP</h1>
 <div class="admonition note">
-<p class="admonition-title">Desarrolla aplicaciones web identificando y aplicando mecanismos para separar el código de presentación de la lógica de negocio.</p>
+<p class="admonition-title">Documentación.</p>
 <blockquote>
 <ul>
 <li>H Se ha probado y documentado el código.</li>
 </ul>
 </blockquote>
 </div>
+<h1 id="markdowngithub">Markdown/GitHub</h1>
+<p>Documentar proyectos PHP utilizando <strong>Markdown</strong> y <strong>GitHub</strong> es un enfoque moderno y eficiente para mantener la información del proyecto accesible, clara y organizada. GitHub utiliza un archivo <code>README.md</code> como punto central de la documentación, el cual se escribe en Markdown, un lenguaje de marcado simple para formatear texto. </p>
+<hr />
+<h3 id="1-planifica-la-estructura-del-archivo-readmemd"><strong>1. Planifica la estructura del archivo <code>README.md</code></strong></h3>
+<p>Un archivo <code>README.md</code> debe proporcionar información clave sobre el proyecto de forma clara y concisa. Incluye los siguientes elementos:</p>
+<ol>
+<li><strong>Título del Proyecto</strong></li>
+<li><strong>Descripción Breve</strong></li>
+<li><strong>Instalación</strong></li>
+<li><strong>Uso</strong></li>
+<li><strong>Estructura del Proyecto</strong></li>
+<li><strong>Contribuciones</strong></li>
+<li><strong>Licencia</strong></li>
+<li><strong>Contacto o Información Adicional</strong></li>
+</ol>
+<hr />
+<h3 id="2-redacta-el-archivo-readmemd"><strong>2. Redacta el archivo <code>README.md</code></strong></h3>
+<p>Un ejemplo práctico de un archivo <code>README.md</code> para un proyecto PHP podría ser:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Sistema de Gestión de Tareas</span>
+
+Este es un proyecto PHP para gestionar tareas. Permite crear, editar y eliminar tareas utilizando una interfaz web.
+
+<span class="gu">## Características</span>
+
+<span class="k">-</span><span class="w"> </span>Gestión de tareas (CRUD)
+<span class="k">-</span><span class="w"> </span>Almacenamiento en una base de datos MySQL
+<span class="k">-</span><span class="w"> </span>Arquitectura MVC
+
+<span class="gu">## Requisitos</span>
+
+<span class="k">-</span><span class="w"> </span>PHP 8.0 o superior
+<span class="k">-</span><span class="w"> </span>Composer
+<span class="k">-</span><span class="w"> </span>Servidor Apache o Nginx
+<span class="k">-</span><span class="w"> </span>MySQL
+
+<span class="gu">## Instalación</span>
+
+<span class="k">1.</span> Clona este repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/gestion-tareas.git
+</code></pre></div>
+<ol>
+<li>Instala las dependencias con Composer:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>composer<span class="w"> </span>install
+</code></pre></div>
+3. Configura la base de datos:</p>
+<ul>
+<li>Crea una base de datos MySQL.</li>
+<li>Copia el archivo <code>.env.example</code> y renómbralo como <code>.env</code>.</li>
+<li>Configura las credenciales de la base de datos en el archivo <code>.env</code>.</li>
+<li>Inicia el servidor de desarrollo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000
+</code></pre></div>
+<h2 id="uso">Uso</h2>
+<ol>
+<li>Accede a <code>http://localhost:8000</code> en tu navegador.</li>
+<li>Agrega, edita o elimina tareas según sea necesario.</li>
+</ol>
+<h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
+<div class="highlight"><pre><span></span><code>├── public/
+│   ├── index.php        # Punto de entrada del proyecto
+├── src/
+│   ├── Controllers/     # Lógica de controladores
+│   ├── Models/          # Lógica de modelos
+│   ├── Views/           # Plantillas HTML
+├── vendor/              # Dependencias de Composer
+├── .env.example         # Archivo de ejemplo para configuración
+├── composer.json        # Dependencias del proyecto
+├── README.md            # Documentación principal
+</code></pre></div>
+<h2 id="contribuciones">Contribuciones</h2>
+<p>¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos:</p>
+<ol>
+<li>Haz un fork del proyecto.</li>
+<li>Crea una nueva rama:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>mi-nueva-funcionalidad
+</code></pre></div></li>
+<li>Realiza tus cambios y haz commit:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Agrega nueva funcionalidad&quot;</span>
+</code></pre></div></li>
+<li>Envía tus cambios al repositorio remoto:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>mi-nueva-funcionalidad
+</code></pre></div></li>
+<li>Abre un Pull Request en GitHub.</li>
+</ol>
+<h2 id="licencia">Licencia</h2>
+<p>Este proyecto está bajo la licencia MIT. Consulta el archivo <code>LICENSE</code> para más información.</p>
+<div class="highlight"><pre><span></span><code>---
+
+### **3. Configura GitHub para mostrar el `README.md`**
+
+1. **Sube el proyecto a GitHub:**
+   - Inicia un repositorio local:
+     ```bash
+     git init
+     ```
+   - Agrega los archivos al repositorio:
+     ```bash
+     git add .
+     ```
+   - Haz commit:
+     ```bash
+     git commit -m &quot;Primera versión del proyecto&quot;
+     ```
+   - Conecta el repositorio local con GitHub:
+     ```bash
+     git remote add origin https://github.com/tuusuario/tu-repositorio.git
+     ```
+   - Envía los cambios:
+     ```bash
+     git push -u origin main
+     ```
+
+2. **Asegúrate de que el archivo `README.md` esté en la raíz del repositorio.** GitHub lo mostrará automáticamente en la página principal del repositorio.
+
+---
+
+### **4. Mejora el archivo README.md con elementos visuales**
+
+GitHub permite usar Markdown enriquecido para mejorar la legibilidad:
+
+- **Imágenes:** Para agregar capturas de pantalla del proyecto.
+  ```markdown
+  ![Captura de Pantalla](ruta/a/captura.png)
+</code></pre></div>
+<ul>
+<li><strong>Enlaces:</strong> Para referencias externas o internas.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>[<span class="nt">Documentación oficial de PHP</span>](<span class="na">https://www.php.net/docs.php</span>)
+</code></pre></div>
+- <strong>Código resaltado:</strong> Muestra fragmentos de código PHP o de otros lenguajes.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;¡Hola, mundo!&quot;</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h3 id="5-manten-la-documentacion-actualizada"><strong>5. Mantén la documentación actualizada</strong></h3>
+<ul>
+<li><strong>Actualiza el <code>README.md</code> con cada cambio importante en el proyecto.</strong></li>
+<li><strong>Usa issues y pull requests en GitHub</strong> para gestionar actualizaciones y comentarios sobre la documentación.</li>
+</ul>
+<hr />
+<h3 id="6-extiende-la-documentacion"><strong>6. Extiende la documentación</strong></h3>
+<p>Si el proyecto crece, puedes crear una carpeta llamada <code>docs/</code> en el repositorio para alojar documentación más detallada. Por ejemplo:</p>
+<ul>
+<li><strong>Guía de instalación avanzada</strong></li>
+<li><strong>API Docs</strong></li>
+<li><strong>Guías para contribuciones</strong></li>
+</ul>
+<p>Estructura de ejemplo:</p>
+<div class="highlight"><pre><span></span><code>docs/
+├── api.md
+├── advanced-installation.md
+├── contributing.md
+</code></pre></div>
+<p>En el archivo <code>README.md</code>, agrega enlaces a estos documentos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">-</span><span class="w"> </span>[<span class="nt">Documentación de la API</span>](<span class="na">docs/api.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Guía de Instalación Avanzada</span>](<span class="na">docs/advanced-installation.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Contribuciones</span>](<span class="na">docs/contributing.md</span>)
+</code></pre></div>
+<hr />
+<h3 id="ventajas-de-este-enfoque"><strong>Ventajas de este enfoque</strong></h3>
+<ol>
+<li><strong>Colaboración eficiente:</strong> Markdown es fácil de leer y escribir, y GitHub permite la colaboración en tiempo real.</li>
+<li><strong>Organización:</strong> La estructura clara ayuda a los desarrolladores y usuarios a encontrar información fácilmente.</li>
+<li><strong>Accesibilidad:</strong> La documentación es pública y accesible desde cualquier lugar con conexión a internet.</li>
+</ol>
+<p>Este enfoque garantiza que el proyecto esté bien documentado y sea fácil de usar por desarrolladores y usuarios finales.</p>
+<h1 id="documentacion-del-codigophpdoc">Documentación del código/PHPDoc</h1>
+<p>Usar y generar documentación con herramientas como <strong>PHPDoc</strong> es útil para documentar una clase, sus propiedades y métodos en PHP. Puedes estructurar PHPDoc en un contexto de clase y documentar cada elemento para obtener una referencia completa del código.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Clase que representa un Círculo.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Esta clase permite crear y manipular un círculo, </span>
+<span class="sd"> * ofreciendo métodos para calcular su área y perímetro.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Circulo</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var float $radio Radio del círculo.</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$radio</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Constructor de la clase Círculo.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param float $radio El radio inicial del círculo.</span>
+<span class="sd">     * @throws InvalidArgumentException Si el radio es negativo.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$radio</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$radio</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span><span class="s2">&quot;El radio no puede ser negativo.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radio</span> <span class="o">=</span> <span class="nv">$radio</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Establece el radio del círculo.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param float $radio El nuevo radio del círculo.</span>
+<span class="sd">     * @throws InvalidArgumentException Si el radio es negativo.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setRadio</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$radio</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$radio</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span><span class="s2">&quot;El radio no puede ser negativo.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radio</span> <span class="o">=</span> <span class="nv">$radio</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Obtiene el radio del círculo.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return float El radio actual del círculo.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRadio</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radio</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Calcula el área del círculo.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return float El área del círculo.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcularArea</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radio</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Calcula el perímetro del círculo.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return float El perímetro del círculo.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcularPerimetro</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radio</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Ejemplo de uso</span>
+<span class="nv">$circulo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Circulo</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;Área: &quot;</span> <span class="o">.</span> <span class="nv">$circulo</span><span class="o">-&gt;</span><span class="na">calcularArea</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;Perímetro: &quot;</span> <span class="o">.</span> <span class="nv">$circulo</span><span class="o">-&gt;</span><span class="na">calcularPerimetro</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="apartados">Apartados:</h3>
+<ul>
+<li><strong>PHPDoc de la clase</strong> (<code>class Circulo</code>): Describe el propósito general de la clase.</li>
+<li><strong>Propiedad</strong> (<code>$radio</code>): La propiedad privada se documenta usando <code>@var</code>, indicando el tipo de dato.</li>
+<li><strong>Métodos</strong>:</li>
+<li><strong>Constructor</strong> (<code>__construct</code>): Describe el propósito del constructor e incluye <code>@param</code> y <code>@throws</code>.</li>
+<li><strong>Métodos de acceso</strong> (<code>setRadio</code> y <code>getRadio</code>): Documentan los parámetros y valor de retorno.</li>
+<li><strong>Métodos de cálculo</strong> (<code>calcularArea</code> y <code>calcularPerimetro</code>): Explican el propósito de cada método y documentan el valor de retorno usando <code>@return</code>.</li>
+</ul>
+<h2 id="instalar-y-usar-php-doc">Instalar y usar PHP Doc</h2>
+<p>Usaremos el gestor de depencias y paquetes COMPOSER, la web oficial para Linux, Docker y otras versiones es: <a href="https://phpdoc.org/">https://phpdoc.org/</a></p>
+<p>Para instalar PHPDoc en Windows sigue estos pasos:</p>
+<hr />
+<h3 id="1-instalar-composer"><strong>1. Instalar Composer</strong></h3>
+<p>PHPDoc se gestiona con Composer, así que primero debes instalarlo:</p>
+<ol>
+<li>
+<p><strong>Descargar Composer:</strong></p>
+</li>
+<li>
+<p>Ve al sitio oficial: <a href="https://getcomposer.org/download/">https://getcomposer.org/download/</a></p>
+</li>
+<li>Descarga y ejecuta el instalador de Composer para Windows.</li>
+<li>
+<p><strong>Configurar la instalación:</strong></p>
+</li>
+<li>
+<p>Durante la instalación, asegúrate de seleccionar el ejecutable de PHP en tu sistema (debe estar instalado previamente y configurado en tu PATH).</p>
+</li>
+<li>
+<p><strong>Verificar la instalación:</strong></p>
+</li>
+<li>
+<p>Abre una terminal o el símbolo del sistema y escribe:
+     <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>--version
+</code></pre></div></p>
+</li>
+<li>Si ves un número de versión, Composer está instalado correctamente.</li>
+</ol>
+<hr />
+<h3 id="2-instalar-phpdocumentor"><strong>2. Instalar PHPDocumentor</strong></h3>
+<p>Con Composer instalado, puedes instalar PHPDocumentor globalmente o como dependencia de tu proyecto:</p>
+<h4 id="opcion-a-instalacion-global">Opción A: Instalación global</h4>
+<ol>
+<li>Abre una terminal y ejecuta:
+   <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>phpdocumentor/phpdocumentor
+</code></pre></div></li>
+<li>Asegúrate de que el directorio de Composer global está en tu PATH:</li>
+<li>Por defecto, está en <code>C:\Users\TuUsuario\AppData\Roaming\Composer\vendor\bin</code>.</li>
+<li>Agrega este directorio a las variables de entorno si es necesario.</li>
+</ol>
+<p><img alt="1731738241682" src="../image/8HDocumentaci%C3%B3n/1731738241682.png" /></p>
+<h4 id="opcion-b-instalacion-en-un-proyecto-especifico">Opción B: Instalación en un proyecto específico</h4>
+<ol>
+<li>Navega al directorio de tu proyecto y ejecuta:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>phpdocumentor/phpdocumentor
+</code></pre></div>
+<p>(Nos podría preguntar si confiamos en el plugin de symfony, le decimos que si (y)</p>
+<p><img alt="1731738352075" src="../image/8HDocumentaci%C3%B3n/1731738352075.png" /></p>
+<hr />
+<h3 id="3-crear-un-archivo-php-de-prueba"><strong>3. Crear un Archivo PHP de Prueba</strong></h3>
+<p>Crea un archivo PHP en tu proyecto. Por ejemplo, <code>ejemplo.php</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Calcula el área de un círculo.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param float $radio El radio del círculo.</span>
+<span class="sd"> * @return float El área del círculo.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">calcularArea</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$radio</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="nv">$radio</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="4-generar-documentacion-con-phpdoc"><strong>4. Generar Documentación con PHPDoc</strong></h3>
+<ol>
+<li>Abre la terminal y navega al directorio de tu proyecto.</li>
+<li>Ejecuta el siguiente comando para generar la documentación:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>phpdoc<span class="w"> </span>-d<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>docs
+</code></pre></div>
+<ul>
+<li><strong><code>-d .</code></strong>: Especifica el directorio actual como la fuente de los archivos PHP.</li>
+<li><strong><code>-t docs</code></strong>: Indica que la salida de la documentación se guardará en el directorio <code>docs</code>.</li>
+</ul>
+<hr />
+<h3 id="5-verificar-la-documentacion-generada"><strong>5. Verificar la Documentación Generada</strong></h3>
+<ol>
+<li>Una vez completado el proceso, ve al directorio <code>docs</code>.</li>
+<li>Abre el archivo <code>index.html</code> en un navegador para ver la documentación generada.</li>
+</ol>
+<hr />
+<h3 id="solucion-de-problemas"><strong>Solución de Problemas</strong></h3>
+<ul>
+<li>Si el comando <code>phpdoc</code> no funciona, verifica que el directorio global de Composer está en tu PATH.</li>
+<li>Asegúrate de usar una versión de PHP compatible (PHPDocumentor requiere PHP 7.4 o superior).</li>
+</ul>
+<p><img alt="1731665912794" src="https://file+.vscode-resource.vscode-cdn.net/Applications/XAMPP/xamppfiles/htdocs/dwes2425/dwes2425/mkdocs/dwes/docs/UD3_POO/image/8HDocumentaci%C3%B3n/1731665912794.png" /></p>
+<h1 id="referencias">Referencias</h1>
+<p><a href="https://www.php.net/manual/en/">PHP Documentation</a></p>
+<p><a href="https://www.w3schools.com/php/php_oop_classes_objects.asp">W3Schools</a></p>
+<p><a href="https://codigosdeprogramacion.com/2023/03/03/documentando-el-codigo-de-php/">Artículo documentación PHP</a></p>
+<p><a href="https://epsilon-eridani.com/php/phpdocumentor-documentacion-para-codigo-php/">Artículo web epsilon</a></p>
 
 
 
