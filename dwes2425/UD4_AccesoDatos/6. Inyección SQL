@@ -1,0 +1,21 @@
+## UD 4 Acceso a Datos
+
+??? note "RA 6  Desarrolla aplicaciones web de acceso a almacenes de datos, aplicando medidas para mantener la seguridad y la integridad de la información."
+
+    > *  a) Se han analizado las tecnologías que permiten el acceso mediante programación a la información disponible en almacenes de datos.
+    > *  b) Se han creado aplicaciones que establezcan conexiones con bases de datos.
+    > *  c) Se ha recuperado información almacenada en bases de datos.
+    > *  d) Se ha publicado en aplicaciones web la información recuperada.
+    > *  e) Se han utilizado conjuntos de datos para almacenar la información.
+    > *  f) Se han creado aplicaciones web que permitan la actualización y la eliminación de información disponible en una base de datos.
+    > *  g) Se han probado y documentado las aplicaciones web.
+
+
+
+# Actividad
+
+!!! Success "ProyectoUD4-PDO"
+
+    La idea de esta unidad es aplicar las nuevas características adquiridas en un proyecto haciendo uso de la clase PDO para para accedera una base de datos.
+
+**Tiempo estimado:** 4 horas.

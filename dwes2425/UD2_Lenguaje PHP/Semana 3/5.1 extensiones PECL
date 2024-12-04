@@ -1,0 +1,103 @@
+
+---
+
+# Generación de PDF con PHP y PECL
+
+Usar extensiones de **PECL** para generar PDFs con PHP.
+
+Este tutorial te guiará en la descarga e instalación de extensiones de **PECL** para generar archivos PDF en PHP.
+
+### Requisitos previos
+
+1. **PHP**: Asegúrate de tener PHP instalado.
+2. **PECL**: PECL es un repositorio de extensiones de PHP. Asegúrate de que PECL esté instalado.
+
+
+### Check extensiones antes de instalar.
+
+Usar la función PHP Info o verla en el index si tenemos XAMPP instalado ([http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php))
+
+![1730011257933](image/5.1extensionesPECL/1730011257933.png)
+
+Por defecto suele traer la librería mysqli y pdo_mysql que veremos más adelante en el curso.
+
+
+### Paso 1: Instalar la extensión `pdflib` mediante PECL
+
+**`pdflib`** es una extensión popular para crear archivos PDF en PHP.
+
+1. Abre una terminal o línea de comandos.
+2. Ejecuta el siguiente comando para instalar la extensión `pdflib`:
+
+   ```bash
+   sudo pecl install pdflib
+   ```
+3. Durante la instalación, PECL te pedirá que configures algunas opciones (como el número de versión). Puedes aceptar las opciones predeterminadas presionando Enter.
+4. Una vez instalada la extensión, debes habilitarla en tu archivo `php.ini`:
+
+   ```bash
+   echo "extension=pdflib.so" | sudo tee -a $(php --ini | grep "Loaded Configuration" | awk '{print $4}')
+   ```
+5. Reinicia el servidor web (por ejemplo, Apache o Nginx) para aplicar los cambios:
+
+   ```bash
+   sudo service apache2 restart  # Si usas Apache
+   sudo service nginx restart    # Si usas Nginx
+   ```
+
+### Paso 2: Crear un archivo PHP para generar un PDF
+
+Una vez instalada la extensión, puedes crear un archivo PHP que utilice `pdflib` para generar un archivo PDF.
+
+#### Código de ejemplo en PHP:
+
+```php
+<?php
+// Comprobar si la extensión pdflib está habilitada
+if (!extension_loaded("pdflib")) {
+    die("La extensión PDFlib no está habilitada.");
+}
+
+// Crear un nuevo PDF
+$pdf = pdf_new();
+pdf_open_file($pdf, "mi_documento.pdf");
+pdf_set_info($pdf, "Title", "Mi Primer PDF");
+pdf_set_info($pdf, "Author", "Tu Nombre");
+
+// Empezar una nueva página
+pdf_begin_page($pdf, 595, 842);  // Tamaño A4
+$font = pdf_load_font($pdf, "Helvetica-Bold", "winansi", "");
+pdf_setfont($pdf, $font, 24.0);
+pdf_set_text_pos($pdf, 50, 750);
+pdf_show($pdf, "¡Hola, PDF con PDFlib!");
+pdf_end_page($pdf);
+
+// Cerrar y guardar el PDF
+pdf_close($pdf);
+pdf_delete($pdf);
+
+echo "PDF generado exitosamente como 'mi_documento.pdf'.";
+?>
+```
+
+### Paso 3: Ejecutar el Script
+
+1. Guarda el código PHP en un archivo llamado `crear_pdf.php`.
+2. Ejecuta el archivo en un servidor local o accediendo desde un navegador:
+   ```bash
+   php crear_pdf.php
+   ```
+
+### Paso 4: Verificar el PDF
+
+El archivo PDF `mi_documento.pdf` debería generarse en el mismo directorio donde ejecutaste el script. Ábrelo para verificar que se haya creado correctamente.
+
+---
+
+### Nota
+
+Si encuentras problemas con `pdflib`, considera instalar otras bibliotecas populares como **FPDF** o **TCPDF** que no requieren PECL y son compatibles con versiones de PHP sin necesidad de extensiones adicionales.
+
+---
+
+Este es un enfoque rápido y directo para instalar y utilizar extensiones de PECL en PHP para generar PDFs.
