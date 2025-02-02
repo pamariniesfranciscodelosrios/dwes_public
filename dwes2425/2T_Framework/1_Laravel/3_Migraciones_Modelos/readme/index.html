@@ -1,0 +1,4125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../2_Blade/readme/">
+      
+      
+        <link rel="next" href="../../4_Controladores/readme/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>3 - Migraciones y Modelos - DWES 24-25 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-migraciones-y-modelos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DWES 24-25 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 24-25 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 24-25 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 - Migraciones y Modelos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DWES 24-25 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 24-25 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DWES 24-25 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulo Desarrollo Web en Entorno Servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    0 Inicio
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            0 Inicio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../0_Inicio/1_Presentaci%C3%B3n/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Presentación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../0_Inicio/Contacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../0_Inicio/Enlaces%20y%20recursos%20del%20m%C3%B3dulo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enlaces y recursos del módulo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../0_Inicio/test_inicial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test inicial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../0_Inicio/tutoriales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutoriales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1T PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            1T PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD1 Arquitectura Web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            UD1 Arquitectura Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD1_Arquitectura%20Web/1%20Arquitectura%20Web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Arquitectura Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD1_Arquitectura%20Web/2%20Arquit.%203%20capas%20y%20MVC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Arquit. 3 capas y MVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD1_Arquitectura%20Web/3%20Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Entregable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD1_Arquitectura%20Web/4%20Entorno%20PHP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Entorno PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD1_Arquitectura%20Web/5_holamundo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 holamundo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD2 Lenguaje PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            UD2 Lenguaje PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Semana 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Semana 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/1%20B%C3%A1sico%20Sintaxis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Básico Sintaxis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/2%20Imprimiendo%20echo%20print/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Imprimiendo echo print
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/3%20Datos%20y%20funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Datos y funciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable Semana 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1_5" id="__nav_3_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/ejemplos/1%20tipos%20variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 tipos variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%201/ejemplos/2%20ambito%20variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 ambito variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Semana 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Semana 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%202/4%20Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%202/5%20Funciones%20y%20arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Funciones y arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%202/Entregable%20copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable Semana 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%202/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable Semana 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Semana 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Semana 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%203/5%20Funciones%20y%20arrays_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Funciones y arrays 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%203/6%20Formularios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 Formularios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD2_Lenguaje%20PHP/Semana%203/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable Semana 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD3 POO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD3 POO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/0%20Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/1%20POO_A_Teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 POO A Teoria
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/1%20POO_B_PHP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 POO B PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/1%20POO_C_Namespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 POO C Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/2%20B%20Tecnolog%C3%ADas%20y%20Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 B Tecnologías y Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/3%20C%20Objetos%20generar%20aspecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 C Objetos generar aspecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/4%20D%20Generacion%20Dinamica%20Formularios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 D Generacion Dinamica Formularios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/5E%20Parametros%20Configuraci%C3%B3n%20Web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5E Parametros Configuración Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/6F%20Separaci%C3%B3n%20L%C3%B3gica%20Negocio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6F Separación Lógica Negocio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/7G%20Aplicado%20los%20principios%20POO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7G Aplicado los principios POO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/8H%20Documentaci%C3%B3n/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8H Documentación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable UD3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_13" id="__nav_3_3_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Semana1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            Semana1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_13_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_13_1" id="__nav_3_3_13_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 POO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_13_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_13_1">
+            <span class="md-nav__icon md-icon"></span>
+            1 POO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana1/1%20POO/1_persona/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 persona
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana1/1%20POO/2_MayorMenor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 MayorMenor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana1/1%20POO/3_Coche/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Coche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana1/1%20POO/8_MayorMenor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 MayorMenor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana1/1%20POO/9_Coche/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 Coche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_14" id="__nav_3_3_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Semana2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            Semana2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_14_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_14_1" id="__nav_3_3_14_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ProyectoUD3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_14_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_14_1">
+            <span class="md-nav__icon md-icon"></span>
+            ProyectoUD3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD3_POO/Semana2/ProyectoUD3/EjemploMVC_ProyectoUD3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EjemploMVC ProyectoUD3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD4 AccesoDatos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            UD4 AccesoDatos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/0%20Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/1A%20Un%20poco%20de%20historia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1A Un poco de historia
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/1B%20Preparando%20el%20entorno%20BBDD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1B Preparando el entorno BBDD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/2.%20Mysqli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Mysqli
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/3.%20PDO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. PDO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/4.%20LoginMVC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. LoginMVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/5%20CRUD%20MVC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 CRUD MVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/6.%20Ficheros%20y%20PDF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Ficheros y PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/7%20Material%20extra%20ampliaci%C3%B3n/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Material extra ampliación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objetivos &amp; Entregable UD4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD4_AccesoDatos/PatronDise%C3%B1o/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PatronDiseño
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD5 HerramientasWeb
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            UD5 HerramientasWeb
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/0%20Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/0%20MapaConceptual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 MapaConceptual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/1%20Cabeceras%20del%20servidor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Cabeceras del servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/2%20B%20Ejemplo%20Sesiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 B Ejemplo Sesiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/2%20Estado.%20SESIONES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Estado. SESIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/3%20Estado.%20COOKIES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Estado. COOKIES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/4%20Autenticaci%C3%B3n%20y%20Recursos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Autenticación y Recursos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entregable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_9" id="__nav_3_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Code
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_9_1" id="__nav_3_5_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 Cabeceras
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            1 Cabeceras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Code/1%20Cabeceras/1b-subirFichero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1b subirFichero
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Code/1%20Cabeceras/1c_redireccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1c redireccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Code/1%20Cabeceras/1d-cabeceras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1d cabeceras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_9_2" id="__nav_3_5_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3 Cookies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            3 Cookies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Code/3%20Cookies/ejemplo1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Código de Manejo de Cookies en PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_9_3" id="__nav_3_5_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4 Recursos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            4 Recursos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1T_PHP/UD5_HerramientasWeb/Code/4%20Recursos/entregableBase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    entregableBase
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2T Framework
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            2T Framework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0%20Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IniciarLaravel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IniciarLaravel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            1 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 Fundamentos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            1 Fundamentos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_Fundamentos/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 - Fundamentos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2 Blade
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            2 Blade
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_Blade/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 - Dominando BLADE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3 Migraciones Modelos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            3 Migraciones Modelos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3 - Migraciones y Modelos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3 - Migraciones y Modelos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-la-capa-de-persistencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración De La Capa De Persistencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración De La Capa De Persistencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migraciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migraciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php-artisan-makemigration-nombre_migracion_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      php artisan make:migration nombre_migracion_table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clase-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clase schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nomenclatura-de-las-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      nomenclatura de las tablas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollbacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollbacking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollbacking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lo-que-no-se-debe-hacer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1- Lo que NO se debe hacer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      2- Rollback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      3- Update table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-crear-la-migracion-vistos" class="md-nav__link">
+    <span class="md-ellipsis">
+      PASOS para crear la migración vistos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-genero-el-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo genero el modelo?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-del-modelo-y-convencion-nombre-tabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo del modelo y convención nombre tabla:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fillable-guard-cast-y-hidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fillable, Guard, Cast y Hidden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atajos-en-la-creacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atajos en la creación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusiones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_4" id="__nav_4_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4 Controladores
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            4 Controladores
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_Controladores/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Controladores
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5 CRUD
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            5 CRUD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_CRUD/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. CRUD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7 Seeder Factory Faker
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            7 Seeder Factory Faker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_Seeder_Factory_Faker/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Seeder, Factory y Faker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_7" id="__nav_4_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    8 Relaciones
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            8 Relaciones
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Relaciones/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2 API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            2 API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_API/ApiRestful/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API REST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6 API Rest
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            6 API Rest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_API/6_API%20Rest/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    9 Middleare API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            9 Middleare API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_API/9_Middleare_API/MiddlewareL11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cambios en Laravel 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_API/9_Middleare_API/ejemploCompletoMiddleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejemplo Laravel 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_API/9_Middleare_API/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 AutenticacionAPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ProyectoFPDual
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            ProyectoFPDual
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ProyectoFPDual/ProyectoFPDual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProyectoFPDual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-la-capa-de-persistencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración De La Capa De Persistencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración De La Capa De Persistencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migraciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migraciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php-artisan-makemigration-nombre_migracion_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      php artisan make:migration nombre_migracion_table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clase-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clase schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nomenclatura-de-las-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      nomenclatura de las tablas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollbacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollbacking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollbacking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lo-que-no-se-debe-hacer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1- Lo que NO se debe hacer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      2- Rollback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      3- Update table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-crear-la-migracion-vistos" class="md-nav__link">
+    <span class="md-ellipsis">
+      PASOS para crear la migración vistos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-genero-el-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo genero el modelo?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-del-modelo-y-convencion-nombre-tabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo del modelo y convención nombre tabla:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fillable-guard-cast-y-hidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fillable, Guard, Cast y Hidden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atajos-en-la-creacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atajos en la creación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusiones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="3-migraciones-y-modelos">3 - Migraciones y Modelos</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Enlace tutorial: <a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4">3 Migraciones Modelos</a></p>
+<p><strong>Recuerda</strong>: Cuando comentemos algún archivo, siempre es bueno indicar la ruta</p>
+<p>✅ Marcas De Tiempo</p>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=0s">0:00:00</a> - Introducción
+<a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=55s">0:00:55</a> - Configuración De La Capa De Persistencia
+<a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=1417s">0:23:37</a> - Migraciones
+<a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=2717s">0:45:17</a> - Rollbacking
+<a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=3789s">1:03:09</a> - Modelos
+<a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=5069s">1:24:29</a> - Conclusiones</p>
+<h2 id="introduccion_1">Introducción</h2>
+<p>El video trata sobre Curso Profesional De LARAVEL: Episodio 3 - Migraciones Y Modelos pero también intenta abordar el siguiente tema:</p>
+<p>Uso de Migraciones
+Modelos en Detalle
+Herramientas LARAVEL.</p>
+<p><img alt="1736527382140" src="../image/readme/1736527382140.png" /></p>
+<h2 id="configuracion-de-la-capa-de-persistencia">Configuración De La Capa De Persistencia</h2>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=55s">0:00:55</a> -
+Creamos un nuevo proyecto llamado modeldata, vamos a centrarnos en el modelo y en la base de datos</p>
+<p>Si creamos el proyecto con laravel new, que nos pide más opciones, lo creamos sin <a href="https://laravel.com/docs/11.x/starter-kits">starter kit</a> (none)</p>
+<p><code>laravel new modeldata</code></p>
+<p><code>INFO  Application key set successfully.</code></p>
+<p>Corremos las migraciones iniciales y luego vemos para qué sirven.</p>
+<p><code>Would you like to run the default database migrations? (yes/no) [yes]: NO</code></p>
+<p>El sistema de persistencia debe ser gestionado por Laravel a través del motor ORM</p>
+<p>Necesitamos especificar en el .env a qué sistema vamos a conectar, en el tutorial lo hace con Mysql y nosotros con SQLite, todo esto se puede ver con mayor profundidad en /Config/database.php aunque a menos que queramos cambiar algo</p>
+<p><img alt="1736528561761" src="../image/readme/1736528561761.png" /></p>
+<p>Si necesitamos otro sistema, necesitaríamos añadir el driver a este fichero de configuración.</p>
+<h3 id="migrate">Migrate</h3>
+<p>Comando para migrar todas nuestras migraciones</p>
+<p><code>php artisan migrate</code></p>
+<p><img alt="1736528812531" src="../image/readme/1736528812531.png" /></p>
+<p>Con lo que se crean todas las tablas que le hemos indicado, que son las que vienen por defecto.</p>
+<p><img alt="1736528878082" src="../image/readme/1736528878082.png" /></p>
+<p>Y que si pulsamos ahora sobre database.sqlite, las veremos, 10 tablas:</p>
+<p><img alt="1736528917141" src="../image/readme/1736528917141.png" /></p>
+<p>Si vuelvo a ejecutar el comando migrate, Laravel ya sabe que no tiene nada que migrar:</p>
+<p><code>INFO  Nothing to migrate.</code></p>
+<p>Hasta aquí, ya hemos configurado la estructura de nuestras tablas y la configuración a la base de datos.</p>
+<h2 id="migraciones">Migraciones</h2>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=1417s">0:23:37</a> -</p>
+<p>Ahora vamos a crear nosotros un fichero para crear la estructura de nuestro objeto. Necesitaremos un archivo de migración para que nos cree la tabla necesaria.</p>
+<p><img alt="1736530398856" src="../image/readme/1736530398856.png" /></p>
+<h3 id="php-artisan-makemigration-nombre_migracion_table">php artisan make:migration nombre_migracion_table</h3>
+<p>El comando para  crear migraciones se ejecuta con <strong>make</strong>, un comando que usaremos mucoh de aquí en adelante.</p>
+<p><code>php artisan make:migration create_notes_table</code></p>
+<p>Y si todo ha ido bien: <code>INFO  Migration [C:\xampp\htdocs\...modeldata\database\migrations/2025_01_10_173622_create_notes_table.php] created successfully.</code></p>
+<p>Con lo que crea el fichero para crear la tabla <strong>notes</strong></p>
+<p><img alt="1736530633764" src="../image/readme/1736530633764.png" /></p>
+<p><img alt="1736530712190" src="../image/readme/1736530712190.png" /></p>
+<p>El archivo genera una clase que extiende de la clase Migration con dos métodos</p>
+<ul>
+<li>up: Info para crear la tabla</li>
+<li>down: info para borrar esa migración y hacer rollback</li>
+</ul>
+<h3 id="clase-schema">Clase schema</h3>
+<p>La clase <strong>schema</strong> puede crear todos los elementos de la tabla.</p>
+<ul>
+<li>create</li>
+<li>table</li>
+<li>dropIfExists</li>
+<li><img alt="1736530850202" src="../image/readme/1736530850202.png" /></li>
+</ul>
+<h2 id="nomenclatura-de-las-tablas">nomenclatura de las tablas</h2>
+<p>Es <strong>IMPORTANTE</strong> que para que funcione bien automatizado las tablas se escriban en plural y todo en minúscula:</p>
+<p>Así, la función create recibe dos argumentos: notes y function</p>
+<p><strong>Blueprint</strong> es una clase que contiene todos los métoodos para generar la estructura de la tabla</p>
+<ul>
+<li>Por defecto nos añade dos campos: id y timestamps.</li>
+</ul>
+<p>Vamos a agregar algunos campos para nuestras notas:</p>
+<p><img alt="1736531450131" src="../image/readme/1736531450131.png" /></p>
+<p>Además, a cada una de los campos que hemos creado, podemos añadirle más condiciones, y esto se hace de la siguiente forma encadenando métodos.</p>
+<p>Por ejemplo que pueda ser nulo (ya que por defecto son requeridos)</p>
+<div class="highlight"><pre><span></span><code><span class="x">$table-&gt;string(&#39;description&#39;,255)-&gt;nullable();//text</span>
+<span class="x">$table-&gt;boolean(&#39;done&#39;)-&gt;default(false);//tinyint(1)</span>
+</code></pre></div>
+<p>Como hemos creado una migración que hemos hecho anteriormente, tenemos que volver a migrarla para que se migre a la base de datos.</p>
+<div class="highlight"><pre><span></span><code>php artisan migrate
+
+   INFO  Running migrations.
+
+  2025_01_10_173622_create_notes_table ............................................................................... 68.16ms DONE
+</code></pre></div>
+<p>Y si vemos, podemos encontrar la nueva tabla <strong>notes</strong> y en la tabla migrations vemos que hay un nuevo lote:</p>
+<p><img alt="1736531789490" src="../image/readme/1736531789490.png" /> <img alt="1736531842865" src="../image/readme/1736531842865.png" /></p>
+<h2 id="rollbacking">Rollbacking</h2>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=2717s">0:45:17</a> -</p>
+<p>Imaginemos que nos damos cuenta que algún campo se nos ha <strong>olvidado o debemos cambiar.</strong></p>
+<h3 id="1-lo-que-no-se-debe-hacer">1- Lo que NO se debe hacer:</h3>
+<p>Tocar las tablas directamente en la base de datos. No demos manipular el sistema de datos.</p>
+<h3 id="2-rollback">2- Rollback</h3>
+<p>Es la que usaremos la mayoría de veces, más directa, haciendo <strong>rollback</strong>.</p>
+<ul>
+<li>Si vemos la tabla migrations de nuestra base de datos, vemos el lote 2 con la última migración</li>
+<li>Si lo quiero tirar para atrás</li>
+<li><code>php artisan migrate:rollback</code></li>
+<li><code>INFO  Rolling back migrations.</code></li>
+<li><code>2025_01_10_173622_create_notes_table ...................................................... 5.06ms DONE</code></li>
+<li><img alt="1736534003268" src="../image/readme/1736534003268.png" /></li>
+<li>El lote 2 ha desaparecido y la tabla notes ha dejado de existir, ahora puedo hacer lo que quiera,</li>
+<li>añado campo deadline y hago <code>php artisan migrate</code></li>
+<li><img alt="1736534128427" src="../image/readme/1736534128427.png" /></li>
+<li>Hemos realizado una manipulación correcta del proceso de <strong>migración</strong></li>
+<li>Ha usado la función down al hacer el rollback.</li>
+</ul>
+<p>Otros tipos de <strong>rollback</strong>, hay muchos pero los más comunes son:</p>
+<ol>
+<li><code>php artisan migrate:reset</code> para borrar todas las migraciones</li>
+<li><code>php artisan migrate:rollback --batch=1</code></li>
+<li><code>php artisan migrate:refresh</code> para borrar las migraciones y volver a migrar</li>
+</ol>
+<h3 id="3-update-table">3- Update table</h3>
+<p>Algunas veces, cuando si hacemos rollback perdemos mucho de lo realizado como claves, relaciones, etc.</p>
+<p>Estas modificaciones nos interesará generar nuevo archivo de migración para ACTUALIZAR la estructura de una tabla y NO para crearla</p>
+<ul>
+<li><code>php artisan make:migration update_notes_table</code></li>
+</ul>
+<p>Y genera un nuevo archivo de migración:</p>
+<p><img alt="1736534528772" src="../image/readme/1736534528772.png" /></p>
+<p>Ahora, en nuestro <strong>schema</strong>, en vez de create vamos a usar la función table (para modificar la tabla ya creada)</p>
+<p>Tenemos que tener en cuenta que en el down ya no vamos a tirar la tabla entera si no que debemos realizar lo contrario que en el up</p>
+<p>El archivo <strong>update_notes_table queda:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="k">new</span> <span class="k">class</span> <span class="k">extends</span> <span class="nx">Migration</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Run the migrations.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">);</span><span class="c1">// tras la  migracion se añade la columna author</span>
+            <span class="c1">//tambien se puede eliminar una columna:</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">([</span><span class="s1">&#39;deadline&#39;</span><span class="p">]);</span> <span class="c1">//arrau con las columnas a eliminar</span>
+        <span class="p">});</span> 
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Reverse the migrations.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">([</span><span class="s1">&#39;author&#39;</span><span class="p">]);</span>
+            <span class="c1">//$table-&gt;date(&#39;deadline&#39;); // no es necesario ya que en el down de la primera migracion se elimina la tabla</span>
+        <span class="p">});</span> 
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>En el video <strong>ELIMINA</strong> este archivo y no lo ejecuta, pero si queremos ejecutar la migración vemos como cambia estas columnas:</p>
+<p><img alt="1736535028251" src="../image/readme/1736535028251.png" /></p>
+<p>Tras comprobar, borro el archivo migrate y hago refresh.</p>
+<h3 id="pasos-para-crear-la-migracion-vistos">PASOS para crear la migración vistos</h3>
+<ol>
+<li>Paso 1. copia y pega .env y configura la base de datos, nuestro caso más fácil con sqlite</li>
+<li>Paso 2. Ejecuta el comando php artisan migrate (estructura en tu sistema)</li>
+</ol>
+<p>Hasta ahora, hemos hecho la base de datos, pero vamos a trabajar a través de modelos y vamos a ver cómo se vinculan en la bbdd.</p>
+<h2 id="modelos">Modelos</h2>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=3789s">1:03:09</a> -</p>
+<p>Con el framework no nos preocupamos cómo y cuándo se guarda en la base de datos, trabajamos con clases y objetos a traves de modelos y de la persistencia de la base de datos se encarga el <a href="https://laravel.com/docs/11.x/eloquent">ORM Eloquen</a>t.</p>
+<p><img alt="1736571010348" src="../image/readme/1736571010348.png" /></p>
+<p>Generamos Modelos y aprendemos su vinculación con el sistema de persistencia.</p>
+<p>Vamos a crear el modelo <strong>Note</strong> (IMPORTANTE convención los modelos en singular, en INGLÉS y con UpperCamelCase/PascalCase)</p>
+<h3 id="como-genero-el-modelo">¿Cómo genero el modelo?</h3>
+<p><code>php artisan make:model Note</code></p>
+<ul>
+<li><code>INFO  Model [C:\xampp\htdocs\dwes\...\modeldata\app\Models\Note.php] created successfully.</code></li>
+<li><img alt="1736571694409" src="../image/readme/1736571694409.png" /></li>
+<li>¿Qué es un modelo? Es una <strong>clase</strong> que extiende de la clase <strong>Model</strong> en POO, la que nos incluirá todas las acciones que necesitemos.</li>
+<li>En Laravel 11, vemos como NO incluye la factory por defecto, lo veremos.</li>
+</ul>
+<h3 id="flujo-del-modelo-y-convencion-nombre-tabla">Flujo del modelo y convención nombre tabla:</h3>
+<p>En este punto, el modelo, si lo hemos escrito bien en inglés y en singular ya sabe que se apoyará en la micración create_notes_table para las operaciones de creación.</p>
+<p>¿Pero si no respeto la convención de nombres?¿Cómo mapeo? imaginate que en tu empresa las tablas estan en español,</p>
+<p>le indico en la tabla model: dentro del modelo así</p>
+<div class="highlight"><pre><span></span><code><span class="x">class Note extends Model</span>
+<span class="x">{</span>
+<span class="x">    //¿Pero si no respeto la convención de nombres?¿Cómo mapeo? imaginate que en tu empresa las tablas estan en español, </span>
+<span class="x">    //le indico en la tabla model: dentro del modelo así</span>
+<span class="x">    protected $table = &#39;notas&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Ahora mismo nos falta la parte de <strong>CONTROLLERs</strong> para que todo funcione a la perfección.</p>
+<p>Hasta ahora, la clase Note es un modelo que trabaja con la tabla notes y trabajaremos con programación OO.</p>
+<h3 id="fillable-guard-cast-y-hidden">Fillable, Guard, Cast y Hidden</h3>
+<p>Vamos a aprender estos primeros valores del modelo.</p>
+<p>Con <strong>table</strong> hacemos la vinculación al sistema de persistencia, que está hecho por defecto salvo que no se respete nombre.</p>
+<ul>
+<li><strong>fillable</strong>, campos que podrán cumplimentarse</li>
+<li>Hay campos que no queremos permitir que se cumplimenten, por ejemplo el ID</li>
+</ul>
+<p><img alt="1736572490834" src="../image/readme/1736572490834.png" /></p>
+<ul>
+<li><strong>guard</strong>, al contrario que fillable, son los datos que NO van a poder ser cumplimentados</li>
+<li>No es necesario <strong>definirlos ambos</strong>, son contrapuestos</li>
+<li>Si defino fillable, guard son el resto</li>
+<li>Si defino guard, fillable va a ser el resto de campos</li>
+<li><strong>cast</strong>, para forzar que en el deadline sea una fecha, por ejemplo.</li>
+<li><strong>hidden</strong>, para evitar enviar datos para serializar, por ejemplo hacemos api y en el modelo user no queremos enviar el password, aunque esté encriptado, ya que no es seguro.</li>
+</ul>
+<p>Así, hemos dejado nuestro modelo:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class Note extends Model</span>
+<span class="x">{</span>
+<span class="x">    //¿Pero si no respeto la convención de nombres?¿Cómo mapeo? imaginate que en tu empresa las tablas estan en español, </span>
+<span class="x">    //le indico en la tabla model: dentro del modelo así</span>
+<span class="x">    //protected $table = &#39;notas&#39;;</span>
+
+<span class="x">    pr</span>
+</code></pre></div>
+<h3 id="atajos-en-la-creacion">Atajos en la creación</h3>
+<p>Si pensamos, hemos hecho la migración y después el modelo.</p>
+<p>Ahora, vamos a hacerlo de una tacada, creando el modelo y su migración, creamos un ejemplo Author_ y observamos como crea el modelo y su migración, con lo que evitamos errores en la nomenclatura de la tabla y archivos.</p>
+<p><code>php artisan make:model Author --migration</code></p>
+<div class="highlight"><pre><span></span><code> INFO  Model [C:\xampp\htdocs\dwes\...modeldata\app\Models\Author.php] created successfully.
+
+   INFO  Migration [C:\xampp\htdocs\dwes\...modeldata\database\migrations/2025_01_11_052813_create_authors_table.php] created successfully.
+</code></pre></div>
+<p>Modelo Author: <img alt="1736573366149" src="../image/readme/1736573366149.png" /> Migración: <img alt="1736573372871" src="../image/readme/1736573372871.png" /></p>
+<p>En la documentación de Laravel vienen todas las opciones:</p>
+<div class="highlight"><pre><span></span><code>If<span class="w"> </span>you<span class="w"> </span>would<span class="w"> </span>like<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>a<span class="w"> </span>database<span class="w"> </span>migration<span class="w"> </span>when<span class="w"> </span>you<span class="w"> </span>generate<span class="w"> </span>the<span class="w"> </span>model,<span class="w"> </span>you<span class="w"> </span>may<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>--migration<span class="w"> </span>or<span class="w"> </span>-m<span class="w"> </span>option:
+
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--migration
+
+You<span class="w"> </span>may<span class="w"> </span>generate<span class="w"> </span>various<span class="w"> </span>other<span class="w"> </span>types<span class="w"> </span>of<span class="w"> </span>classes<span class="w"> </span>when<span class="w"> </span>generating<span class="w"> </span>a<span class="w"> </span>model,<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span>factories,<span class="w"> </span>seeders,<span class="w"> </span>policies,<span class="w"> </span>controllers,<span class="w"> </span>and<span class="w"> </span>form<span class="w"> </span>requests.<span class="w"> </span>In<span class="w"> </span>addition,<span class="w"> </span>these<span class="w"> </span>options<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>combined<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>multiple<span class="w"> </span>classes<span class="w"> </span>at<span class="w"> </span>once:
+
+<span class="c1"># Generate a model and a FlightFactory class...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--factory
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-f
+
+<span class="c1"># Generate a model and a FlightSeeder class...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--seed
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-s
+
+<span class="c1"># Generate a model and a FlightController class...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--controller
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-c
+
+<span class="c1"># Generate a model, FlightController resource class, and form request classes...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--controller<span class="w"> </span>--resource<span class="w"> </span>--requests
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-crR
+
+<span class="c1"># Generate a model and a FlightPolicy class...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--policy
+
+<span class="c1"># Generate a model and a migration, factory, seeder, and controller...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-mfsc
+
+<span class="c1"># Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--all
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-a
+
+<span class="c1"># Generate a pivot model...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Member<span class="w"> </span>--pivot
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Member<span class="w"> </span>-p
+</code></pre></div>
+<h2 id="conclusiones">Conclusiones</h2>
+<p><a href="https://www.youtube.com/watch?v=njvzNhF0ka4&amp;list=PLDllzmccetSM50U0Y9fTOWHvSzAZ_W6Il&amp;index=4&amp;t=5069s">1:24:29</a> -</p>
+<p>En el tutorial anterior vimos vistas estáticas</p>
+<p>En este hemos creado migraciones y modelos, nos falta ver el <strong>controlador</strong> para unir las dos anteriores.</p>
+<div class="admonition note">
+<p class="admonition-title">rutas</p>
+<p>Recuerda: Cuando comentemos algún archivo, siempre es bueno indicar la ruta</p>
+</div>
+<h1 id="referencias">Referencias:</h1>
+<ul>
+<li><a href="https://laravel.com/docs/11.x/readme">Laravel 11.* Documentation</a></li>
+<li><a href="https://documentacionlaravel.com/docs/11.x/structure">Documentación Laravel en español</a></li>
+<li><a href="https://bootcamp.laravel.com/">Bootcamp Laravel</a></li>
+<li><a href="https://laravel.com/docs/11.x/installation#next-steps">Next Steps</a></li>
+<li><a href="https://laravel.com/api/11.x/">API Documentation</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../2_Blade/readme/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2 - Dominando BLADE">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2 - Dominando BLADE
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../4_Controladores/readme/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Controladores">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. Controladores
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2024/25 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": "navigation.footer", "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
