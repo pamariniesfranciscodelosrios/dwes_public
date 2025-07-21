@@ -1,0 +1,375 @@
+## Concesionario MVC
+
+En el siguiente ejemplo veremos un **Concesionario** con el patrón Modelo-Vista-Controlador (MVC) y que realizará un CRUD para controlar y actualizar los registros para coches.
+
+### Estructura de archivos
+
+```
+/proyecto_coches/
+├── /css/
+│   └── estilos.css
+├── /controllers/
+│   └── CocheController.php
+├── /models/
+│   └── Coche.php
+├── /views/
+│   ├── coches/
+│   │   ├── index.php
+│   │   ├── crear.php
+│   │   ├── editar.php
+│   │   └── eliminar.php
+│   └── layout.php
+├── database.sqlite
+├── index.php
+└── config.php
+```
+
+### 1. Archivo `config.php`
+
+Define la conexión con la base de datos.
+
+```php
+<?php
+// Configuración de la base de datos
+$dsn = 'sqlite:' . __DIR__ . '/database.sqlite';
+
+try {
+    $pdo = new PDO($dsn);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Error al conectar con la base de datos: ' . $e->getMessage());
+}
+```
+
+### 2. Modelo `Coche.php`
+
+```php
+<?php
+class Coche
+{
+    private $pdo;
+
+    public function __construct($pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function obtenerTodos()
+    {
+        $stmt = $this->pdo->query("SELECT * FROM coches");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function crear($marca, $modelo, $anio)
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO coches (marca, modelo, anio) VALUES (:marca, :modelo, :anio)");
+        $stmt->execute([':marca' => $marca, ':modelo' => $modelo, ':anio' => $anio]);
+    }
+
+    public function obtenerPorId($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM coches WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function actualizar($id, $marca, $modelo, $anio)
+    {
+        $stmt = $this->pdo->prepare("UPDATE coches SET marca = :marca, modelo = :modelo, anio = :anio WHERE id = :id");
+        $stmt->execute([':marca' => $marca, ':modelo' => $modelo, ':anio' => $anio, ':id' => $id]);
+    }
+
+    public function eliminar($id)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM coches WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+    }
+}
+```
+
+### 3. Controlador `CocheController.php`
+
+```php
+<?php
+require_once __DIR__ . '/../models/Coche.php';
+
+class CocheController
+{
+    private $modelo;
+
+    public function __construct($pdo)
+    {
+        $this->modelo = new Coche($pdo);
+    }
+
+    public function index()
+    {
+        $coches = $this->modelo->obtenerTodos();
+        include __DIR__ . '/../views/coches/index.php';
+    }
+
+    public function crear()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->modelo->crear($_POST['marca'], $_POST['modelo'], $_POST['anio']);
+            header('Location: /');
+            exit;
+        }
+        include __DIR__ . '/../views/coches/crear.php';
+    }
+
+    public function editar($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->modelo->actualizar($id, $_POST['marca'], $_POST['modelo'], $_POST['anio']);
+            header('Location: /');
+            exit;
+        }
+        $coche = $this->modelo->obtenerPorId($id);
+        include __DIR__ . '/../views/coches/editar.php';
+    }
+
+    public function eliminar($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->modelo->eliminar($id);
+            header('Location: /');
+            exit;
+        }
+        $coche = $this->modelo->obtenerPorId($id);
+        include __DIR__ . '/../views/coches/eliminar.php';
+    }
+}
+```
+
+### 4. Vistas
+
+#### `layout.php`
+
+```php
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <title>Gestión de Coches</title>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Coches</h1>
+    </header>
+    <main>
+        <?php include $view; ?>
+    </main>
+</body>
+</html>
+```
+
+#### `index.php` (vista principal)
+
+```php
+<?php $view = __DIR__ . '/index.php'; ?>
+<a href="/crear">Añadir Coche</a>
+<table>
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($coches as $coche): ?>
+            <tr>
+                <td><?= htmlspecialchars($coche['marca']) ?></td>
+                <td><?= htmlspecialchars($coche['modelo']) ?></td>
+                <td><?= htmlspecialchars($coche['anio']) ?></td>
+                <td>
+                    <a href="/editar?id=<?= $coche['id'] ?>">Editar</a>
+                    <a href="/eliminar?id=<?= $coche['id'] ?>">Eliminar</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+```
+
+#### **Crear.php**
+
+```html
+<?php 
+$view = __DIR__ . '/crear.php'; ?>
+<h2>Crear Coche</h2>
+<form method="POST" action="/crear">
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" required>
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" required>
+    <label for="anio">Año:</label>
+    <input type="number" id="anio" name="anio" required>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/">Volver</a>
+```
+
+#### `editar.php`
+
+```php
+<?php $view = __DIR__ . '/editar.php'; ?>
+<h2>Editar Coche</h2>
+<form method="POST" action="/editar?id=<?= $coche['id'] ?>">
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" value="<?= htmlspecialchars($coche['marca']) ?>" required>
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" value="<?= htmlspecialchars($coche['modelo']) ?>" required>
+    <label for="anio">Año:</label>
+    <input type="number" id="anio" name="anio" value="<?= htmlspecialchars($coche['anio']) ?>" required>
+    <button type="submit">Actualizar</button>
+</form>
+<a href="/">Volver</a>
+```
+
+#### `eliminar.php`
+
+```php
+<?php $view = __DIR__ . '/eliminar.php'; ?>
+<h2>Eliminar Coche</h2>
+<p>¿Estás seguro de que deseas eliminar este coche?</p>
+<ul>
+    <li>Marca: <?= htmlspecialchars($coche['marca']) ?></li>
+    <li>Modelo: <?= htmlspecialchars($coche['modelo']) ?></li>
+    <li>Año: <?= htmlspecialchars($coche['anio']) ?></li>
+</ul>
+<form method="POST" action="/eliminar?id=<?= $coche['id'] ?>">
+    <button type="submit">Eliminar</button>
+</form>
+<a href="/">Volver</a>
+```
+
+---
+
+### 6. CSS (`estilos.css`)
+
+Coloca este archivo en la carpeta `css/`.
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form button {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+```
+
+---
+
+### 7. Archivo principal `index.php`
+
+Este archivo maneja las rutas.
+
+```php
+<?php
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/controllers/CocheController.php';
+
+$controller = new CocheController($pdo);
+
+// Enrutador básico
+$action = $_GET['action'] ?? 'index';
+$id = $_GET['id'] ?? null;
+
+if ($action === 'crear') {
+    $controller->crear();
+} elseif ($action === 'editar' && $id) {
+    $controller->editar($id);
+} elseif ($action === 'eliminar' && $id) {
+    $controller->eliminar($id);
+} else {
+    $controller->index();
+}
+```
+
+---
+
+### 8. Base de datos SQLite (`database.sqlite`)
+
+Crea el archivo `database.sqlite` en la raíz del proyecto y usa el siguiente esquema:
+
+```sql
+CREATE TABLE coches (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    marca TEXT NOT NULL,
+    modelo TEXT NOT NULL,
+    anio INTEGER NOT NULL
+);
+```
+
+Para añadir algunos datos iniciales:
+
+```sql
+INSERT INTO coches (marca, modelo, anio) VALUES ('Toyota', 'Corolla', 2020);
+INSERT INTO coches (marca, modelo, anio) VALUES ('Honda', 'Civic', 2018);
+INSERT INTO coches (marca, modelo, anio) VALUES ('Ford', 'Focus', 2019);
+```
+
+---
+
+### ACTIVIDAD

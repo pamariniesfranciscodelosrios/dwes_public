@@ -1,0 +1,64 @@
+Aquí tienes los pasos para instalar una extensión de PHP mediante **PECL** en Windows con **XAMPP**.
+
+---
+
+### 1. Verificar que PECL esté disponible en XAMPP
+
+PECL generalmente viene incluido con PHP, pero en algunas instalaciones de **XAMPP** puede no estar disponible. Para verificar si tienes PECL:
+1. Abre el **Símbolo del sistema** de Windows.
+2. Navega a la carpeta de PHP en tu instalación de XAMPP (suele estar en `C:\xampp\php`).
+3. Ejecuta el siguiente comando para comprobar si PECL está disponible:
+   ```bash
+   php -m | find "pecl"
+   ```
+   Si no se muestra ningún resultado, sigue los pasos a continuación para instalar PECL en tu entorno.
+
+### 2. Instalar PECL (si no está disponible)
+
+Si PECL no está incluido, puedes instalar manualmente las extensiones en forma de DLL desde la página oficial de [PECL Windows](https://windows.php.net/downloads/pecl/).
+
+1. Encuentra y descarga la extensión que necesitas, asegurándote de que sea compatible con tu versión de PHP. Por ejemplo, si estás usando PHP 8.1, descarga la versión adecuada de la extensión.
+2. Coloca el archivo `.dll` descargado en la carpeta `ext` de PHP en XAMPP (`C:\xampp\php\ext`).
+
+### 3. Habilitar la extensión en el archivo `php.ini`
+
+1. Abre el archivo `php.ini`, que se encuentra en `C:\xampp\php\php.ini`.
+2. Agrega la línea para habilitar la extensión que descargaste. Por ejemplo, para la extensión `pdflib`:
+
+   ```ini
+   extension=pdflib
+   ```
+
+   O, si el nombre del archivo es específico, usa el nombre completo:
+
+   ```ini
+   extension=nombre_extension.dll
+   ```
+
+3. Guarda los cambios en el archivo `php.ini`.
+
+### 4. Reiniciar XAMPP
+
+Para aplicar los cambios, debes reiniciar el servidor Apache:
+1. Abre el Panel de Control de XAMPP.
+2. Detén y vuelve a iniciar Apache.
+
+### 5. Verificar que la extensión esté instalada
+
+1. Abre una consola y escribe:
+   ```bash
+   php -m
+   ```
+2. Verifica que la extensión aparezca en la lista de módulos cargados. También puedes crear un archivo PHP con `phpinfo()` para comprobar si la extensión está habilitada:
+
+   ```php
+   <?php
+   phpinfo();
+   ?>
+   ```
+
+Abre este archivo desde tu navegador para revisar la configuración de PHP y confirmar que la extensión se haya cargado correctamente.
+
+---
+
+Con estos pasos, deberías tener la extensión instalada y lista para usarse con XAMPP en Windows.
