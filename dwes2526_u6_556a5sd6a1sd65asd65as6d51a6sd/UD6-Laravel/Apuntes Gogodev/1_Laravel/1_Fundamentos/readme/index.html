@@ -1,0 +1,2778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../../Actividades/6.7.Seeder/">
+      
+      
+        <link rel="next" href="../../2_Blade/2blade/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>1 - Fundamentos - DWES 25/26 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');--md-admonition-icon--repo:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-fundamentos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 25/26 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 - Fundamentos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DWES 25/26 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulo Desarrollo Web en Entorno Servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../0_Inicio/1_Presentaci%C3%B3n/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    0 Inicio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../UD1-ArquitecturasWeb/1%20Arquitectura%20Web/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD1 ArquitecturasWeb
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../../../UD2-PHP/Entrega1/1%20B%C3%A1sico%20Sintaxis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD2 PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../UD3-POO/0%20Intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD3 POO
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../UD4-AccesoDatos/Entregable/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD4 AccesoDatos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../UD5-HerramientasWeb/0%20Intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD5 HerramientasWeb
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UD6 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1_a%20GettingStarted/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 a GettingStarted
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../1_b%20Arquitechture%20concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 b Arquitechture concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2_Blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Blade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../3_Migrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Migrations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../4%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../5_Controllers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Controllers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../6._CRUD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. CRUD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../7_Seeder_Fact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Seeder Fact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../8_Relationships/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 Relationships
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../Actividades/6.2.Blade/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Actividades
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Apuntes Gogodev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_11">
+            <span class="md-nav__icon md-icon"></span>
+            Apuntes Gogodev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_11_1" id="__nav_8_11_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_11_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_11_1">
+            <span class="md-nav__icon md-icon"></span>
+            1 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_11_1_1" id="__nav_8_11_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1 Fundamentos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_11_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_11_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            1 Fundamentos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1 - Fundamentos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1 - Fundamentos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoría:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apartadostiempos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apartados/tiempos:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción Laravel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Del Entorno De Trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrón MVC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-proyecto-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura De Proyecto (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura De Proyecto (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pendiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pendiente:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pendiente:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelocontrolador-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo/Controlador ¿decisión?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-proyecto-en-carpeta-ud-6-laravel1fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear proyecto en carpeta UD 6 Laravel/1.Fundamentos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear proyecto en carpeta UD 6 Laravel/1.Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-1-composer-create-proyect-laravellaravel-miproyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 1. Composer create proyect laravel/laravel miproyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OPCIÓN 1. Composer create proyect laravel/laravel miproyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-comun-necesitamos-tener-composer-en-el-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error común: Necesitamos tener Composer en el path
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-2-instalador-de-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 2. Instalador de Laravel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-3-laravel-herd-nuevo-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 3. Laravel Herd: Nuevo proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OPCIÓN 3. Laravel Herd: Nuevo proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#you-can-start-your-local-development-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      You can start your local development using:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elementos-mas-importantes-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementos más importantes (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elementos más importantes (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#localizamos-elementos-mvc-y-partes-mas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Localizamos elementos MVC y partes más importantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viteconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      vite.config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      README.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHPUnit.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      package.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composer-lock-y-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      composer lock y json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artisan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-y-gitatributtes" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitignore y .gitatributtes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env.example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editorconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      .editorconfig
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-instalar-api-rest-en-laravel-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo instalar API Rest en Laravel 11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directorios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      vendor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public" class="md-nav__link">
+    <span class="md-ellipsis">
+      public
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lang" class="md-nav__link">
+    <span class="md-ellipsis">
+      lang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      bootstrap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    <span class="md-ellipsis">
+      app
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-en-la-version-11-de-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios en la versión 11 de app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hola-mundo-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hola Mundo (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hola Mundo (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modificando-la-vista-de-inicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificando la vista de inicio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferentes-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferentes rutas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusiones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2_Blade/2blade/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2 Blade
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../3_Migraciones_Modelos/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3 Migraciones Modelos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../4_Controladores/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4 Controladores
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../5_CRUD/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5 CRUD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../7_Seeder_Factory_Faker/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7 Seeder Factory Faker
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../8_Relaciones/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8 Relaciones
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../sinTerminar/18_Importar_CSV/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    sinTerminar
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../2_API/ApiRestful/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2 API
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../2_API%20copy/ApiRestful/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2 API copy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../3_Utilidades/10_Breeze/10_Auth_Breeze/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3 Utilidades
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../4_Testing/11_Testing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4 Testing
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoría:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apartadostiempos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apartados/tiempos:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción Laravel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Del Entorno De Trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrón MVC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-proyecto-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura De Proyecto (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura De Proyecto (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pendiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pendiente:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pendiente:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelocontrolador-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo/Controlador ¿decisión?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-proyecto-en-carpeta-ud-6-laravel1fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear proyecto en carpeta UD 6 Laravel/1.Fundamentos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear proyecto en carpeta UD 6 Laravel/1.Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-1-composer-create-proyect-laravellaravel-miproyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 1. Composer create proyect laravel/laravel miproyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OPCIÓN 1. Composer create proyect laravel/laravel miproyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-comun-necesitamos-tener-composer-en-el-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error común: Necesitamos tener Composer en el path
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-2-instalador-de-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 2. Instalador de Laravel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-3-laravel-herd-nuevo-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPCIÓN 3. Laravel Herd: Nuevo proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OPCIÓN 3. Laravel Herd: Nuevo proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#you-can-start-your-local-development-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      You can start your local development using:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elementos-mas-importantes-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementos más importantes (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elementos más importantes (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#localizamos-elementos-mvc-y-partes-mas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Localizamos elementos MVC y partes más importantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viteconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      vite.config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      README.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHPUnit.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      package.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composer-lock-y-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      composer lock y json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artisan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-y-gitatributtes" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitignore y .gitatributtes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env.example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editorconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      .editorconfig
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-instalar-api-rest-en-laravel-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo instalar API Rest en Laravel 11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directorios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      vendor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public" class="md-nav__link">
+    <span class="md-ellipsis">
+      public
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lang" class="md-nav__link">
+    <span class="md-ellipsis">
+      lang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      bootstrap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    <span class="md-ellipsis">
+      app
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-en-la-version-11-de-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios en la versión 11 de app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hola-mundo-enlace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hola Mundo (enlace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hola Mundo (enlace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modificando-la-vista-de-inicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificando la vista de inicio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferentes-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferentes rutas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusiones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="1-fundamentos">1 - Fundamentos</h1>
+<h3 id="autoria">Autoría:</h3>
+<p>Antonio Jesús Marín Espejo- pamarin@iesfranciscodelosrios.es</p>
+<p>Última versión diciembre 2024</p>
+<h2 id="introduccion">Introducción</h2>
+<p>Vamos a analizar el tutorial:
+Curso Profesional De LARAVEL: <strong>1 - Fundamentos</strong>
+Enlace tutorial: <a href="https://www.youtube.com/watch?v=kV2jUg-iXYw">https://www.youtube.com/watch?v=kV2jUg-iXYw</a></p>
+<details class="note">
+<summary>Version Laravel</summary>
+<p>Tener en cuenta que el tutorial es del año 2023 y está hecho bajo Laravel 10 y tiene algunas diferencias con la versión actual</p>
+</details>
+<p><img alt="Esquema" src="../image/1.png" /></p>
+<h3 id="apartadostiempos">Apartados/tiempos:</h3>
+<p>0:00:00 - Introducción Laravel
+0:05:47 - Configuración Del Entorno De Trabajo
+0:13:54 - Patrón MVC
+0:25:30 - Estructura De Proyecto
+0:51:14 - Hola Mundo
+1:10:18 - Conclusiones.</p>
+<h2 id="introduccion-laravel">Introducción Laravel</h2>
+<h2 id="configuracion-del-entorno-de-trabajo">Configuración Del Entorno De Trabajo</h2>
+<h2 id="patron-mvc">Patrón MVC</h2>
+<p>Laravel permite diferentes patrones de arquitectura, aunque MVC es el por defecto.</p>
+<p><img alt="1735021184717" src="../image/readme/1735021184717.png" /></p>
+<p>Cuando cliente (persona o sistema) introduce RUTA.</p>
+<ol>
+<li>Acude a un fichero de rutas y la asocia con un CONTROLADOR</li>
+<li>Cada URL tendrá su propio controlador</li>
+<li>Controlador tendrá la lógica de dicha petición, con dos enfoques:</li>
+<li>Mayor peso Controlador &gt; Modelo</li>
+<li>Mayor peso Modelo &gt; Controlador</li>
+<li>Esos datos el controlador se los solicita al modelo, que es representación en CLASE de los datos de una tabla de forma transparente</li>
+<li>Devuelme mediante <strong>ORM</strong> y no sin instrucciones SQL los datos que necesite.Sistema de Persistencia (<strong>Eloquent</strong> patrón Active record, Doctrine patron datamaper)</li>
+<li>Depende de si somos API pura o diseñamos la vista mediante plantilla (BLADE) devolveremos una u otra</li>
+<li>Queda una gran cantidad de elementos añadidos como Middleware para autenticación que se irá viendo más adelante</li>
+</ol>
+<h2 id="estructura-de-proyecto-enlace">Estructura De Proyecto (<a href="https://youtu.be/kV2jUg-iXYw?t=1516">enlace</a>)</h2>
+<h3 id="pendiente">Pendiente:</h3>
+<ul>
+<li>Patrón MVC, ventajas e inconvenientes: más adelante cuando se vean otras arquitectura.</li>
+</ul>
+<h4 id="modelocontrolador-decision">Modelo/Controlador ¿decisión?</h4>
+<ul>
+<li>Grandes <strong>controladores</strong> con pequeños modelos</li>
+<li>Grandes <strong>modelos</strong> con pequeños controladores</li>
+</ul>
+<h2 id="crear-proyecto-en-carpeta-ud-6-laravel1fundamentos">Crear proyecto en carpeta UD 6 Laravel/1.Fundamentos</h2>
+<p>Vamos a crear el primer proyecto para ver el patrón y la estructura de archivos.</p>
+<p>Lo podemos hacer a través de <strong>Laravel Herd</strong> pero conviene descargar <strong>Composer</strong> e ir aprendiendo a través de terminal y de comandos.</p>
+<h3 id="opcion-1-composer-create-proyect-laravellaravel-miproyecto">OPCIÓN 1. Composer create proyect laravel/laravel miproyecto</h3>
+<p>Instalación a través de Composer:</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>create<span class="w"> </span>proyect<span class="w"> </span>laravel/laravel<span class="w"> </span>miproyecto
+</code></pre></div>
+<p>Y comienza a  descargar el proyecto</p>
+<p><img alt="1735110912778" src="../image/readme/1735110912778.png" /></p>
+<p><img alt="1735110978861" src="../image/readme/1735110978861.png" /></p>
+<h4 id="error-comun-necesitamos-tener-composer-en-el-path">Error común: Necesitamos tener Composer en el path</h4>
+<h3 id="opcion-2-instalador-de-laravel">OPCIÓN 2. Instalador de Laravel</h3>
+<p>¿Cómo instalar? <code>composer global require laravel/instaler</code></p>
+<p><img alt="1735110528244" src="../image/readme/1735110528244.png" /></p>
+<p><img alt="1735110547400" src="../image/readme/1735110547400.png" /></p>
+<p>Ahora, con el comando laravel instalado es más fácil: <code>laravel new helloworld</code></p>
+<p>te ofrece, al igual que en Laravel Herd, diferentes opciones  y starter kit</p>
+<div class="admonition note">
+<p class="admonition-title">actualizado 2024 y diferente al tutorial</p>
+<p>Esta parte es ligéramente diferente al tutorial Gogodev, donde no le ofrecen las siguientes<strong>opciones</strong></p>
+<p>Si quisieramos crear una versión anterior, usaríamos:</p>
+</div>
+<ul>
+<li>Abre la línea de comandos en tu servidor y ejecuta el siguiente comando:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>composer create-project --prefer-dist laravel/laravel:^10.0 helloworld10
+</code></pre></div>
+<p><img alt="1735111181294" src="../image/readme/1735111181294.png" /></p>
+<p><img alt="1735111543164" src="../image/readme/1735111543164.png" /></p>
+<p>No hacemos las migraciones (todavía)</p>
+<p><img alt="1735111561425" src="../image/readme/1735111561425.png" /></p>
+<p><img alt="1735111575759" src="../image/readme/1735111575759.png" /></p>
+<p>Ahora accedemos al proyecto para observar la estructura de carpetas.</p>
+<h3 id="opcion-3-laravel-herd-nuevo-proyecto">OPCIÓN 3. Laravel Herd: Nuevo proyecto</h3>
+<p>Con Laravel Herd instalado, podemos probar a crear un nuevo sitio de la siguiente forma, aunque tiene algunas <strong>limitaciones</strong>:</p>
+<ol>
+<li>Add Site:</li>
+</ol>
+<p><img alt="1735111269391" src="../image/readme/1735111269391.png" /></p>
+<p><img alt="1735111294121" src="../image/readme/1735111294121.png" /></p>
+<p><img alt="1735111307074" src="../image/readme/1735111307074.png" /></p>
+<p>Aunque <strong>no podemos elegir carpeta</strong>:</p>
+<p><img alt="1735111337128" src="../image/readme/1735111337128.png" /></p>
+<p><img alt="1735111401145" src="../image/readme/1735111401145.png" /></p>
+<p>Ver en el navegador: <img alt="1735111426400" src="../image/readme/1735111426400.png" /></p>
+<p>Abrir en el IDE como Visual Studio Code desde la carpeta:<code>C:\Users\user\Herd\helloworld</code></p>
+<p><img alt="1735111453770" src="../image/readme/1735111453770.png" /></p>
+<h4 id="you-can-start-your-local-development-using">You can start your local development using:</h4>
+<p>➜ cd helloworld
+➜ npm install &amp;&amp; npm run build</p>
+<pre><code>error de seguridad ShellScript (No se puede cargar el archivo C:\Program Files\nodejs\npm.ps1 porque la ejecución de scripts está deshabilitada en este sistema)
+</code></pre>
+<p><img alt="1735118774506" src="../image/readme/1735118774506.png" /></p>
+<p>➜ composer run dev</p>
+<p><strong>Desde la Versión 11 de Laravel, deberás Instalar Node JS y npm en Windows</strong></p>
+<p><a href="https://nodejs.org/en/download/package-manager">Enlace a instalación npm   </a></p>
+<p><a href="https://nodejs.org/en">https://nodejs.org/en</a></p>
+<p><img alt="1735117050919" src="../image/readme/1735117050919.png" /></p>
+<p><img alt="1735117125007" src="../image/readme/1735117125007.png" /></p>
+<h2 id="elementos-mas-importantes-enlace">Elementos más importantes (<a href="https://youtu.be/kV2jUg-iXYw">enlace</a>)</h2>
+<h3 id="localizamos-elementos-mvc-y-partes-mas-importantes">Localizamos elementos MVC y partes más importantes</h3>
+<ul>
+<li>.<strong>env</strong>: archivo de configuración, el entorno, bbdd, mensajería ...</li>
+<li><img alt="1735114229277" src="../image/readme/1735114229277.png" /></li>
+<li><strong>routes</strong>: route dispacher asocian URL con controlador</li>
+<li>API (ya no lo crea por defecto)<ul>
+<li>php artisan install:api</li>
+<li><img alt="1735115256088" src="../image/readme/1735115256088.png" /></li>
+<li><img alt="1735115273021" src="../image/readme/1735115273021.png" /></li>
+<li></li>
+</ul>
+</li>
+<li>Web rutas con vistas HTML</li>
+<li><img alt="1735114277252" src="../image/readme/1735114277252.png" /></li>
+<li>Tras instalar API:<ul>
+<li><img alt="1735115296430" src="../image/readme/1735115296430.png" /></li>
+</ul>
+</li>
+<li>resources/<strong>views</strong>: vistas del proyecto (<strong>Welcome</strong>)</li>
+<li><img alt="1735115408714" src="../image/readme/1735115408714.png" /></li>
+<li>app/<strong>Models</strong>: Para los modelos</li>
+<li>app/HTTP/<strong>Controllers</strong>: Controladores del proyecto</li>
+<li><img alt="1735115393932" src="../image/readme/1735115393932.png" /></li>
+</ul>
+<p>Estas carpetas son las más importantes al inicio.</p>
+<p>Veremos ahora otros elementos importantes que entran en juego:</p>
+<p><img alt="1735115679468" src="../image/readme/1735115679468.png" /></p>
+<h3 id="viteconfig">vite.config</h3>
+<p>Nos hace el empaquetado (Web Packer), y aquí se define.</p>
+<p>CSS, Javascript ...</p>
+<h3 id="readmemd">README.md</h3>
+<p>Para la documentación, cómo se instala el proyecto y las anotaciones.</p>
+<h3 id="phpunitxml">PHPUnit.xml</h3>
+<p>para el testing por defecto aunque hay otras</p>
+<h3 id="packagejson">package.json</h3>
+<p>Controlar las dependencias a través de node. Vite lo va a necesitar</p>
+<h3 id="composer-lock-y-json">composer lock y json</h3>
+<p>equivalente al package para Composer</p>
+<h3 id="artisan">Artisan</h3>
+<p>Gestor de comandos en Laravel para la terminal: creación controladores, modelos, arrancar el sistema, factory, seeder..</p>
+<h3 id="gitignore-y-gitatributtes">.gitignore  y .gitatributtes</h3>
+<p>Para el repositorio Git</p>
+<h3 id="env">.env</h3>
+<p>ignorado en el gitignore para info sensible</p>
+<h3 id="envexample">.env.example</h3>
+<p>Igual pero para poder subirlo al repositorio sin contraseñas, si que tendrá la estructura que necesita</p>
+<h3 id="editorconfig">.editorconfig</h3>
+<p>Configuración del entorno de edición</p>
+<h2 id="como-instalar-api-rest-en-laravel-11">Cómo instalar API Rest en Laravel 11</h2>
+<p><a href="https://www.cursosdesarrolloweb.es/blog/como-instalar-api-en-laravel">Enlace</a></p>
+<p><strong>php artisan install:api</strong></p>
+<p>Instalar la API en Laravel 11 es realmente sencillo, basta con ejecutar un comando, el cual creará todo lo necesario para poder desarrollar nuestras APIs en Laravel haciendo uso de Laravel Sanctum.</p>
+<p>En versiones anteriores de Laravel, la API ya venía instalada y configurada por defecto sin hacer nada, pero ya que no todos los proyectos requieren del desarrollo de una API, no tiene sentido que venga de saque porque sí, así que es una buena elección hacer que la API en Laravel sea opcional.</p>
+<h2 id="directorios">Directorios</h2>
+<h3 id="vendor">vendor</h3>
+<p>Es la librería, framework laravel, desarrollo de terceros... (como nodemodules)</p>
+<p>Aquí no vamos a escribir nada</p>
+<h3 id="test"><strong>test</strong></h3>
+<p>para test unitarios y features</p>
+<h3 id="storage">storage</h3>
+<p>Para almacenar, si sube imagen de perfil, archivos PDF...</p>
+<p>Esto es para almacer en disco, también se puede usar en la nube</p>
+<h3 id="framework">framework</h3>
+<p>Para que el sistema almacene archivos de caché, sesión, logs, etc...</p>
+<h3 id="routes">routes</h3>
+<p>Comentando elementos principales MVC</p>
+<ul>
+<li><strong>api</strong>: para rutas de nuestra api a modo de backend puro sin frontales, endpoints</li>
+<li>canales: para emitir eventos y que se escuchen (ya no viene por defecto)</li>
+<li>usuario creado, factura emitida ...</li>
+<li><strong>console</strong>: para definir los comandos que nosotros disponemos en nuestro sistema, se verá adelante</li>
+<li><strong>web</strong>: rutas para servir directamente en el navegador (welcome)</li>
+</ul>
+<h3 id="resources">resources</h3>
+<p>Recursos para el front: HTML; CSS, ...</p>
+<h3 id="public">public</h3>
+<p>punto de acceso a nuestro sistema, en el despliegue el usuario tira del index.php para ponerlo todo en marcha</p>
+<h3 id="lang">lang</h3>
+<p>Creamoes una carpeta para cada uno de los lenguajes, localización ...</p>
+<h3 id="database">database</h3>
+<p>Compuesto por tres directorios</p>
+<ul>
+<li>factories</li>
+<li>datos de masivos de prueba, 200 usuarios ...</li>
+<li>migrations</li>
+<li>Para definir cómo representar nuestros datos en el ORM / Base de datos</li>
+<li>seeders</li>
+<li>Para poblar de datos las migraciones que crearemos, y que se podrán apoyar en factories o no.</li>
+</ul>
+<p><img alt="1735116362783" src="../image/readme/1735116362783.png" /></p>
+<h3 id="config">config</h3>
+<p><img alt="1735116520877" src="../image/readme/1735116520877.png" /></p>
+<p>Para configurar las diferentes configuraciones</p>
+<h3 id="bootstrap">bootstrap</h3>
+<p><strong>No confundir con el CSS.</strong></p>
+<p>Se encarga de levantar el servicio, para que todo funcione.</p>
+<h3 id="app">app</h3>
+<p>Equivalente al SRC de Javascript, donde está la construcción de nuestra aplicación</p>
+<ul>
+<li>Http</li>
+<li>Models</li>
+<li>Providers</li>
+</ul>
+<p><img alt="1735116672130" src="../image/readme/1735116672130.png" /></p>
+<h4 id="cambios-en-la-version-11-de-app">Cambios en la versión 11 de app</h4>
+<p>Carpetas Console y Exception: Verás en el tutorial del 2023 algunas carpetas como Console con el archivo Kernel.php y exceptions que ya no están desde la versión 11 de Laravel</p>
+<ul>
+<li><a href="https://laravel-news.com/laravel-11-directory-structure#content-the-app-directory">Desde Laravel 11</a>, el archivo <code>Kernel.php</code> <strong>no existe. Ahora debes referirte a</strong>  <strong><code>bootstrap/app.php</code></strong> <strong>. De la doc:</strong> <em>The <code>Kernel.php</code> files are no longer in the Laravel project, and these are handled through the framework <code>bootstrap/app.php</code> file.</em> – <a href="https://es.stackoverflow.com/questions/626178/problemas-con-el-archivo-kernel-php-en-laravel-11-22" title="95,248 reputación">A. Cedano</a></li>
+<li>Artículo en inglés comentando algunos de estos cambios (<a href="https://rezakhademix.medium.com/laravel-11-no-http-kernel-no-casts-no-console-kernel-721c62adb6ef">enlace</a>)</li>
+</ul>
+<p>Overview general, no agobiarse en este punto hasta que adentrarse en el Framework por completo</p>
+<h2 id="hola-mundo-enlace">Hola Mundo (<a href="https://youtu.be/kV2jUg-iXYw?t=3081">enlace</a>)</h2>
+<p>Para iniciar el proyecto: <code>php artisan serve</code></p>
+<ul>
+<li>¿Por qué veo esta vista? Arranca desde la carpeta <strong>Public / index.php</strong></li>
+<li>Vemos cómo define una constante LARAVEL_START, hace uso del autoload, visto en el primer trimestre,</li>
+<li><img alt="1735192211979" src="../image/readme/1735192211979.png" /></li>
+</ul>
+<p><img alt="1735191563708" src="../image/readme/1735191563708.png" /></p>
+<p>Y llega hasta la vista <strong>welcome.php</strong> pasando por</p>
+<ul>
+<li>index.php</li>
+<li>bootstrap/ app.php</li>
+<li>routes/web.php</li>
+</ul>
+<p>Donde, en web.php, carga la vista <strong>resources/views/welcome.php</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::get(&#39;/&#39;, function () {</span>
+<span class="x">    return view(&#39;welcome&#39;);</span>
+<span class="x">});</span>
+</code></pre></div>
+<p>Vamos a crear una primera modificación:</p>
+<h3 id="modificando-la-vista-de-inicio">Modificando la vista de inicio</h3>
+<p>Comentamos la ruta inicial en web.php</p>
+<p>La clase route dispone de métodos estáticos para poder crear las diferentes rutas:</p>
+<p><img alt="1735192459580" src="../image/readme/1735192459580.png" /></p>
+<p>De los que vamos a destacar las peticiones HTTP:</p>
+<p><img alt="1735192536332" src="../image/readme/1735192536332.png" /></p>
+<p>A estas rutas siempre dos valores por defecto: ruta y controlador</p>
+<ul>
+<li><strong>view</strong>: Cuando es una vista estática que <strong>no necesita datos</strong>, podemos ahorrarnos el controlador.</li>
+<li>Siempre desde resources views</li>
+<li><code>Route::view( '/', 'welcome');</code></li>
+<li>Podemos darle un nombre a esta primera vista</li>
+<li><code>Route::view( '/', 'welcome')-&gt;name('welcome');</code></li>
+<li>Ahora, en las vistas vamos a crear el directorio <code>landing</code></li>
+<li>creamos la vista <strong>about</strong>, todas las vistas tendrán la extensión <code>.blade.php</code> para hacer uso del motor de plantillas y escribimos nuestro html</li>
+<li><code>&lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Document&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;About&lt;/h1&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</code></li>
+<li>Y para verla, modificamos nuestro <strong>enrutador</strong> para que la pinte</li>
+<li><code>Route::view( '/', 'landing.about')-&gt;name('about');</code></li>
+<li>Esto ha sido un circuito muy breve ya que no pasa por controlador</li>
+</ul>
+<h3 id="diferentes-rutas">Diferentes rutas</h3>
+<ul>
+<li>Si ahora quiero crear un sistema con dos rutas, creamos:</li>
+<li><code>Route::view( '/', 'landing.index')-&gt;name('index');</code></li>
+<li><code>Route::view( '/about', 'landing.about')-&gt;name('about');</code></li>
+</ul>
+<p>Y compruebo la ruta about que funciona</p>
+<p><img alt="1735193561083" src="../image/readme/1735193561083.png" /><img alt="1735193579783" src="../image/readme/1735193579783.png" /><img alt="1735193595699" src="../image/readme/1735193595699.png" /></p>
+<h2 id="conclusiones">Conclusiones</h2>
+<p>Hemos visto los <strong>pilares</strong> de este patrón de arquitectura y comprendido el funcionamiento básico de Laravel.</p>
+<p>Es importante interiorizarlo bien antes de continuar.</p>
+<h1 id="referencias">Referencias:</h1>
+<p><a href="https://www.youtube.com/watch?v=kV2jUg-iXYw&amp;t=30s">Curso Profesional Laravel. Video 1 Fundamentos</a></p>
+<ul>
+<li>Cuando comentemos algún archivo, siempre es bueno indicar la ruta:</li>
+<li><a href="https://laravel.com/docs/11.x/readme">Laravel 11.* Documentation</a></li>
+<li><a href="https://documentacionlaravel.com/docs/11.x/structure">Documentación Laravel en español</a></li>
+<li><a href="https://bootcamp.laravel.com/">Bootcamp Laravel</a></li>
+<li><a href="https://laravel.com/docs/11.x/installation#next-steps">Next Steps</a></li>
+<li><a href="https://laravel.com/api/11.x/">API Documentation</a></li>
+</ul>
+<p><img alt="1735109805736" src="../image/readme/1735109805736.png" /></p>
+<h1 id="nuestra-documentacion">Nuestra documentación:</h1>
+<p>Acuérdate de escribir la ruta relativa de lo que estés documentando, por ejemplo, si vas a trabajar sobre el modelo User.php:</p>
+<p><img alt="1735109896926" src="../image/readme/1735109896926.png" /></p>
+<p>Copia su ruta de acceso (Botón derecho): <code>C:\xampp\htdocs\dwes\dwes2425\UD6_Laravel\1. Curso GOGODEV\2_Blade\blade\app\Models\User.php</code></p>
+<p>Indica la <strong>ruta relativa</strong> desde el inicio del proyecto: app\Models\User.php</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../../Actividades/6.7.Seeder/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6.7.Seeder">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6.7.Seeder
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../2_Blade/2blade/" class="md-footer__link md-footer__link--next" aria-label="Next: 2 - Dominando BLADE">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2 - Dominando BLADE
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2025/26 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": "navigation.footer - content.code.copy - navigation.path - navigation.prune - navigation.top - content.tabs.link", "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

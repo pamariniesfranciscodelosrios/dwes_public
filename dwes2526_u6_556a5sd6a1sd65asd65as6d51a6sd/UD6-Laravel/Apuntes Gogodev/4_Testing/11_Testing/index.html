@@ -1,0 +1,2197 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../3_Utilidades/React/reactInertia/">
+      
+      
+        <link rel="next" href="../CambiarENV_Testing/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Testing - DWES 25/26 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');--md-admonition-icon--repo:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 25/26 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DWES 25/26 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulo Desarrollo Web en Entorno Servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../0_Inicio/1_Presentaci%C3%B3n/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    0 Inicio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../UD1-ArquitecturasWeb/1%20Arquitectura%20Web/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD1 ArquitecturasWeb
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../../UD2-PHP/Entrega1/1%20B%C3%A1sico%20Sintaxis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD2 PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../UD3-POO/0%20Intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD3 POO
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../UD4-AccesoDatos/Entregable/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD4 AccesoDatos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../UD5-HerramientasWeb/0%20Intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD5 HerramientasWeb
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UD6 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1_a%20GettingStarted/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 a GettingStarted
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1_b%20Arquitechture%20concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 b Arquitechture concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2_Blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Blade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3_Migrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Migrations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../4%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5_Controllers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Controllers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6._CRUD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. CRUD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../7_Seeder_Fact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Seeder Fact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../8_Relationships/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 Relationships
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Actividades/6.2.Blade/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Actividades
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Apuntes Gogodev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_11">
+            <span class="md-nav__icon md-icon"></span>
+            Apuntes Gogodev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../1_Laravel/1_Fundamentos/readme/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1 Laravel
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2_API/ApiRestful/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2 API
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2_API%20copy/ApiRestful/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2 API copy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../3_Utilidades/10_Breeze/10_Auth_Breeze/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3 Utilidades
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_11_5" id="__nav_8_11_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4 Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_11_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_11_5">
+            <span class="md-nav__icon md-icon"></span>
+            4 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUCCIÓN -
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-test-" class="md-nav__link">
+    <span class="md-ellipsis">
+      CREACIÓN DE TEST -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CREACIÓN DE TEST -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-unitarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Unitarios.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test de Integración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importancia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formato-de-trabajo-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de trabajo TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formato-de-trabajo-despues-del-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de trabajo después del desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-en-como-se-prueban-los-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferencia en cómo se prueban los tests:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escribiendo-tests-" class="md-nav__link">
+    <span class="md-ellipsis">
+      ESCRIBIENDO TESTS -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ESCRIBIENDO TESTS -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHP Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacemos-el-primer-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacemos el primer test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-las-funciones-de-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos las funciones de Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creamos las funciones de Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_get_users_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_users_list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_get_user_detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_user_detail
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_get_non_existing_user_detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_non_existing_user_detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definimos-la-estrategia-env-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definimos la estrategia. ENV Testing.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Definimos la estrategia. ENV Testing.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envtesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env.testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicando-tdd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      APLICANDO TDD -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APLICANDO TDD -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahora-vamos-a-solucionar-los-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ahora vamos a solucionar los errores.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ahora vamos a solucionar los errores.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalamos-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalamos api
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generamos-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generamos controlador
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devolvemos-el-usuario-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Devolvemos el usuario esperado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-un-seeder-para-poblar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos un seeder para poblar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-una-nueva-funcion-en-el-testing-para-resetear-las-migraciones-y-poblarlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos una nueva función en el testing para resetear las migraciones y poblarlas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creamos una nueva función en el testing para resetear las migraciones y poblarlas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlador-usersid-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlador Users/id detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprobamos-tras-finalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobamos tras finalizar.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-tests-en-proyectos-" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJEMPLO TESTS EN PROYECTOS -
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CambiarENV_Testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CambiarENV Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUCCIÓN -
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-test-" class="md-nav__link">
+    <span class="md-ellipsis">
+      CREACIÓN DE TEST -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CREACIÓN DE TEST -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-unitarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Unitarios.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test de Integración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importancia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formato-de-trabajo-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de trabajo TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formato-de-trabajo-despues-del-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de trabajo después del desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-en-como-se-prueban-los-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferencia en cómo se prueban los tests:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escribiendo-tests-" class="md-nav__link">
+    <span class="md-ellipsis">
+      ESCRIBIENDO TESTS -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ESCRIBIENDO TESTS -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHP Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacemos-el-primer-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacemos el primer test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-las-funciones-de-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos las funciones de Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creamos las funciones de Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_get_users_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_users_list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_get_user_detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_user_detail
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_get_non_existing_user_detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_non_existing_user_detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definimos-la-estrategia-env-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definimos la estrategia. ENV Testing.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Definimos la estrategia. ENV Testing.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envtesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      .env.testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicando-tdd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      APLICANDO TDD -
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APLICANDO TDD -">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahora-vamos-a-solucionar-los-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ahora vamos a solucionar los errores.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ahora vamos a solucionar los errores.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalamos-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalamos api
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generamos-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generamos controlador
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devolvemos-el-usuario-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Devolvemos el usuario esperado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-un-seeder-para-poblar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos un seeder para poblar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-una-nueva-funcion-en-el-testing-para-resetear-las-migraciones-y-poblarlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos una nueva función en el testing para resetear las migraciones y poblarlas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creamos una nueva función en el testing para resetear las migraciones y poblarlas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlador-usersid-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlador Users/id detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprobamos-tras-finalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobamos tras finalizar.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-tests-en-proyectos-" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJEMPLO TESTS EN PROYECTOS -
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="testing">Testing</h1>
+<p>Índice</p>
+<p><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=0s">0:00:00</a> - INTRODUCCIÓN
+<a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=589s">0:09:49</a> - CREACIÓN DE TEST
+<a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=1304s">0:21:44</a> - ESCRIBIENDO TESTS
+<a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=2642s">0:44:02</a> - APILCANDO TDD
+<a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=3978s">1:06:18</a> - EJEMPLO TESTS EN PROYECTOS
+<a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=4345s">1:12:25</a> - CONCLUSIONES</p>
+<h2 id="introduccion-"><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=0s">INTRODUCCIÓN</a> -</h2>
+<p>El testing es una disciplina dentro del desarrollo.</p>
+<p>Independientemente de eso, todo desarrollador debe ser capaz de realizar los diferentes tests.</p>
+<h2 id="creacion-de-test-"><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=589s">CREACIÓN DE TEST</a> -</h2>
+<p>Lo primero:</p>
+<ul>
+<li>¿Qué vamos atestar ?</li>
+<li>Cuándo?</li>
+</ul>
+<p><img alt="1739543924081" src="../image/Testing/1739543924081.png" /></p>
+<p><img alt="1739543986705" src="../image/Testing/1739543986705.png" /></p>
+<h3 id="test-unitarios">Test Unitarios.</h3>
+<p>Función, acción en concreto. Pequeños trozos o piezas de nuestro código.</p>
+<p>El ejemplo en construcciones SOLID es el test unitario sobre un controlador.</p>
+<p>Probamos que la función no tiene problemas.</p>
+<h3 id="test-de-integracion">Test de Integración</h3>
+<p>Destinado a circuito completo, dada una ruta, comprobará que el sistema devuelve la vista que corresponde, con los datos, con el frontal, etc.</p>
+<h3 id="importancia">Importancia</h3>
+<p>Muchas veces, al inicio, se obvia la importancia a lahora de trabajar en casa, solos, cuando estamos empezando en pequeños proyectos.</p>
+<p>Pero en cualquier trabajo, los test son obligatorios.</p>
+<h3 id="formato-de-trabajo-tdd">Formato de trabajo TDD</h3>
+<ul>
+<li>Se escriben los tests ANTES de hacer lo que vamos a desarrollar</li>
+</ul>
+<p><img alt="1739544405847" src="../image/Testing/1739544405847.png" /></p>
+<h3 id="formato-de-trabajo-despues-del-desarrollo">Formato de trabajo después del desarrollo</h3>
+<ul>
+<li>Se hacen siempre antes de cada commit.</li>
+</ul>
+<h3 id="diferencia-en-como-se-prueban-los-tests">Diferencia en cómo se prueban los tests:</h3>
+<p>Podemos hacer:</p>
+<ol>
+<li>Crear los datos para que se guarden sólo en memoria (seeders / fáctories) y no en database</li>
+<li>Env especial para testing, para correr los test de la aplicación sin ensuciar las bases de datos.</li>
+</ol>
+<h2 id="escribiendo-tests-"><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=1304s">ESCRIBIENDO TESTS</a> -</h2>
+<p>Creamos nuevo proyecto</p>
+<p><code>composer create-project laravel/laravel testexample</code></p>
+<p>Ya tenemos el proyecto ya preparado, con la tabla usuario preparada para hacer estos primeros tests.</p>
+<h3 id="php-unit">PHP Unit</h3>
+<p>En Laravel existe PHPUnit y Pest, vamos a comenzar por PHPUnit por ser el más clásico. Ambos tienen el mismo fin, pero con sintáxis distintas.</p>
+<p>Vamos por tanto a crear el primero.</p>
+<p>Convención Pascal Case: <strong>NombreDescriptivoTest</strong></p>
+<p>Por defecto, si no especificamos nada, los test creados serán Feature Test.</p>
+<p><code>php artisan make:test UserTest</code></p>
+<p>Si quisieramos que sea unitario, le debemos añadir <strong>--unit</strong> al final</p>
+<p><code>php artisan make:test UserTest --unit</code></p>
+<p>Creamos el primero, el Feature, y lo vemos:</p>
+<p><img alt="1739545109748" src="../image/Testing/1739545109748.png" /></p>
+<p>Y os crea en la carpeta /testsFeature con la siguiente estructura base:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Tests\Feature</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Testing\RefreshDatabase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Testing\WithFaker</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Tests\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * A basic feature test example.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_example</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">assertStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ambos test, aunque en carpetas separadas, tienen el mismo formato.</p>
+<h3 id="funcionamiento">Funcionamiento</h3>
+<p>Dentro de un test, vamos a recurrir a métodos que van a ejecutar instrucciones automáticas.</p>
+<ol>
+<li>Vete a esta ruta</li>
+<li>Haz esto. ...</li>
+<li>Comprueba lo otro..</li>
+</ol>
+<p>Por ejemplo, en el test Feature de ejemplo que carga Laravel, prueba una ruta raiz con get, y luego espera una respuesta 200. (ok)</p>
+<p>Si todo va bien, el test pasará. Si el comportamiento NO es el esperado, se detendrá y nos avisará.</p>
+<div class="highlight"><pre><span></span><code><span class="x"> /**</span>
+<span class="x">     * A basic test example.</span>
+<span class="x">     */</span>
+<span class="x">    public function test_the_application_returns_a_successful_response(): void</span>
+<span class="x">    {</span>
+<span class="x">        $response = $this-&gt;get(&#39;/&#39;);</span>
+
+<span class="x">        $response-&gt;assertStatus(200);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<p>Así, tendremos dos grandes bloques de instrucciones</p>
+<p>Instrucciones para pedirle que haga algo</p>
+<p>Instrucciones ASSERT para comprobar algo</p>
+<p>Vamos a crear <strong>primero un test que liste</strong> y que <strong>compruebe</strong> uno de los detalles</p>
+<hr />
+<h3 id="hacemos-el-primer-test">Hacemos el primer test</h3>
+<p>Primer test va a ser que podemos listar todos los usuarios de nuestro sistema.</p>
+<p>Las funciones comienzan por <strong>test_nombre descriptivo</strong>.</p>
+<h3 id="creamos-las-funciones-de-testing">Creamos las funciones de Testing</h3>
+<p>test_get_user_list</p>
+<p><img alt="1739545577529" src="../image/Testing/1739545577529.png" /></p>
+<h4 id="test_get_users_list">test_get_users_list</h4>
+<p>Vamos a pedir una serie de comprobaciones a un listado de usuarios API, y nos fijamos en las funciones como</p>
+<ul>
+<li>assertStatus</li>
+<li>assertJsonStructure</li>
+<li>assertJsonFragment</li>
+<li>assertJsonCount</li>
+<li>Habrían muchas más comprobaciones, si se ha creado, si falta por ser borrado ...</li>
+</ul>
+<p>Y en los comentarios del código de esta primera función test_:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function test_get_users_list(): void</span>
+<span class="x">    {</span>
+<span class="x">        $response = $this-&gt;get(&#39;/users&#39;);</span>
+
+<span class="x">        //Qué queremos que ocurra?</span>
+<span class="x">        $response-&gt;assertStatus(200); //Primero, comprobamos que la respuesta sea 200</span>
+
+<span class="x">        //comprobamos que el contenido de la respuesta sea el esperado</span>
+<span class="x">        $response-&gt;assertJsonStructure([</span>
+<span class="x">                [</span>
+<span class="x">                    &#39;id&#39;,</span>
+<span class="x">                    &#39;name&#39;,</span>
+<span class="x">                    &#39;email&#39;,</span>
+<span class="x">                    &#39;email_verified_at&#39;,</span>
+<span class="x">                    &#39;created_at&#39;,            </span>
+<span class="x">                    &#39;updated_at&#39;,</span>
+<span class="x">                ],</span>
+<span class="x">            ]);</span>
+
+<span class="x">            //Ahora vamos a preguntar si nos devuelve un dato que sabemos que nos debe devolver.</span>
+<span class="x">            //En este caso, sabemos que debe devolver un usuario con nombre Antonio</span>
+<span class="x">            //Si no lo devuelve, la prueba fallará</span>
+<span class="x">        $response-&gt;assertJsonFragment([</span>
+<span class="x">                &#39;name&#39; =&gt; &#39;Antonio&#39;,</span>
+<span class="x">        ]);</span>
+
+<span class="x">        //Por último, comprobamos que el número de usuarios devueltos sea el esperado   </span>
+<span class="x">        //Sabemos, cuando la poblemos, cuántos usuarios hay, y si no devuelve el número esperado, la prueba fallará</span>
+<span class="x">        //Si poblamnos con 4 usuarios, debería devolver 4</span>
+<span class="x">        $response-&gt;assertJsonCount(4);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<hr />
+<h4 id="test_get_user_detail">test_get_user_detail</h4>
+<p>Vamos a crear una segunda función <strong>test_get_user_detail</strong> (personalizarlo con vuestro nombre<strong>)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">public function test_get_user_detail(): void</span>
+<span class="x">    {</span>
+<span class="x">        $userId = 1; // Assuming we are testing with user ID 1</span>
+<span class="x">        $response = $this-&gt;get(&quot;/users/{$userId}&quot;);</span>
+
+<span class="x">        // Check that the response status is 200</span>
+<span class="x">        $response-&gt;assertStatus(200);</span>
+
+<span class="x">        // Check that the response has the expected structure</span>
+<span class="x">        //Ahora no es un array, si no que es solo un dato</span>
+<span class="x">        $response-&gt;assertJsonStructure([</span>
+<span class="x">            &#39;id&#39;,</span>
+<span class="x">            &#39;name&#39;,</span>
+<span class="x">            &#39;email&#39;,</span>
+<span class="x">            &#39;email_verified_at&#39;,</span>
+<span class="x">            &#39;created_at&#39;,</span>
+<span class="x">            &#39;updated_at&#39;,</span>
+<span class="x">        ]);</span>
+
+<span class="x">        // Check that the response contains the expected user data</span>
+<span class="x">        //Aquí comprobamos que el usuario con ID 1 se llame Antonio, no necesitamos contar el número de elementos</span>
+<span class="x">        $response-&gt;assertJsonFragment([</span>
+<span class="x">            &#39;id&#39; =&gt; $userId,</span>
+<span class="x">            &#39;name&#39; =&gt; &#39;Antonio&#39;, // Assuming the user with ID 1 is named Antonio</span>
+<span class="x">        ]);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<hr />
+<h4 id="test_get_non_existing_user_detail">test_get_non_existing_user_detail</h4>
+<ul>
+<li>Hasta aquí, hemos visto HAPPY Path, es decir, todo funciona correctamente</li>
+<li>Ahora vamos a ver cómo se comporta la aplicación cuando algo falla</li>
+<li>Probamos qué ocurre cuando pedimos datos de un usuairo que no existe</li>
+</ul>
+<p>test_get_non_existing_user_detail</p>
+<div class="highlight"><pre><span></span><code><span class="x">//Hasta aquí, hemos visto HAPPY Path, es decir, todo funciona correctamente</span>
+<span class="x">    //Ahora vamos a ver cómo se comporta la aplicación cuando algo falla</span>
+
+<span class="x">    //Probamos qué ocurre cuando pedimos datos de un usuairo que no existe</span>
+<span class="x">    public function test_get_non_existing_user_detail(): void</span>
+<span class="x">    {</span>
+<span class="x">        $nonExistingUserId = 9999; // Assuming this user ID does not exist</span>
+<span class="x">        $response = $this-&gt;get(&quot;/users/{$nonExistingUserId}&quot;);</span>
+
+<span class="x">        // Check that the response status is 404</span>
+<span class="x">        $response-&gt;assertStatus(404);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<p>Tebemos que tener en cuenta que muchas emnpresas comienzan por los test y codificamos para satisfacer esos test (TDD)</p>
+<p>Es lo que hemos hecho, vamos a correrlo y fallará, porque la app está vacía.</p>
+<p><strong>Eliminamos los test de ejemplo ExampleTest...</strong></p>
+<hr />
+<h3 id="definimos-la-estrategia-env-testing">Definimos la estrategia. ENV Testing.</h3>
+<p>Podemos crear seeders de testeo.</p>
+<p>Pero vamos a definir nuestro .env de testing copiando, pegando y renombrando el <strong>.env</strong></p>
+<p><img alt="1739546975442" src="../image/Testing/1739546975442.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Diferente al vídeo</p>
+<p>Ten en cuenta que en el vídeo crea una base de datos con Mysql en lugar de con sqlite.</p>
+</div>
+<p>Cambiar en el .env el motor a: <code>DB_CONNECTION=sqlite_testing</code></p>
+<p>En config / database, agrega otra conexión para el env.testing así:</p>
+<div class="highlight"><pre><span></span><code><span class="x"> &#39;sqlite_testing&#39; =&gt; [</span>
+<span class="x">        &#39;driver&#39; =&gt; &#39;sqlite&#39;,</span>
+<span class="x">          &#39;database&#39; =&gt; env(&#39;DB_DATABASE&#39;, database_path(&#39;databasetesting.sqlite&#39;)),</span>
+<span class="x">          &#39;prefix&#39; =&gt; &#39;&#39;,</span>
+<span class="x">         &#39;foreign_key_constraints&#39; =&gt; env(&#39;DB_FOREIGN_KEYS&#39;, true),</span>
+<span class="x">        ],</span>
+</code></pre></div>
+<p><img alt="1739547592281" src="../image/Testing/1739547592281.png" /></p>
+<h4 id="envtesting"><strong>.env.testing</strong></h4>
+<p><code>DB_CONNECTION=sqlite_testing</code></p>
+<p><code>DB_DATABASE=database/databasetesting.sqlite</code></p>
+<p>Migramos el entorno testing con <code>--env=testing</code></p>
+<p><code>php artisan migrate --env=testing</code></p>
+<p>Comprobamos que se ha ejecutado con éxito:</p>
+<p><img alt="1739547800159" src="../image/Testing/1739547800159.png" /></p>
+<hr />
+<h2 id="aplicando-tdd-"><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=2642s">APLICANDO TDD</a> -</h2>
+<p>Vamos a explicar que estos test heredan de la clase base TestCase que les da el comportamiento.</p>
+<p>Vamos a ver qué nos dice el test (fallar) cuando los corramos:</p>
+<p><code>php artisan test</code></p>
+<p><img alt="1739548026779" src="../image/Testing/1739548026779.png" /></p>
+<p><img alt="1739548065169" src="../image/Testing/1739548065169.png" /></p>
+<p>Como vemos, nos da info de todo lo que ha pasado en la ejecución y por qué ha fallado</p>
+<ol>
+<li>Esperaba 200 y ha recibido un 404, con la instrucción que ha fallado</li>
+<li>Mismo motivo (ya que no hemos desarrollado nada) 200 / 404</li>
+</ol>
+<h3 id="ahora-vamos-a-solucionar-los-errores">Ahora vamos a solucionar los errores.</h3>
+<p>¿Cómo corregimos? vamos a hacerlo en API introduciendo lo necesario.</p>
+<p>1º Cambiamos las rutas de los tests a API</p>
+<p><code>span</code></p>
+<ul>
+<li>$response = $this-&gt;get("api/users/{$userId}");</li>
+<li><code>$response = $this-&gt;get("api/users/{$nonExistingUserId}");</code></li>
+</ul>
+<p>Escribimos ruta Users en api.php,</p>
+<h4 id="instalamos-api">Instalamos api</h4>
+<p><code>php artisan install:api</code></p>
+<p>Migramos de nuevo con el test</p>
+<p><code>php artisan migrate --env=testing</code></p>
+<h4 id="generamos-controlador">Generamos controlador</h4>
+<p><code>php artisan make:controller UserController</code></p>
+<p>Y, por ahora, devolvemos un Hello World así</p>
+<div class="highlight"><pre><span></span><code>class UserController extends Controller
+{
+    //devuelve index hello world
+    public function index()
+    {
+        return &#39;Hello World&#39;;
+    }
+}
+</code></pre></div>
+<p>Ahora, ya fallará el primer test pero por otro motivo, el status 200 está superado. Sólo nos falta la estructura.</p>
+<p><img alt="1739549464051" src="../image/Testing/1739549464051.png" /></p>
+<h4 id="devolvemos-el-usuario-esperado">Devolvemos el usuario esperado</h4>
+<p>Vamos a corregir lo anterior en el controlador de Users</p>
+<div class="highlight"><pre><span></span><code><span class="x">class UserController extends Controller</span>
+<span class="x">{</span>
+<span class="x">    //devuelve index hello world</span>
+<span class="x">    public function index()</span>
+<span class="x">    {</span>
+<span class="x">        //return &#39;Hello World&#39;;</span>
+<span class="x">        // ahora devolvemos todos los usuario en JSON</span>
+<span class="x">        $users = User::all();</span>
+<span class="x">        return response()-&gt;json($users);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h4 id="creamos-un-seeder-para-poblar">Creamos un seeder para poblar</h4>
+<p><code>php artisan make:seeder UserSeeder</code></p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x">     * Run the database seeds.</span>
+<span class="x">     */</span>
+<span class="x">    public function run(): void</span>
+<span class="x">    {</span>
+<span class="x">        //Creamos 4 usuario uno se debe llamar Antonio</span>
+<span class="x">       User::factory()-&gt;create([</span>
+<span class="x">            &#39;name&#39; =&gt; &#39;Antonio&#39;,</span>
+<span class="x">        ]);</span>
+<span class="x">       User::factory(3)-&gt;create();</span>
+<span class="x">    }</span>
+</code></pre></div>
+<h3 id="creamos-una-nueva-funcion-en-el-testing-para-resetear-las-migraciones-y-poblarlas">Creamos una nueva función en el testing para resetear las migraciones y poblarlas</h3>
+<p>Podríamos haberlo hecho a mano, pero así se automatiza más y no se nos olvida añadirle el entorno de testing (--env=testing)</p>
+<ul>
+<li>Ya que se ejecutará en la base de datos de testing por defecto</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x"> public function test_set_database_config(): void</span>
+<span class="x">    {</span>
+<span class="x">        Artisan::call(&#39;migrate:reset&#39;);</span>
+<span class="x">        Artisan::call(&#39;migrate&#39;);</span>
+<span class="x">        Artisan::call(&#39;db:seed&#39;);</span>
+
+<span class="x">        $response = $this-&gt;get(&#39;/&#39;);</span>
+<span class="x">        $response-&gt;assertStatus(200);</span>
+
+<span class="x">    }</span>
+</code></pre></div>
+<ul>
+<li>Declaramos la ruta raiz en api.php para que no nos de errores.</li>
+<li>Agregamos el <strong>Seeder</strong> al Database:</li>
+<li><code>$this-&gt;call(UserSeeder::class);</code></li>
+</ul>
+<p>Y <strong>comprobamos</strong> de nuevo, con un sólo fallo, vemos cual:</p>
+<p><img alt="1739550462053" src="../image/Testing/1739550462053.png" /></p>
+<p><img alt="1739550514323" src="../image/Testing/1739550514323.png" /></p>
+<p>Nos ha fallado a la hora de devolvernos un detalle del ID 1</p>
+<p><img alt="1739550846501" src="../image/Testing/1739550846501.png" /></p>
+<p>Vemos la base de datos si es correcta.</p>
+<p><img alt="1739550488871" src="../image/Testing/1739550488871.png" /></p>
+<p>Pero claro, no hemos definido la vista para el detail (show)</p>
+<h4 id="controlador-usersid-detail">Controlador Users/id detail</h4>
+<p>Y es que no lo tenemos definido ni en la ruta ni en el controlador.</p>
+<p>Lo solucioinamos, en la API, añadimos:</p>
+<p><code>Route::get('/users/{id}', [UserController::class, 'detail']);</code></p>
+<p>Y en el controlador:</p>
+<div class="highlight"><pre><span></span><code><span class="x">//devuelve un usuario por id</span>
+<span class="x">    public function detail($id)</span>
+<span class="x">    {</span>
+<span class="x">        $user = User::find($id);</span>
+<span class="x">        return response()-&gt;json($user);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<h3 id="comprobamos-tras-finalizar">Comprobamos tras finalizar.</h3>
+<p>Pero vemos que el test donde el usuario no existe, falla</p>
+<p><img alt="1739551163531" src="../image/Testing/1739551163531.png" /></p>
+<p>Para ello, hay que comprobar y devolver un 404</p>
+<p>Volvemos a corregir:</p>
+<div class="highlight"><pre><span></span><code><span class="x">  public function detail($id)</span>
+<span class="x">    {</span>
+<span class="x">        $user = User::find($id);</span>
+
+<span class="x">    //devolvemos 404 si el usuario no existe</span>
+<span class="x">        if (!$user) {</span>
+<span class="x">            //abort(404);</span>
+<span class="x">            return response()-&gt;json([&#39;error&#39; =&gt; &#39;User not found&#39;], 404);</span>
+<span class="x">        }</span>
+
+<span class="x">        return response()-&gt;json($user);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<p>Y volvemos a probar y, si todo ha ido bien, <strong>hemos pasado los tests:</strong></p>
+<p>Ahora sí, podemos hacer el COMMIT a nuestro repositorio.</p>
+<p><img alt="1739551282120" src="../image/Testing/1739551282120.png" /></p>
+<hr />
+<h2 id="ejemplo-tests-en-proyectos-"><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=3978s">EJEMPLO TESTS EN PROYECTOS</a> -</h2>
+<p>Segundo formato de trabajo</p>
+<p>Hacer los test en un prouecto ya realizado, como por ejemplo vuestro PROYECTO</p>
+<ul>
+<li>Guardar copia primero.</li>
+</ul>
+<p>En el vídeo muestra un ejemplo con un proyecto de ellos.</p>
+<p><a href="https://www.youtube.com/watch?v=3xQt_tAj1e0&amp;t=4345s">CONCLUSIONES</a> -</p>
+<hr />
+<h1 id="proyecto-plan-de-pruebas-y-documentacion-final">PROYECTO: Plan de Pruebas y documentación final.</h1>
+<p>Debemos realizar y documentar nuestro plan de pruebas del proyecto y ejecutarlo en el Sprint y presentación final.</p>
+<p><img alt="1739548210225" src="../image/Testing/1739548210225.png" /></p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://documentacionlaravel.com/docs/11.x/testing">Testing</a></li>
+<li><a href="https://codersfree.com/posts/middleware-en-laravel-11-una-guia-completa"><img alt="1739548265909" src="../image/Testing/1739548265909.png" /></a>
+*</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../3_Utilidades/React/reactInertia/" class="md-footer__link md-footer__link--prev" aria-label="Previous: reactInertia">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                reactInertia
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../CambiarENV_Testing/" class="md-footer__link md-footer__link--next" aria-label="Next: CambiarENV Testing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CambiarENV Testing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2025/26 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": "navigation.footer - content.code.copy - navigation.path - navigation.prune - navigation.top - content.tabs.link", "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

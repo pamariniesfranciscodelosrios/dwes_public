@@ -1,0 +1,87 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "605_9Middleware",
+    "dateExported": "2023-12-14T11:58:27.057Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f4b3fdc2-ed8c-4b93-9a6e-f4a4a1861357",
+            "colId": "8ca60bf9-2c73-4305-a33d-2a77e17ee888",
+            "containerId": "",
+            "name": "create",
+            "url": "http://127.0.0.1:8000/api/create",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-12-10T08:22:03.430Z",
+            "modified": "2023-12-14T11:53:07.371Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Jairo2\",\n  \"email\": \"demo2@gogodev.net\",\n  \"password\": \"123456789\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f91483f5-e4ab-4af3-b97e-581fa6b95345",
+            "colId": "8ca60bf9-2c73-4305-a33d-2a77e17ee888",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://127.0.0.1:8000/api/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-12-14T11:50:08.325Z",
+            "modified": "2023-12-14T11:57:02.881Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Jairo\",\n  \"email\": \"demo@gogodev.net\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|ivwEXEi1f5XOvtkcnB2wBMCQvbMQu5lz7HLg1SxK8ee14314"
+            },
+            "tests": []
+        },
+        {
+            "_id": "77b9f3ab-8ada-4b58-a1f7-7850ddeaeb9d",
+            "colId": "8ca60bf9-2c73-4305-a33d-2a77e17ee888",
+            "containerId": "",
+            "name": "user",
+            "url": "http://127.0.0.1:8000/api/user",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-12-14T11:51:51.601Z",
+            "modified": "2023-12-14T11:55:13.611Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer 2|ivwEXEi1f5XOvtkcnB2wBMCQvbMQu5lz7HLg1SxK8ee14314"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
