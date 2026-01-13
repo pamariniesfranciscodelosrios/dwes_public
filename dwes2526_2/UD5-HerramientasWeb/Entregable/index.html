@@ -1,0 +1,1722 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4%20Autenticaci%C3%B3n%20y%20Recursos/">
+      
+      
+        <link rel="next" href="../Codigo%20Programas/1%20Cabeceras/1-subirFichero/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Entregable - DWES 25/26 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');--md-admonition-icon--repo:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objetivos-entregable-ud5-herramientas-web" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 25/26 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Entregable
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES 25/26 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 25/26 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DWES 25/26 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulo Desarrollo Web en Entorno Servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../0_Inicio/1_Presentaci%C3%B3n/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    0 Inicio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../UD1-ArquitecturasWeb/1%20Arquitectura%20Web/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD1 ArquitecturasWeb
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../UD2-PHP/Entrega1/1%20B%C3%A1sico%20Sintaxis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD2 PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../UD3-POO/0%20Intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD3 POO
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../UD4-AccesoDatos/Entregable/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD4 AccesoDatos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD5 HerramientasWeb
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            UD5 HerramientasWeb
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0%20Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1%20Cabeceras%20del%20servidor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Cabeceras del servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2%20Estado.%20SESIONES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Estado. SESIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3%20Estado.%20COOKIES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Estado. COOKIES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4%20Autenticaci%C3%B3n%20y%20Recursos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Autenticación y Recursos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Entregable
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Entregable
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-entregable-ud5-herramientas-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos &amp; Entregable UD5 Herramientas Web
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-proyecto-ud5_estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proyecto UD5_Estado:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Proyecto UD5_Estado:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desarrollar-de-forma-agil-y-escalable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollar de forma ágil y escalable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requisitos-del-proyecto-ud5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Requisitos del Proyecto UD5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Requisitos del Proyecto UD5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-descripcion-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Descripción general
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-requisitos-funcionales-minimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Requisitos funcionales mínimos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-requisitos-tecnicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Requisitos técnicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-profundizacion-en-funciones-sobre-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Profundización en funciones sobre datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-uso-de-ejemplos-de-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Uso de ejemplos de clase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-restricciones-sobre-uso-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Restricciones sobre uso de IA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-requisitos-de-documentacion-y-entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Requisitos de documentación y entregas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-php-unidades-234-y-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PHP unidades 2,3,4 y 5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-personalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PERSONALIZACIÓN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PERSONALIZACIÓN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación del Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-portada" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Portada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-descripcion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Descripción del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-estructura-del-proyecto-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estructura del proyecto (MVC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-base-de-datos-sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Base de datos (SQLite)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-crud-de-productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. CRUD de productos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-funcionalidad-adicional-calculo-o-transformacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Funcionalidad adicional (cálculo o transformación de datos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-problemas-encontrados-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Problemas encontrados y soluciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-conclusiones-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Conclusiones del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-videopresentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Videopresentación técnica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../Codigo%20Programas/1%20Cabeceras/1-subirFichero/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Codigo Programas
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../UD6-Laravel/1_a%20GettingStarted/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-entregable-ud5-herramientas-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos &amp; Entregable UD5 Herramientas Web
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-proyecto-ud5_estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proyecto UD5_Estado:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Proyecto UD5_Estado:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desarrollar-de-forma-agil-y-escalable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollar de forma ágil y escalable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requisitos-del-proyecto-ud5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Requisitos del Proyecto UD5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Requisitos del Proyecto UD5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-descripcion-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Descripción general
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-requisitos-funcionales-minimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Requisitos funcionales mínimos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-requisitos-tecnicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Requisitos técnicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-profundizacion-en-funciones-sobre-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Profundización en funciones sobre datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-uso-de-ejemplos-de-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Uso de ejemplos de clase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-restricciones-sobre-uso-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Restricciones sobre uso de IA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-requisitos-de-documentacion-y-entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Requisitos de documentación y entregas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-php-unidades-234-y-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PHP unidades 2,3,4 y 5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-personalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PERSONALIZACIÓN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PERSONALIZACIÓN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación del Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-portada" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Portada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-descripcion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Descripción del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-estructura-del-proyecto-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estructura del proyecto (MVC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-base-de-datos-sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Base de datos (SQLite)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-crud-de-productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. CRUD de productos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-funcionalidad-adicional-calculo-o-transformacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Funcionalidad adicional (cálculo o transformación de datos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-problemas-encontrados-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Problemas encontrados y soluciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-conclusiones-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Conclusiones del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-videopresentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Videopresentación técnica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="objetivos-entregable-ud5-herramientas-web"><strong>Objetivos &amp; Entregable UD5 Herramientas Web</strong></h2>
+<p>Vamos a realizar un proyecto con todo lo aprendido en estos temas. Iremos creando y documentando las diferentes versiones cada día, un punto importante a tener en cuenta es:</p>
+<div class="admonition alert">
+<p class="admonition-title">Llega hasta donde estes seguro</p>
+<p>En este proyecto cada alumno podrá avanzar hasta el nivel de <strong>complejidad que sea capaz de comprender y dominar</strong>. </p>
+<p>No todos llegaréis al mismo grado de profundidad, y eso es completamente normal. Lo importante no es abarcarlo todo, sino desarrollar una parte del proyecto con seguridad, entendiendo bien cada paso y siendo capaz de explicarlo.</p>
+<p>Es preferible que<strong>adaptes tu proyecto a tu propio ritmo</strong> y te detengas en el punto donde realmente controles lo que estás haciendo, en lugar de intentar incluir muchas funciones sin comprenderlas. La calidad del aprendizaje está por encima de la cantidad de características añadidas.</p>
+</div>
+<p><img alt="1763286445207" src="../image/Entregable/1763286445207.png" /></p>
+<hr />
+<h1 id="1-proyecto-ud5_estado">1. Proyecto UD5_Estado:</h1>
+<ul>
+<li>En este proyecto trabajamos con aplicaciones web que hagan mantenimiento de estado con Sesiones y Cookies y todo lo visto en estas cinco unidades.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Objetivo</p>
+<p>El objetivo de esta actividad es desarrollar un sistema que permita loguearse a los usuarios y al que se de visibilidad sólo con algunos de ellos, si se hace peticiones a base de datos, deben ser<strong>SQLite</strong></p>
+</div>
+<ul>
+<li>Debe haber mantenimiento de estado y usar <strong>cookies y sesiones</strong>, a poder ser crear páginas que las muestren</li>
+<li>El usuario <strong>admin / admin</strong> debe habilitarse, entre al menos 5 usuarios</li>
+<li>debe haber login y logout con comprobación</li>
+<li>un CRUD con paginación de los productos, podemos usar de base los ejemplos de clase</li>
+<li>Contraseñas encriptadas</li>
+<li>Redireccionamiento</li>
+</ul>
+<h2 id="desarrollar-de-forma-agil-y-escalable"><strong>Desarrollar de forma ágil y escalable</strong></h2>
+<div class="admonition success">
+<p class="admonition-title">Escala tu proyecto</p>
+<p>Trabaja siempre<strong>por iteraciones</strong> , empezando por una versión muy simple y plenamente funcional (MVP:  <em>Minimum Viable Product</em> ) que puedas entregar y ve  <strong>incrementando complejidad en pequeños pasos</strong> . No intentes hacerlo todo de golpe.</p>
+</div>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Primero asegúrate de que funciona lo <strong>básico</strong> (estructura MVC, conexión SQLite, login mínimo) y, cuando esa versión esté estable,</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Crea una nueva versión donde añadas solo una funcionalidad más.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Este enfoque te permitirá  <strong>detectar errores antes</strong> , evitar bloqueos grandes, mantener un código más limpio y comprensible y generar una <strong>evolución continua</strong> del proyecto.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Además, te facilitará subir avances diarios a Moodle y justificar claramente cómo has ido mejorando la aplicación.</li>
+</ul>
+<hr />
+<h1 id="2-requisitos-del-proyecto-ud5">2. Requisitos del Proyecto UD5</h1>
+<p><strong>CRUD de login y productos para un negocio</strong></p>
+<h2 id="1-descripcion-general">1. Descripción general</h2>
+<p>Desarrollar una pequeña aplicación web en PHP que gestione el <strong>login de usuarios</strong> y el <strong>CRUD de productos</strong> de un negocio concreto (a elegir por el alumno: tienda de informática, librería, cafetería, etc.), aplicando los contenidos trabajados en la unidad:</p>
+<ul>
+<li>Sintaxis básica de PHP</li>
+<li>Programación Orientada a Objetos (POO)</li>
+<li>Patrón Modelo–Vista–Controlador (MVC)</li>
+<li>Acceso a datos con SQLite</li>
+<li>Cookies, sesiones, cabeceras HTTP y autenticación con hash</li>
+</ul>
+<p>La aplicación debe basarse en la estructura y ejemplos <strong>MVC con login</strong> vistos en clase, adaptándolos al contexto del negocio elegido.</p>
+<hr />
+<h2 id="2-requisitos-funcionales-minimos">2. Requisitos funcionales mínimos</h2>
+<ol>
+<li><strong>Gestión de usuarios (login):</strong></li>
+<li>Formulario de <strong>registro</strong> (opcional) y  <strong>login</strong> .</li>
+<li>Contraseñas almacenadas con <strong>hash seguro</strong> (por ejemplo, <code>password_hash</code> / <code>password_verify</code>).</li>
+<li>Uso de <strong>sesiones</strong> para mantener al usuario autenticado.</li>
+<li>Posibilidad de <strong>logout</strong> que destruya la sesión.</li>
+<li>Control de acceso: solo usuarios autenticados pueden acceder al CRUD de productos.</li>
+<li><strong>Gestión de productos (CRUD):</strong></li>
+<li>Alta de productos (Create).</li>
+<li>Listado de productos (Read) con paginación opcional.</li>
+<li>Edición de productos existentes (Update).</li>
+<li>Borrado de productos (Delete).</li>
+<li>Campos mínimos por producto (orientativo):<ul>
+<li>Nombre</li>
+<li>Descripción</li>
+<li>Precio</li>
+<li>Stock</li>
+<li>Categoría (o similar según el negocio)</li>
+</ul>
+</li>
+<li><strong>Funciones adicionales sobre los datos:</strong></li>
+<li>Al menos <strong>una funcionalidad que profundice</strong> en el trabajo con los datos, por ejemplo:<ul>
+<li>Cálculo de  <strong>precio total con IVA</strong> .</li>
+<li>Cálculo de  <strong>valor total del stock</strong> .</li>
+<li>Listados filtrados (por categoría, rango de precio, productos sin stock…).</li>
+<li>Indicadores calculados (por ejemplo, “producto en oferta”, “stock bajo”, etc.).</li>
+</ul>
+</li>
+<li>Esta información calculada debe mostrarse en alguna vista (por ejemplo, en el listado o en una ficha de producto).</li>
+</ol>
+<hr />
+<h2 id="3-requisitos-tecnicos">3. Requisitos técnicos</h2>
+<ol>
+<li><strong>Lenguaje y sintaxis:</strong></li>
+<li>Uso correcto de la <strong>sintaxis básica de PHP</strong> (variables, estructuras de control, funciones, includes/require, etc.).</li>
+<li>Separación clara entre <strong>lógica</strong> y <strong>presentación</strong> (no mezclar HTML y lógica compleja en el mismo archivo).</li>
+<li><strong>Programación Orientada a Objetos:</strong></li>
+<li>Uso de <strong>clases</strong> para los modelos (por ejemplo, <code>User</code>, <code>Producto</code>).</li>
+<li>Al menos un <strong>controlador</strong> implementado como clase (por ejemplo, <code>ProductoController</code>, <code>AuthController</code>).</li>
+<li>Métodos bien definidos para cada operación (listar, crear, editar, eliminar, etc.).</li>
+<li><strong>Modelo–Vista–Controlador (MVC):</strong></li>
+<li>Estructura de carpetas similar a la vista en los ejemplos:<ul>
+<li><code>/models</code></li>
+<li><code>/views</code></li>
+<li><code>/controllers</code></li>
+<li><code>/config</code> u otro para la configuración/DB.</li>
+</ul>
+</li>
+<li>Un <strong>punto de entrada</strong> (<code>index.php</code>) que reciba la acción y llame al controlador correspondiente.</li>
+<li>Vistas separadas para:<ul>
+<li>Formularios de login / registro.</li>
+<li>Listado de productos.</li>
+<li>Formulario de alta/edición.</li>
+<li>Mensajes de error o confirmación (pueden integrarse en las vistas anteriores).</li>
+</ul>
+</li>
+<li><strong>Acceso a datos con SQLite:</strong></li>
+<li>Uso de <strong>SQLite</strong> como motor de base de datos.</li>
+<li>Acceso mediante <strong>PDO</strong> (recomendado).</li>
+<li>Creación de al menos dos tablas:<ul>
+<li><code>users</code> (o similar) para credenciales.</li>
+<li><code>products</code> (o similar) para los productos.</li>
+</ul>
+</li>
+<li>Archivo de configuración de conexión (<code>config.php</code> o similar).</li>
+<li><strong>Sesiones, cookies, cabeceras, autenticación:</strong></li>
+<li>Uso de <strong>sesiones</strong> para gestionar el login.</li>
+<li>Uso de <strong>cookies</strong> al menos para una de estas opciones:<ul>
+<li>Recordar el nombre de usuario.</li>
+<li>Preferencias simples (tema, idioma, etc.).</li>
+</ul>
+</li>
+<li>Uso de <strong>cabeceras HTTP</strong> para:<ul>
+<li>Redirecciones tras login, logout o operaciones de CRUD (<code>header("Location: ...")</code>).</li>
+</ul>
+</li>
+<li>Autenticación con  <strong>hash de contraseña</strong> :<ul>
+<li>No se permite guardar contraseñas en texto plano.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="4-profundizacion-en-funciones-sobre-datos">4. Profundización en funciones sobre datos</h2>
+<p>El proyecto debe incluir al menos <strong>una funcionalidad extra</strong> donde el alumno:</p>
+<ul>
+<li>Implemente <strong>funciones propias</strong> en PHP para trabajar con los datos (por ejemplo, una función que reciba un array de productos y devuelva estadísticas, totales, medias…).</li>
+<li>Transforme o calcule <strong>valores derivados</strong> que luego se muestren en las vistas:</li>
+<li>Total de productos.</li>
+<li>Media de precios.</li>
+<li>Importes con IVA.</li>
+<li>Porcentaje de productos en una determinada categoría, etc.</li>
+</ul>
+<p>Esta parte debe estar <strong>claramente comentada</strong> en el código y explicada en la documentación.</p>
+<p>Puedes profundizar aquí todo lo que el tiempo te permita</p>
+<hr />
+<h2 id="5-uso-de-ejemplos-de-clase">5. Uso de ejemplos de clase</h2>
+<ul>
+<li>El proyecto debe <strong>partir del código de ejemplo</strong> visto en clase (MVC + login) y <strong>adaptarlo</strong> al caso del negocio elegido.</li>
+<li>No se trata de copiar y pegar sin cambios, sino de:</li>
+<li>Cambiar el contexto (productos, atributos…).</li>
+<li>Adaptar las vistas.</li>
+<li>Ampliar funcionalidades.</li>
+</ul>
+<hr />
+<h2 id="6-restricciones-sobre-uso-de-ia">6. Restricciones sobre uso de IA</h2>
+<ul>
+<li>El <strong>abuso de cualquier IA</strong> (ChatGPT, Copilot, etc.)  <strong>sin comprender lo que se hace se considerará plagio</strong> .</li>
+<li>El alumno debe ser capaz de:</li>
+<li>Explicar el funcionamiento de su código.</li>
+<li>Justificar las decisiones tomadas (estructura, funciones, consultas SQL…).</li>
+<li>El código claramente no entendido, incoherente con el nivel del curso o que no se pueda explicar en una defensa, podrá considerarse  <strong>no auténtico</strong> .</li>
+</ul>
+<hr />
+<h2 id="7-requisitos-de-documentacion-y-entregas">7. Requisitos de documentación y entregas</h2>
+<ol>
+<li><strong>Seguimiento diario en Moodle:</strong></li>
+<li>Cada día de trabajo, el alumno debe subir a los <strong>comentarios de la tarea en Moodle</strong> un  <strong>PDF con el avance del día</strong> .</li>
+<li>No se deben borrar los PDFs anteriores: se debe ver la evolución del proyecto.</li>
+<li><strong>Documentación final del proyecto:</strong></li>
+<li>Debe existir un archivo de documentación llamado  <strong><code>ProyectoUD5.md</code></strong> .</li>
+<li>Este documento (o versión exportada a PDF/MD incrustado) deberá contener:<ul>
+<li>Breve descripción del negocio y del objetivo de la aplicación.</li>
+<li>Estructura de carpetas y explicación del MVC.</li>
+<li>Descripción de las tablas de la base de datos.</li>
+<li>Explicación del proceso de login y gestión de sesiones/cookies.</li>
+<li>Explicación de la funcionalidad extra de cálculo/transformación de datos.</li>
+<li><strong>Capturas de pantalla (en formato imagen) de los bloques de código más importantes</strong> :</li>
+<li>Controladores principales.</li>
+<li>Modelos (User, Product).</li>
+<li>Conexión a la base de datos.</li>
+<li>Funciones de autenticación.</li>
+<li>Función/es de cálculo o transformación de datos.</li>
+<li>Referencias al código que se mostrará en la videopresentación.</li>
+</ul>
+</li>
+<li><strong>Videopresentación técnica:</strong></li>
+<li>La documentación debe servir como base para una <strong>videopresentación técnica</strong> donde el alumno:<ul>
+<li>Explique las partes clave del proyecto.</li>
+<li>Muestre las capturas de código.</li>
+</ul>
+</li>
+<li>La videopresentación debe quedar <strong>referenciada o incrustada</strong> desde <code>ProyectoUD5.md</code> (por ejemplo, mediante un enlace, QR o referencia clara al archivo de vídeo).</li>
+</ol>
+<hr />
+<p>Si quieres, en otro mensaje puedo ayudarte a transformar estos requisitos en un enunciado “bonito” para Moodle o en una rúbrica de evaluación.</p>
+<h1 id="3-php-unidades-234-y-5"><strong>3. PHP unidades 2,3,4 y 5</strong></h1>
+<p>Breve resumen de algunos de los conceptos de PHP más importantes vistos hasta ahora</p>
+<ul>
+<li><strong>Sintaxis básica de PHP</strong></li>
+<li>Variables y tipos básicos</li>
+<li>Operadores (aritméticos, comparación, lógicos)</li>
+<li>Estructuras de control (<code>if</code>, <code>else</code>, <code>elseif</code>, <code>switch</code>, <code>for</code>, <code>foreach</code>, <code>while</code>)</li>
+<li>Funciones propias</li>
+<li>Inclusión de archivos (<code>include</code>, <code>require</code>)</li>
+<li>Uso básico de superglobales (<code>$_GET</code>, <code>$_POST</code>, <code>$_SESSION</code>, <code>$_COOKIE</code>, <code>$_SERVER</code>)</li>
+<li><strong>Programación Orientada a Objetos (POO)</strong></li>
+<li>Clases y objetos</li>
+<li>Propiedades y métodos</li>
+<li>Constructores</li>
+<li>Modificadores de acceso (<code>public</code>, <code>private</code>, <code>protected</code>)</li>
+<li>Organización del código en modelos y controladores</li>
+<li><strong>Modelo–Vista–Controlador (MVC)</strong></li>
+<li>Separación en carpetas: <code>models/</code>, <code>views/</code>, <code>controllers/</code>, <code>config/</code></li>
+<li>Punto de entrada (<code>index.php</code>) que decide qué controlador/acción llamar</li>
+<li>Controladores como clases con métodos para cada acción (listar, crear, editar, eliminar…)</li>
+<li>Vistas como plantillas PHP/HTML sin lógica pesada</li>
+<li>Modelos encargados de hablar con la base de datos</li>
+<li><strong>Acceso a datos</strong></li>
+<li>Uso de <strong>PDO</strong> para conectar con la base de datos</li>
+<li>Conexión centralizada en un archivo de configuración</li>
+<li>Consultas preparadas (<code>prepare</code>, <code>bindParam</code> / <code>bindValue</code>, <code>execute</code>)</li>
+<li>CRUD (Create, Read, Update, Delete) sobre tablas</li>
+<li>Manejo básico de errores en la conexión y en las consultas</li>
+<li><strong>SQLite</strong></li>
+<li>Uso de SQLite como base de datos en archivo</li>
+<li>Creación de tablas (<code>users</code>, <code>products</code>, etc.)</li>
+<li>Ventajas para proyectos pequeños y de aula (no requiere servidor independiente)</li>
+<li><strong>Sesiones</strong></li>
+<li>Inicio de sesión con <code>session_start()</code></li>
+<li>Almacenamiento de información del usuario autenticado en <code>$_SESSION</code></li>
+<li>Cierre de sesión y destrucción de la sesión (<code>session_unset()</code>, <code>session_destroy()</code>)</li>
+<li><strong>Cookies</strong></li>
+<li>Creación de cookies con <code>setcookie()</code></li>
+<li>Lectura de cookies a través de <code>$_COOKIE</code></li>
+<li>Uso para recordar datos sencillos (nombre de usuario, preferencias…)</li>
+<li><strong>Cabeceras HTTP</strong></li>
+<li>Redirecciones con <code>header("Location: ...")</code></li>
+<li>Cambios de cabecera (<code>Content-Type</code>, etc.) cuando es necesario</li>
+<li><strong>Autenticación con hash</strong></li>
+<li>Formularios de login</li>
+<li>Almacenamiento de contraseñas con <code>password_hash()</code></li>
+<li>Verificación de contraseñas con <code>password_verify()</code></li>
+<li>Control de acceso a páginas solo para usuarios autenticados</li>
+<li><strong>Tratamiento y transformación de datos</strong></li>
+<li>Recepción y validación de datos de formularios</li>
+<li>Filtrado seguro de entrada (<code>filter_input</code>, validaciones propias)</li>
+<li>Cálculo de datos derivados (totales, medias, IVA, valor de stock, etc.)</li>
+<li>Formateo de datos para mostrarlos en las vistas (números, precios, cadenas…)</li>
+</ul>
+<hr />
+<h1 id="4-personalizacion"><strong>4. PERSONALIZACIÓN</strong></h1>
+<p>Personalizaremos el proyecto con las siguientes temáticas/alumnado:</p>
+<table>
+<thead>
+<tr>
+<th>José Antonio - Supermercado: Alimentos frescos, enlatados, productos de limpieza, bebidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dani - Tienda de muebles: Sofás, mesas, sillas, decoración del hogar</td>
+</tr>
+<tr>
+<td>Miguel - Tienda de bricolaje: Herramientas, materiales de construcción, pinturas, jardinería</td>
+</tr>
+<tr>
+<td>Isaac - Tienda de juguetes: Juguetes para niños, juegos de mesa, muñecas, modelos a escala</td>
+</tr>
+<tr>
+<td>Manuel - Tienda de alimentos orgánicos: Frutas y verduras orgánicas, productos sin gluten, suplementos</td>
+</tr>
+<tr>
+<td>Alejandro - Tienda de antigüedades: Muebles antiguos, objetos de colección, obras de arte</td>
+</tr>
+<tr>
+<td>Juan Jesús - Tienda de vinos y licores: Vinos, cervezas artesanales, licores, copas</td>
+</tr>
+<tr>
+<td>Guerola - Tienda de artículos para el hogar: Utensilios de cocina, textiles, decoración</td>
+</tr>
+<tr>
+<td>María - Tienda de bicicletas: Bicicletas, accesorios, ropa para ciclistas, herramientas</td>
+</tr>
+<tr>
+<td>Sañvador - Tienda de artículos de viaje: Maletas, accesorios de viaje, guías turísticas</td>
+</tr>
+<tr>
+<td>José Andrés - Librería: Libros, revistas, material de oficina, artículos de papelería</td>
+</tr>
+<tr>
+<td>Francisco- Tienda de productos digitales: Software, aplicaciones, música, juegos en línea</td>
+</tr>
+<tr>
+<td>Juan David - Tienda de ropa: Ropa para hombres, mujeres o niños, accesorios, calzado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="documentacion-del-proyecto">Documentación del Proyecto</h2>
+<p>Crea un archivo <code>ProyectoUD5.md</code> en la raíz del proyecto que contenga la siguiente información:</p>
+<div class="admonition note">
+<p class="admonition-title">capturas de código</p>
+<p>Siempre que expliques el código, añade capturas de código en formato imagen a la documentación</p>
+<p><img alt="1763228518263" src="../image/Entregable/1763228518263.png" /></p>
+</div>
+<p><strong>Esquema breve que puedes usar para la documentación del proyecto (ProyectoUD5.md)</strong></p>
+<h3 id="1-portada">1. Portada</h3>
+<ul>
+<li>Título del proyecto</li>
+<li>Autor/a</li>
+<li>Fecha</li>
+<li>Curso / Módulo</li>
+</ul>
+<h3 id="2-descripcion-del-proyecto">2. Descripción del proyecto</h3>
+<ul>
+<li>Tipo de negocio elegido</li>
+<li>Objetivo general de la aplicación</li>
+<li>Funcionalidades principales del CRUD y del login</li>
+</ul>
+<h3 id="3-estructura-del-proyecto-mvc">3. Estructura del proyecto (MVC)</h3>
+<ul>
+<li>Explicación breve de la estructura de carpetas</li>
+<li>Diagrama simple del flujo MVC</li>
+<li>Descripción del punto de entrada (<code>index.php</code>)</li>
+</ul>
+<h3 id="4-base-de-datos-sqlite">4. Base de datos (SQLite)</h3>
+<ul>
+<li>Tablas creadas</li>
+<li>Campos y tipos de datos</li>
+<li>Justificación de algún campo si procede</li>
+<li>Captura de la creación de tablas</li>
+</ul>
+<h3 id="5-autenticacion">5. Autenticación</h3>
+<ul>
+<li>Funcionamiento del login</li>
+<li>Hash de contraseñas</li>
+<li>Gestión de sesiones</li>
+<li>Uso de cookies (si procede)</li>
+<li>Capturas de los fragmentos clave del código</li>
+</ul>
+<h3 id="6-crud-de-productos">6. CRUD de productos</h3>
+<ul>
+<li>Descripción de cada operación (Create, Read, Update, Delete)</li>
+<li>Explicación del flujo de cada acción</li>
+<li>Capturas de los métodos principales del controlador y el modelo</li>
+<li>Capturas de las vistas más importantes</li>
+</ul>
+<h3 id="7-funcionalidad-adicional-calculo-o-transformacion-de-datos">7. Funcionalidad adicional (cálculo o transformación de datos)</h3>
+<ul>
+<li>Qué dato calculado o transformado se ha implementado</li>
+<li>Cómo se calcula</li>
+<li>Código clave (en captura)</li>
+<li>Ejemplo real mostrado en la interfaz</li>
+</ul>
+<h3 id="8-problemas-encontrados-y-soluciones">8. Problemas encontrados y soluciones</h3>
+<ul>
+<li>Errores comunes durante el desarrollo</li>
+<li>Cómo se resolvieron</li>
+<li>Cambios relevantes entre versiones</li>
+</ul>
+<h3 id="9-conclusiones-del-proyecto">9. Conclusiones del proyecto</h3>
+<ul>
+<li>Qué se ha aprendido</li>
+<li>Qué mejorarías en versiones futuras</li>
+</ul>
+<h3 id="10-videopresentacion-tecnica">10. Videopresentación técnica</h3>
+<ul class="task-list">
+<li>Enlace o Video incrustado que debe ser alojado en Drive o similar</li>
+<li>
+<p>Breve guía de lo que se explica en el vídeo</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> En el readme del proyecto debe ir un video incrustado explicando los detalles técnicos implementados, no confundir con un video a nivel de usuario.</p>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RECUERDA: Lenguaje <strong>técnico y no de usuario</strong>, comentando los aspectos del lenguaje adquiridos</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Debe desglosarse qué herramientas, técnicas, clases, métodos etc se han implementado durante el proyecto.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> También se pueden comentar los <strong>fallos y las posibles mejoras</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Hay que subir el enlace del repositorio a Moodle.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Presenta el código y las nuevas características aprendidas, de unos  <strong>5 minutos aprox</strong></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Entregable</p>
+<p>Se ha de entregar en el tiempo estimado en Moodle.</p>
+</div>
+<p><img alt="1763228914911" src="../image/Entregable/1763228914911.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../4%20Autenticaci%C3%B3n%20y%20Recursos/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4 Autenticación y Recursos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4 Autenticación y Recursos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Codigo%20Programas/1%20Cabeceras/1-subirFichero/" class="md-footer__link md-footer__link--next" aria-label="Next: 1 subirFichero">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1 subirFichero
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2025/26 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": "navigation.footer - content.code.copy - navigation.path - navigation.prune - navigation.top", "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
