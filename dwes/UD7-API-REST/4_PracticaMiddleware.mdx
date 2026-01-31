@@ -1,0 +1,136 @@
+## Ejemplo Middleware Global
+
+Crear, registrar y usar un **Middleware Global** en  **Laravel 12**
+
+---
+
+## 🔹 **Ejemplo Completo: Creación de un Middleware Global en Laravel 11**
+
+Supongamos que queremos crear un middleware global llamado **CheckMaintenanceMode** que bloquee el acceso al sitio si está en modo mantenimiento.
+
+---
+
+### 1️⃣ **Crear el Middleware**
+
+Ejecuta el siguiente comando en la terminal:
+
+```bash
+php artisan make:middleware CheckMaintenanceMode
+```
+
+Esto generará un archivo en:
+
+```
+app/Http/Middleware/CheckMaintenanceMode.php
+```
+
+---
+
+### 2️⃣ **Implementar la Lógica en el Middleware**
+
+Abre `app/Http/Middleware/CheckMaintenanceMode.php` y agrega la lógica:
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class CheckMaintenanceMode
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        // Verificar si la aplicación está en modo mantenimiento
+        if (env('MAINTENANCE_MODE', false)) {
+            return response()->json(['error' => 'El sitio está en mantenimiento'], 503);
+        }
+
+        // Continuar con la solicitud
+        return $next($request);
+    }
+}
+```
+
+📌  **Explicación** :
+
+* Si la variable `MAINTENANCE_MODE` en el archivo `.env` está en `true`, el middleware devuelve un mensaje de mantenimiento con código HTTP `503`.
+* Si no está activado, permite continuar la solicitud (`$next($request)`).
+
+---
+
+### 3️⃣ **Registrar el Middleware Global**
+
+En Laravel 11, los **middlewares globales** se configuran en `bootstrap/app.php`.
+
+📍  **Modifica `bootstrap/app.php` y agrega el middleware en la sección `middleware()`** :
+
+```php
+$app->middleware([
+    \App\Http\Middleware\CheckMaintenanceMode::class, // ← Registramos el middleware global
+]);
+```
+
+🔹 **Esto hace que el middleware se ejecute en todas las rutas de la aplicación.**
+
+---
+
+### 4️⃣ **Configurar el Modo Mantenimiento en `.env`**
+
+Abre el archivo `.env` y agrega esta línea:
+
+```
+MAINTENANCE_MODE=true
+```
+
+Cuando este valor es `true`, todas las peticiones serán bloqueadas con el mensaje de mantenimiento.
+
+Si quieres desactivar el mantenimiento, cambia `false` y reinicia el servidor.
+
+---
+
+### 5️⃣ **Probar el Middleware**
+
+Ejecuta el servidor con:
+
+```bash
+php artisan serve
+```
+
+Y visita cualquier ruta, por ejemplo:
+
+```
+http://127.0.0.1:8000/
+```
+
+Si `MAINTENANCE_MODE=true`, obtendrás:
+
+```json
+{
+    "error": "El sitio está en mantenimiento"
+}
+```
+
+Si `MAINTENANCE_MODE=false`, el sitio funcionará normalmente.
+
+---
+
+## ✅ **Conclusión**
+
+Ahora tienes un **middleware global** funcionando en Laravel 11 sin usar `Kernel.php`. 🚀
+
+Este enfoque es ideal para aplicar lógica a  **todas las rutas automáticamente** , como:
+
+✔ Autenticación global
+
+✔ Restricciones por IP
+
+✔ Registro de actividad
+
+✔ Protección contra ataques
+
+---
+
+¿Necesitas más detalles o un caso diferente? 🤓

@@ -1,0 +1,69 @@
+## **UD3 Entregable**
+
+Iremos creando las diferentes carpetas y archivos PHP, así como su documentación en formato Markdown (.md) para subir al menos un commit con los cambios y archivos añadidos, comentando el código debidamente.
+
+## 1. Mantenimiento repositorio Git Hub
+
+Hay que subir el enlace de dicho repositorio a Moodle.
+
+Los ejercicios que se han de subir al repositorio Github y enlace al aula Moodle serán:
+
+!!! note "Entregable"
+
+    Se ha de entregar en el tiempo estimado en Moodle
+
+## 2. Prácticas de la UD3
+
+Para realizar las prácticas de la unidad, puedes encontrar los ejercicios propuestos estructurados en carpetas:
+
+* Entrega3/Programas realizados en clase
+* Entrega4/Proyecto
+
+!!! note "No **copies y pegues** sin sentido: personalizalos"
+
+    Debes tener una estructura similar, documentando tus ejercicios, extrayendo conclusiones en los diferentes READMEs y , muy inmportante,**PERSONALIZÁNDOLOS.**
+
+## 3. Proyecto UD3:
+
++ El objetivo es aplicar los conceptos de la POO.
++ Lo haremos una vez finalicemos todos los apartadados de la unidad
+
+**Descripción del proyecto**
+
+Crea un proyecto PHP para realizar en 4 horas de clase con las temáticas propuestas y donde se profundice sobre los aspectos vistos en el tema acerca de la POO como:
+
+* [ ] Clases objetos propiedades y métodos
+* [ ] Visibilidad y encapsuamiento
+* [ ] Herencia, polimorfismo, abstracción, interface
+* [ ] Buenas prácticas
+* [ ] Clases final y traits
+* [ ] Namespace, spl y autoload
+* [ ] Herramientas de programación extra propuestas
+* [ ] Se debe usar el nombre de empresa y temática adjudicado en el siguiente punto
+* [ ] **No se deben aplicar técnicas de programación no vistas** en clase
+* [ ] **Plagio**: Se penalizará el uso de IAs como Copilot/ChatGPT si se detecta, pudiendo invalidar la práctica.
+
+**Video-presentación** presentando el código del proyecto (al final) y las nuevas características aprendidas, de menos de **5 minutos**.
+
+> Lenguaje técnico y no de usuario, comentando los aspectos del lenguaje adquiridos)
+
+![1731219010023](image/Entregable/1731219010023.png)
+
+## 4. Empresa para proyecto
+
+| ID | Alumno              | Nombre de Empresa     | Temática del Proyecto PHP                                                                                  |
+| -- | ------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 1  | José Antonio AA    | **EcoPrint**    | Plataforma para gestionar pedidos de impresión ecológica (impresoras, tintas recicladas, tipos de papel). |
+| 2  | Daniel CV           | **BookNest**    | Librería online con catálogo de libros, búsqueda por autor/género y carrito de compras.                 |
+| 3  | Juan David DP       | **PetCare+**    | Sistema de citas y control de historial veterinario para mascotas.                                          |
+| 4  | Isaac FP            | **GymPro**      | Aplicación web para gestionar socios, rutinas y reservas de clases en un gimnasio.                         |
+| 5  | Antonio GC          | **GreenMarket** | Tienda online de productos sostenibles y de cercanía con panel de administración.                         |
+| 6  | Manuel LP           | **AutoParts24** | Gestión de catálogo y stock de piezas de coche, con pedidos y proveedores.                                |
+| 7  | Juan Jesús LS      | **EventUp**     | Plataforma de eventos culturales con registro de usuarios y compra de entradas.                             |
+| 8  | Alejandro Jesús MD | **FoodPlanner** | Planificador semanal de menús con recetas y lista de la compra automática.                                |
+| 9  | María PM           | **MyTutor**     | Portal de clases particulares online con registro de alumnos y tutores.                                     |
+| 10 | Miguel Ángel QR    | **SmartRent**   | Sistema de gestión de alquileres de pisos con calendario y pagos.                                          |
+| 11 | Salvador SP         | **PhotoStore**  | Galería fotográfica con usuarios, subida de imágenes y compra de fotos digitales.                        |
+| 12 | Miguel TV           | **TechFix**     | Aplicación de gestión de reparaciones informáticas (equipos, clientes, tickets).                         |
+| 13 | Rafael VO           | **FarmApp**     | Sistema para control de stock y pedidos en una farmacia local.                                              |
+| 15 | José Andrés LJ    | **MusicWave**   | Plataforma para subir, escuchar y valorar música independiente.                                            |
