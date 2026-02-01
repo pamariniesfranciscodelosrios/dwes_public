@@ -1,0 +1,280 @@
+# Documentar API con Swagger
+
+![1738617233287](image/swagger/1738617233287.png)
+
+
+---
+
+### **1. ¿Qué es Swagger?**
+
+Swagger es una herramienta que te permite documentar APIs de manera fácil y visual. Con Swagger, puedes generar una interfaz interactiva donde puedes probar tus endpoints directamente desde el navegador.
+
+---
+
+### **2. Instalar Swagger en Laravel**
+
+Para integrar Swagger en Laravel, usaremos el paquete **DarkaOnLine/L5-Swagger**.
+
+#### a. Instalar el paquete:
+
+Ejecuta este comando en tu terminal:
+
+```bash
+composer require darkaonline/l5-swagger
+```
+
+#### b. Publicar la configuración:
+
+Publica el archivo de configuración de Swagger:
+
+```bash
+php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"
+```
+
+Esto creará un archivo de configuración en `config/l5-swagger.php`.
+
+#### c. Acceder a la interfaz de Swagger:
+
+Una vez instalado, puedes acceder a la documentación de tu API en:
+
+```
+http://tudominio.local/api/documentation
+```
+
+---
+
+### **3. Documentar Rutas API con Anotaciones**
+
+Swagger usa anotaciones en los comentarios de tus controladores para generar la documentación automáticamente. Aquí te muestro cómo hacerlo.
+
+#### a. Ejemplo básico:
+
+Supongamos que tienes un controlador `UserController` con un método para obtener todos los usuarios.
+
+```php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+/**
+ * @OA\Info(
+ *     title="API de Usuarios",
+ *     version="1.0.0",
+ *     description="Documentación de la API de Usuarios"
+ * )
+ */
+class UserController extends Controller
+{
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Obtener todos los usuarios",
+     *     tags={"Usuarios"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de usuarios",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/User")
+     *         )
+     *     )
+     * )
+     */
+    public function index()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+}
+```
+
+#### b. Definir un esquema (Schema):
+
+Puedes definir un esquema para reutilizarlo en varias partes de la documentación.
+
+```php
+/**
+ * @OA\Schema(
+ *     schema="User",
+ *     type="object",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="name",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="email",
+ *         type="string"
+ *     )
+ * )
+ */
+class User extends Model
+{
+    // Modelo de usuario
+}
+```
+
+#### c. Documentar un endpoint con parámetros:
+
+Si tu endpoint recibe parámetros, puedes documentarlos así:
+
+```php
+/**
+ * @OA\Get(
+ *     path="/api/users/{id}",
+ *     summary="Obtener un usuario por ID",
+ *     tags={"Usuarios"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         required=true,
+ *         description="ID del usuario",
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Usuario encontrado",
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Usuario no encontrado"
+ *     )
+ * )
+ */
+public function show($id)
+{
+    $user = User::findOrFail($id);
+    return response()->json($user);
+}
+```
+
+#### d. Documentar un endpoint POST:
+
+Para documentar un endpoint que recibe datos en el cuerpo de la solicitud:
+
+```php
+/**
+ * @OA\Post(
+ *     path="/api/users",
+ *     summary="Crear un nuevo usuario",
+ *     tags={"Usuarios"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="Usuario creado",
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     )
+ * )
+ */
+public function store(Request $request)
+{
+    $user = User::create($request->all());
+    return response()->json($user, 201);
+}
+```
+
+---
+
+### **4. Generar la Documentación**
+
+Cada vez que agregues o modifiques anotaciones, debes regenerar la documentación. Ejecuta este comando:
+
+```bash
+php artisan l5-swagger:generate
+```
+
+Esto actualizará la documentación en `http://tudominio.local/api/documentation`.
+
+---
+
+### **5. Probar la API desde Swagger UI**
+
+Una vez que hayas documentado tus rutas, puedes usar la interfaz de Swagger para probar tus endpoints:
+
+1. Abre `http://tudominio.local/api/documentation`.
+2. Selecciona un endpoint.
+3. Haz clic en "Try it out".
+4. Ingresa los datos necesarios y haz clic en "Execute".
+
+---
+
+### **6. Ejemplo Completo**
+
+Aquí tienes un ejemplo completo de un controlador con Swagger:
+
+```php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+/**
+ * @OA\Info(
+ *     title="API de Usuarios",
+ *     version="1.0.0",
+ *     description="Documentación de la API de Usuarios"
+ * )
+ */
+class UserController extends Controller
+{
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Obtener todos los usuarios",
+     *     tags={"Usuarios"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de usuarios",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/User")
+     *         )
+     *     )
+     * )
+     */
+    public function index()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/users",
+     *     summary="Crear un nuevo usuario",
+     *     tags={"Usuarios"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Usuario creado",
+     *         @OA\JsonContent(ref="#/components/schemas/User")
+     *     )
+     * )
+     */
+    public function store(Request $request)
+    {
+        $user = User::create($request->all());
+        return response()->json($user, 201);
+    }
+}
+```
+
+---
+
+### **7. Consejos Finales**
+
+- **Mantén la documentación actualizada:** Cada vez que modifiques un endpoint, actualiza las anotaciones.
+- **Usa esquemas:** Define esquemas para reutilizar estructuras de datos comunes.
+- **Prueba desde Swagger:** Aprovecha la interfaz de Swagger para probar tus endpoints.
+
+¡Y eso es todo! Con estos pasos, tendrás tu API de Laravel documentada y lista para que otros desarrolladores la usen. 🚀
