@@ -1,0 +1,279 @@
+## 4. 3: Middleware con Auth
+
+HEMOS HECHO PARECIDO EN PRACTICA 1
+
+Objetivo:
+
+1. **Obtener un token** (login API)
+2. **Guardarlo en Thunder Client** (variable de entorno)
+3. **Usarlo** para llamar a una ruta protegida con `auth:sanctum` + tu middleware que comprueba `name === "admin"`
+4. **Renombrar** el middleware (porque ya tenías uno con ese nombre)
+
+Esto encaja con tu práctica donde la ruta protegida usa `auth:sanctum` + middleware de “admin por nombre”.
+
+---
+
+## 0) Crear Middleware
+
+Crea un Middleware 
+
+```bash
+php artisan make:middleware EnsureAuthenticatedAdminName
+```
+
+ **`app/Http/Middleware/EnsureAuthenticatedAdminName.php`** :
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class EnsureAuthenticatedAdminName
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        $user = $request->user(); // viene de auth:sanctum
+
+        if (!$user || $user->name !== 'admin') {
+            return response()->json(['message' => 'Forbidden: admin only'], 403);
+        }
+
+        return $next($request);
+    }
+}
+```
+
+Registra el alias en **Laravel 12** en `bootstrap/app.php`:
+
+```php
+use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\EnsureAuthenticatedAdminName;
+
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias([
+        'admin.name2' => EnsureAuthenticatedAdminName::class,
+    ]);
+})
+```
+
+(En Laravel 12 los alias van aquí) 
+
+---
+
+## 1) Instalar y preparar Sanctum (para tokens)
+
+1. Instala Sanctum:
+
+```bash
+composer require laravel/sanctum
+```
+
+2. Publica y migra:
+
+```bash
+php artisan vendor:publish --provider="Laravel\\Sanctum\\SanctumServiceProvider"
+php artisan migrate
+```
+
+3. Asegúrate de que tu `User` tiene el trait `HasApiTokens`:
+
+ **`app/Models/User.php`** :
+
+```php
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+}
+```
+
+Sanctum es el sistema ligero de tokens para APIs y usa el header `Authorization: Bearer <token>`. ([laravel.com](https://laravel.com/docs/12.x/sanctum?utm_source=chatgpt.com "Laravel Sanctum - Laravel 12.x - The PHP Framework For ..."))
+
+---
+
+## 2) Crear un usuario “admin” (si no existe)
+
+Opción rápida con tinker:
+
+```bash
+php artisan tinker
+```
+
+```php
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+User::create([
+  'name' => 'admin',
+  'email' => 'admin@demo.test',
+  'password' => Hash::make('12345678'),
+]);
+```
+
+---
+
+## 3) Crear endpoint de login que devuelva token
+
+Crea controlador:
+
+```bash
+php artisan make:controller Api/AuthController
+```
+
+ **`app/Http/Controllers/Api/AuthController.php`** :
+
+```php
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+class AuthController extends Controller
+{
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email' => ['required','email'],
+            'password' => ['required','string'],
+        ]);
+
+        $user = User::where('email', $data['email'])->first();
+
+        if (!$user || !Hash::check($data['password'], $user->password)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        $token = $user->createToken('thunder')->plainTextToken;
+
+        // IMPORTANTE: devolverlo en una clave simple "token"
+        return response()->json([
+            'token' => $token,
+            'name' => $user->name,
+        ]);
+    }
+}
+```
+
+Ruta en  **`routes/api.php`** :
+
+```php
+use App\Http\Controllers\Api\AuthController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/login', [AuthController::class, 'login']);
+```
+
+---
+
+## 4) Ruta protegida con Sanctum + tu middleware “admin por nombre”
+
+En  **`routes/api.php`** :
+
+```php
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware(['auth:sanctum', 'admin.name2'])
+    ->get('/admin/ping', function (Request $request) {
+        return [
+            'ok' => true,
+            'user' => $request->user()->name,
+        ];
+    });
+```
+
+Esto es exactamente el patrón “token + middleware extra” de tu práctica.
+
+---
+
+# 5) Thunder Clien y guardarlo
+
+## A) Crear Environment (una vez)
+
+1. Abre Thunder Client → **Env**
+2. **New Environment** (por ejemplo: `local`)
+3. Crea variables:
+   * `baseUrl` = `http://127.0.0.1:8000`
+   * `token` = *(vacío de momento)*
+
+Thunder Client soporta environments y adjuntarlos a colecciones. ([docs.thunderclient.com](https://docs.thunderclient.com/features/environments?utm_source=chatgpt.com "Environments – Thunder Client Docs"))
+
+---
+
+## B) Request “Login” (para obtener token)
+
+1. **New Request**
+2. Method: **POST**
+3. URL: `{{baseUrl}}/api/login`
+4. **Body** → selecciona **JSON** y pon:
+
+```json
+{
+  "email": "admin@demo.test",
+  "password": "12345678"
+}
+```
+
+5. **Headers** (si no lo pone solo):
+
+* `Content-Type: application/json`
+* `Accept: application/json`
+
+6. Send → respuesta esperada:
+
+```json
+{
+  "token": "1|....",
+  "name": "admin"
+}
+```
+
+---
+
+## C) Guardar el token automáticamente (sin script)
+
+En la request de login:
+
+1. Ve a la pestaña **Tests**
+2. Usa la opción **Set Env Variable** (desplegable)
+3. Variable: `token`
+4. Fuente / valor: `json.token`
+5. Guarda
+
+La doc de Thunder Client indica que puedes extraer valores de la respuesta con `json.<propiedad>` para guardarlos como variables. ([docs.thunderclient.com](https://docs.thunderclient.com/testing/set-env?utm_source=chatgpt.com "Set Environment Variable"))
+
+> Si no te aparece ese “Set Env Variable”, entonces toca hacerlo manual: copia el token de la respuesta y pégalo en Env → `token`.
+
+---
+
+## D) Usar el token en las rutas protegidas
+
+Crea otra request:
+
+* Method: **GET**
+* URL: `{{baseUrl}}/api/admin/ping`
+
+Y añade el header:
+
+* `Authorization: Bearer {{token}}`
+
+Sanctum valida el token en el header `Authorization` tipo Bearer. ([laravel.com](https://laravel.com/docs/12.x/sanctum?utm_source=chatgpt.com "Laravel Sanctum - Laravel 12.x - The PHP Framework For ..."))
+
+---
+
+## E) Errores típicos y qué significan
+
+* **401** : no estás enviando `Authorization: Bearer ...` o el token es inválido.
+* **403** : token válido, pero el usuario autenticado **no** tiene `name === "admin"` (tu middleware lo bloquea).
+* **200** : todo OK.
+
+---
