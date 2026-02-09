@@ -1,0 +1,368 @@
+Sesiones:
+
+## Sesión 1 — Crear API base
+
+* Estructura proyecto, rutas en `routes/api.php`, controlador tipo `php artisan make:controller --api`.
+* Primeros endpoints CRUD (aunque sea parcial).
+* Respuestas JSON mínimas y códigos HTTP.
+
+## Sesión 2 — Custom Request + Resource + JSON
+
+* Validación con **Form Request** (`php artisan make:request ...`).
+* Transformación consistente con **API Resources** (`php artisan make:resource ...`).
+* Estandarizar formato: `data`, `message`, `errors`, etc.
+
+## Sesión 3 — Middleware
+
+* Middleware propio para reglas simples (ej: cabecera obligatoria, rol, rate-limit básico…).
+* Aplicación por ruta / grupo.
+* Manejo de errores 401/403 y estructura de respuesta.
+
+## Sesión 4 — Autenticación (Auth) y Tokens
+
+* Login/logout API.
+* Emisión y uso de token (Sanctum o JWT según lo que estés usando).
+* Protección de rutas con `auth:*`.
+* Usuario autenticado accesible desde `request()->user()`.
+
+## Sesión 5 — Testing (Feature tests)
+
+* Tests de endpoints (GET/POST/PUT/DELETE).
+* Tests de validación (422) y auth (401/403).
+* Seeders/factories para preparar datos.
+* “Happy path” + casos borde.
+
+---
+
+## Sesión 6 — Filtrado, búsqueda, ordenación y paginación
+
+Objetivo: que el alumnado haga **APIs “de verdad”** para listados.
+
+* Query params típicos:
+  * `?search=`
+  * `?sort=field` / `?sort=-field`
+  * `?page=` y `?per_page=`
+  * filtros: `?status=pending&priority=high`
+* Validar query params (request dedicada o validación manual).
+* Respuesta paginada consistente (incluyendo `meta`/`links`).
+
+Entregable: endpoint `index` “pro” con filtros + test.
+
+## Sesión 7 — Relaciones Eloquent en API (1-N y N-M)
+
+Objetivo: exponer relaciones sin romper el rendimiento.
+
+* Modelos relacionados (ej: `User-Task`, `Post-Comment`, `Movie-Actor`…).
+* `with()` para  **eager loading** .
+* Resources anidados (y `whenLoaded()`).
+* Endpoints de relación:
+  * `GET /users/{id}/tasks`
+  * `POST /movies/{id}/actors` (attach/detach/sync)
+
+Entregable: 2 endpoints de relación + tests.
+
+## Sesión 8 — Autorización: Policies y Gates
+
+Objetivo: control de acceso  **por recurso** , no solo “logueado/no logueado”.
+
+* Policies (`php artisan make:policy ... --model=...`).
+* Reglas tipo: “solo puedes ver/editar tus recursos”.
+* `authorize()` en controladores + respuestas 403.
+* Tests de autorización (usuario dueño vs no dueño).
+
+Entregable: policy completa para 1 entidad + tests.
+
+## Sesión 9 — Gestión de errores y contratos de respuesta
+
+Objetivo: que toda la API responda **igual** y sea fácil de consumir.
+
+* Handler de excepciones (validación, modelo no encontrado, auth, etc.).
+* Formato de error unificado (mismo JSON siempre).
+* Uso correcto de códigos: 200/201/204/400/401/403/404/409/422.
+* (Opcional) versionado: `/api/v1/...`.
+
+Entregable: “guía de contrato JSON” + ejemplos + test de 404/422.
+
+## Sesión 10 — Documentación y despliegue (Swagger/OpenAPI + Postman + hosting)
+
+Objetivo: que el alumnado “cierre” el proyecto.
+
+* Documentar endpoints (OpenAPI/Swagger o colección Postman/Thunder).
+* Ejemplos de request/response reales.
+* Variables `.env`, configuración CORS, rate limiting.
+* Despliegue rápido (Render/Fly/railway, o servidor local compartido), o Docker básico si lo trabajáis.
+
+Entregable: documentación + demo funcionando.
+
+---
+
+
+
+# ✅ DESGLOSE DE SESIONES
+
+## Sesión 1 (55’) — Crear API base (CRUD mínimo)
+
+**Objetivo:** tener una API funcionando con una entidad y rutas REST.
+
+**Secuencia (clase)**
+
+1. Crear proyecto + configurar `.env` y DB.
+2. Crear modelo + migración (`Task` o similar).
+3. Crear controlador API.
+4. Definir rutas en `routes/api.php`.
+5. Probar con Thunder/Postman.
+
+**Checklist alumno**
+
+* [ ] Migración ejecutada
+* [ ] Endpoints: `index`, `show`, `store` (mínimo)
+* [ ] Respuestas JSON válidas
+* [ ] Códigos HTTP coherentes (200/201/404)
+
+**Entregable evaluable**
+
+* Repositorio con API y capturas (o colección) demostrando 3 endpoints funcionando.
+
+---
+
+## Sesión 2 (55’) — Form Request + Resource (JSON consistente)
+
+**Objetivo:** validar entradas y normalizar salidas.
+
+**Secuencia**
+
+1. Crear `StoreTaskRequest` y `UpdateTaskRequest`.
+2. Reglas de validación + mensajes.
+3. Crear `TaskResource`.
+4. Ajustar controlador para usar Requests + Resource.
+5. Verificar estructura final del JSON.
+
+**Checklist**
+
+* [ ] Validación devuelve 422 con `errors`
+* [ ] Resource controla campos expuestos
+* [ ] `store/update` no aceptan datos inválidos
+
+**Entregable**
+
+* Código + prueba (captura o request) de un 422 + ejemplo de respuesta Resource.
+
+---
+
+## Sesión 3 (55’) — Middleware propio (regla simple)
+
+**Objetivo:** introducir control transversal a nivel de API.
+
+**Secuencia**
+
+1. Crear middleware (ej: `RequireApiHeader` o `CheckClientKey`).
+2. Leer cabecera / query param.
+3. Responder 401/403 según toque.
+4. Aplicar middleware a grupo de rutas `api`.
+5. Probar caso OK y caso KO.
+
+**Checklist**
+
+* [ ] Middleware creado y registrado
+* [ ] Bloquea sin condición
+* [ ] Deja pasar con condición
+* [ ] Mensaje JSON de error consistente
+
+**Entregable**
+
+* Middleware + 2 pruebas: petición sin header (bloqueo) y con header (acceso).
+
+---
+
+## Sesión 4 (55’) — Autenticación con tokens (login + rutas protegidas)
+
+**Objetivo:** asegurar endpoints con token y usuario autenticado.
+
+**Secuencia**
+
+1. Preparar `User` + seed o registro.
+2. Endpoint `POST /login` que devuelve token.
+3. Proteger rutas con `auth` (Sanctum/JWT según estéis usando).
+4. Endpoint `GET /me` para comprobar token.
+5. Probar flujo completo en cliente.
+
+**Checklist**
+
+* [ ] `login` devuelve token
+* [ ] Rutas protegidas devuelven 401 sin token
+* [ ] Con token funcionan y devuelven usuario
+
+**Entregable**
+
+* Colección Thunder/Postman con: login → me → endpoint protegido.
+
+---
+
+## Sesión 5 (55’) — Testing (Feature) de endpoints críticos
+
+**Objetivo:** tests que cubran lo mínimo real: OK + validación + auth.
+
+**Secuencia**
+
+1. Configurar entorno de test (SQLite en memoria o DB testing).
+2. Crear factory/seed mínimo.
+3. Tests: `GET index`, `POST store` ok, `POST store` inválido, ruta protegida sin token.
+4. Ejecutar y dejar tests verdes.
+
+**Checklist**
+
+* [ ] Al menos 4 tests feature
+* [ ] Prueba 422 por validación
+* [ ] Prueba 401 por auth
+* [ ] Tests reproducibles
+
+**Entregable**
+
+* Captura de `php artisan test` en verde + carpeta `tests/Feature`.
+
+---
+
+# A partir de aquí: “API real” (listados, relaciones, permisos, errores, doc)
+
+## Sesión 6 (55’) — Listados PRO: filtros + búsqueda + ordenación + paginación
+
+**Objetivo:** endpoint `index` usable en un frontend real.
+
+**Secuencia**
+
+1. `?search=` (campo/s principales).
+2. Filtros (ej: `status`, `priority`, `user_id` si procede).
+3. Ordenación `?sort=field` y `?sort=-field`.
+4. Paginación `?page=&per_page=`.
+5. Test de al menos 2 casos (filtro + paginación).
+
+**Checklist**
+
+* [ ] `index` acepta query params
+* [ ] Paginación devuelve meta/links (o estructura clara)
+* [ ] Validación básica de `sort/per_page`
+
+**Entregable**
+
+* `index` avanzado + 2 tests + ejemplo de petición documentada.
+
+---
+
+## Sesión 7 (55’) — Relaciones Eloquent en API (1-N o N-M)
+
+**Objetivo:** exponer datos relacionados sin “N+1”.
+
+**Secuencia**
+
+1. Añadir segunda entidad (ej: `Category`, `Comment`, `Tag` o `Project`).
+2. Definir relación en modelos.
+3. Endpoint de relación:
+   * 1-N: `GET /projects/{id}/tasks`
+   * N-M: `POST /tasks/{id}/tags` (attach/detach)
+4. Usar `with()` y `whenLoaded()` en Resources.
+5. Test de endpoint de relación.
+
+**Checklist**
+
+* [ ] Relación definida y migraciones correctas
+* [ ] Endpoint devuelve datos relacionados
+* [ ] Resource no “revienta” si no hay relación cargada
+
+**Entregable**
+
+* Relación + endpoint + test + ejemplo JSON.
+
+---
+
+## Sesión 8 (55’) — Autorización fina: Policies (dueño vs no dueño)
+
+**Objetivo:** controlar acceso por recurso: “solo mis datos”.
+
+**Secuencia**
+
+1. Crear Policy para la entidad principal.
+2. Reglas: `view/update/delete` solo si `user_id === auth()->id()`.
+3. Aplicar `authorize()` en `show/update/destroy`.
+4. Test: usuario dueño (200) vs otro usuario (403).
+
+**Checklist**
+
+* [ ] Policy creada y conectada
+* [ ] 403 cuando no corresponde
+* [ ] Tests cubren dueño/no dueño
+
+**Entregable**
+
+* Policy + 2 tests de autorización.
+
+---
+
+## Sesión 9 (55’) — Contrato de errores y consistencia global
+
+**Objetivo:** que la API siempre responda con un formato estándar.
+
+**Secuencia**
+
+1. Definir contrato (ej):
+   * éxito: `{ "data": ..., "message": ... }`
+   * error: `{ "message": ..., "errors": ... }`
+2. Ajustar:
+   * 404 (modelo no encontrado)
+   * 422 (validación)
+   * 401/403 (auth/permiso)
+3. Centralizar en Handler (o estrategia simple y consistente).
+4. Test rápido de 404 + 422.
+
+**Checklist**
+
+* [ ] Estructura JSON consistente
+* [ ] 404 no devuelve HTML
+* [ ] 422 siempre con `errors`
+
+**Entregable**
+
+* Documento corto (1 página) “Contrato JSON” + 2 tests (404/422).
+
+---
+
+## Sesión 10 (55’) — Documentación + entrega final (Swagger/Postman + README)
+
+**Objetivo:** cerrar proyecto como entrega profesional.
+
+**Secuencia**
+
+1. Documentar endpoints (elige 1):
+   * OpenAPI/Swagger, o
+   * Colección Postman/Thunder completa
+2. Añadir ejemplos request/response.
+3. README: instalación, `.env`, migraciones, seed, cómo ejecutar tests.
+4. Demo final: ejecutar y probar 2-3 rutas clave.
+
+**Checklist**
+
+* [ ] Documentación completa y ordenada
+* [ ] README replicable por el profesor
+* [ ] Tests ejecutables
+* [ ] Colección/import listo
+
+**Entregable**
+
+* Repositorio final + documentación + colección + evidencia de tests.
+
+---
+
+## Evaluación rápida sugerida (sin complicarte)
+
+* **Sesiones 1–5 (base): 50%** (funciona, valida, auth, test)
+* **Sesiones 6–8 (calidad): 35%** (listados pro, relaciones, policies)
+* **Sesiones 9–10 (acabado): 15%** (contrato errores + documentación)
+
+---
+
+Si quieres, te doy también:
+
+* una **plantilla de rúbrica** (10 puntos, ítems por sesión),
+* y un **mini-backlog** en formato tabla Moodle (Tarea / Evidencia / Puntos).
+
+
+*
