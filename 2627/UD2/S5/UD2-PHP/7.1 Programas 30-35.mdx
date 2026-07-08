@@ -1,0 +1,405 @@
+## Programas PHP - Formularios 30-35
+
+Profundiza ahora de forma autónoma para **afianzar** los conceptos básicos de **formularios,**
+
+* [ ] **Escoge al menos 5 de ellos** para implementarlos en tu repositorio
+* [ ] Son una serie de ejercicios de dificultad progresiva que comienzan por formularios muy simples
+  * [ ] Por tanto, no selecciones los 5 primeros, haz uno si otro no o algo similar.
+  * [ ] Los dos últimos **11 y 12**, es muy conveniente aprenderlos.
+* [ ] Se omite el uso de **PHP_SELF** para facilitar el código, aunque podría mejorarse su seguridad con su uso.
+
+## Pauta de estudio sugerida (para el alumnado)
+
+1. **Comprensión del código**
+
+   - Identifica las diferencias entre GET y POST.
+   - Comprende cómo se envían y reciben los datos.
+2. **Corrección en la ejecución**
+
+   - Cada programa funciona correctamente sin errores de sintaxis.
+   - Manejo de inputs y outputs básico.
+3. **Validaciones implementadas**
+
+   - Usa validaciones mínimas (campos vacíos, email correcto, etc.).
+4. **Presentación y claridad**
+
+   - Código indentado y organizado.
+   - Uso de etiquetas HTML correctas (formularios legibles).
+5. **Participación y autonomía**
+
+   - El alumno completa las prácticas en tiempo de clase.
+   - Aporta pequeñas mejoras o preguntas reflexivas.
+   - Mantiene su documentación legible, ordenada, con capturas de código.
+
+## Índice de Programas
+
+1. GET básico: introducir un nombre y saludar. (Valores pegajosos/sticky)
+2. POST básico: introducir un nombre y saludar. (Sticky)
+3. Varios campos: nombre y apellidos, mostrar nombre completo.
+4. Operaciones: suma de dos números con comprobación is_numeric.
+5. Login demo: usuario y contraseña (nota educativa sin seguridad).
+6. Radio: elegir turno (mañana/tarde/noche).
+7. Checkboxes: selección múltiple de aficiones.
+8. Select: lista de países con opción seleccionada persistente.
+9. Textarea: comentarios con preservación de saltos de línea.
+10. Mixto: texto + radio + select y resumen final.
+11. Validación simple: campos obligatorios (nombre, email).
+12. Validación de email: uso de filter_var con FILTER_VALIDATE_EMAIL.
+
+
+## 1. Post básico
+
+```php
+<?php
+// Formulario simple con GET (nombre)
+$nombre = $_GET['nombre'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa25 - GET</title></head>
+<body>
+<h1>Programa - GET: Hola nombre</h1>
+<form method="get" action="">
+  <label>Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"></label>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($nombre !== ''): ?>
+  <p>Hola, <strong><?php echo htmlspecialchars($nombre); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 2. Formulario simple con POS
+
+```php
+<?php
+// Programa.php - Formulario simple con POST (nombre)
+$nombre = $_POST['nombre'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa26 - POST</title></head>
+<body>
+<h1>Programa - POST: Hola nombre</h1>
+<form method="post" action="">
+  <label>Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"></label>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($nombre !== ''): ?>
+  <p>Hola, <strong><?php echo htmlspecialchars($nombre); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 3 Varios campos
+
+```php
+<?php
+// Programa.php - Varios campos (nombre y apellidos)
+$nombre = $_POST['nombre'] ?? '';
+$apellidos = $_POST['apellidos'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa27 - Nombre y apellidos</title></head>
+<body>
+<h1>Programa - POST: Nombre y Apellidos</h1>
+<form method="post" action="">
+  <label>Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"></label><br>
+  <label>Apellidos: <input type="text" name="apellidos" value="<?php echo htmlspecialchars($apellidos); ?>"></label><br>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($nombre !== '' || $apellidos !== ''): ?>
+  <p>Nombre completo: <strong><?php echo htmlspecialchars(trim($nombre.' '.$apellidos)); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 4. Suma de dos números
+
+```php
+<?php
+// Programa.php - Suma de dos números
+$num1 = $_POST['num1'] ?? '';
+$num2 = $_POST['num2'] ?? '';
+$resultado = null;
+if ($num1 !== '' && $num2 !== '' && is_numeric($num1) && is_numeric($num2)) {
+    $resultado = (float)$num1 + (float)$num2;
+}
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa28 - Suma</title></head>
+<body>
+<h1>Programa - Suma</h1>
+<form method="post" action="">
+  <label>Número 1: <input type="number" step="any" name="num1" value="<?php echo htmlspecialchars($num1); ?>"></label><br>
+  <label>Número 2: <input type="number" step="any" name="num2" value="<?php echo htmlspecialchars($num2); ?>"></label><br>
+  <button type="submit">Calcular</button>
+</form>
+<?php if ($resultado !== null): ?>
+  <p>Resultado: <strong><?php echo $resultado; ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 5. Usuario y contraseña (demo sin seguridad)
+
+```php
+<?php
+// Programa.php - Usuario y contraseña (demo sin seguridad)
+$usuario = $_POST['usuario'] ?? '';
+$clave = $_POST['clave'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa29 - Login básico</title></head>
+<body>
+<h1>Programa - Formulario de acceso (demo)</h1>
+<form method="post" action="">
+  <label>Usuario: <input type="text" name="usuario" value="<?php echo htmlspecialchars($usuario); ?>"></label><br>
+  <label>Contraseña: <input type="password" name="clave"></label><br>
+  <button type="submit">Entrar</button>
+</form>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+  <p>Has enviado usuario <strong><?php echo htmlspecialchars($usuario); ?></strong>.</p>
+  <small>Nota: Ejemplo educativo. No almacenar ni mostrar contraseñas en claro.</small>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 6. Radio buttons (turno)
+
+```php
+<?php
+// Programa.php - Radio buttons (turno)
+$turno = $_POST['turno'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa30 - Radio</title></head>
+<body>
+<h1>Programa - Elegir turno (radio)</h1>
+<form method="post" action="">
+  <label><input type="radio" name="turno" value="mañana" <?php if($turno==='mañana') echo 'checked'; ?>> Mañana</label><br>
+  <label><input type="radio" name="turno" value="tarde" <?php if($turno==='tarde') echo 'checked'; ?>> Tarde</label><br>
+  <label><input type="radio" name="turno" value="noche" <?php if($turno==='noche') echo 'checked'; ?>> Noche</label><br>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($turno !== ''): ?>
+  <p>Turno seleccionado: <strong><?php echo htmlspecialchars($turno); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 7. Checkboxes (aficiones)
+
+```php
+<?php
+// Programa.php - Checkboxes (aficiones)
+$aficiones = $_POST['aficiones'] ?? [];
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa31 - Checkboxes</title></head>
+<body>
+<h1>Programa - Aficiones (checkbox)</h1>
+<form method="post" action="">
+  <?php
+    $lista = ['música','deporte','lectura','cine','viajes'];
+    foreach ($lista as $op) {
+        $checked = in_array($op, $aficiones) ? 'checked' : '';
+        echo "<label><input type='checkbox' name='aficiones[]' value='".htmlspecialchars($op)."' $checked> ".htmlspecialchars($op)."</label><br>";
+    }
+  ?>
+  <button type="submit">Enviar</button>
+</form>
+<?php if (!empty($aficiones)): ?>
+  <p>Seleccionadas: <strong><?php echo htmlspecialchars(implode(', ', $aficiones)); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 8. Select (país)
+
+```php
+<?php
+// Programa.php - Select (país)
+$pais = $_POST['pais'] ?? '';
+$paises = ['España','Francia','Italia','Alemania','Portugal'];
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa32 - Select</title></head>
+<body>
+<h1>Programa - Selección de país (select)</h1>
+<form method="post" action="">
+  <label>País:
+    <select name="pais">
+      <option value="">-- Selecciona --</option>
+      <?php foreach ($paises as $p): ?>
+        <option value="<?php echo htmlspecialchars($p); ?>" <?php if($pais===$p) echo 'selected'; ?>><?php echo htmlspecialchars($p); ?></option>
+      <?php endforeach; ?>
+    </select>
+  </label>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($pais !== ''): ?>
+  <p>Has elegido: <strong><?php echo htmlspecialchars($pais); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 9. Textarea (comentarios)
+
+```php
+<?php
+// Programa.php - Textarea (comentarios)
+$coment = $_POST['coment'] ?? '';
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa33 - Textarea</title></head>
+<body>
+<h1>Programa - Comentarios (textarea)</h1>
+<form method="post" action="">
+  <label>Comentarios:<br>
+    <textarea name="coment" rows="5" cols="40"><?php echo htmlspecialchars($coment); ?></textarea>
+  </label><br>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($coment !== ''): ?>
+  <p>Has escrito:</p>
+  <blockquote><?php echo nl2br(htmlspecialchars($coment)); ?></blockquote>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 10. Envío mixto (texto + radio + select)
+
+```php
+<?php
+// Programa.php - Envío mixto (texto + radio + select)
+$nombre = $_POST['nombre'] ?? '';
+$turno = $_POST['turno'] ?? '';
+$pais = $_POST['pais'] ?? '';
+$paises = ['España','Francia','Italia'];
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa34 - Mixto</title></head>
+<body>
+<h1>Programa - Formulario mixto</h1>
+<form method="post" action="">
+  <p><label>Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"></label></p>
+  <p>Turno:
+    <label><input type="radio" name="turno" value="mañana" <?php if($turno==='mañana') echo 'checked'; ?>> Mañana</label>
+    <label><input type="radio" name="turno" value="tarde" <?php if($turno==='tarde') echo 'checked'; ?>> Tarde</label>
+  </p>
+  <p><label>País:
+    <select name="pais">
+      <option value="">-- Selecciona --</option>
+      <?php foreach ($paises as $p): ?>
+        <option value="<?php echo htmlspecialchars($p); ?>" <?php if($pais===$p) echo 'selected'; ?>><?php echo htmlspecialchars($p); ?></option>
+      <?php endforeach; ?>
+    </select>
+  </label></p>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+  <h2>Resumen</h2>
+  <ul>
+    <li>Nombre: <strong><?php echo htmlspecialchars($nombre); ?></strong></li>
+    <li>Turno: <strong><?php echo htmlspecialchars($turno ?: '—'); ?></strong></li>
+    <li>País: <strong><?php echo htmlspecialchars($pais ?: '—'); ?></strong></li>
+  </ul>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 11. Validación simple (requeridos)
+
+```php
+<?php
+// Programa.php - Validación simple (requeridos)
+$errores = [];
+$nombre = $_POST['nombre'] ?? '';
+$email  = $_POST['email'] ?? '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($nombre === '') { $errores[] = 'El nombre es obligatorio.'; }
+    if ($email === '')  { $errores[] = 'El email es obligatorio.'; }
+}
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa35 - Validación simple</title></head>
+<body>
+<h1>Programa - Validación: campos obligatorios</h1>
+<?php if (!empty($errores)): ?>
+  <ul style="color:crimson;">
+    <?php foreach ($errores as $e): ?><li><?php echo htmlspecialchars($e); ?></li><?php endforeach; ?>
+  </ul>
+<?php endif; ?>
+<form method="post" action="">
+  <p><label>Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"></label></p>
+  <p><label>Email: <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>"></label></p>
+  <button type="submit">Enviar</button>
+</form>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errores)): ?>
+  <p>OK Datos recibidos.</p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+## 12. Validación de email (formato)
+
+```php
+<?php
+// Programa.php - Validación de email (formato)
+$errores = [];
+$email  = $_POST['email'] ?? '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($email === '') {
+        $errores[] = 'El email es obligatorio.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errores[] = 'El formato de email no es válido.';
+    }
+}
+?>
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Programa36 - Validación email</title></head>
+<body>
+<h1>Programa - Validación de email</h1>
+<?php if (!empty($errores)): ?>
+  <ul style="color:crimson;">
+    <?php foreach ($errores as $e): ?><li><?php echo htmlspecialchars($e); ?></li><?php endforeach; ?>
+  </ul>
+<?php endif; ?>
+<form method="post" action="">
+  <p><label>Email: <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" placeholder="usuario@dominio.com"></label></p>
+  <button type="submit">Validar</button>
+</form>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errores)): ?>
+  <p> Email válido: <strong><?php echo htmlspecialchars($email); ?></strong></p>
+<?php endif; ?>
+</body>
+</html>
+```
+
+---
+
+© Sesión Profundización de Formularios en PHP (Programas 30–35)
