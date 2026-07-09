@@ -1,0 +1,1921 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../2%20Arquit.%203%20capas%20y%20MVC/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>1 Arquitectura Web - DWES 26/27 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');--md-admonition-icon--repo:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud1-sesion-1-arquitecturas-web" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 26/27 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 Arquitectura Web
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DWES 26/27 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulo Desarrollo Web en Entorno Servidor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UD1 ArquitecturasWeb
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            UD1 ArquitecturasWeb
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1 Arquitectura Web
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1 Arquitectura Web
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ud1-sesion-1-arquitecturas-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD1- Sesión 1: Arquitecturas WEB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-w3c" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 W3C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitecturas-web-cliente-y-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Arquitecturas Web: Cliente y Servidor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Arquitecturas Web: Cliente y Servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-modelo-cliente-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Modelo Cliente Servidor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Modelo Cliente Servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ejecucion-en-el-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Ejecución en el Cliente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-ejecucion-en-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) Ejecución en el servidor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-paginas-web-estaticas-dinamicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Páginas Web Estáticas / Dinámicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Páginas Web Estáticas / Dinámicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Página estática
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagina-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Página dinámica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arquitecturas-y-lenguajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Arquitecturas y lenguajes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Arquitecturas y lenguajes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Servidor web
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-servidor-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Servidor de aplicaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-arquitecturas-web-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Arquitecturas web principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Arquitecturas web principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-arquitectura-monolitica" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Arquitectura monolítica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-arquitectura-en-tres-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) Arquitectura en tres capas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-arquitectura-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      C) Arquitectura MVC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-arquitectura-basada-en-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      D) Arquitectura basada en APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-spa-ssr-y-ssg" class="md-nav__link">
+    <span class="md-ellipsis">
+      E) SPA, SSR y SSG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      F) Microservicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-serverless-y-edge-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      G) Serverless y edge computing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-decisiones-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Decisiones de diseño
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tendencias-actuales-en-arquitectura-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Tendencias actuales en arquitectura web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-principios-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Principios SOLID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seguridad-accesibilidad-y-buenas-practicas-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seguridad, accesibilidad y buenas prácticas actuales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Seguridad, accesibilidad y buenas prácticas actuales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-accesibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Accesibilidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-mantenibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Mantenibilidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-actividades-propuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Actividades propuestas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Actividades propuestas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividad-1-cliente-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 1. Cliente o servidor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-2-comparativa-de-arquitecturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 2. Comparativa de arquitecturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-3-analisis-de-una-aplicacion-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 3. Análisis de una aplicación real
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-4-miniinvestigacion-sobre-tecnologias-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 4. Miniinvestigación sobre tecnologías actuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-actividad-entregable" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Actividad Entregable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2%20Arquit.%203%20capas%20y%20MVC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Arquit. 3 capas y MVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3%20Entregable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entrega UD1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../UD2-PHP/1%20B%C3%A1sico%20Sintaxis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    UD2 PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ud1-sesion-1-arquitecturas-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD1- Sesión 1: Arquitecturas WEB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-w3c" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 W3C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitecturas-web-cliente-y-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Arquitecturas Web: Cliente y Servidor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Arquitecturas Web: Cliente y Servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-modelo-cliente-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Modelo Cliente Servidor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Modelo Cliente Servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ejecucion-en-el-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Ejecución en el Cliente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-ejecucion-en-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) Ejecución en el servidor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-paginas-web-estaticas-dinamicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Páginas Web Estáticas / Dinámicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Páginas Web Estáticas / Dinámicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Página estática
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagina-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Página dinámica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arquitecturas-y-lenguajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Arquitecturas y lenguajes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Arquitecturas y lenguajes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Servidor web
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-servidor-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Servidor de aplicaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-arquitecturas-web-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Arquitecturas web principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Arquitecturas web principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-arquitectura-monolitica" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Arquitectura monolítica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-arquitectura-en-tres-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) Arquitectura en tres capas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-arquitectura-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      C) Arquitectura MVC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-arquitectura-basada-en-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      D) Arquitectura basada en APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-spa-ssr-y-ssg" class="md-nav__link">
+    <span class="md-ellipsis">
+      E) SPA, SSR y SSG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      F) Microservicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-serverless-y-edge-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      G) Serverless y edge computing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-decisiones-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Decisiones de diseño
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tendencias-actuales-en-arquitectura-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Tendencias actuales en arquitectura web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-principios-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Principios SOLID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seguridad-accesibilidad-y-buenas-practicas-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seguridad, accesibilidad y buenas prácticas actuales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Seguridad, accesibilidad y buenas prácticas actuales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-accesibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Accesibilidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-mantenibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Mantenibilidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-actividades-propuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Actividades propuestas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Actividades propuestas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actividad-1-cliente-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 1. Cliente o servidor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-2-comparativa-de-arquitecturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 2. Comparativa de arquitecturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-3-analisis-de-una-aplicacion-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 3. Análisis de una aplicación real
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actividad-4-miniinvestigacion-sobre-tecnologias-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividad 4. Miniinvestigación sobre tecnologías actuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-actividad-entregable" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Actividad Entregable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="ud1-sesion-1-arquitecturas-web">UD1- Sesión 1: Arquitecturas WEB</h2>
+<details class="note">
+<summary>RA1 Selecciona las <strong>arquitecturas</strong> y tecnologías de programación Web en entorno servidor, analizando sus capacidades y características propias</summary>
+<p><strong>Duración estimada</strong>: 3 sesiones, <strong>Criterios de Evaluación:</strong></p>
+<blockquote>
+<ul>
+<li>A Se han caracterizado y diferenciado los modelos de ejecución de código en el servidor y en el cliente Web.</li>
+<li>B Se han reconocido las ventajas que proporciona la generación dinámica de páginas Web y sus diferencias con la inclusión de sentencias de guiones en el interior de las páginas Web.</li>
+<li>C Se han identificado los mecanismos de ejecución de código en los servidores Web.</li>
+<li>D Se han reconocido las funcionalidades que aportan los servidores de aplicaciones y su integración con los servidores Web.</li>
+<li>E Se han identificado y caracterizado los principales lenguajes y tecnologías relacionados con la programación Web en entorno servidor.</li>
+<li>F Se han verificado los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación en entorno servidor.</li>
+<li>G Se han reconocido y evaluado las herramientas de programación en entorno servidor.</li>
+</ul>
+</blockquote>
+</details>
+<p><img alt="1723818839592" src="../image/1ArquitecturaWeb/1723818839592.png" /></p>
+<h1 id="1-introduccion">1 Introducción</h1>
+<p>La web actual ha evolucionado desde páginas HTML estáticas hasta aplicaciones complejas, dinámicas, seguras, accesibles y conectadas a múltiples servicios. Hoy una aplicación web puede incluir:</p>
+<ul>
+<li>una <strong>interfaz</strong> en el navegador;</li>
+<li><strong>lógica de negocio</strong> en el servidor;</li>
+<li>acceso a <strong>bases de datos;</strong></li>
+<li><strong>APIs REST</strong> o GraphQL;</li>
+<li><strong>autenticación</strong> de usuarios;</li>
+<li>integración con servicios externos;</li>
+<li>despliegue en hosting tradicional, contenedores, <strong>nube</strong> o plataformas serverless.</li>
+</ul>
+<p>En el desarrollo web en entorno servidor, el objetivo principal es construir aplicaciones capaces de recibir peticiones, procesarlas, consultar o modificar datos y devolver una respuesta adecuada al cliente.</p>
+<p>Así, la web ha evolucionado significativamente desde sus inicios, transformando la manera en que interactuamos en línea. Un breve resumen de su <strong>historia</strong> podría ser:</p>
+<p><img alt="1783609784835" src="../image/1ArquitecturaWeb-old/1783609784835.png" /></p>
+<p><a href="https://www.timetoast.com/timelines/linea-del-tiempo-de-la-evolucion-de-la-web-1-0-2-0-y-3-0">Enlace artículo</a></p>
+<p>Comenzaremos esta unidad repasando algunos conceptos importantes en relación a las aplicaciones Web:</p>
+<p><img alt="" src="../assets/20240803_170414_image.png" /></p>
+<h3 id="11-w3c"><strong>1.1 W3C</strong></h3>
+<p>El World Wide Web Consortium <strong>(W3C)</strong> es una organización internacional que desarrolla estándares para la web. Aquí tienes algunas de sus principales utilidades:</p>
+<ol>
+<li><strong>Establecimiento de estándares</strong> : El W3C crea y mantiene estándares web como HTML, CSS y XML, asegurando que los desarrolladores tengan un conjunto común de reglas para construir sitios y aplicaciones web.</li>
+<li><strong>Interoperabilidad</strong> : Al seguir los estándares del W3C, los desarrolladores pueden crear sitios web que funcionen de manera consistente en diferentes navegadores y dispositivos, mejorando la experiencia del usuario.</li>
+<li><strong>Accesibilidad</strong> : El W3C promueve la accesibilidad web a través de iniciativas como las Pautas de Accesibilidad para el Contenido Web (WCAG), ayudando a que las páginas web sean accesibles para personas con discapacidades.</li>
+<li><strong>Innovación</strong> : Al desarrollar nuevas tecnologías y estándares, el W3C impulsa la innovación en la web, permitiendo la creación de aplicaciones más avanzadas y funcionales.</li>
+<li><strong>Seguridad</strong> : El W3C trabaja en estándares de seguridad para proteger la información y la privacidad de los usuarios en la web.</li>
+</ol>
+<p>En resumen, el W3C juega un papel crucial en el desarrollo y la evolución de la web, asegurando que sea accesible, segura y funcional para todos.</p>
+<h3 id="actividad-1">Actividad 1</h3>
+<div class="admonition success">
+<p class="admonition-title">Actividad 1</p>
+<p>Busca en la web W3C algunos ejemplos de por qué su uso</p>
+</div>
+<p><img alt="" src="../assets/20240803_172616_image.png" /></p>
+<h1 id="2-arquitecturas-web-cliente-y-servidor">2 Arquitecturas Web: Cliente y Servidor</h1>
+<p>Las arquitecturas web son fundamentales para el diseño y desarrollo de sitios y aplicaciones en línea, ya que determinan cómo se estructuran y organizan.</p>
+<p><strong>¿Qué es una Arquitectura Web?</strong></p>
+<p>Una <strong>arquitectura web</strong> se refiere a la estructura general y los componentes que interactúan en un sistema web. Esta incluye el diseño de la infraestructura, la comunicación entre servidores y clientes, y la manera en que se gestionan los datos y la lógica de la aplicación.</p>
+<p>Las arquitecturas web más comunes son:</p>
+<ul>
+<li><strong>Monolítica</strong>: En esta arquitectura, todos los componentes de la aplicación están integrados en un único código base. Es simple de desarrollar pero puede ser difícil de escalar y mantener.</li>
+<li><strong>Cliente-Servidor</strong>: El cliente (generalmente un navegador web) interactúa con el servidor que procesa las solicitudes y devuelve respuestas. Es un modelo clásico en la web.</li>
+<li><strong>Arquitectura de Tres Capas (3-tier)</strong>: Se divide en capa de presentación (front-end), capa lógica (back-end), y capa de datos (base de datos). Esto separa la lógica de negocio y la presentación, facilitando el mantenimiento y la escalabilidad.</li>
+<li><strong>Microservicios</strong>: Cada función de la aplicación se desarrolla como un servicio independiente que puede escalar y desplegarse por separado. Es popular en sistemas modernos por su flexibilidad y escalabilidad.</li>
+</ul>
+<h2 id="21-modelo-cliente-servidor">2.1 Modelo Cliente Servidor</h2>
+<p>Una de las arquitecturas de software más utilizadas en informática es la llamada <strong>arquitectura cliente / servidor</strong> . En este tipo de arquitectura hay una aplicación que hace peticiones (el <strong>cliente</strong> ) y otra aplicación que está a la espera de recibir esas peticiones y, cuando las recibe, procesarlas y responder (el <strong>servidor</strong> ).</p>
+<p>Ejemplos de esta arquitectura son los servidores <strong>NTP</strong> (Network Time Protocol), a los cuales se le pide la hora actual para sincronizarse, los servidores <strong>FTP</strong> (File Transfer Protocol), a los que se les puede enviar y pedir archivos, o precisamente los servidores <strong>HTTP</strong> , que son los encargados de servir las páginas web.</p>
+<h3 id="a-ejecucion-en-el-cliente">A) Ejecución en el Cliente</h3>
+<p>El código del lado cliente se ejecuta en el navegador del usuario. Normalmente incluye:</p>
+<ul>
+<li><strong>HTML</strong>, para estructurar el contenido.</li>
+<li><strong>CSS</strong>, para definir la presentación visual.</li>
+<li><strong>JavaScript</strong>, para añadir interactividad.</li>
+<li>Frameworks o librerías como React, Vue, Angular o Svelte.</li>
+</ul>
+<p>Ejemplos de tareas del cliente:</p>
+<ul>
+<li>validar parcialmente un formulario;</li>
+<li>mostrar u ocultar elementos;</li>
+<li>consumir una API mediante <code>fetch</code>;</li>
+<li>actualizar una parte de la página sin recargarla;</li>
+<li>gestionar eventos del usuario.</li>
+</ul>
+<h3 id="b-ejecucion-en-el-servidor">B) Ejecución en el servidor</h3>
+<p>El código del lado servidor se ejecuta en una máquina remota, normalmente en un servidor web, servidor de aplicaciones o plataforma cloud.</p>
+<p>Se encarga de <strong>tareas</strong> como:</p>
+<ul>
+<li>procesar <strong>formularios</strong>;</li>
+<li><strong>validar</strong> datos de forma segura;</li>
+<li>consultar bases de datos;</li>
+<li>gestionar <strong>sesiones</strong>;</li>
+<li><strong>autenticar</strong> usuarios;</li>
+<li>generar HTML dinámico;</li>
+<li>devolver respuestas <strong>JSON</strong>;</li>
+<li>aplicar reglas de negocio.</li>
+</ul>
+<p>Según MDN, el código del lado servidor se ocupa de validar datos, usar bases de datos para almacenar y recuperar información y enviar al cliente los datos correctos según cada petición. ([MDN Web Docs][2])</p>
+<p><img alt="" src="../assets/20240803_172818_image.png" /></p>
+<p>Explicación modelo cliente servidor</p>
+<iframe width="1236" height="695" src="https://www.youtube.com/embed/KA7Ngcgth0Q" title="Modelo Cliente - Servidor ¿Qué es? Explicación Sencilla ✅" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="22-paginas-web-estaticas-dinamicas">2.2 Páginas Web Estáticas / Dinámicas</h2>
+<p>Una página web puede ser <strong>estática</strong> o <strong>dinámica</strong>.</p>
+<h3 id="pagina-estatica">Página estática</h3>
+<p>Una página estática se entrega al navegador tal como está almacenada en el servidor. Suele estar formada por archivos HTML, CSS, JavaScript, imágenes y otros recursos.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code>cliente → solicita index.html → servidor → devuelve index.html
+</code></pre></div>
+<p>Es adecuada para:</p>
+<ul>
+<li>webs informativas;</li>
+<li><strong>documentación</strong>;</li>
+<li>portfolios;</li>
+<li>landing pages;</li>
+<li>páginas con contenido que <strong>cambia poco.</strong></li>
+</ul>
+<h3 id="pagina-dinamica">Página dinámica</h3>
+<p>Una página dinámica se genera total o parcialmente en el servidor en el momento de la petición. El contenido puede cambiar según:</p>
+<ul>
+<li>el usuario autenticado;</li>
+<li>los datos de una base de datos;</li>
+<li>los permisos;</li>
+<li>el idioma;</li>
+<li>la hora;</li>
+<li>los filtros de búsqueda;</li>
+<li>las acciones anteriores del usuario.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code>cliente → solicita /perfil → servidor → consulta usuario → genera respuesta HTML o JSON
+</code></pre></div>
+<p>Las páginas que viste en el ejemplo anterior se llaman <strong>páginas web estáticas</strong> . Estas páginas se encuentran almacenadas en su <strong>forma definitiva</strong> , tal y como se crearon, y su contenido no varía. Son útiles para mostrar una información concreta, y mostrarán esa misma información cada vez que se carguen. La única forma en que pueden cambiar es si un programador la modifica y actualiza su contenido.</p>
+<p>En contraposición a las páginas web estáticas, como ya te imaginarás, existen las <strong>páginas web dinámicas</strong> .
+Estas páginas, como su nombre indica, se caracterizan porque su contenido cambia en función de diversas variables, como puede ser el navegador que estás usando, el usuario con el que te has identificado, o las acciones que has efectuado con anterioridad.</p>
+<p><img alt="" src="../assets/20240803_173314_image.png" /></p>
+<h1 id="3-arquitecturas-y-lenguajes">3 Arquitecturas y lenguajes</h1>
+<p>Una de las primeras decisiones que tendrás que tomar al programar una aplicación web es la <strong>arquitectura </strong>que vas a utilizar y la que se adecúa más a tu proyecto por distintas razones.</p>
+<ol>
+<li>Servidores web y servidores de aplicaciones</li>
+</ol>
+<h3 id="31-servidor-web">3.1 Servidor web</h3>
+<p>Un servidor web recibe peticiones HTTP/HTTPS y devuelve recursos al cliente.</p>
+<p>Ejemplos:</p>
+<ul>
+<li>Apache HTTP Server.</li>
+<li>Nginx.</li>
+<li>Caddy.</li>
+<li>Servidores integrados de desarrollo, como el servidor embebido de PHP o Vite en frontend.</li>
+</ul>
+<p>Funciones habituales:</p>
+<ul>
+<li>servir archivos estáticos;</li>
+<li>redirigir peticiones;</li>
+<li>gestionar certificados HTTPS;</li>
+<li>aplicar reglas de seguridad;</li>
+<li>actuar como proxy inverso;</li>
+<li>enviar peticiones a una aplicación backend.</li>
+</ul>
+<h3 id="32-servidor-de-aplicaciones">3.2 Servidor de aplicaciones</h3>
+<p>Un servidor de aplicaciones ejecuta la lógica de negocio. En PHP, esta lógica puede estar en scripts PHP, aplicaciones Laravel, Symfony u otros frameworks.</p>
+<p>Ejemplos de tecnologías de servidor:</p>
+<ul>
+<li>PHP con Apache/Nginx.</li>
+<li>Node.js con Express, NestJS o Fastify.</li>
+<li>Java con Spring Boot.</li>
+<li>Python con Django, Flask o FastAPI.</li>
+<li>C# con ASP.NET Core.</li>
+<li>Ruby on Rails.</li>
+<li>Go con Gin, Fiber u otros frameworks.</li>
+</ul>
+<p>En entornos actuales es habitual separar el servidor web del servidor de aplicaciones. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>Navegador → Nginx → PHP-FPM → Laravel → Base de datos
+</code></pre></div>
+<hr />
+<h2 id="33-arquitecturas-web-principales">3.3 Arquitecturas web principales</h2>
+<h3 id="a-arquitectura-monolitica">A) Arquitectura monolítica</h3>
+<p>Toda la aplicación se desarrolla y despliega como una única unidad.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code>Aplicación Laravel + vistas Blade + controladores + modelos + base de datos
+</code></pre></div>
+<p>Ventajas:</p>
+<ul>
+<li>más sencilla para empezar;</li>
+<li>fácil de desplegar en proyectos pequeños o medianos;</li>
+<li>buena opción para aprender;</li>
+<li>menor complejidad inicial.</li>
+</ul>
+<p>Inconvenientes:</p>
+<ul>
+<li>puede crecer demasiado;</li>
+<li>cuesta más escalar partes concretas;</li>
+<li>requiere organización interna clara.</li>
+</ul>
+<p>Uso recomendado en clase:</p>
+<ul>
+<li>proyectos CRUD;</li>
+<li>paneles de administración;</li>
+<li>aplicaciones educativas;</li>
+<li>primeros proyectos con PHP y Laravel.</li>
+</ul>
+<hr />
+<h3 id="b-arquitectura-en-tres-capas">B) Arquitectura en tres capas</h3>
+<p>Divide la aplicación en tres partes:</p>
+<div class="highlight"><pre><span></span><code>Presentación → Lógica de negocio → Datos
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Función</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Presentación</td>
+<td>Muestra la información al usuario</td>
+<td>HTML, CSS, JS, Blade</td>
+</tr>
+<tr>
+<td>Lógica</td>
+<td>Procesa reglas de negocio</td>
+<td>Controladores, servicios</td>
+</tr>
+<tr>
+<td>Datos</td>
+<td>Guarda y recupera información</td>
+<td>MySQL, PostgreSQL, SQLite</td>
+</tr>
+</tbody>
+</table>
+<p>Esta arquitectura ayuda a separar responsabilidades y facilita el mantenimiento.</p>
+<hr />
+<h3 id="c-arquitectura-mvc">C) Arquitectura MVC</h3>
+<p>MVC significa <strong>Modelo-Vista-Controlador</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Responsabilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo</td>
+<td>Representa los datos y la lógica asociada</td>
+</tr>
+<tr>
+<td>Vista</td>
+<td>Muestra la información al usuario</td>
+</tr>
+<tr>
+<td>Controlador</td>
+<td>Recibe la petición, coordina el modelo y devuelve una respuesta</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo en Laravel:</p>
+<div class="highlight"><pre><span></span><code>Ruta → Controlador → Modelo → Vista/JSON
+</code></pre></div>
+<p>MVC es especialmente importante porque aparecerá en unidades posteriores al trabajar con Laravel.</p>
+<hr />
+<h3 id="d-arquitectura-basada-en-apis">D) Arquitectura basada en APIs</h3>
+<p>En una arquitectura basada en APIs, el backend no devuelve necesariamente páginas completas, sino datos estructurados, normalmente JSON.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code>Frontend → GET /api/productos → Backend → JSON
+</code></pre></div>
+<p>Respuesta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Teclado mecánico&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">49.99</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>Ventajas:</p>
+<ul>
+<li>permite separar frontend y backend;</li>
+<li>facilita aplicaciones móviles;</li>
+<li>permite reutilizar servicios;</li>
+<li>mejora la escalabilidad del sistema.</li>
+</ul>
+<p>Tecnologías relacionadas:</p>
+<ul>
+<li>REST.</li>
+<li>GraphQL.</li>
+<li>JSON.</li>
+<li>JWT.</li>
+<li>OAuth2.</li>
+<li>OpenAPI/Swagger.</li>
+</ul>
+<hr />
+<h3 id="e-spa-ssr-y-ssg">E) SPA, SSR y SSG</h3>
+<p>En la web moderna es importante conocer distintos enfoques de renderizado.</p>
+<table>
+<thead>
+<tr>
+<th>Enfoque</th>
+<th>Significado</th>
+<th>Característica principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPA</td>
+<td>Single Page Application</td>
+<td>La interfaz se construye principalmente en el navegador</td>
+</tr>
+<tr>
+<td>SSR</td>
+<td>Server-Side Rendering</td>
+<td>El servidor genera HTML en cada petición</td>
+</tr>
+<tr>
+<td>SSG</td>
+<td>Static Site Generation</td>
+<td>Las páginas se generan previamente como archivos estáticos</td>
+</tr>
+<tr>
+<td>ISR/Renderizado híbrido</td>
+<td>Generación parcial o bajo demanda</td>
+<td>Combina rendimiento y actualización de contenido</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplos actuales:</p>
+<ul>
+<li>SPA: React, Vue, Angular.</li>
+<li>SSR/SSG: Next.js, Nuxt, Astro.</li>
+<li>Backend tradicional: PHP/Laravel, Django, Spring Boot.</li>
+<li>Backend API: Laravel API, Express, FastAPI, ASP.NET Core.</li>
+</ul>
+<hr />
+<h3 id="f-microservicios">F) Microservicios</h3>
+<p>Una arquitectura de microservicios divide la aplicación en servicios pequeños e independientes.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code>Servicio de usuarios
+Servicio de productos
+Servicio de pagos
+Servicio de notificaciones
+</code></pre></div>
+<p>Ventajas:</p>
+<ul>
+<li>cada servicio puede escalar por separado;</li>
+<li>permite equipos independientes;</li>
+<li>facilita despliegues parciales;</li>
+<li>se adapta bien a grandes sistemas.</li>
+</ul>
+<p>Inconvenientes:</p>
+<ul>
+<li>aumenta la complejidad;</li>
+<li>requiere comunicación entre servicios;</li>
+<li>necesita monitorización;</li>
+<li>puede ser excesiva para proyectos pequeños.</li>
+</ul>
+<hr />
+<h3 id="g-serverless-y-edge-computing">G) Serverless y edge computing</h3>
+<p>En serverless, el desarrollador despliega funciones o servicios sin gestionar directamente los servidores. Los servidores siguen existiendo, pero la infraestructura queda abstraída por el proveedor. Cloudflare define serverless como un modelo de servicios backend basado en uso, donde se puede desplegar código sin gestionar la infraestructura subyacente. ([Cloudflare][4])</p>
+<p>Ejemplos:</p>
+<ul>
+<li>AWS Lambda.</li>
+<li>Azure Functions.</li>
+<li>Google Cloud Functions.</li>
+<li>Cloudflare Workers.</li>
+<li>Vercel Functions.</li>
+<li>Netlify Functions.</li>
+</ul>
+<p>Usos habituales:</p>
+<ul>
+<li>APIs pequeñas;</li>
+<li>procesamiento de formularios;</li>
+<li>webhooks;</li>
+<li>tareas programadas;</li>
+<li>validación de tokens;</li>
+<li>procesamiento de imágenes;</li>
+<li>funciones cercanas al usuario en la red edge.</li>
+</ul>
+<p>Tendencia actual: combinar aplicaciones tradicionales con servicios cloud, APIs externas, funciones serverless y despliegue automatizado.</p>
+<h2 id="34-decisiones-de-diseno">3.4 Decisiones de diseño</h2>
+<p>Para tomar la decisión del punto anterior, es muy importante tener en cuenta diferentes aspectos en cuanto a decisiones de diseño, como pueden ser:</p>
+<p><img alt="" src="../assets/20240803_173506_image.png" /></p>
+<p>Al seleccionar una arquitectura web hay que <strong>analizar</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Pregunta clave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tamaño del proyecto</td>
+<td>¿Es una práctica, una app pequeña o un sistema grande?</td>
+</tr>
+<tr>
+<td>Equipo</td>
+<td>¿Trabaja una persona o varios equipos?</td>
+</tr>
+<tr>
+<td>Escalabilidad</td>
+<td>¿Necesitará crecer mucho?</td>
+</tr>
+<tr>
+<td>Mantenimiento</td>
+<td>¿Será fácil modificarlo?</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>¿Gestiona usuarios, pagos o datos sensibles?</td>
+</tr>
+<tr>
+<td>Coste</td>
+<td>¿Qué hosting o infraestructura necesita?</td>
+</tr>
+<tr>
+<td>Rendimiento</td>
+<td>¿Cuántas peticiones debe soportar?</td>
+</tr>
+<tr>
+<td>Experiencia del equipo</td>
+<td>¿Qué tecnologías conoce el equipo?</td>
+</tr>
+<tr>
+<td>Tiempo disponible</td>
+<td>¿Hay que desarrollar rápido?</td>
+</tr>
+<tr>
+<td>Integración</td>
+<td>¿Debe conectarse con APIs externas?</td>
+</tr>
+</tbody>
+</table>
+<p>Para proyectos de aprendizaje en DWES, una arquitectura monolítica organizada con MVC suele ser la opción más adecuada al inicio. Posteriormente puede evolucionar hacia APIs, servicios separados o despliegues cloud.</p>
+<h2 id="35-tendencias-actuales-en-arquitectura-web">3.5 Tendencias actuales en arquitectura web</h2>
+<p>Las tendencias más relevantes que conviene introducir en esta unidad son:</p>
+<ol>
+<li><strong>Backend como API</strong>
+   El servidor devuelve JSON y distintos clientes consumen los datos: web, móvil, escritorio o servicios externos.</li>
+<li><strong>Frameworks full-stack</strong>
+   Herramientas como Laravel, Next.js, Nuxt o Django permiten construir aplicaciones completas integrando rutas, vistas, datos y despliegue.</li>
+<li><strong>Renderizado híbrido</strong>
+   Se combinan páginas estáticas, renderizado en servidor y componentes interactivos en cliente.</li>
+<li><strong>Serverless y edge computing</strong>
+   Parte del backend puede ejecutarse como funciones bajo demanda o cerca del usuario para reducir latencia.</li>
+<li><strong>Contenedores y DevOps</strong>
+   Docker, CI/CD y despliegues automatizados son cada vez más habituales incluso en proyectos pequeños.</li>
+<li><strong>Seguridad desde el diseño</strong>
+   Autenticación, autorización, validación, HTTPS y protección ante vulnerabilidades deben formar parte de la arquitectura desde el inicio.</li>
+<li><strong>Accesibilidad y sostenibilidad web</strong>
+   Una web moderna debe ser accesible, eficiente, rápida y usable en distintos dispositivos.</li>
+<li><strong>Uso responsable de IA en desarrollo</strong>
+   La IA puede ayudar a explicar código, generar ejemplos o revisar errores, pero el alumnado debe comprender, adaptar y justificar sus propias soluciones.</li>
+</ol>
+<h1 id="4-principios-solid">4 Principios SOLID</h1>
+<p>Los principios SOLID ayudan a diseñar software mantenible.</p>
+<table>
+<thead>
+<tr>
+<th>Principio</th>
+<th>Idea básica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S - Responsabilidad única</td>
+<td>Una clase debe tener una razón principal para cambiar</td>
+</tr>
+<tr>
+<td>O - Abierto/cerrado</td>
+<td>El código debe poder ampliarse sin modificarlo constantemente</td>
+</tr>
+<tr>
+<td>L - Sustitución de Liskov</td>
+<td>Una clase hija debe poder usarse como su clase padre</td>
+</tr>
+<tr>
+<td>I - Segregación de interfaces</td>
+<td>Mejor interfaces pequeñas que una interfaz enorme</td>
+</tr>
+<tr>
+<td>D - Inversión de dependencias</td>
+<td>Depender de abstracciones, no de detalles concretos</td>
+</tr>
+</tbody>
+</table>
+<p>En esta unidad no es necesario dominarlos, pero sí reconocer que una buena arquitectura facilita aplicar estos principios más adelante.</p>
+<p><img alt="1754412171159" src="../image/1ArquitecturaWeb/1754412171159.png" /></p>
+<p><img alt="1754412201871" src="../image/1ArquitecturaWeb/1754412201871.png" /></p>
+<h1 id="5-seguridad-accesibilidad-y-buenas-practicas-actuales">5. Seguridad, accesibilidad y buenas prácticas actuales</h1>
+<p>Una arquitectura web actual no debe centrarse solo en que “funcione”. También debe tener en cuenta:</p>
+<h3 id="51-seguridad">5.1 Seguridad</h3>
+<p>Aspectos básicos:</p>
+<ul>
+<li>validación en servidor;</li>
+<li>protección frente a SQL Injection;</li>
+<li>protección XSS;</li>
+<li>gestión segura de sesiones;</li>
+<li>contraseñas cifradas con algoritmos seguros;</li>
+<li>uso de HTTPS;</li>
+<li>control de permisos;</li>
+<li>variables de entorno para credenciales;</li>
+<li>actualización de dependencias.</li>
+</ul>
+<h3 id="52-accesibilidad">5.2 Accesibilidad</h3>
+<p>Las aplicaciones web deben diseñarse para que puedan ser usadas por el mayor número posible de personas. El W3C recomienda usar la versión más reciente de las WCAG; WCAG 2.2 añade nuevos criterios de éxito sobre versiones anteriores y mantiene compatibilidad hacia atrás. ([W3C][7])</p>
+<p>Ejemplos de buenas prácticas:</p>
+<ul>
+<li>etiquetas HTML semánticas;</li>
+<li>textos alternativos en imágenes;</li>
+<li>buen contraste;</li>
+<li>navegación mediante teclado;</li>
+<li>formularios correctamente etiquetados;</li>
+<li>mensajes de error comprensibles.</li>
+</ul>
+<h3 id="53-mantenibilidad">5.3 Mantenibilidad</h3>
+<p>Buenas prácticas:</p>
+<ul>
+<li>separar responsabilidades;</li>
+<li>evitar duplicación de código;</li>
+<li>nombrar correctamente archivos, clases y métodos;</li>
+<li>usar control de versiones;</li>
+<li>documentar decisiones técnicas;</li>
+<li>aplicar principios SOLID de forma progresiva;</li>
+<li>escribir código legible antes que código “ingenioso”.</li>
+</ul>
+<hr />
+<h1 id="6-actividades-propuestas">6. Actividades propuestas</h1>
+<h3 id="actividad-1-cliente-o-servidor">Actividad 1. Cliente o servidor</h3>
+<p>Clasifica las siguientes acciones según ocurran principalmente en el cliente, en el servidor o en ambos:</p>
+<ul>
+<li>Mostrar un menú desplegable.</li>
+<li>Consultar los productos de una base de datos.</li>
+<li>Validar si un correo tiene formato correcto.</li>
+<li>Comprobar si una contraseña coincide con la almacenada.</li>
+<li>Cambiar el color de un botón al pasar el ratón.</li>
+<li>Generar una factura en PDF.</li>
+<li>Devolver una lista de usuarios en JSON.</li>
+<li>Mostrar un mensaje de error en un formulario.</li>
+</ul>
+<hr />
+<h3 id="actividad-2-comparativa-de-arquitecturas">Actividad 2. Comparativa de arquitecturas</h3>
+<p>Realiza una tabla comparativa entre:</p>
+<ul>
+<li>arquitectura monolítica;</li>
+<li>arquitectura en tres capas;</li>
+<li>arquitectura MVC;</li>
+<li>arquitectura basada en APIs;</li>
+<li>microservicios;</li>
+<li>serverless.</li>
+</ul>
+<p>Para cada una indica:</p>
+<ul>
+<li>definición;</li>
+<li>ventajas;</li>
+<li>inconvenientes;</li>
+<li>ejemplo de uso;</li>
+<li>tecnología asociada.</li>
+</ul>
+<hr />
+<h3 id="actividad-3-analisis-de-una-aplicacion-real">Actividad 3. Análisis de una aplicación real</h3>
+<p>Elige una aplicación web conocida, por ejemplo Moodle, Amazon, YouTube, GitHub, Google Classroom, Instagram o una tienda online.</p>
+<p>Investiga y responde:</p>
+<ol>
+<li>¿Qué partes se ejecutan en el cliente?</li>
+<li>¿Qué partes crees que se ejecutan en el servidor?</li>
+<li>¿Qué datos se almacenan?</li>
+<li>¿Usa contenido dinámico?</li>
+<li>¿Qué riesgos de seguridad debería controlar?</li>
+<li>¿Qué tecnologías crees que podrían intervenir?</li>
+<li>¿Qué tipo de arquitectura podría tener?</li>
+</ol>
+<hr />
+<h3 id="actividad-4-miniinvestigacion-sobre-tecnologias-actuales">Actividad 4. Miniinvestigación sobre tecnologías actuales</h3>
+<p>Investiga una de estas tecnologías:</p>
+<ul>
+<li>Laravel.</li>
+<li>Node.js.</li>
+<li>Django.</li>
+<li>FastAPI.</li>
+<li>Spring Boot.</li>
+<li>ASP.NET Core.</li>
+<li>Docker.</li>
+<li>Serverless.</li>
+<li>API REST.</li>
+<li>GraphQL.</li>
+<li>Next.js.</li>
+<li>Astro.</li>
+</ul>
+<p>Elabora una ficha con:</p>
+<ul>
+<li>qué es;</li>
+<li>para qué se usa;</li>
+<li>lenguaje principal;</li>
+<li>ventajas;</li>
+<li>inconvenientes;</li>
+<li>ejemplo de proyecto donde usarla;</li>
+<li>relación con el desarrollo web en servidor.</li>
+</ul>
+<h1 id="7-actividad-entregable">7 Actividad Entregable</h1>
+<div class="admonition success">
+<p class="admonition-title">Entregable</p>
+<p>Comienza una<strong>Presentación/In</strong><strong>fografía</strong> en Canva, Genially etc de realización propia recabando información y conclusiones de este tema. Integra las actividades/curiosidades que has realizado durante su desarrollo.</p>
+<p>Tienes más info en la sección "<a href="Entregable.md">Actividad entregable</a>"</p>
+</div>
+<h1 id="referencias">Referencias</h1>
+<table>
+<thead>
+<tr>
+<th><a href="https://www.php.net/manual/en/">PHP Documentation</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://escuelainformatica.es/blog/historia-de-la-programacion-web">https://escuelainformatica.es/blog/historia-de-la-programacion-web</a></td>
+</tr>
+<tr>
+<td><a href="https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/">https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/</a></td>
+</tr>
+<tr>
+<td>"The Architecture of Open Source Applications" -<a href="http://aosabook.org/en/index.html">aosabook.org</a></td>
+</tr>
+<tr>
+<td>"JavaScript Info" -<a href="https://javascript.info/">javascript.info</a></td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model">Client-server model - Wikipedia</a> </td>
+</tr>
+<tr>
+<td><a href="https://aitor-medrano.github.io/dwes2122/01arquitecturas.html">Aitor Medrano</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Módulo Desarrollo Web en Entorno Servidor">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Módulo Desarrollo Web en Entorno Servidor
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2%20Arquit.%203%20capas%20y%20MVC/" class="md-footer__link md-footer__link--next" aria-label="Next: 2 Arquit. 3 capas y MVC">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2 Arquit. 3 capas y MVC
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2025/26 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": "navigation.footer - content.code.copy - navigation.path - navigation.prune - navigation.top", "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

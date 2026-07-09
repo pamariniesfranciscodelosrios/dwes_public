@@ -1,0 +1,77 @@
+## UD1- Sesión 3: Guía para Crear tu Primer Programa en PHP
+
+PHP es un lenguaje de programación ampliamente utilizado en el desarrollo web. A continuación, te guiaré a través de los pasos para crear tu primer programa en PHP.
+
+## Paso 1: Preparar el Entorno de Desarrollo
+
+1. **Instala un Servidor Local:**Para ejecutar PHP en tu computadora, necesitas un servidor local. Puedes instalar XAMPP, WAMP, MAMP o cualquier otro software que incluya Apache y PHP.
+2. **Configura el Servidor Local:**Una vez instalado, inicia el servidor Apache desde el panel de control de XAMPP (o el software que estés utilizando).
+3. **Crea una Carpeta de Proyecto:**
+   En el directorio raíz del servidor (en XAMPP suele ser `C:\xampp\htdocs\`), crea una nueva carpeta para tu proyecto. Usaremos: `C:\xampp\htdocs\DWES\UD1\`.
+
+## Paso 2: Crear el Archivo PHP
+
+1. **Abre tu Editor de Código:**Utiliza un editor de texto o un IDE como Visual Studio Code, Sublime Text, o Notepad++.
+2. **Crea un Archivo PHP:**Dentro de la carpeta de tu proyecto (`mi_primer_programa`), crea un nuevo archivo llamado `index.php`.
+3. **Escribe tu Primer Código PHP:**
+
+   ```php
+   <?php
+   // Muestra un mensaje simple
+   echo "¡Hola, Mundo!";
+   ?>
+   ```
+4. **Guardar el Archivo:**
+   Asegúrate de guardar el archivo con el nombre **index.php**.
+
+## Paso 3: Ejecutar el Programa PHP
+
+1. **Abrir el Navegador:**
+   Inicia tu navegador web preferido.
+2. **Acceder al Archivo PHP:**
+   En la barra de direcciones, escribe `http://localhost/DWES/index.php` y presiona Enter. Deberías ver el mensaje "¡Hola, Mundo!" en la pantalla.
+
+## Paso 4: Ampliar el Programa - Pedir un Dato y Mostrarlo
+
+Ahora, vamos a modificar el programa para pedir un dato al usuario y mostrarlo en pantalla.
+
+1. **Crea el segundo archivo llamado `index2.php`:**
+
+```php
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer Programa en PHP</title>
+</head>
+<body>
+    <form method="POST" action="">
+        <label for="nombre">Introduce tu nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <?php
+    // Verifica si se ha enviado un nombre
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = htmlspecialchars($_POST['nombre']);
+        echo "<h2>¡Hola, " . $nombre . "!</h2>";
+    }
+    ?>
+</body>
+</html>
+```
+
+## Paso 5: Entender el Código
+
+* **HTML y PHP Combinados:**
+  El archivo `index.php` combina HTML y PHP para crear una página web interactiva.
+* **Formulario HTML:**
+  El formulario permite al usuario introducir su nombre y enviarlo al servidor.
+* **PHP para Procesar Datos:**
+  PHP captura el dato introducido por el usuario, lo procesa y lo muestra en la misma página.
+
+## Resumen
+
+¡Felicidades! Has creado y ejecutado tu primer programa en PHP. Este es un pequeño paso en el aprendizaje de PHP, pero te permite empezar a entender cómo interactúan los formularios HTML con el código PHP para crear aplicaciones web dinámicas.
