@@ -1,0 +1,3090 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../CambiosVersion2/">
+      
+      
+        <link rel="next" href="../REVISION-gpt/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Programacion - DWES 26/27 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.5%201.75v11.5c0%20.138.112.25.25.25h3.17a.75.75%200%200%201%200%201.5H2.75A1.75%201.75%200%200%201%201%2013.25V1.75C1%20.784%201.784%200%202.75%200h8.5C12.216%200%2013%20.784%2013%201.75v7.736a.75.75%200%200%201-1.5%200V1.75a.25.25%200%200%200-.25-.25h-8.5a.25.25%200%200%200-.25.25m13.274%209.537zl-4.557%204.45a.75.75%200%200%201-1.055-.008l-1.943-1.95a.75.75%200%200%201%201.062-1.058l1.419%201.425%204.026-3.932a.75.75%200%201%201%201.048%201.074M4.75%204h4.5a.75.75%200%200%201%200%201.5h-4.5a.75.75%200%200%201%200-1.5M4%207.75A.75.75%200%200%201%204.75%207h2a.75.75%200%200%201%200%201.5h-2A.75.75%200%200%201%204%207.75%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M3.499.75a.75.75%200%200%201%201.5%200v.996C5.9%202.903%206.793%203.65%207.662%204.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873%2010.794-.045%2012.622.26%2014.408.558%2016%201.94%2016%204.25c0%201.278-.954%202.575-2.44%202.734l.146.508.065.22c.203.701.412%201.455.476%202.226.142%201.707-.4%203.03-1.487%203.898C11.714%2014.671%2010.27%2015%208.75%2015h-6a.75.75%200%200%201%200-1.5h1.376a4.5%204.5%200%200%201-.563-1.191%203.84%203.84%200%200%201-.05-2.063%204.65%204.65%200%200%201-2.025-.293.75.75%200%200%201%20.525-1.406c1.357.507%202.376-.006%202.698-.318l.009-.01a.747.747%200%200%201%201.06%200%20.75.75%200%200%201-.012%201.074c-.912.92-.992%201.835-.768%202.586.221.74.745%201.337%201.196%201.621H8.75c1.343%200%202.398-.296%203.074-.836.635-.507%201.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.4%202.4%200%200%201-.507-.441%203.1%203.1%200%200%201-.633-1.248.75.75%200%200%201%201.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738%200%201.25-.615%201.25-1.25%200-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706%201.345-.46.92-.27%201.774.019%203.062l.042.19.01.05c.348.443.666.949.94%201.553a.75.75%200%201%201-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7%205.527c-.814-.68-1.75-1.462-2.692-2.619a3.7%203.7%200%200%200-1.023.88c-.406.495-.663%201.036-.722%201.508.116.122.306.21.591.239.388.038.797-.06%201.032-.19a.75.75%200%200%201%20.728%201.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75%205.677V5.5c0-.984.48-1.94%201.077-2.664.46-.559%201.05-1.055%201.673-1.353z%22/%3E%3C/svg%3E');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13.78%204.22a.75.75%200%200%201%200%201.06l-7.25%207.25a.75.75%200%200%201-1.06%200L2.22%209.28a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018L6%2010.94l6.72-6.72a.75.75%200%200%201%201.06%200%22/%3E%3C/svg%3E');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.92%206.085h.001a.749.749%200%201%201-1.342-.67c.169-.339.436-.701.849-.977C6.845%204.16%207.369%204%208%204a2.76%202.76%200%200%201%201.637.525c.503.377.863.965.863%201.725%200%20.448-.115.83-.329%201.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6%206%200%200%200-.26.16%201%201%200%200%200-.276.245.75.75%200%200%201-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1%201%200%200%200%20.277-.245C8.96%206.514%209%206.427%209%206.25a.61.61%200%200%200-.262-.525A1.27%201.27%200%200%200%208%205.5c-.369%200-.595.09-.74.187a1%201%200%200%200-.34.398M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.344%202.343za8%208%200%200%201%2011.314%2011.314A8.002%208.002%200%200%201%20.234%2010.089a8%208%200%200%201%202.11-7.746m1.06%2010.253a6.5%206.5%200%201%200%209.108-9.275%206.5%206.5%200%200%200-9.108%209.275M6.03%204.97%208%206.94l1.97-1.97a.749.749%200%200%201%201.275.326.75.75%200%200%201-.215.734L9.06%208l1.97%201.97a.749.749%200%200%201-.326%201.275.75.75%200%200%201-.734-.215L8%209.06l-1.97%201.97a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L6.94%208%204.97%206.03a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.72.22a.75.75%200%200%201%201.06%200l1%20.999a3.5%203.5%200%200%201%202.441%200l.999-1a.748.748%200%200%201%201.265.332.75.75%200%200%201-.205.729l-.775.776c.616.63.995%201.493.995%202.444v.327q0%20.15-.025.292c.408.14.764.392%201.029.722l1.968-.787a.75.75%200%200%201%20.556%201.392L13%207.258V9h2.25a.75.75%200%200%201%200%201.5H13v.5q-.002.615-.141%201.186l2.17.868a.75.75%200%200%201-.557%201.392l-2.184-.873A5%205%200%200%201%208%2016a5%205%200%200%201-4.288-2.427l-2.183.873a.75.75%200%200%201-.558-1.392l2.17-.868A5%205%200%200%201%203%2011v-.5H.75a.75.75%200%200%201%200-1.5H3V7.258L.971%206.446a.75.75%200%200%201%20.558-1.392l1.967.787c.265-.33.62-.583%201.03-.722a1.7%201.7%200%200%201-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72%201.28a.75.75%200%200%201%200-1.06m.53%206.28a.75.75%200%200%200-.75.75V11a3.5%203.5%200%201%200%207%200V7.25a.75.75%200%200%200-.75-.75ZM6.173%205h3.654A.17.17%200%200%200%2010%204.827V4.5a2%202%200%201%200-4%200v.327c0%20.096.077.173.173.173%22/%3E%3C/svg%3E');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5%205.782V2.5h-.25a.75.75%200%200%201%200-1.5h6.5a.75.75%200%200%201%200%201.5H11v3.282l3.666%205.76C15.619%2013.04%2014.543%2015%2012.767%2015H3.233c-1.776%200-2.852-1.96-1.899-3.458Zm-2.4%206.565a.75.75%200%200%200%20.633%201.153h9.534a.75.75%200%200%200%20.633-1.153L12.225%2010.5h-8.45ZM9.5%202.5h-3V6c0%20.143-.04.283-.117.403L4.73%209h6.54L9.617%206.403A.75.75%200%200%201%209.5%206Z%22/%3E%3C/svg%3E');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1.75%202.5h10.5a.75.75%200%200%201%200%201.5H1.75a.75.75%200%200%201%200-1.5m4%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5m0%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5M2.5%207.75v6a.75.75%200%200%201-1.5%200v-6a.75.75%200%200%201%201.5%200%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#referencias" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 26/27 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programacion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES 26/27 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            UD6 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    6.0 Utilidades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            6.0 Utilidades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cambios%20Laravel13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cambios Laravel13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instalar%20PHP%208.5%20Laravel%2013/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instalar PHP 8.5 Laravel 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Privado
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Privado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CambiosVersion2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UD6 · Laravel · Guía de la unidad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Programacion
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Programacion
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-de-contenidos-de-laravel-en-10-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución de contenidos de Laravel en 10 sesiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribución de contenidos de Laravel en 10 sesiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesion-1-introduccion-e-instalacion-de-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 1. Introducción e instalación de Laravel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 1. Introducción e instalación de Laravel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-2-estructura-configuracion-y-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 2. Estructura, configuración y Artisan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 2. Estructura, configuración y Artisan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-3-primera-ruta-e-introduccion-a-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 3. Primera ruta e introducción a Blade
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 3. Primera ruta e introducción a Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-4-layouts-datos-y-directivas-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 4. Layouts, datos y directivas Blade
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 4. Layouts, datos y directivas Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-5-configuracion-de-la-base-de-datos-y-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 5. Configuración de la base de datos y migraciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 5. Configuración de la base de datos y migraciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-6-factories-seeders-y-crud-con-eloquent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 6. Factories, Seeders y CRUD con Eloquent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 6. Factories, Seeders y CRUD con Eloquent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-7-relaciones-y-comparacion-entre-eloquent-y-query-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 7. Relaciones y comparación entre Eloquent y Query Builder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 7. Relaciones y comparación entre Eloquent y Query Builder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-8-controladores-y-resource-controllers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 8. Controladores y Resource Controllers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 8. Controladores y Resource Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-9-rutas-avanzadas-y-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 9. Rutas avanzadas y middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 9. Rutas avanzadas y middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-10-validacion-y-autenticacion-con-breeze" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 10. Validación y autenticación con Breeze
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 10. Validación y autenticación con Breeze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de validación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-la-agrupacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen de la agrupación
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REVISION-gpt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registro de revisión
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../6.1%20Introducci%C3%B3n/1.1.%20Qu%C3%A9%20es%20Laravel/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.1 Introducción
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../6.2.%20Estructura%2C%20entorno%20y%20Artisan/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.2. Estructura, entorno y Artisan
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../6.3.%20Rutas%20vistas%20y%20Blade/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.3. Rutas vistas y Blade
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-de-contenidos-de-laravel-en-10-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución de contenidos de Laravel en 10 sesiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribución de contenidos de Laravel en 10 sesiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sesion-1-introduccion-e-instalacion-de-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 1. Introducción e instalación de Laravel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 1. Introducción e instalación de Laravel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-2-estructura-configuracion-y-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 2. Estructura, configuración y Artisan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 2. Estructura, configuración y Artisan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-3-primera-ruta-e-introduccion-a-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 3. Primera ruta e introducción a Blade
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 3. Primera ruta e introducción a Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-4-layouts-datos-y-directivas-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 4. Layouts, datos y directivas Blade
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 4. Layouts, datos y directivas Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-5-configuracion-de-la-base-de-datos-y-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 5. Configuración de la base de datos y migraciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 5. Configuración de la base de datos y migraciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-6-factories-seeders-y-crud-con-eloquent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 6. Factories, Seeders y CRUD con Eloquent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 6. Factories, Seeders y CRUD con Eloquent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-7-relaciones-y-comparacion-entre-eloquent-y-query-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 7. Relaciones y comparación entre Eloquent y Query Builder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 7. Relaciones y comparación entre Eloquent y Query Builder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-8-controladores-y-resource-controllers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 8. Controladores y Resource Controllers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 8. Controladores y Resource Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-9-rutas-avanzadas-y-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 9. Rutas avanzadas y middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 9. Rutas avanzadas y middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sesion-10-validacion-y-autenticacion-con-breeze" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sesión 10. Validación y autenticación con Breeze
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sesión 10. Validación y autenticación con Breeze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivos_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-temporal_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución temporal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos-principales_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de validación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practica-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evidencia-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencia final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-la-agrupacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen de la agrupación
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 id="referencias">Referencias</h2>
+<p>Esta unidad está basada en el curso Laravel en Español que puedes encontrar aquí</p>
+<p><a href="https://www.laraveles.es/">www.laraveles.es</a></p>
+<p>Eso si, durante el desarrollo de las clases vamos a realizar modificaciones.</p>
+<p>El motivo por el que cambio a este curso son:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image/intro/1784210899568.png" data-desc-position="bottom"><img alt="1784210899568" src="image/intro/1784210899568.png"></a></p>
+<h1 id="distribucion-de-contenidos-de-laravel-en-10-sesiones">Distribución de contenidos de Laravel en 10 sesiones</h1>
+<p><strong>Duración total:</strong> 20 horas
+<strong>Duración por sesión:</strong> 2 horas
+<strong>Criterio:</strong>  Cada sesión continúa el desarrollo de un pequeño <strong>gestor de productos o artículos</strong>, que terminará convirtiéndose en un CRUD protegido mediante autenticación.</p>
+<hr>
+<h2 id="sesion-1-introduccion-e-instalacion-de-laravel">Sesión 1. Introducción e instalación de Laravel</h2>
+<h3 id="archivos">Archivos</h3>
+<ol>
+<li><code>Qué es Laravel</code></li>
+<li><code>Instalación</code></li>
+</ol>
+<h3 id="distribucion-temporal">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–25 min</td>
+<td>Qué es un framework y qué problemas resuelve Laravel</td>
+</tr>
+<tr>
+<td style="text-align: right;">25–45 min</td>
+<td>Arquitectura MVC y componentes principales de Laravel</td>
+</tr>
+<tr>
+<td style="text-align: right;">45–65 min</td>
+<td>Requisitos: PHP, Composer, Node.js y base de datos</td>
+</tr>
+<tr>
+<td style="text-align: right;">65–100 min</td>
+<td>Instalación y creación del primer proyecto</td>
+</tr>
+<tr>
+<td style="text-align: right;">100–115 min</td>
+<td>Ejecución del servidor y comprobación del entorno</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Registro de evidencias y conclusiones</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales">Contenidos principales</h3>
+<ul>
+<li>Concepto de framework.</li>
+<li>Características de Laravel.</li>
+<li>Patrón Modelo-Vista-Controlador.</li>
+<li>Eloquent, Blade, Artisan y migraciones.</li>
+<li>Requisitos del entorno.</li>
+<li>Creación de un proyecto mediante Composer.</li>
+<li>Servidor de desarrollo.</li>
+<li>Instalación de dependencias de frontend.</li>
+</ul>
+<h3 id="practica">Práctica</h3>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>create-project<span class="w"> </span>laravel/laravel<span class="w"> </span>gestor-productos
+<span class="nb">cd</span><span class="w"> </span>gestor-productos
+
+php<span class="w"> </span>artisan<span class="w"> </span>serve
+
+npm<span class="w"> </span>install
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<h3 id="evidencia">Evidencia</h3>
+<ul>
+<li>Proyecto Laravel funcionando.</li>
+<li>Captura de la página inicial.</li>
+<li>Resultado de:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>-v
+composer<span class="w"> </span>-V
+node<span class="w"> </span>-v
+php<span class="w"> </span>artisan<span class="w"> </span>--version
+</code></pre></div>
+<p>Laravel se presenta como un framework MVC que incorpora, entre otras herramientas, Eloquent, Blade, migraciones y Artisan.  La instalación requiere preparar PHP, Composer y, para los recursos de frontend, Node.js.</p>
+<hr>
+<h2 id="sesion-2-estructura-configuracion-y-artisan">Sesión 2. Estructura, configuración y Artisan</h2>
+<h3 id="archivos_1">Archivos</h3>
+<ol>
+<li><code>EstructuraCarpetas</code></li>
+<li><code>El archivo env</code></li>
+<li><code>Artisan CLI</code></li>
+</ol>
+<h3 id="distribucion-temporal_1">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–35 min</td>
+<td>Estructura de carpetas y archivos</td>
+</tr>
+<tr>
+<td style="text-align: right;">35–60 min</td>
+<td>Configuración del archivo<code>.env</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">60–80 min</td>
+<td>Relación entre<code>.env</code> y <code>config/</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">80–105 min</td>
+<td>Comandos fundamentales de Artisan</td>
+</tr>
+<tr>
+<td style="text-align: right;">105–115 min</td>
+<td>Exploración práctica del proyecto</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Evidencia de la sesión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_1">Contenidos principales</h3>
+<ul>
+<li>Carpetas <code>app</code>, <code>routes</code>, <code>resources</code>, <code>database</code>, <code>public</code>, <code>config</code>, <code>storage</code> y <code>tests</code>.</li>
+<li>Archivos <code>artisan</code>, <code>composer.json</code>, <code>package.json</code>, <code>.env</code> y <code>.env.example</code>.</li>
+<li>Variables de entorno.</li>
+<li>Diferencias entre configuración local y producción.</li>
+<li>Protección de credenciales.</li>
+<li>Comandos Artisan para consultar información, generar clases y limpiar cachés.</li>
+</ul>
+<h3 id="practica_1">Práctica</h3>
+<p>Modificar el entorno:</p>
+<div class="highlight"><pre><span></span><code><span class="na">APP_NAME</span><span class="o">=</span><span class="s">"Gestor de Productos"</span>
+<span class="na">APP_ENV</span><span class="o">=</span><span class="s">local</span>
+<span class="na">APP_DEBUG</span><span class="o">=</span><span class="s">true</span>
+<span class="na">APP_URL</span><span class="o">=</span><span class="s">http://localhost:8000</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">Europe/Madrid</span>
+<span class="na">APP_LOCALE</span><span class="o">=</span><span class="s">es</span>
+</code></pre></div>
+<p>Ejecutar y documentar:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>list
+php<span class="w"> </span>artisan<span class="w"> </span>about
+php<span class="w"> </span>artisan<span class="w"> </span>--version
+php<span class="w"> </span>artisan<span class="w"> </span>route:list
+php<span class="w"> </span>artisan<span class="w"> </span>optimize:clear
+</code></pre></div>
+<h3 id="evidencia_1">Evidencia</h3>
+<p>Tabla explicativa con la función de las principales carpetas y una captura de <code>php artisan about</code>.</p>
+<p>Artisan permite ejecutar el servidor, inspeccionar rutas, generar modelos, controladores, migraciones, middleware y Form Requests.</p>
+<hr>
+<h2 id="sesion-3-primera-ruta-e-introduccion-a-blade">Sesión 3. Primera ruta e introducción a Blade</h2>
+<h3 id="archivos_2">Archivos</h3>
+<ol>
+<li><code>Tu primera ruta y respuesta</code></li>
+<li><code>Introducción a las vistas en Laravel</code></li>
+<li><code>Blade: el motor de plantillas</code></li>
+</ol>
+<h3 id="distribucion-temporal_2">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–30 min</td>
+<td>Concepto de ruta y verbos HTTP</td>
+</tr>
+<tr>
+<td style="text-align: right;">30–50 min</td>
+<td>Tipos de respuesta</td>
+</tr>
+<tr>
+<td style="text-align: right;">50–70 min</td>
+<td>Creación y organización de vistas</td>
+</tr>
+<tr>
+<td style="text-align: right;">70–95 min</td>
+<td>Sintaxis básica de Blade</td>
+</tr>
+<tr>
+<td style="text-align: right;">95–115 min</td>
+<td>Práctica de rutas y vistas</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Revisión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_2">Contenidos principales</h3>
+<ul>
+<li>Archivos <code>routes/web.php</code> y <code>routes/api.php</code>.</li>
+<li>Rutas GET y parámetros.</li>
+<li>Respuestas de texto, arrays, JSON, vistas y redirecciones.</li>
+<li>Carpeta <code>resources/views</code>.</li>
+<li>Archivos <code>.blade.php</code>.</li>
+<li>Notación de punto para localizar vistas.</li>
+<li>Impresión segura con <code>{{ }}</code>.</li>
+<li>Condicionales y bucles.</li>
+<li>Directiva <code>@forelse</code>.</li>
+<li>Variable <code>$loop</code>.</li>
+<li>Diferencia entre <code>{{ }}</code> y <code>{!! !!}</code>.</li>
+</ul>
+<h3 id="practica_2">Práctica</h3>
+<p>Crear las rutas:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::get('/', function () {</span>
+<span class="x">    return view('inicio');</span>
+<span class="x">})-&gt;name('inicio');</span>
+
+<span class="x">Route::get('/productos', function () {</span>
+<span class="x">    $productos = [</span>
+<span class="x">        ['id' =&gt; 1, 'nombre' =&gt; 'Portátil', 'precio' =&gt; 850],</span>
+<span class="x">        ['id' =&gt; 2, 'nombre' =&gt; 'Monitor', 'precio' =&gt; 220],</span>
+<span class="x">        ['id' =&gt; 3, 'nombre' =&gt; 'Teclado', 'precio' =&gt; 65],</span>
+<span class="x">    ];</span>
+
+<span class="x">    return view('productos.index', compact('productos'));</span>
+<span class="x">})-&gt;name('productos.index');</span>
+
+<span class="x">Route::get('/productos/{id}', function (int $id) {</span>
+<span class="x">    return view('productos.show', compact('id'));</span>
+<span class="x">})-&gt;whereNumber('id')-&gt;name('productos.show');</span>
+</code></pre></div>
+<p>Crear:</p>
+<div class="highlight"><pre><span></span><code>resources/views/inicio.blade.php
+resources/views/productos/index.blade.php
+resources/views/productos/show.blade.php
+</code></pre></div>
+<h3 id="evidencia_2">Evidencia</h3>
+<p>Una página inicial, un listado de productos y una página que reciba un parámetro de ruta.</p>
+<p>Las rutas pueden devolver texto, JSON, vistas o redirecciones, además de utilizar parámetros obligatorios, opcionales y restringidos.  Las vistas se almacenan en <code>resources/views</code> y se referencian mediante notación de punto.  Blade compila sus plantillas a PHP y escapa automáticamente la salida mostrada mediante <code>{{ }}</code>.</p>
+<hr>
+<h2 id="sesion-4-layouts-datos-y-directivas-blade">Sesión 4. Layouts, datos y directivas Blade</h2>
+<h3 id="archivos_3">Archivos</h3>
+<ol>
+<li><code>Layouts componentes</code></li>
+<li><code>Pasar datos a las vistas</code></li>
+<li><code>Directivas usadas</code></li>
+</ol>
+<h3 id="distribucion-temporal_3">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–35 min</td>
+<td>Herencia de plantillas y layouts</td>
+</tr>
+<tr>
+<td style="text-align: right;">35–60 min</td>
+<td>Partials y componentes Blade</td>
+</tr>
+<tr>
+<td style="text-align: right;">60–80 min</td>
+<td>Paso de información a las vistas</td>
+</tr>
+<tr>
+<td style="text-align: right;">80–105 min</td>
+<td>Directivas Blade frecuentes</td>
+</tr>
+<tr>
+<td style="text-align: right;">105–115 min</td>
+<td>Refactorización de las vistas</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Revisión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_3">Contenidos principales</h3>
+<ul>
+<li><code>@extends</code>, <code>@section</code>, <code>@yield</code> y <code>@parent</code>.</li>
+<li>Inclusión de sub-vistas con <code>@include</code>.</li>
+<li>Componentes Blade y <code>$slot</code>.</li>
+<li>Paso de datos con arrays.</li>
+<li>Uso de <code>compact()</code>.</li>
+<li>Encadenamiento con <code>with()</code>.</li>
+<li>
+<p>Directivas:</p>
+</li>
+<li>
+<p><code>@if</code>, <code>@unless</code>, <code>@switch</code>.</p>
+</li>
+<li><code>@isset</code> y <code>@empty</code>.</li>
+<li><code>@auth</code> y <code>@guest</code>.</li>
+<li><code>@csrf</code> y <code>@method</code>.</li>
+<li><code>@error</code>.</li>
+<li><code>@checked</code>, <code>@selected</code>, <code>@disabled</code>.</li>
+<li><code>@includeWhen</code> y <code>@includeIf</code>.</li>
+</ul>
+<h3 id="practica_3">Práctica</h3>
+<p>Crear la estructura:</p>
+<div class="highlight"><pre><span></span><code>resources/views/
+├── layouts/
+│   └── app.blade.php
+├── components/
+│   ├── alert.blade.php
+│   └── producto-card.blade.php
+└── productos/
+    ├── index.blade.php
+    └── show.blade.php
+</code></pre></div>
+<p>Utilizar:</p>
+<div class="highlight"><pre><span></span><code>@extends('layouts.app')
+
+@section('titulo', 'Productos')
+
+@section('contenido')
+    @forelse ($productos as $producto)
+        &lt;x-producto-card :producto="$producto" /&gt;
+    @empty
+        &lt;x-alert&gt;No existen productos.&lt;/x-alert&gt;
+    @endforelse
+@endsection
+</code></pre></div>
+<h3 id="evidencia_3">Evidencia</h3>
+<p>Aplicación con un layout común, navegación, componente reutilizable y listado dinámico.</p>
+<hr>
+<h2 id="sesion-5-configuracion-de-la-base-de-datos-y-migraciones">Sesión 5. Configuración de la base de datos y migraciones</h2>
+<h3 id="archivos_4">Archivos</h3>
+<ol>
+<li><code>Configurar BBDD</code></li>
+<li><code>Migraciones</code></li>
+</ol>
+<h3 id="distribucion-temporal_4">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–25 min</td>
+<td>Sistemas de bases de datos compatibles</td>
+</tr>
+<tr>
+<td style="text-align: right;">25–45 min</td>
+<td>Configuración en<code>.env</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">45–65 min</td>
+<td>Introducción a las migraciones</td>
+</tr>
+<tr>
+<td style="text-align: right;">65–95 min</td>
+<td>Columnas, restricciones e índices</td>
+</tr>
+<tr>
+<td style="text-align: right;">95–110 min</td>
+<td>Ejecución y rollback</td>
+</tr>
+<tr>
+<td style="text-align: right;">110–120 min</td>
+<td>Comprobación y documentación</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_4">Contenidos principales</h3>
+<ul>
+<li>Configuración de SQLite o MySQL.</li>
+<li>Variables <code>DB_CONNECTION</code>, <code>DB_HOST</code>, <code>DB_PORT</code>, <code>DB_DATABASE</code>, <code>DB_USERNAME</code> y <code>DB_PASSWORD</code>.</li>
+<li>Métodos <code>up()</code> y <code>down()</code>.</li>
+<li>Tipos de columnas.</li>
+<li>Valores predeterminados y columnas <code>nullable</code>.</li>
+<li>Índices.</li>
+<li>Claves foráneas.</li>
+<li>Ejecución, estado y reversión de migraciones.</li>
+</ul>
+<h3 id="practica_4">Práctica</h3>
+<p>Crear las tablas:</p>
+<ul>
+<li><code>categorias</code></li>
+<li><code>productos</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>create_categorias_table
+php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>create_productos_table
+</code></pre></div>
+<p>Ejemplo de relación:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Schema::create('productos', function (Blueprint $table) {</span>
+<span class="x">    $table-&gt;id();</span>
+<span class="x">    $table-&gt;foreignId('categoria_id')</span>
+<span class="x">        -&gt;constrained()</span>
+<span class="x">        -&gt;cascadeOnDelete();</span>
+
+<span class="x">    $table-&gt;string('nombre');</span>
+<span class="x">    $table-&gt;text('descripcion')-&gt;nullable();</span>
+<span class="x">    $table-&gt;decimal('precio', 8, 2);</span>
+<span class="x">    $table-&gt;integer('stock')-&gt;default(0);</span>
+<span class="x">    $table-&gt;boolean('activo')-&gt;default(true);</span>
+<span class="x">    $table-&gt;timestamps();</span>
+<span class="x">});</span>
+</code></pre></div>
+<p>Comprobar:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:status
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:rollback
+php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<h3 id="evidencia_4">Evidencia</h3>
+<p>Migraciones funcionales y reversibles para categorías y productos.</p>
+<p>Las migraciones versionan la estructura de la base de datos mediante los métodos <code>up()</code> y <code>down()</code>, y permiten aplicar o revertir cambios de forma reproducible.</p>
+<hr>
+<h2 id="sesion-6-factories-seeders-y-crud-con-eloquent">Sesión 6. Factories, Seeders y CRUD con Eloquent</h2>
+<h3 id="archivos_5">Archivos</h3>
+<ol>
+<li><code>Seeders y Factories</code></li>
+<li><code>Eloquent ORM básico CRUD</code></li>
+</ol>
+<h3 id="distribucion-temporal_5">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–30 min</td>
+<td>Modelos y configuración básica</td>
+</tr>
+<tr>
+<td style="text-align: right;">30–55 min</td>
+<td>Factories y Faker</td>
+</tr>
+<tr>
+<td style="text-align: right;">55–75 min</td>
+<td>Seeders</td>
+</tr>
+<tr>
+<td style="text-align: right;">75–100 min</td>
+<td>Operaciones CRUD con Eloquent</td>
+</tr>
+<tr>
+<td style="text-align: right;">100–115 min</td>
+<td>Pruebas mediante Tinker</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Revisión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_5">Contenidos principales</h3>
+<ul>
+<li>Modelos Eloquent.</li>
+<li>Trait <code>HasFactory</code>.</li>
+<li>Propiedad <code>$fillable</code>.</li>
+<li>Conversión de tipos con <code>$casts</code>.</li>
+<li>Generación de datos ficticios con Faker.</li>
+<li>Factories y estados.</li>
+<li>Seeders y <code>DatabaseSeeder</code>.</li>
+<li>
+<p>Operaciones:</p>
+</li>
+<li>
+<p><code>create()</code></p>
+</li>
+<li><code>all()</code></li>
+<li><code>find()</code> y <code>findOrFail()</code></li>
+<li><code>where()</code></li>
+<li><code>update()</code></li>
+<li><code>delete()</code></li>
+<li>Ordenación, filtrado y paginación.</li>
+</ul>
+<h3 id="practica_5">Práctica</h3>
+<p>Crear los recursos:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Categoria<span class="w"> </span>-fs
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Producto<span class="w"> </span>-fs
+</code></pre></div>
+<p>Generar:</p>
+<ul>
+<li>5 categorías.</li>
+<li>40 productos.</li>
+<li>Diferentes niveles de stock y precios.</li>
+<li>Productos activos e inactivos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh<span class="w"> </span>--seed
+php<span class="w"> </span>artisan<span class="w"> </span>tinker
+</code></pre></div>
+<p>Pruebas en Tinker:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Producto::count();</span>
+<span class="x">Producto::where('activo', true)-&gt;get();</span>
+<span class="x">Producto::where('precio', '&gt;', 100)-&gt;orderBy('precio')-&gt;get();</span>
+<span class="x">Producto::findOrFail(1);</span>
+</code></pre></div>
+<h3 id="evidencia_5">Evidencia</h3>
+<p>Base de datos reconstruible con datos realistas y documento breve con cinco consultas Eloquent.</p>
+<hr>
+<h2 id="sesion-7-relaciones-y-comparacion-entre-eloquent-y-query-builder">Sesión 7. Relaciones y comparación entre Eloquent y Query Builder</h2>
+<h3 id="archivos_6">Archivos</h3>
+<ol>
+<li><code>Relaciones</code></li>
+<li><code>Query Builder vs Eloquent</code></li>
+</ol>
+<h3 id="distribucion-temporal_6">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–35 min</td>
+<td>Relaciones uno a uno y uno a muchos</td>
+</tr>
+<tr>
+<td style="text-align: right;">35–60 min</td>
+<td>Relaciones muchos a muchos</td>
+</tr>
+<tr>
+<td style="text-align: right;">60–80 min</td>
+<td>Eager loading y problema N+1</td>
+</tr>
+<tr>
+<td style="text-align: right;">80–100 min</td>
+<td>Introducción al Query Builder</td>
+</tr>
+<tr>
+<td style="text-align: right;">100–115 min</td>
+<td>Comparación práctica</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Conclusiones</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_6">Contenidos principales</h3>
+<ul>
+<li><code>hasOne</code>.</li>
+<li><code>hasMany</code>.</li>
+<li><code>belongsTo</code>.</li>
+<li><code>belongsToMany</code>.</li>
+<li>Tablas pivot.</li>
+<li><code>attach()</code>, <code>detach()</code> y <code>sync()</code>.</li>
+<li>Carga anticipada con <code>with()</code>.</li>
+<li>Conteo con <code>withCount()</code>.</li>
+<li>Problema N+1.</li>
+<li>Consultas con <code>DB::table()</code>.</li>
+<li>
+<p>Diferencias entre:</p>
+</li>
+<li>
+<p>Objetos Eloquent.</p>
+</li>
+<li>Objetos <code>stdClass</code>.</li>
+<li>Relaciones y eventos.</li>
+<li>Consultas masivas y analíticas.</li>
+</ul>
+<h3 id="practica_6">Práctica</h3>
+<p>Definir:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Categoria.php</span>
+<span class="x">public function productos()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;hasMany(Producto::class);</span>
+<span class="x">}</span>
+
+<span class="x">// Producto.php</span>
+<span class="x">public function categoria()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;belongsTo(Categoria::class);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Realizar dos consultas equivalentes:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$productos = Producto::with('categoria')</span>
+<span class="x">    -&gt;where('activo', true)</span>
+<span class="x">    -&gt;orderBy('precio')</span>
+<span class="x">    -&gt;get();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">$productos = DB::table('productos')</span>
+<span class="x">    -&gt;join('categorias', 'categorias.id', '=', 'productos.categoria_id')</span>
+<span class="x">    -&gt;select('productos.*', 'categorias.nombre as categoria')</span>
+<span class="x">    -&gt;where('productos.activo', true)</span>
+<span class="x">    -&gt;orderBy('productos.precio')</span>
+<span class="x">    -&gt;get();</span>
+</code></pre></div>
+<h3 id="evidencia_6">Evidencia</h3>
+<p>Comparativa razonada entre ambas soluciones e identificación del problema N+1.</p>
+<hr>
+<h2 id="sesion-8-controladores-y-resource-controllers">Sesión 8. Controladores y Resource Controllers</h2>
+<h3 id="archivos_7">Archivos</h3>
+<ol>
+<li><code>Controladores</code></li>
+<li><code>Resource Controllers</code></li>
+</ol>
+<h3 id="distribucion-temporal_7">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–30 min</td>
+<td>Función de los controladores en MVC</td>
+</tr>
+<tr>
+<td style="text-align: right;">30–50 min</td>
+<td>Creación y conexión con rutas</td>
+</tr>
+<tr>
+<td style="text-align: right;">50–75 min</td>
+<td>Métodos convencionales de un CRUD</td>
+</tr>
+<tr>
+<td style="text-align: right;">75–95 min</td>
+<td>Resource Controllers</td>
+</tr>
+<tr>
+<td style="text-align: right;">95–115 min</td>
+<td>Route Model Binding</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Revisión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_7">Contenidos principales</h3>
+<ul>
+<li>Creación de controladores.</li>
+<li>Inyección del objeto <code>Request</code>.</li>
+<li>Controladores invocables.</li>
+<li>Controladores delgados.</li>
+<li>
+<p>Métodos REST:</p>
+</li>
+<li>
+<p><code>index</code></p>
+</li>
+<li><code>create</code></li>
+<li><code>store</code></li>
+<li><code>show</code></li>
+<li><code>edit</code></li>
+<li><code>update</code></li>
+<li><code>destroy</code></li>
+<li><code>Route::resource()</code>.</li>
+<li>Route Model Binding.</li>
+<li>Redirecciones y mensajes flash.</li>
+<li>Method spoofing.</li>
+</ul>
+<h3 id="practica_7">Práctica</h3>
+<p>Crear:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>ProductoController<span class="w"> </span>--resource
+</code></pre></div>
+<p>Registrar:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::resource('productos', ProductoController::class);</span>
+</code></pre></div>
+<p>Comprobar:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--name<span class="o">=</span>productos
+</code></pre></div>
+<p>Implementar inicialmente:</p>
+<ul>
+<li><code>index()</code></li>
+<li><code>show()</code></li>
+<li><code>create()</code></li>
+<li><code>edit()</code></li>
+</ul>
+<p>Los controladores separan la lógica de las rutas y actúan como intermediarios entre modelos y vistas.  Un Resource Controller proporciona las siete acciones convencionales necesarias para un CRUD web.</p>
+<h3 id="evidencia_7">Evidencia</h3>
+<p>Listado, detalle y formularios conectados mediante un Resource Controller.</p>
+<hr>
+<h2 id="sesion-9-rutas-avanzadas-y-middleware">Sesión 9. Rutas avanzadas y middleware</h2>
+<h3 id="archivos_8">Archivos</h3>
+<ol>
+<li><code>Rutas avanzadas</code></li>
+<li><code>Middlewares</code></li>
+</ol>
+<h3 id="distribucion-temporal_8">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–30 min</td>
+<td>Rutas con nombre y parámetros</td>
+</tr>
+<tr>
+<td style="text-align: right;">30–55 min</td>
+<td>Grupos, prefijos y prefijos de nombre</td>
+</tr>
+<tr>
+<td style="text-align: right;">55–75 min</td>
+<td>Route Model Binding</td>
+</tr>
+<tr>
+<td style="text-align: right;">75–95 min</td>
+<td>Concepto y ciclo de un middleware</td>
+</tr>
+<tr>
+<td style="text-align: right;">95–110 min</td>
+<td>Creación y aplicación de middleware</td>
+</tr>
+<tr>
+<td style="text-align: right;">110–120 min</td>
+<td>Prueba de acceso y revisión</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_8">Contenidos principales</h3>
+<ul>
+<li>Parámetros obligatorios y opcionales.</li>
+<li>Restricciones <code>whereNumber()</code> y <code>whereAlphaNumeric()</code>.</li>
+<li>Rutas con nombre.</li>
+<li>Grupos de rutas.</li>
+<li>Prefijos de URL y de nombre.</li>
+<li>Rutas parciales con <code>only()</code> y <code>except()</code>.</li>
+<li>Concepto de middleware.</li>
+<li>Aplicación a una ruta o grupo.</li>
+<li>Protección de zonas privadas.</li>
+<li>Middleware personalizado.</li>
+</ul>
+<h3 id="practica_8">Práctica</h3>
+<p>Agrupar rutas:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::prefix('admin')</span>
+<span class="x">    -&gt;name('admin.')</span>
+<span class="x">    -&gt;middleware(['auth'])</span>
+<span class="x">    -&gt;group(function () {</span>
+<span class="x">        Route::resource('productos', ProductoController::class);</span>
+<span class="x">    });</span>
+</code></pre></div>
+<p>Crear un middleware:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:middleware<span class="w"> </span>ComprobarProductoActivo
+</code></pre></div>
+<p>Registrar una ruta pública y otra protegida para comprobar la diferencia.</p>
+<p>Las rutas pueden organizarse mediante prefijos, nombres y middleware compartido.</p>
+<h3 id="evidencia_8">Evidencia</h3>
+<p>Grupo de administración con prefijo de URL, prefijo de nombre y middleware.</p>
+<hr>
+<h2 id="sesion-10-validacion-y-autenticacion-con-breeze">Sesión 10. Validación y autenticación con Breeze</h2>
+<h3 id="archivos_9">Archivos</h3>
+<ol>
+<li><code>Validación formularios</code></li>
+<li><code>Autenticación Breeze</code></li>
+</ol>
+<h3 id="distribucion-temporal_9">Distribución temporal</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tiempo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0–30 min</td>
+<td>Validación básica en el controlador</td>
+</tr>
+<tr>
+<td style="text-align: right;">30–50 min</td>
+<td>Form Requests</td>
+</tr>
+<tr>
+<td style="text-align: right;">50–70 min</td>
+<td>Errores,<code>old()</code> y mensajes personalizados</td>
+</tr>
+<tr>
+<td style="text-align: right;">70–90 min</td>
+<td>Instalación de Breeze</td>
+</tr>
+<tr>
+<td style="text-align: right;">90–105 min</td>
+<td>Registro, inicio y cierre de sesión</td>
+</tr>
+<tr>
+<td style="text-align: right;">105–115 min</td>
+<td>Protección del CRUD</td>
+</tr>
+<tr>
+<td style="text-align: right;">115–120 min</td>
+<td>Comprobación final</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contenidos-principales_9">Contenidos principales</h3>
+<ul>
+<li><code>$request-&gt;validate()</code>.</li>
+<li>Reglas habituales.</li>
+<li>Form Requests.</li>
+<li>Método <code>validated()</code>.</li>
+<li>Mensajes personalizados.</li>
+<li>Visualización de errores con <code>@error</code>.</li>
+<li>Recuperación de datos con <code>old()</code>.</li>
+<li>Instalación de Laravel Breeze.</li>
+<li>Registro de usuarios.</li>
+<li>Inicio y cierre de sesión.</li>
+<li>Middleware <code>auth</code>.</li>
+<li>Directivas <code>@auth</code> y <code>@guest</code>.</li>
+<li>Protección de operaciones de creación, edición y eliminación.</li>
+</ul>
+<h3 id="practica-de-validacion">Práctica de validación</h3>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>StoreProductoRequest
+php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>UpdateProductoRequest
+</code></pre></div>
+<p>Ejemplo de reglas:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function rules(): array</span>
+<span class="x">{</span>
+<span class="x">    return [</span>
+<span class="x">        'categoria_id' =&gt; ['required', 'exists:categorias,id'],</span>
+<span class="x">        'nombre' =&gt; ['required', 'string', 'min:3', 'max:255'],</span>
+<span class="x">        'descripcion' =&gt; ['nullable', 'string', 'max:1000'],</span>
+<span class="x">        'precio' =&gt; ['required', 'numeric', 'min:0'],</span>
+<span class="x">        'stock' =&gt; ['required', 'integer', 'min:0'],</span>
+<span class="x">        'activo' =&gt; ['nullable', 'boolean'],</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
+<h3 id="practica-de-autenticacion">Práctica de autenticación</h3>
+<p>Instalar Breeze siguiendo la variante Blade correspondiente al proyecto y ejecutar sus migraciones y dependencias frontend. Después, proteger las operaciones privadas:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::resource('productos', ProductoController::class)</span>
+<span class="x">    -&gt;middleware('auth')</span>
+<span class="x">    -&gt;except(['index', 'show']);</span>
+</code></pre></div>
+<p>En el menú:</p>
+<div class="highlight"><pre><span></span><code>@guest
+    &lt;a href="{{ route('login') }}"&gt;Iniciar sesión&lt;/a&gt;
+    &lt;a href="{{ route('register') }}"&gt;Registrarse&lt;/a&gt;
+@endguest
+
+@auth
+    &lt;a href="{{ route('productos.create') }}"&gt;Nuevo producto&lt;/a&gt;
+@endauth
+</code></pre></div>
+<h3 id="evidencia-final">Evidencia final</h3>
+<p>CRUD completo que permita:</p>
+<ul>
+<li>Consultar productos sin autenticación.</li>
+<li>Registrarse e iniciar sesión.</li>
+<li>Crear, editar y eliminar únicamente tras autenticarse.</li>
+<li>Validar todos los formularios.</li>
+<li>Mostrar mensajes de error y conservar los valores introducidos.</li>
+<li>Cerrar sesión correctamente.</li>
+</ul>
+<hr>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image/Programacion/1784558714851.png" data-desc-position="bottom"><img alt="1784558714851" src="image/Programacion/1784558714851.png"></a></p>
+<h1 id="resumen-de-la-agrupacion">Resumen de la agrupación</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Sesión</th>
+<th>Archivos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Qué es Laravel + Instalación</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Estructura de carpetas +<code>.env</code> + Artisan</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Primera ruta + Introducción a las vistas + Blade</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Layouts y componentes + Paso de datos + Directivas</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Configuración de BBDD + Migraciones</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Seeders y Factories + Eloquent CRUD</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Relaciones + Query Builder frente a Eloquent</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Controladores + Resource Controllers</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Rutas avanzadas + Middlewares</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Validación de formularios + Breeze</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../CambiosVersion2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UD6 · Laravel · Guía de la unidad">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                UD6 · Laravel · Guía de la unidad
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../REVISION-gpt/" class="md-footer__link md-footer__link--next" aria-label="Next: Registro de revisión">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Registro de revisión
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2026/27 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.footer", "content.code.copy", "navigation.path", "navigation.prune", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": true, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

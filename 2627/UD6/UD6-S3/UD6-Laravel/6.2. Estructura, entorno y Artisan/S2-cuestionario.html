@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario Laravel - Sesión 2</title>
+<style>
+:root {
+  --bg:#f4f7fb; --card:#fff; --text:#182033; --muted:#667085; --border:#d9e1ea;
+  --primary:#ef4444; --primary-dark:#b91c1c; --success:#15803d; --success-bg:#dcfce7;
+  --error:#b91c1c; --error-bg:#fee2e2; --blue:#1d4ed8; --blue-bg:#dbeafe;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{background:linear-gradient(135deg,#111827,#7f1d1d);color:white;padding:2.4rem 1rem}
+.container{width:min(1050px,calc(100% - 2rem));margin:auto}
+h1{margin:0 0 .4rem;font-size:clamp(2rem,5vw,3.3rem)}
+header p{margin:0;color:#e5e7eb}
+main{padding:1.5rem 0 3rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 22px rgba(15,23,42,.08)}
+.start{padding:1.4rem}
+.grid{display:grid;grid-template-columns:1fr 1fr auto;gap:1rem;align-items:end}
+label.title{display:block;font-weight:700;margin-bottom:.35rem}
+input[type=text],select{width:100%;padding:.8rem .9rem;border:1px solid var(--border);border-radius:10px;font:inherit;background:white}
+button{border:0;border-radius:10px;padding:.8rem 1rem;font:inherit;font-weight:700;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.primary{background:var(--primary);color:white}
+.primary:hover{background:var(--primary-dark)}
+.secondary{background:#e2e8f0;color:#0f172a}
+.note{margin-top:1rem;padding:.9rem;border:1px solid #fdba74;background:#fff7ed;border-radius:10px}
+.progress-area{display:none;margin-bottom:1rem}
+.progress-info{display:flex;justify-content:space-between;gap:1rem;font-weight:700;margin-bottom:.4rem}
+.track{height:12px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#ef4444,#f97316);transition:width .2s}
+.quiz-card{display:none;padding:1.4rem}
+.badge{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:var(--blue-bg);color:var(--blue);font-size:.85rem;font-weight:700}
+.qnum{margin-left:.4rem;color:var(--muted);font-weight:700}
+.question{font-size:1.22rem;font-weight:800;margin:.8rem 0 1rem}
+.options{display:grid;gap:.75rem}
+.option{display:flex;gap:.75rem;padding:.9rem;border:1px solid var(--border);border-radius:12px;cursor:pointer}
+.option:hover{background:#f8fafc;border-color:#94a3b8}
+.option.selected{background:#fff1f2;border-color:var(--primary)}
+.option.correct{background:var(--success-bg);border-color:var(--success)}
+.option.wrong{background:var(--error-bg);border-color:var(--error)}
+.option input{margin-top:.2rem;accent-color:var(--primary)}
+.feedback{display:none;margin-top:1rem;padding:.9rem;border-radius:10px;font-weight:700}
+.feedback.ok{display:block;background:var(--success-bg);color:var(--success)}
+.feedback.ko{display:block;background:var(--error-bg);color:var(--error)}
+.nav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.2rem}
+.results{display:none;padding:1.5rem}
+.score{font-size:clamp(2.3rem,7vw,4.4rem);font-weight:900;color:var(--primary-dark);margin:.3rem 0}
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1rem 0}
+.summary-box{padding:1rem;border:1px solid var(--border);border-radius:12px;background:#f8fafc}
+.review-item{margin-top:.9rem;padding:1rem;border-left:5px solid var(--error);background:var(--error-bg);border-radius:8px}
+.review-item.ok{border-left-color:var(--success);background:var(--success-bg)}
+code{background:#e2e8f0;border-radius:5px;padding:.1rem .3rem;font-family:Consolas,monospace}
+.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.summary-grid{grid-template-columns:1fr}.nav{flex-direction:column}.nav button{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Laravel · Sesión 2</h1>
+    <p>Cuestionario teórico de estructura del proyecto, archivo <code>.env</code> y Artisan.</p>
+  </div>
+</header>
+
+<main class="container">
+  <section id="startCard" class="card start">
+    <div class="grid">
+      <div>
+        <label class="title" for="student">Nombre y apellidos</label>
+        <input id="student" type="text" placeholder="Ejemplo: Ana García">
+      </div>
+      <div>
+        <label class="title" for="mode">Bloque del cuestionario</label>
+        <select id="mode">
+          <option value="Todos">Cuestionario completo · 60 preguntas</option>
+          <option value="Estructura">Parte 1 · Estructura del proyecto</option>
+          <option value=".env">Parte 2 · Archivo .env</option>
+          <option value="Artisan">Parte 3 · Artisan</option>
+        </select>
+      </div>
+      <button id="startBtn" class="primary">Comenzar</button>
+    </div>
+    <div class="note">
+      <strong>Contenido:</strong> 20 preguntas por cada parte, cuatro opciones y una sola respuesta correcta. Al terminar se muestra la puntuación total, el resultado por bloques y la revisión completa.
+    </div>
+  </section>
+
+  <section id="progressArea" class="progress-area">
+    <div class="progress-info">
+      <span id="progressText"></span>
+      <span id="answeredText"></span>
+    </div>
+    <div class="track"><div id="bar" class="bar"></div></div>
+  </section>
+
+  <section id="quizCard" class="card quiz-card">
+    <div>
+      <span id="sectionBadge" class="badge"></span>
+      <span id="qnum" class="qnum"></span>
+    </div>
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <div id="feedback" class="feedback"></div>
+    <div class="nav">
+      <button id="prevBtn" class="secondary">Anterior</button>
+      <button id="checkBtn" class="primary">Comprobar</button>
+      <button id="nextBtn" class="primary" disabled>Siguiente</button>
+    </div>
+  </section>
+
+  <section id="resultsCard" class="card results">
+    <h2>Resultado final</h2>
+    <p id="studentResult"></p>
+    <div id="score" class="score"></div>
+    <p id="message"></p>
+    <div id="summary" class="summary-grid"></div>
+    <button id="restartBtn" class="primary">Reiniciar</button>
+    <h3>Revisión completa</h3>
+    <div id="review"></div>
+  </section>
+</main>
+
+<script>
+const allQuestions = [{"id": 1, "section": "Estructura", "question": "¿Qué carpeta contiene la mayor parte del código propio de la aplicación Laravel?", "options": ["storage/", "app/", "vendor/", "public/"], "answer": 1, "explanation": "La carpeta app/ contiene modelos, controladores, middleware, servicios y otros componentes de la aplicación."}, {"id": 2, "section": "Estructura", "question": "¿Dónde se almacenan normalmente los controladores?", "options": ["app/Models/", "app/Http/Controllers/", "routes/controllers/", "resources/views/"], "answer": 1, "explanation": "Los controladores se encuentran en app/Http/Controllers/."}, {"id": 3, "section": "Estructura", "question": "¿Cuál es la función principal de un controlador?", "options": ["Guardar las dependencias de Composer", "Recibir peticiones, procesarlas y devolver una respuesta", "Definir las credenciales de la base de datos", "Compilar los assets CSS y JavaScript"], "answer": 1, "explanation": "Un controlador coordina la petición, la lógica necesaria y la respuesta."}, {"id": 4, "section": "Estructura", "question": "¿Para qué se utiliza un middleware?", "options": ["Para procesar una petición antes o después de llegar al controlador", "Para instalar paquetes de Composer", "Para definir el idioma de la aplicación", "Para crear datos falsos con Faker"], "answer": 0, "explanation": "Los middleware filtran o transforman peticiones, por ejemplo comprobando la autenticación."}, {"id": 5, "section": "Estructura", "question": "¿Qué ventaja ofrecen los Form Requests?", "options": ["Separan la validación de formularios del controlador", "Crean rutas API automáticamente", "Compilan las vistas Blade", "Sustituyen a las migraciones"], "answer": 0, "explanation": "Los Form Requests permiten sacar la lógica de validación fuera del controlador."}, {"id": 6, "section": "Estructura", "question": "¿Dónde se almacenan los modelos Eloquent?", "options": ["config/models/", "app/Models/", "resources/models/", "database/models/"], "answer": 1, "explanation": "Los modelos Eloquent se guardan normalmente en app/Models/."}, {"id": 7, "section": "Estructura", "question": "¿Qué representa normalmente un modelo Eloquent?", "options": ["Una caché de configuración", "Una vista Blade", "Una tabla de la base de datos", "Una ruta web"], "answer": 2, "explanation": "Cada modelo Eloquent suele representar una tabla de la base de datos."}, {"id": 8, "section": "Estructura", "question": "¿Qué función tienen los Service Providers?", "options": ["Registrar servicios, bindings y configuraciones globales", "Guardar archivos públicos", "Ejecutar consultas SQL manuales", "Crear archivos JavaScript"], "answer": 0, "explanation": "Los Service Providers participan en el arranque y registro de servicios de Laravel."}, {"id": 9, "section": "Estructura", "question": "¿En qué archivo se definen principalmente las rutas web?", "options": ["config/app.php", "routes/web.php", "routes/api.php", "public/index.php"], "answer": 1, "explanation": "routes/web.php contiene las rutas que normalmente responden a peticiones del navegador."}, {"id": 10, "section": "Estructura", "question": "¿Qué característica tienen las rutas de routes/api.php?", "options": ["Solo funcionan con Blade", "Se ejecutan únicamente desde Artisan", "Siempre usan cookies y CSRF", "Usan el middleware api y normalmente no mantienen sesión"], "answer": 3, "explanation": "Las rutas API están pensadas para servicios sin estado."}, {"id": 11, "section": "Estructura", "question": "¿Qué carpeta contiene vistas Blade, CSS, JavaScript e idiomas sin procesar?", "options": ["public/", "vendor/", "storage/", "resources/"], "answer": 3, "explanation": "resources/ contiene vistas, assets sin compilar y archivos de traducción."}, {"id": 12, "section": "Estructura", "question": "¿Dónde se encuentran las plantillas Blade?", "options": ["config/views/", "public/templates/", "app/Views/", "resources/views/"], "answer": 3, "explanation": "Las vistas Blade se guardan en resources/views/."}, {"id": 13, "section": "Estructura", "question": "¿Qué carpeta contiene los archivos de configuración de Laravel?", "options": ["config/", "bootstrap/", "routes/", "tests/"], "answer": 0, "explanation": "config/ contiene archivos como app.php, database.php, mail.php y session.php."}, {"id": 14, "section": "Estructura", "question": "¿Qué contiene la carpeta database/migrations/?", "options": ["Los archivos CSS compilados", "El historial de cambios de la estructura de la base de datos", "Los controladores de recursos", "Las rutas de la API"], "answer": 1, "explanation": "Las migraciones actúan como control de versiones del esquema de la base de datos."}, {"id": 15, "section": "Estructura", "question": "¿Para qué se utilizan los seeders?", "options": ["Para limpiar la caché", "Para cifrar cookies", "Para crear enlaces simbólicos", "Para insertar datos iniciales o de prueba"], "answer": 3, "explanation": "Los seeders permiten poblar la base de datos."}, {"id": 16, "section": "Estructura", "question": "¿Qué generan las factories?", "options": ["Archivos de configuración", "Datos falsos para pruebas", "Controladores invocables", "Rutas con sesión"], "answer": 1, "explanation": "Las factories generan datos falsos, normalmente mediante Faker."}, {"id": 17, "section": "Estructura", "question": "¿Qué carpeta debe ser el único directorio accesible públicamente?", "options": ["app/", "database/", "vendor/", "public/"], "answer": 3, "explanation": "El servidor web debe apuntar a public/, donde se encuentra index.php."}, {"id": 18, "section": "Estructura", "question": "¿Cuál es la función de public/index.php?", "options": ["Ejecutar los tests unitarios", "Actuar como front controller y arrancar Laravel", "Guardar las credenciales", "Definir las migraciones"], "answer": 1, "explanation": "Todas las peticiones web pasan por public/index.php."}, {"id": 19, "section": "Estructura", "question": "¿Dónde se encuentra normalmente el archivo laravel.log?", "options": ["app/Logs/", "config/logs/", "public/logs/", "storage/logs/"], "answer": 3, "explanation": "Laravel guarda sus logs en storage/logs/laravel.log."}, {"id": 20, "section": "Estructura", "question": "¿Qué carpeta contiene las dependencias PHP instaladas por Composer?", "options": ["resources/", "vendor/", "tests/", "bootstrap/"], "answer": 1, "explanation": "vendor/ contiene las dependencias PHP y no debe modificarse manualmente."}, {"id": 21, "section": ".env", "question": "¿Qué tipo de información contiene el archivo .env?", "options": ["Las migraciones ejecutadas", "El código de los controladores", "Variables de configuración que cambian según el entorno", "Las plantillas Blade"], "answer": 2, "explanation": ".env almacena configuración específica de desarrollo, staging o producción."}, {"id": 22, "section": ".env", "question": "¿Cuál es la idea principal de la configuración basada en el entorno?", "options": ["La base de datos se configura en Blade", "Las rutas se escriben dentro de .env", "Cada entorno usa un código PHP diferente", "El código permanece igual y cambia la configuración"], "answer": 3, "explanation": "La aplicación mantiene el mismo código y adapta sus valores mediante variables de entorno."}, {"id": 23, "section": ".env", "question": "¿Qué es .env.example?", "options": ["El archivo real de producción", "Una copia cifrada de la base de datos", "Un listado de comandos Artisan", "Una plantilla de las variables necesarias sin valores secretos"], "answer": 3, "explanation": ".env.example se comparte para documentar qué variables necesita el proyecto."}, {"id": 24, "section": ".env", "question": "¿Qué comando copia .env.example para crear .env en Linux o macOS?", "options": ["php artisan env:copy", "mv .env .env.example", "composer env:create", "cp .env.example .env"], "answer": 3, "explanation": "Al clonar un proyecto se puede crear .env con cp .env.example .env."}, {"id": 25, "section": ".env", "question": "¿Qué comando genera una nueva APP_KEY?", "options": ["composer key:create", "php artisan app:key", "php artisan env:encrypt", "php artisan key:generate"], "answer": 3, "explanation": "APP_KEY se genera con php artisan key:generate."}, {"id": 26, "section": ".env", "question": "¿Qué representa APP_NAME?", "options": ["El nombre de la aplicación", "El nombre del servidor de base de datos", "El nombre de la ruta inicial", "El nombre del driver de caché"], "answer": 0, "explanation": "APP_NAME identifica la aplicación en notificaciones, correos y otros contextos."}, {"id": 27, "section": ".env", "question": "¿Qué valores puede indicar APP_ENV según la teoría?", "options": ["local, staging o production", "mysql, pgsql o sqlite", "web, api o console", "file, database o redis"], "answer": 0, "explanation": "APP_ENV identifica el entorno actual de ejecución."}, {"id": 28, "section": ".env", "question": "¿Qué valor debe tener APP_DEBUG en producción?", "options": ["true", "false", "local", "null"], "answer": 1, "explanation": "APP_DEBUG debe ser false en producción para no exponer información sensible."}, {"id": 29, "section": ".env", "question": "¿Para qué se utiliza APP_TIMEZONE?", "options": ["Para indicar el puerto de MySQL", "Para seleccionar el driver de correo", "Para crear la APP_KEY", "Para definir la zona horaria de la aplicación"], "answer": 3, "explanation": "APP_TIMEZONE establece la zona horaria, por ejemplo Europe/Madrid."}, {"id": 30, "section": ".env", "question": "¿Qué variable establece el idioma por defecto?", "options": ["APP_ENV", "APP_URL", "APP_KEY", "APP_LOCALE"], "answer": 3, "explanation": "APP_LOCALE indica el idioma por defecto de la aplicación."}, {"id": 31, "section": ".env", "question": "¿Qué variable selecciona el driver de base de datos?", "options": ["DB_HOST", "DB_USERNAME", "DB_DATABASE", "DB_CONNECTION"], "answer": 3, "explanation": "DB_CONNECTION puede tomar valores como mysql, pgsql, sqlite o sqlsrv."}, {"id": 32, "section": ".env", "question": "¿Cuál es el puerto habitual de MySQL indicado en la teoría?", "options": ["5432", "8000", "2525", "3306"], "answer": 3, "explanation": "MySQL utiliza habitualmente el puerto 3306."}, {"id": 33, "section": ".env", "question": "¿Cuál es el puerto habitual de PostgreSQL indicado en la teoría?", "options": ["587", "3306", "5432", "9000"], "answer": 2, "explanation": "PostgreSQL utiliza habitualmente el puerto 5432."}, {"id": 34, "section": ".env", "question": "¿Qué valor debe asignarse a DB_CONNECTION para usar SQLite?", "options": ["mysqlite", "file", "sqlite", "database"], "answer": 2, "explanation": "Para trabajar con SQLite se configura DB_CONNECTION=sqlite."}, {"id": 35, "section": ".env", "question": "¿Dónde se crea el archivo SQLite citado en la teoría?", "options": ["storage/database.sqlite", "config/database.sqlite", "database/database.sqlite", "public/database.sqlite"], "answer": 2, "explanation": "Laravel utiliza el archivo database/database.sqlite."}, {"id": 36, "section": ".env", "question": "¿Qué hace MAIL_MAILER=log en desarrollo?", "options": ["Envía los correos mediante SendGrid", "Cifra el contenido de los correos", "Desactiva todos los logs", "Guarda los correos en el log en lugar de enviarlos"], "answer": 3, "explanation": "Con MAIL_MAILER=log los mensajes se registran en storage/logs/laravel.log."}, {"id": 37, "section": ".env", "question": "¿Qué driver se recomienda para alto rendimiento y muchas visitas?", "options": ["sync", "array", "file", "redis"], "answer": 3, "explanation": "Redis se recomienda para escenarios de alto rendimiento."}, {"id": 38, "section": ".env", "question": "¿Qué driver se utiliza solo en tests porque no persiste?", "options": ["file", "redis", "database", "array"], "answer": 3, "explanation": "El driver array no persiste los datos y es útil en pruebas."}, {"id": 39, "section": ".env", "question": "¿Qué función se recomienda usar en el código de la aplicación?", "options": ["config()", "env() directamente en cualquier clase", "$_ENV sin configuración", "getenv() siempre"], "answer": 0, "explanation": "Laravel recomienda leer la configuración mediante config() en el código de la aplicación."}, {"id": 40, "section": ".env", "question": "¿Por qué se recomienda config() frente a env() en el código de la aplicación?", "options": ["Porque config() modifica automáticamente .env", "Porque env() borra APP_KEY", "Porque config() crea migraciones", "Porque funciona correctamente con la caché de configuración"], "answer": 3, "explanation": "La caché generada por config:cache es compatible con el acceso mediante config()."}, {"id": 41, "section": "Artisan", "question": "¿Qué es Artisan?", "options": ["El ORM de Laravel", "La interfaz de línea de comandos de Laravel", "El servidor de base de datos", "El motor de plantillas de Laravel"], "answer": 1, "explanation": "Artisan es la CLI incluida en Laravel."}, {"id": 42, "section": "Artisan", "question": "¿Qué comando muestra ayuda sobre make:controller?", "options": ["php artisan make:controller --manual", "composer help controller", "php artisan help make:controller", "php artisan controller:help"], "answer": 2, "explanation": "Artisan ofrece ayuda específica mediante php artisan help seguido del comando."}, {"id": 43, "section": "Artisan", "question": "¿Qué comando inicia el servidor de desarrollo?", "options": ["php artisan serve", "composer serve", "php artisan start", "php artisan web"], "answer": 0, "explanation": "php artisan serve levanta el servidor local de Laravel."}, {"id": 44, "section": "Artisan", "question": "¿Cómo se inicia el servidor en el puerto 9000?", "options": ["php artisan serve:9000", "composer serve --9000", "php artisan --port 9000", "php artisan serve --host=0.0.0.0 --port=9000"], "answer": 3, "explanation": "El comando serve admite las opciones --host y --port."}, {"id": 45, "section": "Artisan", "question": "¿Qué comando muestra la versión de Laravel?", "options": ["php --laravel", "php artisan --version", "composer laravel:version", "php artisan version:list"], "answer": 1, "explanation": "La versión se consulta con php artisan --version."}, {"id": 46, "section": "Artisan", "question": "¿Qué comando muestra todas las rutas registradas?", "options": ["php artisan list:route", "php artisan routes", "composer route:list", "php artisan route:list"], "answer": 3, "explanation": "route:list muestra las rutas de la aplicación."}, {"id": 47, "section": "Artisan", "question": "¿Qué opción filtra rutas por nombre?", "options": ["--filter-path=article", "--name=article", "--only=article", "--route=article"], "answer": 1, "explanation": "php artisan route:list --name=article filtra por nombre."}, {"id": 48, "section": "Artisan", "question": "¿Qué opción permite ver solo rutas cuyo path contiene api?", "options": ["--path=api", "--middleware=api", "--prefix-only=api", "--name=api"], "answer": 0, "explanation": "php artisan route:list --path=api filtra por la ruta."}, {"id": 49, "section": "Artisan", "question": "¿Qué comando genera un controlador de recursos?", "options": ["php artisan controller:resource ArticleController", "php artisan make:controller ArticleController --resource", "php artisan make:resource ArticleController", "php artisan make:controller ArticleController -m"], "answer": 1, "explanation": "La opción --resource añade los métodos CRUD habituales."}, {"id": 50, "section": "Artisan", "question": "¿Qué tipo de controlador omite create y edit?", "options": ["Un controlador generado con --resource", "Un controlador invocable", "Un controlador generado con --api", "Un middleware"], "answer": 2, "explanation": "Los controladores API no incluyen los métodos destinados a formularios HTML."}, {"id": 51, "section": "Artisan", "question": "¿Qué característica tiene un controlador invocable?", "options": ["Siempre crea siete métodos CRUD", "Solo funciona en rutas API", "No puede devolver vistas", "Contiene un único método __invoke"], "answer": 3, "explanation": "Un controlador invocable concentra su acción en __invoke."}, {"id": 52, "section": "Artisan", "question": "¿Qué comando crea un modelo junto con una migración?", "options": ["php artisan make:migration Article -m", "php artisan model:migrate Article", "php artisan make:model Article -m", "php artisan make:model Article --controller"], "answer": 2, "explanation": "La opción -m genera también una migración."}, {"id": 53, "section": "Artisan", "question": "¿Qué genera php artisan make:model Article -mfs?", "options": ["Modelo y controlador API únicamente", "Modelo, migración, factory y seeder", "Modelo, ruta y vista", "Modelo, middleware, formulario y servicio"], "answer": 1, "explanation": "Las opciones m, f y s corresponden a migración, factory y seeder."}, {"id": 54, "section": "Artisan", "question": "¿Qué comando crea una migración nueva?", "options": ["php artisan migration:new articles", "composer create:migration articles", "php artisan make:table articles", "php artisan make:migration create_articles_table"], "answer": 3, "explanation": "Las migraciones se generan con make:migration."}, {"id": 55, "section": "Artisan", "question": "¿Qué comando crea un seeder?", "options": ["composer make:seeder ArticleSeeder", "php artisan make:seeder ArticleSeeder", "php artisan make:data ArticleSeeder", "php artisan seed:new ArticleSeeder"], "answer": 1, "explanation": "Los seeders se generan con make:seeder."}, {"id": 56, "section": "Artisan", "question": "¿Qué comando crea una factory?", "options": ["composer make:factory ArticleFactory", "php artisan make:faker ArticleFactory", "php artisan factory:new ArticleFactory", "php artisan make:factory ArticleFactory"], "answer": 3, "explanation": "Las factories se generan con make:factory."}, {"id": 57, "section": "Artisan", "question": "¿Qué comando deshace el último lote de migraciones?", "options": ["php artisan migrate:refresh", "php artisan rollback:migrate", "php artisan migrate:undo", "php artisan migrate:rollback"], "answer": 3, "explanation": "migrate:rollback deshace el último lote."}, {"id": 58, "section": "Artisan", "question": "¿Qué hace php artisan migrate:fresh --seed?", "options": ["Solo muestra el estado de las migraciones", "Crea una nueva APP_KEY", "Borra las tablas, migra desde cero y ejecuta los seeders", "Limpia únicamente la caché"], "answer": 2, "explanation": "Es un comando útil para reiniciar la base de datos de desarrollo con datos de prueba."}, {"id": 59, "section": "Artisan", "question": "¿Qué es Tinker?", "options": ["Un sistema de plantillas", "Un driver de sesiones", "Un servidor web alternativo", "Una consola PHP interactiva con acceso a la aplicación"], "answer": 3, "explanation": "Tinker es un REPL para probar modelos, helpers y otros componentes."}, {"id": 60, "section": "Artisan", "question": "¿Qué comando limpia todas las cachés principales de una vez?", "options": ["php artisan optimize:clear", "composer optimize:clear", "php artisan cache:all", "php artisan clear:everything"], "answer": 0, "explanation": "optimize:clear limpia cachés de configuración, rutas, vistas y otros elementos."}];
+
+let questions = [];
+let current = 0;
+let answers = [];
+let checked = [];
+let studentName = "";
+
+const startCard = document.getElementById("startCard");
+const student = document.getElementById("student");
+const mode = document.getElementById("mode");
+const startBtn = document.getElementById("startBtn");
+const progressArea = document.getElementById("progressArea");
+const progressText = document.getElementById("progressText");
+const answeredText = document.getElementById("answeredText");
+const bar = document.getElementById("bar");
+const quizCard = document.getElementById("quizCard");
+const sectionBadge = document.getElementById("sectionBadge");
+const qnum = document.getElementById("qnum");
+const questionText = document.getElementById("question");
+const optionsBox = document.getElementById("options");
+const feedback = document.getElementById("feedback");
+const prevBtn = document.getElementById("prevBtn");
+const checkBtn = document.getElementById("checkBtn");
+const nextBtn = document.getElementById("nextBtn");
+const resultsCard = document.getElementById("resultsCard");
+const studentResult = document.getElementById("studentResult");
+const score = document.getElementById("score");
+const message = document.getElementById("message");
+const summary = document.getElementById("summary");
+const review = document.getElementById("review");
+const restartBtn = document.getElementById("restartBtn");
+
+startBtn.addEventListener("click", () => {
+  studentName = student.value.trim();
+  if (!studentName) {
+    alert("Introduce tu nombre y apellidos.");
+    student.focus();
+    return;
+  }
+  const selectedMode = mode.value;
+  questions = selectedMode === "Todos"
+    ? [...allQuestions]
+    : allQuestions.filter(q => q.section === selectedMode);
+
+  current = 0;
+  answers = Array(questions.length).fill(null);
+  checked = Array(questions.length).fill(false);
+
+  startCard.style.display = "none";
+  resultsCard.style.display = "none";
+  progressArea.style.display = "block";
+  quizCard.style.display = "block";
+  renderQuestion();
+});
+
+function renderQuestion() {
+  const q = questions[current];
+  sectionBadge.textContent = q.section;
+  qnum.textContent = `Pregunta ${current + 1} de ${questions.length}`;
+  questionText.textContent = q.question;
+  optionsBox.innerHTML = "";
+  feedback.className = "feedback";
+  feedback.textContent = "";
+
+  q.options.forEach((option, index) => {
+    const label = document.createElement("label");
+    label.className = "option";
+
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "answer";
+    input.value = index;
+    input.checked = answers[current] === index;
+    input.disabled = checked[current];
+
+    const span = document.createElement("span");
+    span.textContent = option;
+
+    label.appendChild(input);
+    label.appendChild(span);
+
+    if (input.checked) label.classList.add("selected");
+
+    if (checked[current]) {
+      if (index === q.answer) label.classList.add("correct");
+      if (answers[current] === index && index !== q.answer) label.classList.add("wrong");
+    }
+
+    input.addEventListener("change", () => {
+      answers[current] = index;
+      document.querySelectorAll(".option").forEach(el => el.classList.remove("selected"));
+      label.classList.add("selected");
+      updateProgress();
+    });
+
+    optionsBox.appendChild(label);
+  });
+
+  if (checked[current]) showFeedback();
+
+  prevBtn.disabled = current === 0;
+  checkBtn.disabled = checked[current];
+  nextBtn.disabled = !checked[current];
+  nextBtn.textContent = current === questions.length - 1 ? "Finalizar" : "Siguiente";
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== null).length;
+  progressText.textContent = `Progreso: ${current + 1} / ${questions.length}`;
+  answeredText.textContent = `Respondidas: ${answered}`;
+  bar.style.width = `${((current + 1) / questions.length) * 100}%`;
+}
+
+checkBtn.addEventListener("click", () => {
+  if (answers[current] === null) {
+    alert("Selecciona una opción antes de comprobar.");
+    return;
+  }
+  checked[current] = true;
+  renderQuestion();
+});
+
+function showFeedback() {
+  const q = questions[current];
+  const ok = answers[current] === q.answer;
+  feedback.className = `feedback ${ok ? "ok" : "ko"}`;
+  feedback.textContent = `${ok ? "Correcto." : "Incorrecto."} ${q.explanation}`;
+}
+
+prevBtn.addEventListener("click", () => {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (!checked[current]) return;
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+
+function showResults() {
+  quizCard.style.display = "none";
+  progressArea.style.display = "none";
+  resultsCard.style.display = "block";
+
+  const totalCorrect = answers.reduce((acc, answer, i) => acc + (answer === questions[i].answer ? 1 : 0), 0);
+  const percentage = Math.round((totalCorrect / questions.length) * 100);
+
+  studentResult.textContent = `Alumno/a: ${studentName}`;
+  score.textContent = `${totalCorrect} / ${questions.length} · ${percentage}%`;
+
+  if (percentage >= 90) message.textContent = "Excelente dominio de la sesión 2.";
+  else if (percentage >= 70) message.textContent = "Buen resultado. Revisa las preguntas falladas.";
+  else if (percentage >= 50) message.textContent = "Resultado suficiente, aunque conviene repasar.";
+  else message.textContent = "Necesitas repasar los tres bloques de la sesión.";
+
+  summary.innerHTML = "";
+  [ "Estructura", ".env", "Artisan" ].forEach(section => {
+    const indices = questions.map((q,i) => q.section === section ? i : -1).filter(i => i >= 0);
+    if (!indices.length) return;
+    const correct = indices.filter(i => answers[i] === questions[i].answer).length;
+    const box = document.createElement("div");
+    box.className = "summary-box";
+    box.innerHTML = `<strong>${section}</strong><br>${correct} / ${indices.length} aciertos`;
+    summary.appendChild(box);
+  });
+
+  review.innerHTML = "";
+  questions.forEach((q, i) => {
+    const ok = answers[i] === q.answer;
+    const selected = answers[i] === null ? "Sin responder" : q.options[answers[i]];
+    const item = document.createElement("div");
+    item.className = `review-item ${ok ? "ok" : ""}`;
+    item.innerHTML = `
+      <strong>${i + 1}. [${q.section}] ${q.question}</strong><br>
+      Tu respuesta: ${selected}<br>
+      Respuesta correcta: ${q.options[q.answer]}<br>
+      <small>${q.explanation}</small>
+    `;
+    review.appendChild(item);
+  });
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+restartBtn.addEventListener("click", () => {
+  resultsCard.style.display = "none";
+  startCard.style.display = "block";
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.1.%20EstructuraCarpetas/">
+      
+      
+        <link rel="next" href="../2.3%20Artisan%20CLI/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2.2. El archivo env - DWES 26/27 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.5%201.75v11.5c0%20.138.112.25.25.25h3.17a.75.75%200%200%201%200%201.5H2.75A1.75%201.75%200%200%201%201%2013.25V1.75C1%20.784%201.784%200%202.75%200h8.5C12.216%200%2013%20.784%2013%201.75v7.736a.75.75%200%200%201-1.5%200V1.75a.25.25%200%200%200-.25-.25h-8.5a.25.25%200%200%200-.25.25m13.274%209.537zl-4.557%204.45a.75.75%200%200%201-1.055-.008l-1.943-1.95a.75.75%200%200%201%201.062-1.058l1.419%201.425%204.026-3.932a.75.75%200%201%201%201.048%201.074M4.75%204h4.5a.75.75%200%200%201%200%201.5h-4.5a.75.75%200%200%201%200-1.5M4%207.75A.75.75%200%200%201%204.75%207h2a.75.75%200%200%201%200%201.5h-2A.75.75%200%200%201%204%207.75%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M3.499.75a.75.75%200%200%201%201.5%200v.996C5.9%202.903%206.793%203.65%207.662%204.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873%2010.794-.045%2012.622.26%2014.408.558%2016%201.94%2016%204.25c0%201.278-.954%202.575-2.44%202.734l.146.508.065.22c.203.701.412%201.455.476%202.226.142%201.707-.4%203.03-1.487%203.898C11.714%2014.671%2010.27%2015%208.75%2015h-6a.75.75%200%200%201%200-1.5h1.376a4.5%204.5%200%200%201-.563-1.191%203.84%203.84%200%200%201-.05-2.063%204.65%204.65%200%200%201-2.025-.293.75.75%200%200%201%20.525-1.406c1.357.507%202.376-.006%202.698-.318l.009-.01a.747.747%200%200%201%201.06%200%20.75.75%200%200%201-.012%201.074c-.912.92-.992%201.835-.768%202.586.221.74.745%201.337%201.196%201.621H8.75c1.343%200%202.398-.296%203.074-.836.635-.507%201.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.4%202.4%200%200%201-.507-.441%203.1%203.1%200%200%201-.633-1.248.75.75%200%200%201%201.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738%200%201.25-.615%201.25-1.25%200-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706%201.345-.46.92-.27%201.774.019%203.062l.042.19.01.05c.348.443.666.949.94%201.553a.75.75%200%201%201-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7%205.527c-.814-.68-1.75-1.462-2.692-2.619a3.7%203.7%200%200%200-1.023.88c-.406.495-.663%201.036-.722%201.508.116.122.306.21.591.239.388.038.797-.06%201.032-.19a.75.75%200%200%201%20.728%201.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75%205.677V5.5c0-.984.48-1.94%201.077-2.664.46-.559%201.05-1.055%201.673-1.353z%22/%3E%3C/svg%3E');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13.78%204.22a.75.75%200%200%201%200%201.06l-7.25%207.25a.75.75%200%200%201-1.06%200L2.22%209.28a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018L6%2010.94l6.72-6.72a.75.75%200%200%201%201.06%200%22/%3E%3C/svg%3E');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.92%206.085h.001a.749.749%200%201%201-1.342-.67c.169-.339.436-.701.849-.977C6.845%204.16%207.369%204%208%204a2.76%202.76%200%200%201%201.637.525c.503.377.863.965.863%201.725%200%20.448-.115.83-.329%201.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6%206%200%200%200-.26.16%201%201%200%200%200-.276.245.75.75%200%200%201-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1%201%200%200%200%20.277-.245C8.96%206.514%209%206.427%209%206.25a.61.61%200%200%200-.262-.525A1.27%201.27%200%200%200%208%205.5c-.369%200-.595.09-.74.187a1%201%200%200%200-.34.398M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.344%202.343za8%208%200%200%201%2011.314%2011.314A8.002%208.002%200%200%201%20.234%2010.089a8%208%200%200%201%202.11-7.746m1.06%2010.253a6.5%206.5%200%201%200%209.108-9.275%206.5%206.5%200%200%200-9.108%209.275M6.03%204.97%208%206.94l1.97-1.97a.749.749%200%200%201%201.275.326.75.75%200%200%201-.215.734L9.06%208l1.97%201.97a.749.749%200%200%201-.326%201.275.75.75%200%200%201-.734-.215L8%209.06l-1.97%201.97a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L6.94%208%204.97%206.03a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.72.22a.75.75%200%200%201%201.06%200l1%20.999a3.5%203.5%200%200%201%202.441%200l.999-1a.748.748%200%200%201%201.265.332.75.75%200%200%201-.205.729l-.775.776c.616.63.995%201.493.995%202.444v.327q0%20.15-.025.292c.408.14.764.392%201.029.722l1.968-.787a.75.75%200%200%201%20.556%201.392L13%207.258V9h2.25a.75.75%200%200%201%200%201.5H13v.5q-.002.615-.141%201.186l2.17.868a.75.75%200%200%201-.557%201.392l-2.184-.873A5%205%200%200%201%208%2016a5%205%200%200%201-4.288-2.427l-2.183.873a.75.75%200%200%201-.558-1.392l2.17-.868A5%205%200%200%201%203%2011v-.5H.75a.75.75%200%200%201%200-1.5H3V7.258L.971%206.446a.75.75%200%200%201%20.558-1.392l1.967.787c.265-.33.62-.583%201.03-.722a1.7%201.7%200%200%201-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72%201.28a.75.75%200%200%201%200-1.06m.53%206.28a.75.75%200%200%200-.75.75V11a3.5%203.5%200%201%200%207%200V7.25a.75.75%200%200%200-.75-.75ZM6.173%205h3.654A.17.17%200%200%200%2010%204.827V4.5a2%202%200%201%200-4%200v.327c0%20.096.077.173.173.173%22/%3E%3C/svg%3E');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5%205.782V2.5h-.25a.75.75%200%200%201%200-1.5h6.5a.75.75%200%200%201%200%201.5H11v3.282l3.666%205.76C15.619%2013.04%2014.543%2015%2012.767%2015H3.233c-1.776%200-2.852-1.96-1.899-3.458Zm-2.4%206.565a.75.75%200%200%200%20.633%201.153h9.534a.75.75%200%200%200%20.633-1.153L12.225%2010.5h-8.45ZM9.5%202.5h-3V6c0%20.143-.04.283-.117.403L4.73%209h6.54L9.617%206.403A.75.75%200%200%201%209.5%206Z%22/%3E%3C/svg%3E');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1.75%202.5h10.5a.75.75%200%200%201%200%201.5H1.75a.75.75%200%200%201%200-1.5m4%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5m0%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5M2.5%207.75v6a.75.75%200%200%201-1.5%200v-6a.75.75%200%200%201%201.5%200%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud6-sesion-2-el-archivo-env" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 26/27 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.2. El archivo env
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES 26/27 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            UD6 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.0%20Utilidades/Cambios%20Laravel13/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.0 Utilidades
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.1%20Introducci%C3%B3n/1.1.%20Qu%C3%A9%20es%20Laravel/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.1 Introducción
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    6.2. Estructura, entorno y Artisan
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            6.2. Estructura, entorno y Artisan
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1.%20EstructuraCarpetas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. EstructuraCarpetas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.2. El archivo env
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. El archivo env
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ud6-sesion-2-el-archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD6 · Sesión 2 · El archivo env
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-el-archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es el archivo .env?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-por-que-es-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Por qué es importante?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-el-archivo-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. El archivo .env.example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-contenido-del-env-de-un-proyecto-nuevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Contenido del .env de un proyecto nuevo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Contenido del .env de un proyecto nuevo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-variables-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Variables de aplicación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-variables-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Variables de base de datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-variables-de-correo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Variables de correo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-variables-de-cache-y-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Variables de caché y sesiones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-variables-de-colas-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Variables de colas de trabajo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-como-leer-variables-del-env-en-tu-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cómo leer variables del .env en tu código
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Cómo leer variables del .env en tu código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-usando-la-funcion-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Usando la función env()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-usando-la-funcion-config-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Usando la función config() (recomendada)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-buenas-practicas-con-el-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Buenas prácticas con el .env
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Buenas prácticas con el .env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-nunca-subas-env-a-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Nunca subas .env a Git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-documenta-las-variables-en-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Documenta las variables en .env.example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-usa-app_debugfalse-en-produccion-siempre" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Usa APP_DEBUG=false en producción — siempre
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-configura-la-zona-horaria-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Configura la zona horaria correctamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-genera-la-app_key-en-una-instalacion-local-nueva" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Genera la APP_KEY en una instalación local nueva
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ejemplo-de-env-para-un-blog-en-espanol" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Ejemplo de .env para un blog en español
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ejemplo-adicional-una-variable-propia-correctamente-conectada" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Ejemplo adicional · Una variable propia correctamente conectada
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-recursos-para-profundizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Recursos para profundizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cierre-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Cierre de sesión ·
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3%20Artisan%20CLI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Artisan CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Entregable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entregable
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.3.%20Rutas%20vistas%20y%20Blade/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.3. Rutas vistas y Blade
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ud6-sesion-2-el-archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD6 · Sesión 2 · El archivo env
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-el-archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es el archivo .env?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-por-que-es-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Por qué es importante?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-el-archivo-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. El archivo .env.example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-contenido-del-env-de-un-proyecto-nuevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Contenido del .env de un proyecto nuevo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Contenido del .env de un proyecto nuevo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-variables-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Variables de aplicación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-variables-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Variables de base de datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-variables-de-correo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Variables de correo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-variables-de-cache-y-sesiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Variables de caché y sesiones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-variables-de-colas-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Variables de colas de trabajo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-como-leer-variables-del-env-en-tu-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cómo leer variables del .env en tu código
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Cómo leer variables del .env en tu código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-usando-la-funcion-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Usando la función env()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-usando-la-funcion-config-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Usando la función config() (recomendada)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-buenas-practicas-con-el-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Buenas prácticas con el .env
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Buenas prácticas con el .env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-nunca-subas-env-a-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Nunca subas .env a Git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-documenta-las-variables-en-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Documenta las variables en .env.example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-usa-app_debugfalse-en-produccion-siempre" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Usa APP_DEBUG=false en producción — siempre
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-configura-la-zona-horaria-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Configura la zona horaria correctamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-genera-la-app_key-en-una-instalacion-local-nueva" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Genera la APP_KEY en una instalación local nueva
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ejemplo-de-env-para-un-blog-en-espanol" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Ejemplo de .env para un blog en español
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ejemplo-adicional-una-variable-propia-correctamente-conectada" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Ejemplo adicional · Una variable propia correctamente conectada
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-recursos-para-profundizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Recursos para profundizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cierre-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Cierre de sesión ·
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>2.2. El archivo env</h1>
+
+<h2 id="ud6-sesion-2-el-archivo-env">UD6 · Sesión 2 · El archivo env</h2>
+<details class="abstract" open="open">
+<summary>Índice de esta página</summary>
+<ul>
+<li><a href="#apartado-1">1. ¿Qué es el archivo <code>.env</code>?</a></li>
+<li><a href="#apartado-2">2. ¿Por qué es importante?</a></li>
+<li><a href="#apartado-3">3. El archivo <code>.env.example</code></a></li>
+<li><a href="#apartado-4">4. Contenido del <code>.env</code> de un proyecto nuevo</a></li>
+<li><a href="#apartado-5">5. Cómo leer variables del <code>.env</code> en tu código</a></li>
+<li><a href="#apartado-6">6. Buenas prácticas con el <code>.env</code></a></li>
+<li><a href="#apartado-7">7. Ejemplo de <code>.env</code> para un blog en español</a></li>
+<li><a href="#apartado-8">8. Ejemplo adicional · Una variable propia correctamente conectada</a></li>
+<li><a href="#apartado-9">9. Recursos para profundizar</a></li>
+<li><a href="#apartado-10">10. Cierre de sesión · estudiado</a></li>
+</ul>
+</details>
+<p><a id="apartado-1"></a></p>
+<h2 id="1-que-es-el-archivo-env">1. ¿Qué es el archivo <code>.env</code>?</h2>
+<p>El archivo <code>.env</code> (de “environment”) es un archivo de <strong>configuración de entorno</strong> que contiene todas las variables que pueden cambiar entre diferentes entornos: desarrollo local, staging y producción. </p>
+<ul>
+<li>En lugar de escribir <strong>credenciales o configuraciones</strong> directamente en el código, las colocas aquí.</li>
+</ul>
+<p>Esta práctica sigue el principio de <strong>configuración basada en el entorno</strong> (uno de los factores de la metodología <em>Twelve-Factor App</em>): el código es el mismo en todos los entornos, solo cambia la configuración.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.2.Elarchivoenv/1792213248093.png" data-desc-position="bottom"><img alt="1792213248093" src="../image/2.2.Elarchivoenv/1792213248093.png"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><a href="https://12factor.net/es/config">12factor.net/es/confi</a>g    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.2.Elarchivoenv/1792213178567.png" data-desc-position="bottom"><img alt="1792213178567" src="../image/2.2.Elarchivoenv/1792213178567.png"></a></p>
+</div>
+<p><a id="apartado-2"></a></p>
+<h2 id="2-por-que-es-importante">2. ¿Por qué es importante?</h2>
+<p>Imagina que tu equipo tiene tres <strong>entornos</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Entorno</th>
+<th>Base de datos</th>
+<th>Mail</th>
+<th>Debug</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local</td>
+<td><code>localhost/mi_app</code></td>
+<td>MailHog (local)</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>Staging</td>
+<td><code>servidor.staging/mi_app</code></td>
+<td>Mailtrap</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>Producción</td>
+<td><code>db.produccion.com/mi_app</code></td>
+<td>SendGrid</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Con <code>.env</code>, cada desarrollador y cada servidor tiene su propio archivo <code>.env</code> con los valores correctos para su entorno. El código PHP nunca cambia; solo cambia la configuración.</p>
+<p><a id="apartado-3"></a></p>
+<h2 id="3-el-archivo-envexample">3. El archivo <code>.env.example</code></h2>
+<p>Laravel incluye un archivo <code>.env.example</code> que es una <strong>plantilla</strong> del <code>.env</code> con todos los campos disponibles pero sin los valores secretos. Este archivo sí se sube a Git para que cualquier persona que clone el proyecto sepa qué variables necesita configurar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Al clonar un proyecto existente, siempre haz esto:</span>
+cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+php<span class="w"> </span>artisan<span class="w"> </span>key:generate
+</code></pre></div>
+<p><a id="apartado-4"></a></p>
+<h2 id="4-contenido-del-env-de-un-proyecto-nuevo">4. Contenido del <code>.env</code> de un proyecto nuevo</h2>
+<p>Veamos el archivo completo y lo que <strong>significa</strong> cada sección:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Configuración general de la aplicación ───────────────</span>
+<span class="na">APP_NAME</span><span class="o">=</span><span class="s">Laravel</span>
+<span class="na">APP_ENV</span><span class="o">=</span><span class="s">local</span>
+<span class="na">APP_KEY</span><span class="o">=</span><span class="s">base64:tu_clave_generada_automaticamente=</span>
+<span class="na">APP_DEBUG</span><span class="o">=</span><span class="s">true</span>
+<span class="na">APP_URL</span><span class="o">=</span><span class="s">http://localhost</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">UTC</span>
+<span class="na">APP_LOCALE</span><span class="o">=</span><span class="s">en</span>
+<span class="na">APP_FALLBACK_LOCALE</span><span class="o">=</span><span class="s">en</span>
+</code></pre></div>
+<h3 id="41-variables-de-aplicacion">4.1. Variables de aplicación</h3>
+<div class="admonition success">
+<p class="admonition-title">modifica</p>
+<p>Modifica alguno de estos valores y añádelo con una captura</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.2.Elarchivoenv/1792213394486.png" data-desc-position="bottom"><img alt="1792213394486" src="../image/2.2.Elarchivoenv/1792213394486.png"></a></p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_NAME</code></td>
+<td>Nombre de tu aplicación (aparece en emails, notificaciones)</td>
+</tr>
+<tr>
+<td><code>APP_ENV</code></td>
+<td>Entorno actual:<code>local</code>, <code>staging</code> o <code>production</code></td>
+</tr>
+<tr>
+<td><code>APP_KEY</code></td>
+<td>Clave secreta de cifrado (se genera con<code>php artisan key:generate</code>)</td>
+</tr>
+<tr>
+<td><code>APP_DEBUG</code></td>
+<td><code>true</code> en desarrollo, <strong>siempre <code>false</code> en producción</strong></td>
+</tr>
+<tr>
+<td><code>APP_URL</code></td>
+<td>URL base de tu aplicación</td>
+</tr>
+<tr>
+<td><code>APP_TIMEZONE</code></td>
+<td>Zona horaria (p. ej.<code>Europe/Madrid</code> o <code>America/Mexico_City</code>)</td>
+</tr>
+<tr>
+<td><code>APP_LOCALE</code></td>
+<td>Idioma por defecto (p. ej.<code>es</code> para español)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-variables-de-base-de-datos">4.2. Variables de base de datos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Base de datos ─────────────────────────────────────────</span>
+<span class="na">DB_CONNECTION</span><span class="o">=</span><span class="s">mysql</span>
+<span class="na">DB_HOST</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">DB_PORT</span><span class="o">=</span><span class="s">3306</span>
+<span class="na">DB_DATABASE</span><span class="o">=</span><span class="s">laravel</span>
+<span class="na">DB_USERNAME</span><span class="o">=</span><span class="s">root</span>
+<span class="na">DB_PASSWORD</span><span class="o">=</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB_CONNECTION</code></td>
+<td>Driver:<code>mysql</code>, <code>pgsql</code>, <code>sqlite</code>, <code>sqlsrv</code></td>
+</tr>
+<tr>
+<td><code>DB_HOST</code></td>
+<td>Servidor de base de datos</td>
+</tr>
+<tr>
+<td><code>DB_PORT</code></td>
+<td>Puerto (MySQL: 3306, PostgreSQL: 5432)</td>
+</tr>
+<tr>
+<td><code>DB_DATABASE</code></td>
+<td>Nombre de la base de datos</td>
+</tr>
+<tr>
+<td><code>DB_USERNAME</code></td>
+<td>Usuario de la base de datos</td>
+</tr>
+<tr>
+<td><code>DB_PASSWORD</code></td>
+<td>Contraseña (puede estar vacía en local)</td>
+</tr>
+</tbody>
+</table>
+<p>Para usar <strong>SQLite</strong> (ideal para empezar sin instalar MySQL), la que carga por defecto</p>
+<div class="highlight"><pre><span></span><code><span class="na">DB_CONNECTION</span><span class="o">=</span><span class="s">sqlite</span>
+<span class="c1"># Las demás variables DB_ puedes borrarlas o comentarlas</span>
+</code></pre></div>
+<p>Laravel creará automáticamente el archivo <code>database/database.sqlite</code>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.2.Elarchivoenv/1792213633982.png" data-desc-position="bottom"><img alt="1792213633982" src="../image/2.2.Elarchivoenv/1792213633982.png"></a></p>
+<h3 id="43-variables-de-correo">4.3. Variables de correo</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Correo electrónico ────────────────────────────────────</span>
+<span class="na">MAIL_MAILER</span><span class="o">=</span><span class="s">log</span>
+<span class="na">MAIL_HOST</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">MAIL_PORT</span><span class="o">=</span><span class="s">2525</span>
+<span class="na">MAIL_USERNAME</span><span class="o">=</span><span class="s">null</span>
+<span class="na">MAIL_PASSWORD</span><span class="o">=</span><span class="s">null</span>
+<span class="na">MAIL_FROM_ADDRESS</span><span class="o">=</span><span class="s">"hello@example.com"</span>
+<span class="na">MAIL_FROM_NAME</span><span class="o">=</span><span class="s">"${APP_NAME}"</span>
+</code></pre></div>
+<p>En desarrollo, <code>MAIL_MAILER=log</code> hace que todos los emails se guarden en <code>storage/logs/laravel.log</code> en lugar de enviarse de verdad. Muy útil para no bombardear a nadie con correos de prueba.</p>
+<p>Para producción podrías usar:</p>
+<div class="highlight"><pre><span></span><code><span class="na">MAIL_MAILER</span><span class="o">=</span><span class="s">smtp</span>
+<span class="na">MAIL_HOST</span><span class="o">=</span><span class="s">smtp.sendgrid.net</span>
+<span class="na">MAIL_PORT</span><span class="o">=</span><span class="s">587</span>
+<span class="na">MAIL_USERNAME</span><span class="o">=</span><span class="s">apikey</span>
+<span class="na">MAIL_PASSWORD</span><span class="o">=</span><span class="s">tu_api_key_de_sendgrid</span>
+</code></pre></div>
+<h3 id="44-variables-de-cache-y-sesiones">4.4. Variables de caché y sesiones</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Caché ─────────────────────────────────────────────────</span>
+<span class="na">CACHE_STORE</span><span class="o">=</span><span class="s">database</span>
+<span class="na">CACHE_PREFIX</span><span class="o">=</span>
+
+<span class="c1"># ── Sesiones ──────────────────────────────────────────────</span>
+<span class="na">SESSION_DRIVER</span><span class="o">=</span><span class="s">database</span>
+<span class="na">SESSION_LIFETIME</span><span class="o">=</span><span class="s">120</span>
+<span class="na">SESSION_ENCRYPT</span><span class="o">=</span><span class="s">false</span>
+<span class="na">SESSION_PATH</span><span class="o">=</span><span class="s">/</span>
+<span class="na">SESSION_DOMAIN</span><span class="o">=</span><span class="s">null</span>
+</code></pre></div>
+<p>Los <strong>drivers</strong> más comunes:</p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file</code></td>
+<td>Simple, para <strong>proyectos pequeños</strong></td>
+</tr>
+<tr>
+<td><code>database</code></td>
+<td>Almacena en BD, buena opción general</td>
+</tr>
+<tr>
+<td><code>redis</code></td>
+<td>Alto <strong>rendimiento</strong>, para proyectos con muchas visitas</td>
+</tr>
+<tr>
+<td><code>array</code></td>
+<td>Solo en <strong>tests (no persiste)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-variables-de-colas-de-trabajo">4.5. Variables de colas de trabajo</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Colas ─────────────────────────────────────────────────</span>
+<span class="na">QUEUE_CONNECTION</span><span class="o">=</span><span class="s">database</span>
+</code></pre></div>
+<p>Cuando envías emails o procesas imágenes de forma asíncrona, Laravel usa colas. En desarrollo <code>database</code> está bien; en producción usa <code>redis</code> para mejor rendimiento.</p>
+<p><a id="apartado-5"></a></p>
+<h2 id="5-como-leer-variables-del-env-en-tu-codigo">5. Cómo leer variables del <code>.env</code> en tu código</h2>
+<h3 id="51-usando-la-funcion-env">5.1. Usando la función <code>env()</code></h3>
+<div class="highlight"><pre><span></span><code><span class="x">// Leer una variable (no recomendado en el código de la app)</span>
+<span class="x">$debug = env('APP_DEBUG');</span>
+
+<span class="x">// Con valor por defecto si la variable no existe</span>
+<span class="x">$host = env('DB_HOST', '127.0.0.1');</span>
+</code></pre></div>
+<h3 id="52-usando-la-funcion-config-recomendada">5.2. Usando la función <code>config()</code> (recomendada)</h3>
+<p>La mejor práctica es <strong>no usar <code>env()</code> directamente en el código de la aplicación</strong>, sino acceder a las variables a través de los archivos de configuración en <code>config/</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Esto es mejor</span>
+<span class="x">$appName = config('app.name');</span>
+<span class="x">$dbHost  = config('database.connections.mysql.host');</span>
+<span class="x">$debug   = config('app.debug');</span>
+</code></pre></div>
+<p>¿Por qué? Porque Laravel puede cachear los archivos de configuración (<code>php artisan config:cache</code>), pero si usas <code>env()</code> directamente en el código, esa caché no funcionará correctamente.</p>
+<p><a id="apartado-6"></a></p>
+<h2 id="6-buenas-practicas-con-el-env">6. Buenas prácticas con el <code>.env</code></h2>
+<h3 id="61-nunca-subas-env-a-git">6.1. Nunca subas <code>.env</code> a Git</h3>
+<p>Verifica que <code>.gitignore</code> incluye <code>.env</code> (viene así por defecto en Laravel):</p>
+<h3 id="62-documenta-las-variables-en-envexample">6.2. Documenta las variables en <code>.env.example</code></h3>
+<p>Cuando añadas una nueva variable al <code>.env</code>, agrégala también al <code>.env.example</code> sin el valor secreto:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .env.example</span>
+<span class="na">STRIPE_KEY</span><span class="o">=</span>
+<span class="na">STRIPE_SECRET</span><span class="o">=</span>
+<span class="na">CLOUDINARY_URL</span><span class="o">=</span>
+</code></pre></div>
+<h3 id="63-usa-app_debugfalse-en-produccion-siempre">6.3. Usa <code>APP_DEBUG=false</code> en producción — siempre</h3>
+<p>Con <code>APP_DEBUG=true</code> en producción, si hay un error, el usuario podría ver <strong>rutas</strong> de archivos, versiones de paquetes, variables de entorno y más información sensible.</p>
+<h3 id="64-configura-la-zona-horaria-correctamente">6.4. Configura la zona horaria correctamente</h3>
+<div class="highlight"><pre><span></span><code><span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">Europe/Madrid</span>
+<span class="c1"># o</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">America/Mexico_City</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">America/Bogota</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">America/Lima</span>
+</code></pre></div>
+<h3 id="65-genera-la-app_key-en-una-instalacion-local-nueva">6.5. Genera la <code>APP_KEY</code> en una instalación local nueva</h3>
+<p>Esta clave se usa para cifrar cookies y otros datos. Genera una clave en una instalación local nueva; conserva la existente al restaurar un entorno con datos cifrados. Cambiarla puede invalidar sesiones y hacer ilegibles datos cifrados previamente.</p>
+<p><a id="apartado-7"></a></p>
+<h2 id="7-ejemplo-de-env-para-un-blog-en-espanol">7. Ejemplo de <code>.env</code> para un blog en español</h2>
+<div class="highlight"><pre><span></span><code><span class="na">APP_NAME</span><span class="o">=</span><span class="s">"Mi Blog Laravel"</span>
+<span class="na">APP_ENV</span><span class="o">=</span><span class="s">local</span>
+<span class="na">APP_KEY</span><span class="o">=</span><span class="s">base64:GENERADA_POR_ARTISAN=</span>
+<span class="na">APP_DEBUG</span><span class="o">=</span><span class="s">true</span>
+<span class="na">APP_URL</span><span class="o">=</span><span class="s">http://localhost:8000</span>
+<span class="na">APP_TIMEZONE</span><span class="o">=</span><span class="s">Europe/Madrid</span>
+<span class="na">APP_LOCALE</span><span class="o">=</span><span class="s">es</span>
+<span class="na">APP_FALLBACK_LOCALE</span><span class="o">=</span><span class="s">es</span>
+
+<span class="na">DB_CONNECTION</span><span class="o">=</span><span class="s">mysql</span>
+<span class="na">DB_HOST</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">DB_PORT</span><span class="o">=</span><span class="s">3306</span>
+<span class="na">DB_DATABASE</span><span class="o">=</span><span class="s">mi_blog</span>
+<span class="na">DB_USERNAME</span><span class="o">=</span><span class="s">root</span>
+<span class="na">DB_PASSWORD</span><span class="o">=</span>
+
+<span class="na">MAIL_MAILER</span><span class="o">=</span><span class="s">log</span>
+<span class="na">MAIL_FROM_ADDRESS</span><span class="o">=</span><span class="s">"noreply@miblog.es"</span>
+<span class="na">MAIL_FROM_NAME</span><span class="o">=</span><span class="s">"${APP_NAME}"</span>
+
+<span class="na">CACHE_STORE</span><span class="o">=</span><span class="s">file</span>
+<span class="na">SESSION_DRIVER</span><span class="o">=</span><span class="s">file</span>
+<span class="na">QUEUE_CONNECTION</span><span class="o">=</span><span class="s">sync</span>
+</code></pre></div>
+<p>Con esta configuración, el blog funcionará en español, guardará los logs de email en archivo y usará MySQL localmente.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/4.Elarchivoenv/1784386124522.png" data-desc-position="bottom"><img alt="1784386124522" src="../image/4.Elarchivoenv/1784386124522.png"></a></p>
+<p>En la próxima lección aprenderás a usar <strong>Artisan CLI</strong>, la herramienta de terminal de Laravel que te ahorrará cientos de horas de trabajo.</p>
+<div class="admonition warning">
+<p class="admonition-title">APP_TIMEZONE necesita conexión con config/app.php</p>
+<p>Definir <code>APP_TIMEZONE</code> en <code>.env</code> no cambia nada si <code>config/app.php</code> mantiene la zona horaria fija. Ajusta la entrada a <code>'timezone' =&gt; env('APP_TIMEZONE', 'UTC')</code> y comprueba <code>config('app.timezone')</code>. No añadas varias zonas horarias simultáneamente.</p>
+</div>
+<p><a id="apartado-8"></a></p>
+<h2 id="8-ejemplo-adicional-una-variable-propia-correctamente-conectada">8. Ejemplo adicional · Una variable propia correctamente conectada</h2>
+<p>Añade CENTRO_NOMBRE="IES de ejemplo" en .env y documenta la clave sin secretos en .env.example. Crea config/centro.php:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">'CENTRO_NOMBRE'</span><span class="p">,</span> <span class="s1">'Centro sin configurar'</span><span class="p">)];</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Captura de ejemplo · Tinker · configuración</p>
+</div>
+<p>(  <strong>Resultado ilustrativo</strong>, renderizado desde HTML para explicar la salida esperada).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/visuales/resultado-config.png" data-desc-position="bottom"><img alt="Tinker · configuración: resultado ilustrativo del código" src="../image/visuales/resultado-config.png"></a></p>
+<p>El valor proviene de config/centro.php y de la configuración de zona horaria.</p>
+<div class="admonition success">
+<p class="admonition-title">Resultado y comprobación</p>
+<p>Lee config("centro.nombre") desde Tinker. Si cambias .env y existe caché, ejecuta php <strong>artisan</strong> config:clear. env() se usa aquí dentro de config/, no en la vista.</p>
+</div>
+<details class="question">
+<summary>Comprueba que lo has entendido</summary>
+<p><strong>¿Por qué definir una variable en .env puede no cambiar la aplicación?</strong></p>
+<p>Porque debe existir código de configuración que la lea y puede haber configuración cacheada.</p>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Procedimiento</p>
+<ol>
+<li>Localiza el <strong>archivo</strong> indicado y verifica los requisitos del ejemplo.</li>
+<li>Aplica el cambio y ejecuta la <strong>comprobación</strong> propuesta.</li>
+<li>Documenta el <strong>resultado</strong> y explica la función del código.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Diagnóstico</p>
+<p>Si no obtienes el resultado, revisa primero la <strong>ruta</strong>, los <strong>imports</strong> y los nombres de <strong>variables</strong>. </p>
+<p>En ejemplos con <strong>base de datos</strong>, comprueba además el <strong>modelo</strong>, la <strong>tabla</strong> y las <strong>migraciones</strong>.</p>
+</div>
+<p><a id="apartado-9"></a></p>
+<h2 id="9-recursos-para-profundizar">9. Recursos para profundizar</h2>
+<ul>
+<li><a href="https://laravel.com/framework/docs/13.x/configuration">Documentación oficial: Una variable propia correctamente conectada</a>.</li>
+<li><a href="../">Guía de la sesión</a>: secuencia, recursos y comprobación final.</li>
+</ul>
+<p><a id="apartado-10"></a></p>
+<h2 id="10-cierre-de-sesion">10. Cierre de sesión ·</h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/visuales/resumen-estudiado.png" data-desc-position="bottom"><img alt="Infografía de los apartados vistos en la sesión 2, cada uno con el check estudiado" src="../image/visuales/resumen-estudiado.png"></a></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> <strong>Carpetas del proyecto</strong>: Localizar código, vistas, rutas, datos y dependencias.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> <strong>.env y configuración</strong>: Separar valores del entorno y archivos config/.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> <strong>Artisan CLI</strong>: Consultar ayuda, generar código y revisar rutas.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> <strong>Claves, caché y Git</strong>: Proteger .env y comprobar cambios de configuración.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../2.1.%20EstructuraCarpetas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.1. EstructuraCarpetas">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2.1. EstructuraCarpetas
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2.3%20Artisan%20CLI/" class="md-footer__link md-footer__link--next" aria-label="Next: 2.3 Artisan CLI">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2.3 Artisan CLI
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2026/27 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "content.code.copy", "navigation.path", "navigation.prune", "navigation.top"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": true, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

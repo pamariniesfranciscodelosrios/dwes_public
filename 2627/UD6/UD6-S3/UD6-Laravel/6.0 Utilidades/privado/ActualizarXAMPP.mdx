@@ -1,0 +1,443 @@
+
+## Situación actual
+
+XAMPP **no ofrece todavía un instalador oficial con PHP 8.3**. La versión oficial disponible para Windows continúa incluyendo PHP 8.2.12. Por tanto, para usar PHP 8.3 tienes que sustituir manualmente la carpeta de PHP o utilizar otro entorno. ([apachefriends.org][1])
+
+En Windows, el procedimiento más seguro es hacerlo sobre una **copia de XAMPP**, no directamente sobre la instalación que ya funciona.
+
+[youtu.be/U96R_Fd9Jso](https://youtu.be/U96R_Fd9Jso)
+
+
+<iframe width="1254" height="705" src="https://www.youtube.com/embed/U96R_Fd9Jso" title="Actualizar el PHP 8.2 de Xampp Windows a PHP 8.3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+# Método recomendado: sustituir PHP dentro de XAMPP
+
+## 1. Comprueba tu versión actual
+
+Abre una terminal:
+
+```bat
+C:\xampp\php\php.exe -v
+```
+
+También puedes comprobar qué ejecutable está usando Windows:
+
+```bat
+where php
+```
+
+## 2. Haz una copia de seguridad
+
+Detén **Apache y MySQL** desde el panel de XAMPP.
+
+Guarda al menos:
+
+```text
+C:\xampp\htdocs
+C:\xampp\mysql\data
+C:\xampp\php\php.ini
+C:\xampp\apache\conf
+```
+
+Para una copia completa, puedes duplicar la instalación:
+
+```text
+C:\xampp
+C:\xampp_backup
+```
+
+O trabajar directamente con una copia:
+
+```text
+C:\xampp83
+```
+
+## 3. Descarga PHP 8.3 para Windows
+
+Debes descargar desde PHP para Windows una versión con estas características:
+
+```text
+PHP 8.3.x
+x64
+Thread Safe
+ZIP
+```
+
+No descargues la versión **Non Thread Safe —NTS—**, porque XAMPP carga PHP como módulo de Apache. La documentación oficial indica que Apache necesita la compilación **Thread Safe —TS—**. También recomienda x64 para instalaciones modernas de Windows. ([windows.php.net][2])
+
+Actualmente existe PHP **8.3.32** para Windows en compilación TS x64. ([downloads.php.net][3])
+
+El archivo tendrá un nombre similar a:
+
+```text
+php-8.3.32-Win32-vs16-x64.zip
+```
+
+Evita el que incluya `nts`:
+
+```text
+php-8.3.32-nts-Win32-vs16-x64.zip
+```
+
+## 4. Renombra la carpeta PHP anterior
+
+En la instalación de XAMPP:
+
+```text
+C:\xampp\php
+```
+
+Renómbrala:
+
+```text
+C:\xampp\php82_backup
+```
+
+No la elimines hasta comprobar que todo funciona.
+
+## 5. Extrae PHP 8.3
+
+Crea nuevamente:
+
+```text
+C:\xampp\php
+```
+
+Extrae dentro todo el contenido del ZIP de PHP 8.3.
+
+Al finalizar deberías tener:
+
+```text
+C:\xampp\php\php.exe
+C:\xampp\php\php8apache2_4.dll
+C:\xampp\php\php8ts.dll
+C:\xampp\php\ext
+C:\xampp\php\php.ini-development
+C:\xampp\php\php.ini-production
+```
+
+## 6. Crea el nuevo `php.ini`
+
+No es recomendable copiar directamente el `php.ini` completo de PHP 8.2, porque podría cargar extensiones o configuraciones incompatibles.
+
+Copia:
+
+```text
+C:\xampp\php\php.ini-development
+```
+
+Y renombra la copia como:
+
+```text
+C:\xampp\php\php.ini
+```
+
+Después abre simultáneamente:
+
+```text
+C:\xampp\php82_backup\php.ini
+C:\xampp\php\php.ini
+```
+
+Migra selectivamente la configuración que necesites.
+
+### Configuración básica
+
+Comprueba estas líneas:
+
+```ini
+extension_dir="C:\xampp\php\ext"
+
+date.timezone=Europe/Madrid
+```
+
+Para Laravel suelen ser necesarias o convenientes estas extensiones:
+
+```ini
+extension=curl
+extension=fileinfo
+extension=gd
+extension=intl
+extension=mbstring
+extension=mysqli
+extension=openssl
+extension=pdo_mysql
+extension=sodium
+extension=zip
+```
+
+En algunas distribuciones determinadas extensiones ya vienen integradas o habilitadas. Si PHP muestra un aviso de módulo duplicado, comenta la línea correspondiente.
+
+Puedes aumentar también los límites de desarrollo:
+
+```ini
+memory_limit=512M
+upload_max_filesize=64M
+post_max_size=64M
+max_execution_time=120
+```
+
+### Importante
+
+No copies la carpeta:
+
+```text
+C:\xampp\php82_backup\ext
+```
+
+sobre la nueva carpeta `ext`.
+
+Las DLL de las extensiones deben corresponder a la misma versión y arquitectura de PHP. Una extensión compilada para PHP 8.2 puede impedir que PHP 8.3 arranque.
+
+## 7. Comprueba la configuración de Apache
+
+Abre:
+
+```text
+C:\xampp\apache\conf\extra\httpd-xampp.conf
+```
+
+Debe contener referencias equivalentes a estas:
+
+```apache
+LoadFile "C:/xampp/php/php8ts.dll"
+LoadModule php_module "C:/xampp/php/php8apache2_4.dll"
+
+<IfModule php_module>
+    PHPIniDir "C:/xampp/php"
+</IfModule>
+```
+
+La documentación oficial muestra que Apache debe cargar `php8apache2_4.dll` y establecer la ubicación de `php.ini` mediante `PHPIniDir`. ([PHP][4])
+
+Si utilizas una carpeta diferente, por ejemplo `C:\xampp83`, cambia las rutas:
+
+```apache
+LoadFile "C:/xampp83/php/php8ts.dll"
+LoadModule php_module "C:/xampp83/php/php8apache2_4.dll"
+PHPIniDir "C:/xampp83/php"
+```
+
+## 8. Instala Visual C++ Redistributable
+
+Las compilaciones actuales de PHP para Windows necesitan **Microsoft Visual C++ Redistributable 2015–2022**.
+
+Para una instalación x64 debes instalar la variante x64. Este requisito aparece en la página oficial de descargas de PHP. ([windows.php.net][2])
+
+Sin este componente, Apache puede mostrar errores relacionados con DLL inexistentes o negarse a cargar `php8apache2_4.dll`.
+
+## 9. Prueba PHP antes de arrancar Apache
+
+Ejecuta:
+
+```bat
+C:\xampp\php\php.exe -v
+```
+
+El resultado debe empezar de forma similar a:
+
+```text
+PHP 8.3.x (cli)
+```
+
+Comprueba qué archivo de configuración carga:
+
+```bat
+C:\xampp\php\php.exe --ini
+```
+
+Debería indicar:
+
+```text
+Loaded Configuration File: C:\xampp\php\php.ini
+```
+
+Comprueba las extensiones:
+
+```bat
+C:\xampp\php\php.exe -m
+```
+
+Y busca errores de configuración:
+
+```bat
+C:\xampp\php\php.exe -i
+```
+
+## 10. Arranca Apache
+
+Abre XAMPP Control Panel y arranca Apache.
+
+Si Apache no arranca, consulta:
+
+```text
+C:\xampp\apache\logs\error.log
+```
+
+Los errores habituales son:
+
+### No se encuentra `php8apache2_4.dll`
+
+Probablemente descargaste PHP **NTS**. Necesitas la versión **Thread Safe**.
+
+### No se encuentra `VCRUNTIME140.dll`
+
+Falta Microsoft Visual C++ Redistributable 2015–2022.
+
+### `Unable to load dynamic library`
+
+Existe alguna extensión incompatible o una línea incorrecta en `php.ini`.
+
+Comenta temporalmente la extensión indicada:
+
+```ini
+;extension=nombre_extension
+```
+
+### `The specified module could not be found`
+
+Puede faltar una dependencia o haberse copiado una extensión antigua de PHP 8.2.
+
+## 11. Comprueba PHP desde el navegador
+
+Crea:
+
+```text
+C:\xampp\htdocs\info.php
+```
+
+Con este contenido:
+
+```php
+<?php
+
+phpinfo();
+```
+
+Abre en el navegador:
+
+```text
+http://localhost/info.php
+```
+
+Comprueba:
+
+```text
+PHP Version 8.3.x
+Loaded Configuration File C:\xampp\php\php.ini
+Thread Safety enabled
+```
+
+Después elimina `info.php`, porque expone información detallada del entorno.
+
+## 12. Actualiza el `PATH` de Windows
+
+Ejecuta:
+
+```bat
+where php
+```
+
+La primera ruta debería ser:
+
+```text
+C:\xampp\php\php.exe
+```
+
+Si aparece una ruta antigua, modifica la variable de entorno `Path` de Windows y coloca:
+
+```text
+C:\xampp\php
+```
+
+antes que otras instalaciones de PHP.
+
+Cierra y vuelve a abrir la terminal. Después verifica:
+
+```bat
+php -v
+where php
+```
+
+## 13. Comprueba Composer y Laravel
+
+Ejecuta:
+
+```bat
+composer diagnose
+composer check-platform-reqs
+```
+
+En un proyecto Laravel:
+
+```bat
+cd C:\xampp\htdocs\mi-proyecto
+php artisan --version
+php artisan about
+composer install
+```
+
+También puedes comprobar las extensiones necesarias:
+
+```bat
+composer check-platform-reqs
+```
+
+# Cómo volver a PHP 8.2
+
+Si algo falla:
+
+1. Detén Apache.
+2. Renombra:
+
+```text
+C:\xampp\php
+```
+
+como:
+
+```text
+C:\xampp\php83_error
+```
+
+3. Recupera:
+
+```text
+C:\xampp\php82_backup
+```
+
+renombrándola como:
+
+```text
+C:\xampp\php
+```
+
+4. Inicia Apache.
+
+## Recomendación para un aula
+
+Para trabajar con Laravel 12 y 13, mantendría dos entornos independientes:
+
+```text
+C:\xampp82
+C:\xampp83
+```
+
+No deben ejecutar Apache o MariaDB simultáneamente en los mismos puertos. También puede dejarse MariaDB en el XAMPP original y utilizar PHP 8.3 mediante CLI para ejecutar Laravel:
+
+```bat
+php artisan serve
+```
+
+Esto reduce los cambios sobre Apache y permite iniciar Laravel en:
+
+```text
+http://127.0.0.1:8000
+```
+
+La opción más estable para el alumnado es conservar XAMPP para MariaDB/phpMyAdmin y usar una instalación independiente de PHP 8.3 para Composer, Artisan y el servidor integrado de Laravel.
+
+[1]: https://www.apachefriends.org/download.html?utm_source=chatgpt.com
+[2]: https://windows.php.net/download/
+[3]: https://downloads.php.net/~windows/releases/?utm_source=chatgpt.com
+[4]: https://www.php.net/manual/en/install.windows.apache2.php

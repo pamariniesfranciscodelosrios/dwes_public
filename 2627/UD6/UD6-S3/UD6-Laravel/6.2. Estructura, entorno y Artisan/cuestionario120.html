@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuestionario interactivo de Laravel con 120 preguntas de respuesta única.">
+  <title>Laravel · 120 preguntas para estudiar</title>
+  <style>
+    :root {
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --muted: #64748b;
+      --line: #dbe2ea;
+      --primary: #e3342f;
+      --primary-dark: #b91c1c;
+      --success: #15803d;
+      --success-bg: #ecfdf3;
+      --danger: #b91c1c;
+      --danger-bg: #fef2f2;
+      --warning: #92400e;
+      --warning-bg: #fffbeb;
+      --shadow: 0 16px 40px rgba(15, 23, 42, .08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(227, 52, 47, .09), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, select, input { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .55; }
+
+    .shell {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      padding: 30px;
+      color: white;
+      background: linear-gradient(135deg, #111827, #2b1617 58%, #7f1d1d);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "L";
+      position: absolute;
+      right: 24px;
+      top: -48px;
+      font-size: 15rem;
+      font-weight: 900;
+      color: rgba(255,255,255,.05);
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: #fecaca;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: #e5e7eb;
+      font-size: 1.05rem;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .metric {
+      padding: 14px 16px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .metric strong { display: block; font-size: 1.45rem; }
+    .metric span { color: #d1d5db; font-size: .88rem; }
+
+    .panel {
+      margin-top: 22px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid rgba(148,163,184,.28);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .9rem;
+      font-weight: 750;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 13px;
+      color: var(--text);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      outline: none;
+    }
+
+    select:focus, button:focus-visible, input:focus-visible {
+      outline: 3px solid rgba(227,52,47,.22);
+      outline-offset: 2px;
+    }
+
+    .mode-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mode-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: white;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      padding: 11px 17px;
+      font-weight: 800;
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(.98); }
+    .btn-primary { color: white; background: var(--primary); }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { color: var(--text); background: #e9eef5; }
+    .btn-ghost { color: var(--primary-dark); background: #fff1f2; }
+    .btn-danger { color: white; background: var(--danger); }
+
+    .hidden { display: none !important; }
+
+    .quiz-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .topic-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      color: #991b1b;
+      background: #fee2e2;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .progress-meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .score-chip {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: var(--surface-soft);
+      font-weight: 700;
+    }
+
+    .progress-track {
+      height: 10px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      background: #e5e7eb;
+      border-radius: 999px;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #fb7185);
+      transition: width .25s ease;
+    }
+
+    .question-title {
+      margin: 0 0 20px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.25;
+      white-space: pre-wrap;
+    }
+
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .option {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      width: 100%;
+      min-height: 58px;
+      padding: 13px 15px;
+      text-align: left;
+      color: var(--text);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
+    }
+
+    .option:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: #f87171;
+      background: #fffafa;
+    }
+
+    .option.selected {
+      border-color: var(--primary);
+      background: #fff1f2;
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+
+    .option.correct {
+      border-color: #22c55e;
+      background: var(--success-bg);
+      box-shadow: inset 0 0 0 1px #22c55e;
+    }
+
+    .option.incorrect {
+      border-color: #ef4444;
+      background: var(--danger-bg);
+      box-shadow: inset 0 0 0 1px #ef4444;
+    }
+
+    .option-letter {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: #eef2f7;
+      font-size: .86rem;
+      font-weight: 900;
+    }
+
+    .feedback {
+      margin-top: 18px;
+      padding: 16px;
+      border-left: 5px solid;
+      border-radius: 10px;
+    }
+
+    .feedback.good {
+      color: #14532d;
+      background: var(--success-bg);
+      border-color: #22c55e;
+    }
+
+    .feedback.bad {
+      color: #7f1d1d;
+      background: var(--danger-bg);
+      border-color: #ef4444;
+    }
+
+    .feedback strong { display: block; margin-bottom: 4px; }
+
+    .result-hero {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .score-ring {
+      display: grid;
+      place-items: center;
+      width: 150px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) var(--score-angle, 0deg), #e5e7eb 0);
+      position: relative;
+    }
+
+    .score-ring::after {
+      content: "";
+      width: 112px;
+      aspect-ratio: 1;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .score-ring strong {
+      z-index: 1;
+      font-size: 1.65rem;
+    }
+
+    .result-copy h2 { margin: 0 0 8px; font-size: 2rem; }
+    .result-copy p { margin: 0; color: var(--muted); }
+
+    .breakdown {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .breakdown-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) minmax(120px, 2fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .mini-track {
+      height: 9px;
+      overflow: hidden;
+      background: #e5e7eb;
+      border-radius: 999px;
+    }
+
+    .mini-track span {
+      display: block;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    .review {
+      margin-top: 24px;
+    }
+
+    .review-item {
+      margin-top: 12px;
+      padding: 16px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    .review-item h3 { margin: 0 0 10px; font-size: 1rem; }
+    .review-item p { margin: 5px 0; }
+    .review-item .wrong { color: var(--danger); }
+    .review-item .right { color: var(--success); }
+
+    .footer-note {
+      margin: 20px 2px 0;
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      max-width: min(360px, calc(100% - 40px));
+      padding: 13px 16px;
+      color: white;
+      background: #111827;
+      border-radius: 11px;
+      box-shadow: var(--shadow);
+      z-index: 10;
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 20px, 1040px); padding-top: 10px; }
+      .hero, .panel { padding: 20px; }
+      .setup-grid { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr; }
+      .result-hero { grid-template-columns: 1fr; }
+      .score-ring { width: 130px; }
+      .breakdown-row { grid-template-columns: 1fr auto; }
+      .breakdown-row .mini-track { grid-column: 1 / -1; grid-row: 2; }
+    }
+
+    @media print {
+      body { background: white; }
+      .hero, #setupPanel, #quizPanel, .result-actions, .footer-note { display: none !important; }
+      .shell { width: 100%; padding: 0; }
+      .panel { box-shadow: none; border: 0; margin: 0; }
+      .review-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">DWES · Introducción a Laravel</p>
+      <h1>120 preguntas para dominar los primeros pasos de Laravel</h1>
+      <p>Cuestionario autocorregible de respuesta única sobre fundamentos, instalación, estructura, <code>.env</code>, Artisan y rutas.</p>
+      <div class="metrics" aria-label="Resumen del cuestionario">
+        <div class="metric"><strong>120</strong><span>preguntas verificadas</span></div>
+        <div class="metric"><strong>6</strong><span>bloques temáticos</span></div>
+        <div class="metric"><strong>1</strong><span>respuesta correcta por pregunta</span></div>
+      </div>
+    </section>
+
+    <section id="setupPanel" class="panel">
+      <h2>Configura tu sesión</h2>
+      <div class="setup-grid">
+        <div class="field">
+          <label for="topicSelect">Bloque temático</label>
+          <select id="topicSelect">
+            <option value="all">Todos los bloques</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="amountSelect">Número de preguntas</label>
+          <select id="amountSelect">
+            <option value="20">20 preguntas</option>
+            <option value="50">50 preguntas</option>
+            <option value="100" selected>100 preguntas</option>
+            <option value="all">Todas las disponibles</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Modo</label>
+          <div class="mode-options">
+            <label class="mode-option"><input type="radio" name="mode" value="study" checked> Estudio</label>
+            <label class="mode-option"><input type="radio" name="mode" value="exam"> Examen</label>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="startBtn" class="btn btn-primary">Comenzar</button>
+        <button id="resumeBtn" class="btn btn-secondary hidden">Reanudar sesión</button>
+        <button id="clearProgressBtn" class="btn btn-ghost hidden">Borrar sesión guardada</button>
+      </div>
+    </section>
+
+    <section id="quizPanel" class="panel hidden" aria-live="polite">
+      <div class="quiz-header">
+        <div>
+          <span id="topicBadge" class="topic-badge"></span>
+          <div id="progressMeta" class="progress-meta"></div>
+        </div>
+        <div id="scoreChip" class="score-chip"></div>
+      </div>
+      <div class="progress-track" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
+      <h2 id="questionTitle" class="question-title"></h2>
+      <div id="options" class="options" role="group" aria-label="Opciones de respuesta"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <div class="actions">
+        <button id="checkBtn" class="btn btn-primary" disabled>Comprobar</button>
+        <button id="nextBtn" class="btn btn-primary hidden">Siguiente</button>
+        <button id="finishBtn" class="btn btn-danger hidden">Finalizar ahora</button>
+        <button id="quitBtn" class="btn btn-secondary">Salir</button>
+      </div>
+    </section>
+
+    <section id="resultPanel" class="panel hidden">
+      <div class="result-hero">
+        <div id="scoreRing" class="score-ring"><strong id="scoreText"></strong></div>
+        <div class="result-copy">
+          <p class="eyebrow" style="color:#b91c1c">Resultado</p>
+          <h2 id="resultTitle"></h2>
+          <p id="resultSummary"></p>
+        </div>
+      </div>
+      <div id="breakdown" class="breakdown"></div>
+      <div class="actions result-actions">
+        <button id="retryBtn" class="btn btn-primary">Repetir configuración</button>
+        <button id="reviewBtn" class="btn btn-secondary">Ver errores</button>
+        <button id="printBtn" class="btn btn-ghost">Imprimir revisión</button>
+      </div>
+      <div id="review" class="review hidden"></div>
+    </section>
+
+    <p class="footer-note">Aplicación HTML autónoma: funciona sin conexión y guarda una sesión en el navegador.</p>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script>
+    "use strict";
+
+    const QUESTION_BANK = [{"id": 1, "topic": "1. Qué es Laravel", "question": "¿Qué es Laravel?", "options": ["Un framework de aplicaciones web de código abierto escrito en PHP", "Un servidor web escrito en Java", "Un gestor de bases de datos relacional", "Un editor de código para PHP"], "correct": "Un framework de aplicaciones web de código abierto escrito en PHP", "explanation": "Laravel proporciona una estructura, convenciones y herramientas para desarrollar aplicaciones web con PHP."}, {"id": 2, "topic": "1. Qué es Laravel", "question": "¿Quién creó Laravel?", "options": ["Taylor Otwell", "Rasmus Lerdorf", "Fabien Potencier", "Brendan Eich"], "correct": "Taylor Otwell", "explanation": "Taylor Otwell creó Laravel para disponer de un framework PHP más elegante y completo."}, {"id": 3, "topic": "1. Qué es Laravel", "question": "¿En qué año se lanzó oficialmente Laravel?", "options": ["2011", "2004", "2008", "2015"], "correct": "2011", "explanation": "Laravel se lanzó oficialmente en junio de 2011."}, {"id": 4, "topic": "1. Qué es Laravel", "question": "¿Qué describe mejor la función de un framework?", "options": ["Ofrecer herramientas, convenciones y librerías reutilizables", "Sustituir completamente al lenguaje PHP", "Administrar físicamente el servidor", "Diseñar únicamente interfaces gráficas"], "correct": "Ofrecer herramientas, convenciones y librerías reutilizables", "explanation": "Un framework evita reinventar funcionalidades habituales y aporta una arquitectura de trabajo."}, {"id": 5, "topic": "1. Qué es Laravel", "question": "En el patrón MVC, ¿qué responsabilidad principal tiene el modelo?", "options": ["Representar los datos y la lógica de negocio", "Mostrar la interfaz al usuario", "Recibir únicamente archivos CSS", "Configurar el servidor Apache"], "correct": "Representar los datos y la lógica de negocio", "explanation": "El modelo encapsula datos, reglas y operaciones relacionadas con el dominio."}, {"id": 6, "topic": "1. Qué es Laravel", "question": "En MVC, ¿qué componente se ocupa principalmente de lo que ve el usuario?", "options": ["La vista", "El modelo", "El controlador", "El proveedor de servicios"], "correct": "La vista", "explanation": "La vista genera la presentación, normalmente HTML."}, {"id": 7, "topic": "1. Qué es Laravel", "question": "En MVC, ¿qué componente recibe la petición y coordina la respuesta?", "options": ["El controlador", "La migración", "La vista", "La factory"], "correct": "El controlador", "explanation": "El controlador actúa como intermediario entre la petición, los datos y la respuesta."}, {"id": 8, "topic": "1. Qué es Laravel", "question": "¿Qué es Eloquent en Laravel?", "options": ["El ORM de Laravel", "El servidor de desarrollo", "El motor de plantillas", "El gestor de paquetes PHP"], "correct": "El ORM de Laravel", "explanation": "Eloquent permite trabajar con bases de datos mediante modelos y objetos PHP."}, {"id": 9, "topic": "1. Qué es Laravel", "question": "¿Para qué sirven principalmente las migraciones?", "options": ["Para versionar los cambios de la base de datos", "Para compilar JavaScript", "Para cifrar contraseñas", "Para renderizar vistas Blade"], "correct": "Para versionar los cambios de la base de datos", "explanation": "Las migraciones describen cambios del esquema y permiten reproducirlos en distintos entornos."}, {"id": 10, "topic": "1. Qué es Laravel", "question": "¿Qué es Artisan?", "options": ["La interfaz de línea de comandos de Laravel", "El ORM de Laravel", "Un servidor SMTP", "Un framework CSS"], "correct": "La interfaz de línea de comandos de Laravel", "explanation": "Artisan automatiza tareas como generar código, migrar o limpiar cachés."}, {"id": 11, "topic": "1. Qué es Laravel", "question": "¿Qué es Blade?", "options": ["El motor de plantillas de Laravel", "El sistema de colas", "El gestor de dependencias PHP", "El motor de base de datos"], "correct": "El motor de plantillas de Laravel", "explanation": "Blade permite combinar HTML con directivas y expresiones de Laravel."}, {"id": 12, "topic": "1. Qué es Laravel", "question": "¿Qué paquete oficial se asocia a la autenticación de APIs?", "options": ["Laravel Sanctum o Passport", "Laravel Cashier", "Laravel Scout", "Laravel Horizon"], "correct": "Laravel Sanctum o Passport", "explanation": "Sanctum y Passport cubren escenarios de autenticación para APIs."}, {"id": 13, "topic": "1. Qué es Laravel", "question": "¿Qué paquete oficial facilita integraciones de pagos y suscripciones?", "options": ["Laravel Cashier", "Laravel Telescope", "Laravel Socialite", "Laravel Scout"], "correct": "Laravel Cashier", "explanation": "Cashier simplifica la integración con plataformas de pago como Stripe o Paddle."}, {"id": 14, "topic": "1. Qué es Laravel", "question": "¿Qué herramienta oficial se usa para gestionar y observar colas con Redis?", "options": ["Laravel Horizon", "Laravel Blade", "Laravel Herd", "Laravel Mix"], "correct": "Laravel Horizon", "explanation": "Horizon aporta un panel y métricas para colas basadas en Redis."}, {"id": 15, "topic": "1. Qué es Laravel", "question": "¿Qué paquete oficial está orientado a búsquedas de texto completo?", "options": ["Laravel Scout", "Laravel Cashier", "Laravel Passport", "Laravel Socialite"], "correct": "Laravel Scout", "explanation": "Scout integra modelos Eloquent con motores de búsqueda."}, {"id": 16, "topic": "1. Qué es Laravel", "question": "¿Qué paquete facilita el inicio de sesión con Google, GitHub u otras redes?", "options": ["Laravel Socialite", "Laravel Telescope", "Laravel Horizon", "Laravel Sail"], "correct": "Laravel Socialite", "explanation": "Socialite simplifica la autenticación OAuth con proveedores externos."}, {"id": 17, "topic": "1. Qué es Laravel", "question": "¿Qué herramienta oficial ayuda a depurar y monitorizar una aplicación Laravel?", "options": ["Laravel Telescope", "Laravel Cashier", "Laravel Scout", "Laravel Pint"], "correct": "Laravel Telescope", "explanation": "Telescope permite inspeccionar peticiones, consultas, jobs, excepciones y otros eventos."}, {"id": 18, "topic": "1. Qué es Laravel", "question": "¿Para cuál de estos proyectos es Laravel una opción adecuada?", "options": ["Una API REST para una aplicación móvil", "Un controlador de dispositivo sin sistema operativo", "Un firmware de microcontrolador", "Un videojuego 3D de consola"], "correct": "Una API REST para una aplicación móvil", "explanation": "Laravel ofrece routing, validación, autenticación, ORM y serialización útiles para APIs REST."}, {"id": 19, "topic": "1. Qué es Laravel", "question": "¿Cuál es un recurso de aprendizaje en vídeo muy conocido en el ecosistema Laravel?", "options": ["Laracasts", "npmjs", "phpMyAdmin", "SQLite Studio"], "correct": "Laracasts", "explanation": "Laracasts es una plataforma de formación especialmente popular entre desarrolladores Laravel."}, {"id": 20, "topic": "1. Qué es Laravel", "question": "Según la comparativa del material, ¿qué framework PHP presenta una curva de aprendizaje alta?", "options": ["Symfony", "CodeIgniter", "Laravel", "Blade"], "correct": "Symfony", "explanation": "En la tabla del bloque, Symfony aparece con una curva de aprendizaje alta."}, {"id": 21, "topic": "2. Instalación", "question": "¿Cuál es la versión mínima de PHP indicada en el material?", "options": ["PHP 8.2", "PHP 7.4", "PHP 8.0", "PHP 8.1"], "correct": "PHP 8.2", "explanation": "El bloque de instalación establece PHP 8.2 como requisito mínimo."}, {"id": 22, "topic": "2. Instalación", "question": "¿Qué versión principal de Composer se requiere?", "options": ["Composer 2.x", "Composer 1.x", "Composer 3.x", "Composer 4.x"], "correct": "Composer 2.x", "explanation": "El material indica Composer 2.x."}, {"id": 23, "topic": "2. Instalación", "question": "¿Qué versión de Node.js se recomienda como mínimo en el material?", "options": ["Node.js 18.x", "Node.js 12.x", "Node.js 14.x", "Node.js 16.x"], "correct": "Node.js 18.x", "explanation": "Se recomienda Node.js 18.x para el trabajo con assets."}, {"id": 24, "topic": "2. Instalación", "question": "¿Cuál de estas bases de datos aparece como compatible en los requisitos?", "options": ["SQLite 3", "Microsoft Access 2003", "dBase IV", "FoxPro 2.6"], "correct": "SQLite 3", "explanation": "El material cita MySQL, PostgreSQL y SQLite."}, {"id": 25, "topic": "2. Instalación", "question": "¿Qué entorno se recomienda para principiantes en Windows?", "options": ["Laragon", "Homebrew", "Herd para macOS", "APT"], "correct": "Laragon", "explanation": "Laragon agrupa PHP, servidor web, MySQL y Composer en Windows."}, {"id": 26, "topic": "2. Instalación", "question": "En Laragon, ¿qué acción inicia los servicios principales?", "options": ["Pulsar «Start All»", "Ejecutar npm build", "Borrar composer.lock", "Crear una migración"], "correct": "Pulsar «Start All»", "explanation": "El botón «Start All» inicia los servicios configurados."}, {"id": 27, "topic": "2. Instalación", "question": "¿Qué comando verifica que Composer está disponible?", "options": ["composer -V", "composer --php", "php composer:start", "artisan composer"], "correct": "composer -V", "explanation": "composer -V muestra la versión instalada de Composer."}, {"id": 28, "topic": "2. Instalación", "question": "¿Qué comando crea un proyecto Laravel llamado mi-proyecto mediante Composer?", "options": ["composer create-project laravel/laravel mi-proyecto", "composer install laravel mi-proyecto", "php artisan new mi-proyecto", "npm create laravel mi-proyecto"], "correct": "composer create-project laravel/laravel mi-proyecto", "explanation": "create-project descarga el esqueleto y sus dependencias."}, {"id": 29, "topic": "2. Instalación", "question": "¿Qué comando arranca el servidor de desarrollo de Laravel?", "options": ["php artisan serve", "composer serve", "npm artisan", "php laravel:start"], "correct": "php artisan serve", "explanation": "Artisan incluye el comando serve para desarrollo local."}, {"id": 30, "topic": "2. Instalación", "question": "¿En qué dirección se abre normalmente el servidor iniciado con php artisan serve?", "options": ["http://localhost:8000", "http://localhost:3306", "http://localhost:22", "http://localhost:587"], "correct": "http://localhost:8000", "explanation": "El puerto predeterminado indicado es el 8000."}, {"id": 31, "topic": "2. Instalación", "question": "¿Qué gestor de paquetes se recomienda para instalar PHP en macOS?", "options": ["Homebrew", "Chocolatey", "APT", "YUM"], "correct": "Homebrew", "explanation": "Homebrew es la opción recomendada en el bloque para macOS."}, {"id": 32, "topic": "2. Instalación", "question": "¿Qué solución oficial de Laravel se menciona para macOS?", "options": ["Laravel Herd", "Laravel Horizon", "Laravel Scout", "Laravel Socialite"], "correct": "Laravel Herd", "explanation": "Herd instala y gestiona un entorno local sencillo en macOS."}, {"id": 33, "topic": "2. Instalación", "question": "¿Qué comando actualiza paquetes en Ubuntu/Debian antes de instalar PHP?", "options": ["sudo apt update && sudo apt upgrade -y", "sudo npm update php", "composer update ubuntu", "brew upgrade apt"], "correct": "sudo apt update && sudo apt upgrade -y", "explanation": "APT se utiliza para actualizar el índice y los paquetes del sistema."}, {"id": 34, "topic": "2. Instalación", "question": "¿Cuál de estas extensiones de PHP se instala en el ejemplo de Linux?", "options": ["php8.2-mbstring", "php8.2-directx", "php8.2-dotnet", "php8.2-flash"], "correct": "php8.2-mbstring", "explanation": "mbstring es una extensión habitual requerida por aplicaciones PHP modernas."}, {"id": 35, "topic": "2. Instalación", "question": "¿Dónde se mueve composer.phar para disponer de Composer globalmente en el ejemplo de Linux/macOS?", "options": ["/usr/local/bin/composer", "/var/www/html/composer.php", "/etc/apache2/composer", "/home/composer.lock"], "correct": "/usr/local/bin/composer", "explanation": "Moverlo a /usr/local/bin permite invocarlo desde el PATH."}, {"id": 36, "topic": "2. Instalación", "question": "¿Qué comando instala globalmente el instalador de Laravel?", "options": ["composer global require laravel/installer", "npm install -g laravel", "php artisan install laravel", "composer require php/installer"], "correct": "composer global require laravel/installer", "explanation": "El paquete laravel/installer añade el comando laravel."}, {"id": 37, "topic": "2. Instalación", "question": "¿Qué ruta global de Composer se propone añadir al PATH en Linux/macOS?", "options": ["~/.composer/vendor/bin", "~/vendor/public", "/etc/laravel/routes", "~/node_modules/php"], "correct": "~/.composer/vendor/bin", "explanation": "Los binarios globales de Composer suelen estar en esa carpeta."}, {"id": 38, "topic": "2. Instalación", "question": "Con el instalador global, ¿qué comando crea un proyecto nuevo?", "options": ["laravel new nombre-proyecto", "artisan create nombre-proyecto", "php new laravel", "npm laravel init"], "correct": "laravel new nombre-proyecto", "explanation": "El instalador global proporciona el comando laravel new."}, {"id": 39, "topic": "2. Instalación", "question": "¿Qué comando instala las dependencias front-end del proyecto?", "options": ["npm install", "npm migrate", "composer vite", "php artisan npm"], "correct": "npm install", "explanation": "npm install descarga las dependencias definidas en package.json."}, {"id": 40, "topic": "2. Instalación", "question": "¿Qué comando inicia Vite en modo desarrollo?", "options": ["npm run dev", "npm run migrate", "php artisan vite", "composer dev-server"], "correct": "npm run dev", "explanation": "npm run dev ejecuta el script de desarrollo configurado para Vite."}, {"id": 41, "topic": "3. Estructura de carpetas", "question": "¿Qué carpeta contiene la mayor parte del código propio de la aplicación?", "options": ["app/", "vendor/", "public/", "bootstrap/cache/"], "correct": "app/", "explanation": "app/ alberga controladores, modelos, middleware, requests y otros componentes."}, {"id": 42, "topic": "3. Estructura de carpetas", "question": "¿Dónde se ubican normalmente los controladores?", "options": ["app/Http/Controllers/", "resources/controllers/", "database/controllers/", "public/controllers/"], "correct": "app/Http/Controllers/", "explanation": "Los controladores HTTP se organizan en app/Http/Controllers/."}, {"id": 43, "topic": "3. Estructura de carpetas", "question": "¿Qué función cumplen los middleware?", "options": ["Procesar la petición antes o después del controlador", "Compilar exclusivamente CSS", "Crear tablas físicamente sin migraciones", "Guardar dependencias de Composer"], "correct": "Procesar la petición antes o después del controlador", "explanation": "Los middleware filtran o transforman peticiones y respuestas."}, {"id": 44, "topic": "3. Estructura de carpetas", "question": "¿Qué se suele colocar en app/Http/Requests/?", "options": ["Clases de validación Form Request", "Plantillas Blade", "Archivos de migración", "Dependencias de Composer"], "correct": "Clases de validación Form Request", "explanation": "Los Form Requests encapsulan autorización y reglas de validación."}, {"id": 45, "topic": "3. Estructura de carpetas", "question": "¿Dónde se ubican los modelos Eloquent?", "options": ["app/Models/", "resources/models/", "public/models/", "routes/models/"], "correct": "app/Models/", "explanation": "Los modelos Eloquent se guardan normalmente en app/Models/."}, {"id": 46, "topic": "3. Estructura de carpetas", "question": "¿Qué carpeta contiene los Service Providers?", "options": ["app/Providers/", "app/Views/", "database/providers/", "storage/providers/"], "correct": "app/Providers/", "explanation": "Los providers registran servicios y configuración de arranque."}, {"id": 47, "topic": "3. Estructura de carpetas", "question": "¿Qué archivo contiene normalmente las rutas web con sesión y CSRF?", "options": ["routes/web.php", "routes/api.php", "resources/views.php", "public/routes.php"], "correct": "routes/web.php", "explanation": "web.php utiliza el grupo de middleware web."}, {"id": 48, "topic": "3. Estructura de carpetas", "question": "¿Qué archivo contiene las rutas orientadas a APIs REST?", "options": ["routes/api.php", "routes/web.php", "config/api.blade.php", "database/api.php"], "correct": "routes/api.php", "explanation": "api.php se reserva para endpoints de API sin estado."}, {"id": 49, "topic": "3. Estructura de carpetas", "question": "¿Qué archivo se relaciona con comandos de consola propios?", "options": ["routes/console.php", "routes/channels.php", "public/console.php", "config/artisan.php"], "correct": "routes/console.php", "explanation": "console.php permite definir comandos de consola mediante closures."}, {"id": 50, "topic": "3. Estructura de carpetas", "question": "¿Dónde se guardan las plantillas Blade?", "options": ["resources/views/", "public/views/", "app/ViewsCompiled/", "database/views/"], "correct": "resources/views/", "explanation": "Las vistas Blade sin compilar viven en resources/views/."}, {"id": 51, "topic": "3. Estructura de carpetas", "question": "¿Qué carpeta contiene archivos como app.php, database.php y mail.php?", "options": ["config/", "storage/", "tests/", "vendor/"], "correct": "config/", "explanation": "config/ agrupa la configuración del framework y de la aplicación."}, {"id": 52, "topic": "3. Estructura de carpetas", "question": "¿Dónde se guarda el historial de cambios del esquema de base de datos?", "options": ["database/migrations/", "storage/migrations/", "app/DatabaseSchema/", "public/migrations/"], "correct": "database/migrations/", "explanation": "Las migraciones versionan el esquema desde database/migrations/."}, {"id": 53, "topic": "3. Estructura de carpetas", "question": "¿Qué finalidad tienen los seeders?", "options": ["Insertar datos iniciales o de prueba", "Compilar vistas Blade", "Servir archivos públicos", "Descargar paquetes PHP"], "correct": "Insertar datos iniciales o de prueba", "explanation": "Los seeders pueblan la base de datos."}, {"id": 54, "topic": "3. Estructura de carpetas", "question": "¿Qué finalidad tienen las factories?", "options": ["Generar datos ficticios para pruebas o seeders", "Definir rutas HTTP", "Configurar correo SMTP", "Cifrar el archivo .env"], "correct": "Generar datos ficticios para pruebas o seeders", "explanation": "Las factories describen cómo fabricar registros de modelos."}, {"id": 55, "topic": "3. Estructura de carpetas", "question": "¿Cuál es el único directorio que debería ser accesible directamente desde el navegador?", "options": ["public/", "app/", "vendor/", "config/"], "correct": "public/", "explanation": "El document root del servidor debe apuntar a public/."}, {"id": 56, "topic": "3. Estructura de carpetas", "question": "¿Qué archivo actúa como front controller de la aplicación?", "options": ["public/index.php", "app/index.php", "routes/index.php", "resources/index.blade.php"], "correct": "public/index.php", "explanation": "Todas las peticiones web entran por public/index.php."}, {"id": 57, "topic": "3. Estructura de carpetas", "question": "¿Dónde se encuentra normalmente el log principal de Laravel?", "options": ["storage/logs/laravel.log", "public/logs/php.log", "app/logs/artisan.log", "vendor/logs/composer.log"], "correct": "storage/logs/laravel.log", "explanation": "Laravel escribe sus logs en storage/logs/."}, {"id": 58, "topic": "3. Estructura de carpetas", "question": "¿Qué comando crea el enlace simbólico para archivos públicos de storage?", "options": ["php artisan storage:link", "php artisan public:copy", "composer storage:publish", "npm run storage"], "correct": "php artisan storage:link", "explanation": "storage:link enlaza public/storage con storage/app/public."}, {"id": 59, "topic": "3. Estructura de carpetas", "question": "¿Qué dos carpetas principales aparecen dentro de tests/?", "options": ["Feature y Unit", "Models y Views", "Routes y Config", "Public y Private"], "correct": "Feature y Unit", "explanation": "Los tests se organizan habitualmente en integración/feature y unitarios."}, {"id": 60, "topic": "3. Estructura de carpetas", "question": "¿Qué afirmación sobre vendor/ es correcta?", "options": ["Contiene dependencias de Composer y no debe modificarse manualmente", "Contiene las vistas del proyecto", "Debe subirse siempre completa a Git", "Es la carpeta pública del servidor"], "correct": "Contiene dependencias de Composer y no debe modificarse manualmente", "explanation": "vendor/ se regenera con Composer y no forma parte del código propio."}, {"id": 61, "topic": "4. El archivo .env", "question": "¿Cuál es la finalidad principal del archivo .env?", "options": ["Guardar configuración que cambia según el entorno", "Definir todas las rutas HTTP", "Almacenar plantillas Blade", "Guardar dependencias de Composer"], "correct": "Guardar configuración que cambia según el entorno", "explanation": ".env separa la configuración del código."}, {"id": 62, "topic": "4. El archivo .env", "question": "¿Qué archivo sirve como plantilla compartible del .env?", "options": [".env.example", ".env.production.secret", "composer.env", "config/example.php"], "correct": ".env.example", "explanation": ".env.example documenta variables sin incluir secretos reales."}, {"id": 63, "topic": "4. El archivo .env", "question": "Tras clonar un proyecto, ¿qué comando copia la plantilla de entorno?", "options": ["cp .env.example .env", "php artisan env:create", "composer copy-env", "npm init env"], "correct": "cp .env.example .env", "explanation": "La copia crea el archivo local que cada entorno debe personalizar."}, {"id": 64, "topic": "4. El archivo .env", "question": "¿Qué comando genera APP_KEY?", "options": ["php artisan key:generate", "php artisan env:key", "composer key:create", "php artisan make:password"], "correct": "php artisan key:generate", "explanation": "key:generate crea una clave segura para cifrado."}, {"id": 65, "topic": "4. El archivo .env", "question": "¿Qué variable identifica si el entorno es local, staging o production?", "options": ["APP_ENV", "APP_NAME", "APP_URL", "APP_LOCALE"], "correct": "APP_ENV", "explanation": "APP_ENV indica el entorno lógico de ejecución."}, {"id": 66, "topic": "4. El archivo .env", "question": "¿Qué valor debe tener APP_DEBUG en producción?", "options": ["false", "true", "local", "verbose"], "correct": "false", "explanation": "Desactivar debug evita mostrar detalles sensibles al usuario."}, {"id": 67, "topic": "4. El archivo .env", "question": "¿Para qué se utiliza APP_KEY?", "options": ["Para cifrar sesiones, cookies y otros datos", "Para definir el puerto de MySQL", "Para seleccionar el idioma", "Para instalar paquetes npm"], "correct": "Para cifrar sesiones, cookies y otros datos", "explanation": "APP_KEY es un secreto criptográfico esencial de la aplicación."}, {"id": 68, "topic": "4. El archivo .env", "question": "¿Qué variable contiene la URL base de la aplicación?", "options": ["APP_URL", "APP_HOSTNAME_FILE", "PUBLIC_ROUTE", "WEB_ROOT"], "correct": "APP_URL", "explanation": "APP_URL representa la dirección base usada por la aplicación."}, {"id": 69, "topic": "4. El archivo .env", "question": "¿Qué variable configura la zona horaria?", "options": ["APP_TIMEZONE", "APP_CLOCK", "APP_REGION_ONLY", "TIME_SERVER"], "correct": "APP_TIMEZONE", "explanation": "APP_TIMEZONE puede usar valores como Europe/Madrid."}, {"id": 70, "topic": "4. El archivo .env", "question": "¿Qué variable configura el idioma predeterminado?", "options": ["APP_LOCALE", "APP_LANGUAGE_FILE", "APP_CHARSET", "APP_TRANSLATOR"], "correct": "APP_LOCALE", "explanation": "APP_LOCALE define el locale principal."}, {"id": 71, "topic": "4. El archivo .env", "question": "¿Qué variable selecciona el driver de base de datos?", "options": ["DB_CONNECTION", "DB_DATABASE", "DB_HOST", "DB_USERNAME"], "correct": "DB_CONNECTION", "explanation": "DB_CONNECTION puede ser mysql, pgsql, sqlite o sqlsrv."}, {"id": 72, "topic": "4. El archivo .env", "question": "Para empezar con SQLite, ¿qué valor se asigna a DB_CONNECTION?", "options": ["sqlite", "mysqlite", "filedb", "local"], "correct": "sqlite", "explanation": "El driver sqlite permite trabajar con una base de datos basada en archivo."}, {"id": 73, "topic": "4. El archivo .env", "question": "¿Qué efecto tiene MAIL_MAILER=log en desarrollo?", "options": ["Guarda los correos en el log en lugar de enviarlos", "Envía todos los correos dos veces", "Desactiva el log de Laravel", "Convierte los correos a JSON"], "correct": "Guarda los correos en el log en lugar de enviarlos", "explanation": "El mailer log permite probar correos sin enviarlos realmente."}, {"id": 74, "topic": "4. El archivo .env", "question": "¿Qué función se recomienda usar en el código de la aplicación para leer configuración?", "options": ["config()", "env() en cualquier clase", "getenv() siempre", "$_SERVER únicamente"], "correct": "config()", "explanation": "config() funciona correctamente con la caché de configuración."}, {"id": 75, "topic": "4. El archivo .env", "question": "¿Por qué no se recomienda usar env() directamente por toda la aplicación?", "options": ["Porque puede fallar con la configuración cacheada", "Porque env() elimina el archivo .env", "Porque env() solo funciona en JavaScript", "Porque env() reinicia MySQL"], "correct": "Porque puede fallar con la configuración cacheada", "explanation": "Las llamadas a env() deben concentrarse en archivos de config."}, {"id": 76, "topic": "4. El archivo .env", "question": "¿Debe subirse el archivo .env real al repositorio Git?", "options": ["No, porque puede contener secretos", "Sí, siempre", "Solo si APP_DEBUG=true", "Solo después de ejecutar migrate"], "correct": "No, porque puede contener secretos", "explanation": ".env debe estar ignorado para proteger credenciales y claves."}, {"id": 77, "topic": "4. El archivo .env", "question": "Al añadir una variable nueva a .env, ¿qué práctica se recomienda?", "options": ["Añadirla también a .env.example sin el secreto", "Eliminar .env.example", "Guardar el secreto en README.md", "Copiarla a vendor/"], "correct": "Añadirla también a .env.example sin el secreto", "explanation": "Así el equipo conoce las variables necesarias sin exponer valores."}, {"id": 78, "topic": "4. El archivo .env", "question": "¿Qué variable selecciona el almacén de caché?", "options": ["CACHE_STORE", "CACHE_TIMEZONE", "APP_CACHE_URL", "CACHE_VIEW_ONLY"], "correct": "CACHE_STORE", "explanation": "CACHE_STORE permite elegir drivers como file, database o redis."}, {"id": 79, "topic": "4. El archivo .env", "question": "¿Qué expresa SESSION_LIFETIME=120?", "options": ["La duración de la sesión en minutos", "El número máximo de usuarios", "El puerto de la sesión", "El tamaño máximo de una cookie en KB"], "correct": "La duración de la sesión en minutos", "explanation": "SESSION_LIFETIME determina el tiempo de inactividad antes de expirar."}, {"id": 80, "topic": "4. El archivo .env", "question": "Según el material, ¿qué backend se recomienda para colas de alto rendimiento en producción?", "options": ["Redis", "Un archivo CSV", "SQLite exclusivamente", "Una cookie del navegador"], "correct": "Redis", "explanation": "Redis es una opción habitual para procesar colas de forma eficiente."}, {"id": 81, "topic": "5. Artisan CLI", "question": "¿Qué comando muestra ayuda detallada de make:controller?", "options": ["php artisan help make:controller", "php artisan explain controller", "composer help controller", "php artisan docs:controller"], "correct": "php artisan help make:controller", "explanation": "El subcomando help muestra argumentos y opciones disponibles."}, {"id": 82, "topic": "5. Artisan CLI", "question": "¿Cómo se inicia el servidor en el puerto 9000?", "options": ["php artisan serve --port=9000", "php artisan port 9000", "composer serve:9000", "php serve artisan --9000"], "correct": "php artisan serve --port=9000", "explanation": "serve acepta la opción --port."}, {"id": 83, "topic": "5. Artisan CLI", "question": "¿Qué comando muestra la versión de Laravel?", "options": ["php artisan --version", "composer laravel-version", "php --laravel", "artisan version.php"], "correct": "php artisan --version", "explanation": "Artisan informa de la versión del framework."}, {"id": 84, "topic": "5. Artisan CLI", "question": "¿Qué comando lista las rutas registradas?", "options": ["php artisan route:list", "php artisan routes:show-all", "composer route:list", "php artisan list:urls"], "correct": "php artisan route:list", "explanation": "route:list muestra método, URI, nombre y acción."}, {"id": 85, "topic": "5. Artisan CLI", "question": "¿Qué opción crea un controlador de recursos?", "options": ["--resource", "--crudless", "--blade", "--migration-only"], "correct": "--resource", "explanation": "Un controlador resource incluye los métodos CRUD convencionales."}, {"id": 86, "topic": "5. Artisan CLI", "question": "¿Qué opción crea un controlador para API sin create ni edit?", "options": ["--api", "--web-only", "--json-file", "--stateless-view"], "correct": "--api", "explanation": "Los formularios create y edit no suelen ser necesarios en una API."}, {"id": 87, "topic": "5. Artisan CLI", "question": "¿Qué opción crea un controlador con un único método __invoke?", "options": ["--invokable", "--single-route-file", "--one-model", "--closure"], "correct": "--invokable", "explanation": "Los controladores invocables representan una única acción."}, {"id": 88, "topic": "5. Artisan CLI", "question": "¿Qué comando crea el modelo Article y su migración?", "options": ["php artisan make:model Article -m", "php artisan make:migration Article --model", "composer make Article", "php artisan model Article --database"], "correct": "php artisan make:model Article -m", "explanation": "La opción -m añade una migración al crear el modelo."}, {"id": 89, "topic": "5. Artisan CLI", "question": "¿Qué genera php artisan make:model Article -mfs?", "options": ["Modelo, migración, factory y seeder", "Solo modelo y controlador", "Vista, ruta y middleware", "Modelo, CSS y JavaScript"], "correct": "Modelo, migración, factory y seeder", "explanation": "Las opciones abreviadas m, f y s generan esos artefactos."}, {"id": 90, "topic": "5. Artisan CLI", "question": "¿Qué opción genera un conjunto amplio de clases relacionadas con un modelo?", "options": ["--all", "--empty", "--minimal", "--vendor"], "correct": "--all", "explanation": "--all crea migración, factory, seeder, controlador y requests, entre otros."}, {"id": 91, "topic": "5. Artisan CLI", "question": "¿Qué comando crea una migración llamada create_articles_table?", "options": ["php artisan make:migration create_articles_table", "php artisan migration:new articles", "composer schema:create articles", "php artisan make:table articles"], "correct": "php artisan make:migration create_articles_table", "explanation": "make:migration genera el archivo de migración con marca temporal."}, {"id": 92, "topic": "5. Artisan CLI", "question": "¿Qué comando crea ArticleSeeder?", "options": ["php artisan make:seeder ArticleSeeder", "php artisan seed:new ArticleSeeder", "composer make seeder Article", "php artisan make:data ArticleSeeder"], "correct": "php artisan make:seeder ArticleSeeder", "explanation": "make:seeder crea una clase seeder."}, {"id": 93, "topic": "5. Artisan CLI", "question": "¿Qué comando crea un Form Request llamado StoreArticleRequest?", "options": ["php artisan make:request StoreArticleRequest", "php artisan make:validator StoreArticleRequest", "composer request StoreArticleRequest", "php artisan form:new StoreArticleRequest"], "correct": "php artisan make:request StoreArticleRequest", "explanation": "make:request genera una clase para autorización y validación."}, {"id": 94, "topic": "5. Artisan CLI", "question": "¿Qué comando ejecuta las migraciones pendientes?", "options": ["php artisan migrate", "php artisan migration:compile", "composer db:update", "php artisan schema:run"], "correct": "php artisan migrate", "explanation": "migrate aplica las migraciones que aún no se han ejecutado."}, {"id": 95, "topic": "5. Artisan CLI", "question": "¿Qué comando deshace el último lote de migraciones?", "options": ["php artisan migrate:rollback", "php artisan migrate:delete", "php artisan rollback:all", "composer migrate:undo"], "correct": "php artisan migrate:rollback", "explanation": "rollback revierte el batch más reciente."}, {"id": 96, "topic": "5. Artisan CLI", "question": "¿Qué comando borra las tablas, migra de nuevo y ejecuta seeders?", "options": ["php artisan migrate:fresh --seed", "php artisan migrate --clean", "php artisan db:reset-only", "composer fresh-database"], "correct": "php artisan migrate:fresh --seed", "explanation": "Es un comando habitual para reconstruir datos de desarrollo."}, {"id": 97, "topic": "5. Artisan CLI", "question": "¿Cómo se ejecuta únicamente ArticleSeeder?", "options": ["php artisan db:seed --class=ArticleSeeder", "php artisan seed ArticleSeeder.php", "composer db ArticleSeeder", "php artisan migrate --seeder=ArticleSeeder"], "correct": "php artisan db:seed --class=ArticleSeeder", "explanation": "La opción --class selecciona un seeder concreto."}, {"id": 98, "topic": "5. Artisan CLI", "question": "¿Qué comando limpia de una vez las cachés de optimización?", "options": ["php artisan optimize:clear", "php artisan cache:all", "composer clear laravel", "php artisan reset:memory"], "correct": "php artisan optimize:clear", "explanation": "optimize:clear elimina las cachés generadas de configuración, rutas y vistas."}, {"id": 99, "topic": "5. Artisan CLI", "question": "¿Qué comando abre la consola interactiva con acceso a la aplicación?", "options": ["php artisan tinker", "php artisan shell:mysql", "composer repl", "php artisan console:blade"], "correct": "php artisan tinker", "explanation": "Tinker permite ejecutar expresiones y trabajar con modelos en un REPL."}, {"id": 100, "topic": "5. Artisan CLI", "question": "¿Qué comando inicia un worker para procesar trabajos en cola?", "options": ["php artisan queue:work", "php artisan job:listen-once", "composer queue:start", "php artisan work:database"], "correct": "php artisan queue:work", "explanation": "queue:work mantiene un proceso consumiendo jobs."}, {"id": 101, "topic": "6. Rutas y respuestas", "question": "¿Qué archivo se usa principalmente para rutas web con sesiones y protección CSRF?", "options": ["routes/web.php", "routes/api.php", "resources/routes.blade.php", "config/http.php"], "correct": "routes/web.php", "explanation": "web.php aplica el grupo de middleware web."}, {"id": 102, "topic": "6. Rutas y respuestas", "question": "¿Qué expresa Route::get('/', ...)?", "options": ["Una ruta GET para la raíz de la aplicación", "Una migración para crear la tabla root", "Un comando Artisan", "Una vista llamada get"], "correct": "Una ruta GET para la raíz de la aplicación", "explanation": "El primer argumento es la URI y el segundo define la acción."}, {"id": 103, "topic": "6. Rutas y respuestas", "question": "¿Qué verbo HTTP se utiliza normalmente para obtener datos?", "options": ["GET", "POST", "DELETE", "PATCH"], "correct": "GET", "explanation": "GET se usa para recuperar representaciones sin crear recursos."}, {"id": 104, "topic": "6. Rutas y respuestas", "question": "¿Qué verbo se utiliza normalmente para crear o enviar un recurso?", "options": ["POST", "GET", "OPTIONS", "HEAD"], "correct": "POST", "explanation": "POST suele asociarse a la creación de recursos."}, {"id": 105, "topic": "6. Rutas y respuestas", "question": "¿Qué verbo se asocia a un reemplazo completo de un recurso?", "options": ["PUT", "PATCH", "GET", "OPTIONS"], "correct": "PUT", "explanation": "PUT representa habitualmente una actualización completa."}, {"id": 106, "topic": "6. Rutas y respuestas", "question": "¿Qué verbo se asocia a una modificación parcial?", "options": ["PATCH", "PUT", "DELETE", "GET"], "correct": "PATCH", "explanation": "PATCH se usa para cambios parciales."}, {"id": 107, "topic": "6. Rutas y respuestas", "question": "¿Qué verbo se usa para eliminar un recurso?", "options": ["DELETE", "POST", "GET", "OPTIONS"], "correct": "DELETE", "explanation": "DELETE expresa la eliminación del recurso identificado."}, {"id": 108, "topic": "6. Rutas y respuestas", "question": "¿Qué método permite que una ruta responda a cualquier verbo HTTP?", "options": ["Route::any()", "Route::allFiles()", "Route::every()", "Route::wildcard()"], "correct": "Route::any()", "explanation": "any registra la misma acción para todos los verbos admitidos."}, {"id": 109, "topic": "6. Rutas y respuestas", "question": "¿Qué método permite indicar varios verbos concretos para una ruta?", "options": ["Route::match()", "Route::combine()", "Route::verbs()", "Route::multiController()"], "correct": "Route::match()", "explanation": "match recibe un array de verbos y una URI."}, {"id": 110, "topic": "6. Rutas y respuestas", "question": "¿Cómo se devuelve explícitamente una respuesta JSON?", "options": ["response()->json([...])", "view()->json([...])", "Route::blade([...])", "echo json_route([...])"], "correct": "response()->json([...])", "explanation": "El helper response crea una respuesta JSON con cabeceras apropiadas."}, {"id": 111, "topic": "6. Rutas y respuestas", "question": "¿Qué helper devuelve una vista Blade?", "options": ["view()", "route()", "config()", "migrate()"], "correct": "view()", "explanation": "view('nombre') localiza una plantilla en resources/views."}, {"id": 112, "topic": "6. Rutas y respuestas", "question": "¿Cómo se redirige a una ruta con nombre?", "options": ["redirect()->route('nombre')", "view()->route('nombre')", "Route::redirectName('nombre')", "response()->view('nombre')"], "correct": "redirect()->route('nombre')", "explanation": "redirect()->route genera la URL desde el nombre de ruta."}, {"id": 113, "topic": "6. Rutas y respuestas", "question": "¿Cómo se declara un parámetro obligatorio en una URI?", "options": ["Entre llaves, por ejemplo {id}", "Entre corchetes, por ejemplo [id]", "Con dos puntos, por ejemplo :id", "Con almohadilla, por ejemplo #id"], "correct": "Entre llaves, por ejemplo {id}", "explanation": "Laravel usa llaves para los parámetros de ruta."}, {"id": 114, "topic": "6. Rutas y respuestas", "question": "¿Qué hace que un parámetro de ruta sea opcional?", "options": ["Añadir ? al parámetro y definir un valor por defecto", "Añadir ! al parámetro", "Escribir optional antes de Route", "Usar únicamente POST"], "correct": "Añadir ? al parámetro y definir un valor por defecto", "explanation": "Por ejemplo {categoria?} junto con un valor por defecto en el callback."}, {"id": 115, "topic": "6. Rutas y respuestas", "question": "¿Qué método restringe un parámetro para que sea numérico?", "options": ["whereNumber('id')", "onlyInt('id')", "whereType('id', 'php')", "numericRoute('id')"], "correct": "whereNumber('id')", "explanation": "whereNumber es un atajo para aplicar una expresión numérica."}, {"id": 116, "topic": "6. Rutas y respuestas", "question": "¿Qué método asigna un nombre a una ruta?", "options": ["name()", "title()", "aliasFile()", "routeNameSet()"], "correct": "name()", "explanation": "El nombre desacopla la URL de los enlaces y redirecciones."}, {"id": 117, "topic": "6. Rutas y respuestas", "question": "¿Qué helper genera la URL de una ruta con nombre?", "options": ["route()", "urlname()", "view()", "artisan()"], "correct": "route()", "explanation": "route('articulos.show', ['id' => 42]) genera la URL correspondiente."}, {"id": 118, "topic": "6. Rutas y respuestas", "question": "¿Qué método agrupa rutas bajo un prefijo de URL?", "options": ["prefix()", "folder()", "basePath()", "namespaceUrl()"], "correct": "prefix()", "explanation": "prefix('admin') antepone /admin a las URIs del grupo."}, {"id": 119, "topic": "6. Rutas y respuestas", "question": "¿Qué método permite aplicar auth a varias rutas agrupadas?", "options": ["middleware('auth')", "guardFile('auth')", "sessionOnly('auth')", "secureGroup('auth')"], "correct": "middleware('auth')", "explanation": "El grupo hereda el middleware indicado."}, {"id": 120, "topic": "6. Rutas y respuestas", "question": "¿Qué diferencia principal hay entre Route::resource() y Route::apiResource()?", "options": ["apiResource omite las rutas create y edit", "apiResource añade siempre sesiones", "resource solo crea una ruta", "resource no admite controladores"], "correct": "apiResource omite las rutas create y edit", "explanation": "Las APIs no necesitan las rutas que muestran formularios HTML."}];
+    const STORAGE_KEY = "laravelQuizSessionV1";
+    const LETTERS = ["A", "B", "C", "D"];
+
+    const els = {
+      setupPanel: document.getElementById("setupPanel"),
+      quizPanel: document.getElementById("quizPanel"),
+      resultPanel: document.getElementById("resultPanel"),
+      topicSelect: document.getElementById("topicSelect"),
+      amountSelect: document.getElementById("amountSelect"),
+      startBtn: document.getElementById("startBtn"),
+      resumeBtn: document.getElementById("resumeBtn"),
+      clearProgressBtn: document.getElementById("clearProgressBtn"),
+      topicBadge: document.getElementById("topicBadge"),
+      progressMeta: document.getElementById("progressMeta"),
+      scoreChip: document.getElementById("scoreChip"),
+      progressBar: document.getElementById("progressBar"),
+      questionTitle: document.getElementById("questionTitle"),
+      options: document.getElementById("options"),
+      feedback: document.getElementById("feedback"),
+      checkBtn: document.getElementById("checkBtn"),
+      nextBtn: document.getElementById("nextBtn"),
+      finishBtn: document.getElementById("finishBtn"),
+      quitBtn: document.getElementById("quitBtn"),
+      scoreRing: document.getElementById("scoreRing"),
+      scoreText: document.getElementById("scoreText"),
+      resultTitle: document.getElementById("resultTitle"),
+      resultSummary: document.getElementById("resultSummary"),
+      breakdown: document.getElementById("breakdown"),
+      retryBtn: document.getElementById("retryBtn"),
+      reviewBtn: document.getElementById("reviewBtn"),
+      printBtn: document.getElementById("printBtn"),
+      review: document.getElementById("review"),
+      toast: document.getElementById("toast")
+    };
+
+    let state = null;
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function validateQuestionBank() {
+      const ids = new Set();
+      for (const q of QUESTION_BANK) {
+        if (ids.has(q.id)) throw new Error("ID de pregunta duplicado: " + q.id);
+        ids.add(q.id);
+        if (!Array.isArray(q.options) || q.options.length !== 4) {
+          throw new Error("La pregunta " + q.id + " no tiene cuatro opciones.");
+        }
+        if (q.options.filter(option => option === q.correct).length !== 1) {
+          throw new Error("La pregunta " + q.id + " no tiene exactamente una respuesta correcta.");
+        }
+      }
+    }
+
+    function loadTopics() {
+      const topics = [...new Set(QUESTION_BANK.map(q => q.topic))];
+      topics.forEach(topic => {
+        const option = document.createElement("option");
+        option.value = topic;
+        option.textContent = topic;
+        els.topicSelect.appendChild(option);
+      });
+    }
+
+    function getMode() {
+      return document.querySelector('input[name="mode"]:checked').value;
+    }
+
+    function createSession() {
+      const topic = els.topicSelect.value;
+      const mode = getMode();
+      const filtered = topic === "all"
+        ? QUESTION_BANK
+        : QUESTION_BANK.filter(q => q.topic === topic);
+
+      const requested = els.amountSelect.value === "all"
+        ? filtered.length
+        : Number(els.amountSelect.value);
+
+      const selected = shuffle(filtered).slice(0, Math.min(requested, filtered.length)).map(q => ({
+        ...q,
+        shuffledOptions: shuffle(q.options),
+        userAnswer: null,
+        isCorrect: null,
+        checked: false
+      }));
+
+      state = {
+        mode,
+        topic,
+        current: 0,
+        correctCount: 0,
+        questions: selected,
+        startedAt: Date.now(),
+        completed: false
+      };
+
+      saveSession();
+      showQuiz();
+      renderQuestion();
+    }
+
+    function showQuiz() {
+      els.setupPanel.classList.add("hidden");
+      els.resultPanel.classList.add("hidden");
+      els.quizPanel.classList.remove("hidden");
+      window.scrollTo({ top: els.quizPanel.offsetTop - 12, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+      const q = state.questions[state.current];
+      const answered = q.checked;
+      const selected = q.userAnswer;
+
+      els.topicBadge.textContent = q.topic;
+      els.progressMeta.textContent = `Pregunta ${state.current + 1} de ${state.questions.length}`;
+      els.scoreChip.textContent = state.mode === "study"
+        ? `Aciertos: ${state.correctCount}`
+        : "Modo examen";
+      els.progressBar.style.width = `${((state.current + 1) / state.questions.length) * 100}%`;
+      els.questionTitle.textContent = q.question;
+      els.options.innerHTML = "";
+      els.feedback.className = "feedback hidden";
+      els.feedback.innerHTML = "";
+
+      q.shuffledOptions.forEach((optionText, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        button.dataset.answer = optionText;
+        button.disabled = answered;
+        button.setAttribute("aria-pressed", String(selected === optionText));
+
+        if (selected === optionText) button.classList.add("selected");
+        if (answered && optionText === q.correct) button.classList.add("correct");
+        if (answered && optionText === selected && optionText !== q.correct) button.classList.add("incorrect");
+
+        const letter = document.createElement("span");
+        letter.className = "option-letter";
+        letter.textContent = LETTERS[index];
+
+        const text = document.createElement("span");
+        text.textContent = optionText;
+
+        button.append(letter, text);
+        button.addEventListener("click", () => selectAnswer(optionText));
+        els.options.appendChild(button);
+      });
+
+      if (state.mode === "study") {
+        els.checkBtn.classList.toggle("hidden", answered);
+        els.nextBtn.classList.toggle("hidden", !answered);
+        els.checkBtn.disabled = !selected;
+        els.nextBtn.textContent = state.current === state.questions.length - 1 ? "Ver resultado" : "Siguiente";
+        if (answered) showStudyFeedback(q);
+      } else {
+        els.checkBtn.classList.add("hidden");
+        els.nextBtn.classList.remove("hidden");
+        els.nextBtn.disabled = !selected;
+        els.nextBtn.textContent = state.current === state.questions.length - 1 ? "Finalizar examen" : "Siguiente";
+      }
+
+      els.finishBtn.classList.toggle("hidden", state.current === state.questions.length - 1);
+      saveSession();
+    }
+
+    function selectAnswer(answer) {
+      const q = state.questions[state.current];
+      if (q.checked) return;
+      q.userAnswer = answer;
+      renderQuestion();
+    }
+
+    function checkCurrent() {
+      const q = state.questions[state.current];
+      if (!q.userAnswer || q.checked) return;
+      q.checked = true;
+      q.isCorrect = q.userAnswer === q.correct;
+      if (q.isCorrect) state.correctCount += 1;
+      renderQuestion();
+    }
+
+    function showStudyFeedback(q) {
+      els.feedback.classList.remove("hidden");
+      els.feedback.classList.add(q.isCorrect ? "good" : "bad");
+      const heading = q.isCorrect ? "Respuesta correcta" : `Respuesta incorrecta. La correcta es: ${q.correct}`;
+      const strong = document.createElement("strong");
+      strong.textContent = heading;
+      const text = document.createElement("span");
+      text.textContent = q.explanation;
+      els.feedback.append(strong, text);
+    }
+
+    function goNext() {
+      const q = state.questions[state.current];
+
+      if (state.mode === "exam") {
+        if (!q.userAnswer) return;
+        q.checked = true;
+        q.isCorrect = q.userAnswer === q.correct;
+      }
+
+      if (state.current >= state.questions.length - 1) {
+        finishQuiz();
+        return;
+      }
+
+      state.current += 1;
+      renderQuestion();
+    }
+
+    function finishQuiz() {
+      if (!state) return;
+
+      state.questions.forEach(q => {
+        if (q.userAnswer !== null && q.isCorrect === null) {
+          q.checked = true;
+          q.isCorrect = q.userAnswer === q.correct;
+        }
+      });
+
+      state.correctCount = state.questions.filter(q => q.isCorrect === true).length;
+      state.completed = true;
+      localStorage.removeItem(STORAGE_KEY);
+      renderResults();
+    }
+
+    function renderResults() {
+      els.quizPanel.classList.add("hidden");
+      els.setupPanel.classList.add("hidden");
+      els.resultPanel.classList.remove("hidden");
+
+      const total = state.questions.length;
+      const answered = state.questions.filter(q => q.userAnswer !== null).length;
+      const correct = state.correctCount;
+      const percent = total ? Math.round((correct / total) * 100) : 0;
+      const angle = Math.round(percent * 3.6);
+
+      els.scoreRing.style.setProperty("--score-angle", angle + "deg");
+      els.scoreText.textContent = percent + "%";
+      els.resultTitle.textContent =
+        percent >= 90 ? "Dominio excelente" :
+        percent >= 75 ? "Buen nivel" :
+        percent >= 60 ? "Base suficiente" :
+        "Conviene repasar";
+      els.resultSummary.textContent = `${correct} aciertos de ${total} preguntas · ${answered} respondidas.`;
+
+      renderBreakdown();
+      renderReview();
+      window.scrollTo({ top: els.resultPanel.offsetTop - 12, behavior: "smooth" });
+    }
+
+    function renderBreakdown() {
+      els.breakdown.innerHTML = "";
+      const topics = [...new Set(state.questions.map(q => q.topic))];
+
+      topics.forEach(topic => {
+        const group = state.questions.filter(q => q.topic === topic);
+        const correct = group.filter(q => q.isCorrect === true).length;
+        const percent = Math.round((correct / group.length) * 100);
+
+        const row = document.createElement("div");
+        row.className = "breakdown-row";
+
+        const name = document.createElement("strong");
+        name.textContent = topic;
+
+        const track = document.createElement("div");
+        track.className = "mini-track";
+        const fill = document.createElement("span");
+        fill.style.width = percent + "%";
+        track.appendChild(fill);
+
+        const score = document.createElement("span");
+        score.textContent = `${correct}/${group.length} · ${percent}%`;
+
+        row.append(name, track, score);
+        els.breakdown.appendChild(row);
+      });
+    }
+
+    function renderReview() {
+      els.review.innerHTML = "<h2>Revisión de errores</h2>";
+      const mistakes = state.questions.filter(q => q.isCorrect !== true);
+
+      if (!mistakes.length) {
+        const p = document.createElement("p");
+        p.textContent = "No hay errores: has respondido correctamente todas las preguntas.";
+        els.review.appendChild(p);
+        els.reviewBtn.disabled = true;
+        return;
+      }
+
+      els.reviewBtn.disabled = false;
+      mistakes.forEach((q, index) => {
+        const item = document.createElement("article");
+        item.className = "review-item";
+
+        const title = document.createElement("h3");
+        title.textContent = `${index + 1}. ${q.question}`;
+
+        const user = document.createElement("p");
+        user.className = "wrong";
+        user.textContent = "Tu respuesta: " + (q.userAnswer ?? "Sin responder");
+
+        const correct = document.createElement("p");
+        correct.className = "right";
+        correct.textContent = "Respuesta correcta: " + q.correct;
+
+        const explanation = document.createElement("p");
+        explanation.textContent = q.explanation;
+
+        item.append(title, user, correct, explanation);
+        els.review.appendChild(item);
+      });
+    }
+
+    function resetToSetup() {
+      state = null;
+      els.quizPanel.classList.add("hidden");
+      els.resultPanel.classList.add("hidden");
+      els.setupPanel.classList.remove("hidden");
+      els.review.classList.add("hidden");
+      els.reviewBtn.textContent = "Ver errores";
+      window.scrollTo({ top: els.setupPanel.offsetTop - 12, behavior: "smooth" });
+    }
+
+    function saveSession() {
+      if (!state || state.completed) return;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateResumeControls();
+    }
+
+    function resumeSession() {
+      try {
+        state = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (!state || !Array.isArray(state.questions) || !state.questions.length) throw new Error();
+        showQuiz();
+        renderQuestion();
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
+        updateResumeControls();
+        showToast("No se pudo recuperar la sesión guardada.");
+      }
+    }
+
+    function updateResumeControls() {
+      const hasSession = Boolean(localStorage.getItem(STORAGE_KEY));
+      els.resumeBtn.classList.toggle("hidden", !hasSession);
+      els.clearProgressBtn.classList.toggle("hidden", !hasSession);
+    }
+
+    function showToast(message) {
+      els.toast.textContent = message;
+      els.toast.classList.remove("hidden");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => els.toast.classList.add("hidden"), 2600);
+    }
+
+    els.startBtn.addEventListener("click", createSession);
+    els.resumeBtn.addEventListener("click", resumeSession);
+    els.clearProgressBtn.addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY);
+      updateResumeControls();
+      showToast("Sesión guardada eliminada.");
+    });
+    els.checkBtn.addEventListener("click", checkCurrent);
+    els.nextBtn.addEventListener("click", goNext);
+    els.finishBtn.addEventListener("click", () => {
+      if (confirm("¿Finalizar la sesión y corregir las preguntas respondidas?")) finishQuiz();
+    });
+    els.quitBtn.addEventListener("click", () => {
+      saveSession();
+      resetToSetup();
+      showToast("Sesión guardada para continuar después.");
+    });
+    els.retryBtn.addEventListener("click", resetToSetup);
+    els.reviewBtn.addEventListener("click", () => {
+      const opening = els.review.classList.contains("hidden");
+      els.review.classList.toggle("hidden");
+      els.reviewBtn.textContent = opening ? "Ocultar errores" : "Ver errores";
+      if (opening) els.review.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    els.printBtn.addEventListener("click", () => {
+      els.review.classList.remove("hidden");
+      window.print();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!state || els.quizPanel.classList.contains("hidden")) return;
+      const index = Number(event.key) - 1;
+      if (index >= 0 && index < 4) {
+        const q = state.questions[state.current];
+        if (!q.checked) selectAnswer(q.shuffledOptions[index]);
+      }
+      if (event.key === "Enter") {
+        if (state.mode === "study" && !els.checkBtn.classList.contains("hidden") && !els.checkBtn.disabled) checkCurrent();
+        else if (!els.nextBtn.classList.contains("hidden") && !els.nextBtn.disabled) goNext();
+      }
+    });
+
+    try {
+      validateQuestionBank();
+      loadTopics();
+      updateResumeControls();
+    } catch (error) {
+      document.body.innerHTML = `<main class="shell"><section class="panel"><h1>Error al cargar el cuestionario</h1><p>${error.message}</p></section></main>`;
+    }
+  </script>
+</body>
+</html>

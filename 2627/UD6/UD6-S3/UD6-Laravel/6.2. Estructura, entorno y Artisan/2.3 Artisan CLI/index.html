@@ -1,0 +1,1626 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.2.%20El%20archivo%20env/">
+      
+      
+        <link rel="next" href="../Entregable/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2.3 Artisan CLI - DWES 26/27 IES Francisco de los Ríos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.5%201.75v11.5c0%20.138.112.25.25.25h3.17a.75.75%200%200%201%200%201.5H2.75A1.75%201.75%200%200%201%201%2013.25V1.75C1%20.784%201.784%200%202.75%200h8.5C12.216%200%2013%20.784%2013%201.75v7.736a.75.75%200%200%201-1.5%200V1.75a.25.25%200%200%200-.25-.25h-8.5a.25.25%200%200%200-.25.25m13.274%209.537zl-4.557%204.45a.75.75%200%200%201-1.055-.008l-1.943-1.95a.75.75%200%200%201%201.062-1.058l1.419%201.425%204.026-3.932a.75.75%200%201%201%201.048%201.074M4.75%204h4.5a.75.75%200%200%201%200%201.5h-4.5a.75.75%200%200%201%200-1.5M4%207.75A.75.75%200%200%201%204.75%207h2a.75.75%200%200%201%200%201.5h-2A.75.75%200%200%201%204%207.75%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M3.499.75a.75.75%200%200%201%201.5%200v.996C5.9%202.903%206.793%203.65%207.662%204.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873%2010.794-.045%2012.622.26%2014.408.558%2016%201.94%2016%204.25c0%201.278-.954%202.575-2.44%202.734l.146.508.065.22c.203.701.412%201.455.476%202.226.142%201.707-.4%203.03-1.487%203.898C11.714%2014.671%2010.27%2015%208.75%2015h-6a.75.75%200%200%201%200-1.5h1.376a4.5%204.5%200%200%201-.563-1.191%203.84%203.84%200%200%201-.05-2.063%204.65%204.65%200%200%201-2.025-.293.75.75%200%200%201%20.525-1.406c1.357.507%202.376-.006%202.698-.318l.009-.01a.747.747%200%200%201%201.06%200%20.75.75%200%200%201-.012%201.074c-.912.92-.992%201.835-.768%202.586.221.74.745%201.337%201.196%201.621H8.75c1.343%200%202.398-.296%203.074-.836.635-.507%201.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.4%202.4%200%200%201-.507-.441%203.1%203.1%200%200%201-.633-1.248.75.75%200%200%201%201.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738%200%201.25-.615%201.25-1.25%200-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706%201.345-.46.92-.27%201.774.019%203.062l.042.19.01.05c.348.443.666.949.94%201.553a.75.75%200%201%201-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7%205.527c-.814-.68-1.75-1.462-2.692-2.619a3.7%203.7%200%200%200-1.023.88c-.406.495-.663%201.036-.722%201.508.116.122.306.21.591.239.388.038.797-.06%201.032-.19a.75.75%200%200%201%20.728%201.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75%205.677V5.5c0-.984.48-1.94%201.077-2.664.46-.559%201.05-1.055%201.673-1.353z%22/%3E%3C/svg%3E');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13.78%204.22a.75.75%200%200%201%200%201.06l-7.25%207.25a.75.75%200%200%201-1.06%200L2.22%209.28a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018L6%2010.94l6.72-6.72a.75.75%200%200%201%201.06%200%22/%3E%3C/svg%3E');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.92%206.085h.001a.749.749%200%201%201-1.342-.67c.169-.339.436-.701.849-.977C6.845%204.16%207.369%204%208%204a2.76%202.76%200%200%201%201.637.525c.503.377.863.965.863%201.725%200%20.448-.115.83-.329%201.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6%206%200%200%200-.26.16%201%201%200%200%200-.276.245.75.75%200%200%201-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1%201%200%200%200%20.277-.245C8.96%206.514%209%206.427%209%206.25a.61.61%200%200%200-.262-.525A1.27%201.27%200%200%200%208%205.5c-.369%200-.595.09-.74.187a1%201%200%200%200-.34.398M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.344%202.343za8%208%200%200%201%2011.314%2011.314A8.002%208.002%200%200%201%20.234%2010.089a8%208%200%200%201%202.11-7.746m1.06%2010.253a6.5%206.5%200%201%200%209.108-9.275%206.5%206.5%200%200%200-9.108%209.275M6.03%204.97%208%206.94l1.97-1.97a.749.749%200%200%201%201.275.326.75.75%200%200%201-.215.734L9.06%208l1.97%201.97a.749.749%200%200%201-.326%201.275.75.75%200%200%201-.734-.215L8%209.06l-1.97%201.97a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L6.94%208%204.97%206.03a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.72.22a.75.75%200%200%201%201.06%200l1%20.999a3.5%203.5%200%200%201%202.441%200l.999-1a.748.748%200%200%201%201.265.332.75.75%200%200%201-.205.729l-.775.776c.616.63.995%201.493.995%202.444v.327q0%20.15-.025.292c.408.14.764.392%201.029.722l1.968-.787a.75.75%200%200%201%20.556%201.392L13%207.258V9h2.25a.75.75%200%200%201%200%201.5H13v.5q-.002.615-.141%201.186l2.17.868a.75.75%200%200%201-.557%201.392l-2.184-.873A5%205%200%200%201%208%2016a5%205%200%200%201-4.288-2.427l-2.183.873a.75.75%200%200%201-.558-1.392l2.17-.868A5%205%200%200%201%203%2011v-.5H.75a.75.75%200%200%201%200-1.5H3V7.258L.971%206.446a.75.75%200%200%201%20.558-1.392l1.967.787c.265-.33.62-.583%201.03-.722a1.7%201.7%200%200%201-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72%201.28a.75.75%200%200%201%200-1.06m.53%206.28a.75.75%200%200%200-.75.75V11a3.5%203.5%200%201%200%207%200V7.25a.75.75%200%200%200-.75-.75ZM6.173%205h3.654A.17.17%200%200%200%2010%204.827V4.5a2%202%200%201%200-4%200v.327c0%20.096.077.173.173.173%22/%3E%3C/svg%3E');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5%205.782V2.5h-.25a.75.75%200%200%201%200-1.5h6.5a.75.75%200%200%201%200%201.5H11v3.282l3.666%205.76C15.619%2013.04%2014.543%2015%2012.767%2015H3.233c-1.776%200-2.852-1.96-1.899-3.458Zm-2.4%206.565a.75.75%200%200%200%20.633%201.153h9.534a.75.75%200%200%200%20.633-1.153L12.225%2010.5h-8.45ZM9.5%202.5h-3V6c0%20.143-.04.283-.117.403L4.73%209h6.54L9.617%206.403A.75.75%200%200%201%209.5%206Z%22/%3E%3C/svg%3E');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1.75%202.5h10.5a.75.75%200%200%201%200%201.5H1.75a.75.75%200%200%201%200-1.5m4%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5m0%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5M2.5%207.75v6a.75.75%200%200%201-1.5%200v-6a.75.75%200%200%201%201.5%200%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud6-sesion-2-artisan-cli" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-header__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES 26/27 IES Francisco de los Ríos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.3 Artisan CLI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DWES 26/27 IES Francisco de los Ríos" class="md-nav__button md-logo" aria-label="DWES 26/27 IES Francisco de los Ríos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES 26/27 IES Francisco de los Ríos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UD6 Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            UD6 Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.0%20Utilidades/Cambios%20Laravel13/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.0 Utilidades
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.1%20Introducci%C3%B3n/1.1.%20Qu%C3%A9%20es%20Laravel/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.1 Introducción
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    6.2. Estructura, entorno y Artisan
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            6.2. Estructura, entorno y Artisan
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1.%20EstructuraCarpetas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. EstructuraCarpetas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2.%20El%20archivo%20env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. El archivo env
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.3 Artisan CLI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Artisan CLI
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ud6-sesion-2-artisan-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD6 · Sesión 2 · Artisan CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Artisan?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-comandos-mas-usados-referencia-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Comandos más usados — Referencia rápida
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Comandos más usados — Referencia rápida">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-servidor-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Servidor de desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Información del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-generadores-de-codigo-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Generadores de código — make:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Generadores de código — make:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-controladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Controladores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Modelos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Migraciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-seeders-y-factories" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Seeders y Factories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Middleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-form-requests-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6. Form Requests (validación)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-eventos-listeners-y-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7. Eventos, Listeners y Jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gestion-de-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Gestión de migraciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seeders-poblar-la-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seeders — poblar la base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gestion-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Gestión de caché
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tinker-la-consola-interactiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tinker — la consola interactiva
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-comandos-de-colas-y-tareas-programadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Comandos de colas y tareas programadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-crear-tus-propios-comandos-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Crear tus propios comandos Artisan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-comandos-de-mantenimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Comandos de mantenimiento
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-tabla-resumen-de-comandos-esenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Tabla resumen de comandos esenciales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-ejemplo-adicional-inspeccionar-antes-de-ejecutar" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Ejemplo adicional · Inspeccionar antes de ejecutar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-recursos-para-profundizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Recursos para profundizar
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Entregable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entregable
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../6.3.%20Rutas%20vistas%20y%20Blade/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    6.3. Rutas vistas y Blade
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ud6-sesion-2-artisan-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      UD6 · Sesión 2 · Artisan CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Artisan?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-comandos-mas-usados-referencia-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Comandos más usados — Referencia rápida
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Comandos más usados — Referencia rápida">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-servidor-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Servidor de desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Información del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-generadores-de-codigo-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Generadores de código — make:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Generadores de código — make:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-controladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Controladores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Modelos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Migraciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-seeders-y-factories" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Seeders y Factories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Middleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-form-requests-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6. Form Requests (validación)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-eventos-listeners-y-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7. Eventos, Listeners y Jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gestion-de-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Gestión de migraciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seeders-poblar-la-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seeders — poblar la base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gestion-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Gestión de caché
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tinker-la-consola-interactiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tinker — la consola interactiva
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-comandos-de-colas-y-tareas-programadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Comandos de colas y tareas programadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-crear-tus-propios-comandos-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Crear tus propios comandos Artisan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-comandos-de-mantenimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Comandos de mantenimiento
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-tabla-resumen-de-comandos-esenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Tabla resumen de comandos esenciales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-ejemplo-adicional-inspeccionar-antes-de-ejecutar" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Ejemplo adicional · Inspeccionar antes de ejecutar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-recursos-para-profundizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Recursos para profundizar
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>2.3 Artisan CLI</h1>
+
+<h2 id="ud6-sesion-2-artisan-cli">UD6 · Sesión 2 · Artisan CLI</h2>
+<details class="abstract" open="open">
+<summary>Índice de esta página</summary>
+<ul>
+<li><a href="#apartado-1">1. ¿Qué es Artisan?</a></li>
+<li><a href="#apartado-2">2. Comandos más usados — Referencia rápida</a></li>
+<li><a href="#apartado-3">3. Generadores de código — <code>make:</code></a></li>
+<li><a href="#apartado-4">4. Gestión de migraciones</a></li>
+<li><a href="#apartado-5">5. Seeders — poblar la base de datos</a></li>
+<li><a href="#apartado-6">6. Gestión de caché</a></li>
+<li><a href="#apartado-7">7. Tinker — la consola interactiva</a></li>
+<li><a href="#apartado-8">8. Comandos de colas y tareas programadas</a></li>
+<li><a href="#apartado-9">9. Crear tus propios comandos Artisan</a></li>
+<li><a href="#apartado-10">10. Comandos de mantenimiento</a></li>
+<li><a href="#apartado-11">11. Tabla resumen de comandos esenciales</a></li>
+<li><a href="#apartado-12">12. Ejemplo adicional · Inspeccionar antes de ejecutar</a></li>
+<li><a href="#apartado-13">13. Recursos para profundizar</a></li>
+<li><a href="#apartado-14">14. Cierre de sesión · estudiado</a></li>
+</ul>
+</details>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/visuales/mapa-sesion.png" data-desc-position="bottom"><img alt="Mapa de los contenidos de la sesión 2" src="../image/visuales/mapa-sesion.png"></a></p>
+<p><a id="apartado-1"></a></p>
+<h2 id="1-que-es-artisan">1. ¿Qué es Artisan?</h2>
+<p><strong>Artisan</strong> es la interfaz de línea de comandos (CLI) incluida en Laravel. Es una herramienta increíblemente poderosa que te permite realizar decenas de tareas sin abrir el editor: generar código, gestionar <strong>migraciones</strong>, limpiar cachés, ejecutar <strong>seeders</strong>, crear comandos personalizados y mucho más.</p>
+<p>Para ver todos los comandos disponibles:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>list
+</code></pre></div>
+<p>Para obtener ayuda sobre un comando específico:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span><span class="nb">help</span><span class="w"> </span>make:controller
+</code></pre></div>
+<hr>
+<p><a id="apartado-2"></a></p>
+<h2 id="2-comandos-mas-usados-referencia-rapida">2. Comandos más usados — Referencia rápida</h2>
+<h3 id="21-servidor-de-desarrollo">2.1. Servidor de desarrollo</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Arranca el servidor en http://localhost:8000</span>
+php<span class="w"> </span>artisan<span class="w"> </span>serve
+
+<span class="c1"># Especificar host y puerto</span>
+php<span class="w"> </span>artisan<span class="w"> </span>serve<span class="w"> </span>--host<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span><span class="m">9000</span>
+</code></pre></div>
+<h3 id="22-informacion-del-proyecto">2.2. Información del proyecto</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ver la versión de Laravel</span>
+php<span class="w"> </span>artisan<span class="w"> </span>--version
+
+<span class="c1"># Ver todas las rutas registradas</span>
+php<span class="w"> </span>artisan<span class="w"> </span>route:list
+
+<span class="c1"># Ver rutas filtradas por nombre</span>
+php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--name<span class="o">=</span>article
+
+<span class="c1"># Ver solo las rutas de la API</span>
+php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--path<span class="o">=</span>api
+</code></pre></div>
+<hr>
+<p><a id="apartado-3"></a></p>
+<h2 id="3-generadores-de-codigo-make">3. Generadores de código — <code>make:</code></h2>
+<p>Los comandos <code>make:</code> son los más <strong>útiles del día a día</strong>.</p>
+<ul>
+<li>Generan archivos con la estructura básica correcta para que no tengas que <strong>escribirlos</strong> desde cero.</li>
+</ul>
+<h3 id="31-controladores">3.1. Controladores</h3>
+<p>Prueba a realizar alguno de estos y documentar con captura el resultado de la terminal, que siempre debes comprobar y leer</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.3ArtisanCLI/1792214104647.png" data-desc-position="bottom"><img alt="1792214104647" src="../image/2.3ArtisanCLI/1792214104647.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.3ArtisanCLI/1792214157935.png" data-desc-position="bottom"><img alt="1792214157935" src="../image/2.3ArtisanCLI/1792214157935.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Controlador básico</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>ArticleController
+
+<span class="c1"># Controlador de recursos (con métodos index, create, store, show, edit, update, destroy)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>ArticleController<span class="w"> </span>--resource
+
+<span class="c1"># Controlador de API (sin métodos create y edit, que son formularios HTML)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>Api/ArticleController<span class="w"> </span>--api
+
+<span class="c1"># Controlador invocable (un solo método __invoke)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>ShowDashboardController<span class="w"> </span>--invokable
+</code></pre></div>
+<h3 id="32-modelos">3.2. Modelos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Solo el modelo</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Article
+
+<span class="c1"># Modelo con migración</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Article<span class="w"> </span>-m
+
+<span class="c1"># Modelo con migración, factory y seeder</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Article<span class="w"> </span>-mfs
+
+<span class="c1"># Modelo completo (migración, factory, seeder, controlador de recursos, form requests)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Article<span class="w"> </span>--all
+</code></pre></div>
+<h3 id="33-migraciones">3.3. Migraciones</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear una migración nueva</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>create_articles_table
+
+<span class="c1"># Migración para agregar columnas a una tabla existente</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>add_published_at_to_articles_table
+
+<span class="c1"># Laravel detecta el nombre y crea la estructura correcta automáticamente</span>
+</code></pre></div>
+<h3 id="34-seeders-y-factories">3.4. Seeders y Factories</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear un seeder</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:seeder<span class="w"> </span>ArticleSeeder
+
+<span class="c1"># Crear una factory</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:factory<span class="w"> </span>ArticleFactory
+</code></pre></div>
+<h3 id="35-middleware">3.5. Middleware</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear middleware</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:middleware<span class="w"> </span>EnsureUserIsAdmin
+</code></pre></div>
+<h3 id="36-form-requests-validacion">3.6. Form Requests (validación)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear un Form Request</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>StoreArticleRequest
+php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>UpdateArticleRequest
+</code></pre></div>
+<h3 id="37-eventos-listeners-y-jobs">3.7. Eventos, Listeners y Jobs</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Eventos</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:event<span class="w"> </span>ArticlePublished
+
+<span class="c1"># Listener</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:listener<span class="w"> </span>SendPublishedNotification<span class="w"> </span>--event<span class="o">=</span>ArticlePublished
+
+<span class="c1"># Job para colas de trabajo</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:job<span class="w"> </span>ProcessArticleImages
+</code></pre></div>
+<hr>
+<p><a id="apartado-4"></a></p>
+<h2 id="4-gestion-de-migraciones">4. Gestión de migraciones</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar todas las migraciones pendientes</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate
+
+<span class="c1"># Ver el estado de las migraciones</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:status
+
+<span class="c1"># Deshacer la última migración (o lote)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:rollback
+
+<span class="c1"># Deshacer N lotes</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:rollback<span class="w"> </span>--step<span class="o">=</span><span class="m">2</span>
+
+<span class="c1"># Deshacer todas y volver a migrar</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:refresh
+
+<span class="c1"># Borrar todas las tablas y migrar desde cero</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh
+
+<span class="c1"># Migrar y ejecutar seeders</span>
+php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh<span class="w"> </span>--seed
+</code></pre></div>
+<p>El comando que más usarás en desarrollo es:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh<span class="w"> </span>--seed
+</code></pre></div>
+<p>Te permite empezar con una <strong>base de datos</strong> limpia y datos de prueba en segundos.</p>
+<hr>
+<p><a id="apartado-5"></a></p>
+<h2 id="5-seeders-poblar-la-base-de-datos">5. Seeders — poblar la base de datos</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar todos los seeders (DatabaseSeeder)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>db:seed
+
+<span class="c1"># Ejecutar un seeder específico</span>
+php<span class="w"> </span>artisan<span class="w"> </span>db:seed<span class="w"> </span>--class<span class="o">=</span>ArticleSeeder
+</code></pre></div>
+<hr>
+<p><a id="apartado-6"></a></p>
+<h2 id="6-gestion-de-cache">6. Gestión de caché</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Limpiar la caché de la aplicación</span>
+php<span class="w"> </span>artisan<span class="w"> </span>cache:clear
+
+<span class="c1"># Limpiar la caché de rutas</span>
+php<span class="w"> </span>artisan<span class="w"> </span>route:clear
+
+<span class="c1"># Limpiar la caché de vistas Blade compiladas</span>
+php<span class="w"> </span>artisan<span class="w"> </span>view:clear
+
+<span class="c1"># Limpiar la caché de configuración</span>
+php<span class="w"> </span>artisan<span class="w"> </span>config:clear
+
+<span class="c1"># Limpiar todo de una vez</span>
+php<span class="w"> </span>artisan<span class="w"> </span>optimize:clear
+
+<span class="c1"># Cachear configuración, rutas y vistas (para producción)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>optimize
+</code></pre></div>
+<p>En desarrollo, si cambias algo en <code>config/</code> o en <code>.env</code> y no se aplica, ejecuta:</p>
+<hr>
+<p><a id="apartado-7"></a></p>
+<h2 id="7-tinker-la-consola-interactiva">7. Tinker — la consola interactiva</h2>
+<p><strong>Tinker</strong> es una de las herramientas más útiles de Laravel. Te abre una <strong>consola PHP</strong> interactiva (REPL) con acceso completo a tu aplicación:</p>
+<div class="highlight"><pre><span></span><code>php artisan tinker
+</code></pre></div>
+<p>Dentro de Tinker puedes hacer prácticamente cualquier cosa:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Crear un usuario de prueba</span>
+<span class="x">&gt;&gt;&gt; User::create(['name' =&gt; 'Test', 'email' =&gt; 'test@test.com', 'password' =&gt; bcrypt('password')]);</span>
+
+<span class="x">// Consultar la base de datos</span>
+<span class="x">&gt;&gt;&gt; User::all()-&gt;count();</span>
+<span class="x">=&gt; 5</span>
+
+<span class="x">&gt;&gt;&gt; Article::where('published', true)-&gt;latest()-&gt;first();</span>
+
+<span class="x">// Probar helpers</span>
+<span class="x">&gt;&gt;&gt; now()-&gt;addDays(7)-&gt;format('d/m/Y');</span>
+<span class="x">=&gt; "23/04/2024"</span>
+
+<span class="x">// Probar el envío de correos</span>
+<span class="x">&gt;&gt;&gt; Mail::to('test@test.com')-&gt;send(new App\Mail\WelcomeMail());</span>
+
+<span class="x">// Salir de Tinker</span>
+<span class="x">&gt;&gt;&gt; exit</span>
+</code></pre></div>
+<p>Tinker es perfecto para <strong>depurar sin escribir rutas de prueba</strong> y para explorar la API de <strong>Eloquent</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/2.3ArtisanCLI/1792214267045.png" data-desc-position="bottom"><img alt="1792214267045" src="../image/2.3ArtisanCLI/1792214267045.png"></a></p>
+<hr>
+<p><a id="apartado-8"></a></p>
+<h2 id="8-comandos-de-colas-y-tareas-programadas">8. Comandos de colas y tareas programadas</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Procesar las colas de trabajo</span>
+php<span class="w"> </span>artisan<span class="w"> </span>queue:work
+
+<span class="c1"># Procesar la cola con reintentos</span>
+php<span class="w"> </span>artisan<span class="w"> </span>queue:work<span class="w"> </span>--tries<span class="o">=</span><span class="m">3</span>
+
+<span class="c1"># Ver los trabajos fallidos</span>
+php<span class="w"> </span>artisan<span class="w"> </span>queue:failed
+
+<span class="c1"># Reintentar trabajos fallidos</span>
+php<span class="w"> </span>artisan<span class="w"> </span>queue:retry<span class="w"> </span>all
+
+<span class="c1"># Ejecutar las tareas programadas (para usar con cron)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>schedule:run
+
+<span class="c1"># Ejecutar el scheduler en modo desarrollo (sin cron)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>schedule:work
+</code></pre></div>
+<hr>
+<p><a id="apartado-9"></a></p>
+<h2 id="9-crear-tus-propios-comandos-artisan">9. Crear tus propios comandos Artisan</h2>
+<p>Una de las funciones más potentes de <strong>Artisan</strong> es que puedes <strong>crear tus propios comandos</strong> personalizados:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:command<span class="w"> </span>EnviarResumenSemanal
+</code></pre></div>
+<p>Esto crea el archivo <code>app/Console/Commands/EnviarResumenSemanal.php</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="x">namespace App\Console\Commands;</span>
+
+<span class="x">use Illuminate\Console\Command;</span>
+<span class="x">use App\Models\User;</span>
+<span class="x">use App\Mail\WeeklySummaryMail;</span>
+<span class="x">use Illuminate\Support\Facades\Mail;</span>
+
+<span class="x">class EnviarResumenSemanal extends Command</span>
+<span class="x">{</span>
+<span class="x">    // El nombre y firma del comando</span>
+<span class="x">    protected $signature = 'email:resumen-semanal {--dry-run : Solo muestra lo que haría sin enviar}';</span>
+
+<span class="x">    // Descripción que aparece en php artisan list</span>
+<span class="x">    protected $description = 'Envía el resumen semanal a todos los suscriptores';</span>
+
+<span class="x">    public function handle(): void</span>
+<span class="x">    {</span>
+<span class="x">        $users = User::where('subscribed', true)-&gt;get();</span>
+
+<span class="x">        if ($this-&gt;option('dry-run')) {</span>
+<span class="x">            $this-&gt;info("Se enviaría el resumen a {$users-&gt;count()} usuarios.");</span>
+<span class="x">            return;</span>
+<span class="x">        }</span>
+
+<span class="x">        $this-&gt;withProgressBar($users, function (User $user) {</span>
+<span class="x">            Mail::to($user)-&gt;send(new WeeklySummaryMail($user));</span>
+<span class="x">        });</span>
+
+<span class="x">        $this-&gt;newLine();</span>
+<span class="x">        $this-&gt;info('¡Resumen semanal enviado correctamente!');</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Y lo ejecutas así:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Modo prueba</span>
+php<span class="w"> </span>artisan<span class="w"> </span>email:resumen-semanal<span class="w"> </span>--dry-run
+
+<span class="c1"># Ejecución real</span>
+php<span class="w"> </span>artisan<span class="w"> </span>email:resumen-semanal
+</code></pre></div>
+<hr>
+<p><a id="apartado-10"></a></p>
+<h2 id="10-comandos-de-mantenimiento">10. Comandos de mantenimiento</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Poner la aplicación en modo mantenimiento (muestra página de mantenimiento)</span>
+php<span class="w"> </span>artisan<span class="w"> </span>down
+
+<span class="c1"># Volver al modo normal</span>
+php<span class="w"> </span>artisan<span class="w"> </span>up
+
+<span class="c1"># Modo mantenimiento pero permitiendo tu IP</span>
+php<span class="w"> </span>artisan<span class="w"> </span>down<span class="w"> </span>--allow<span class="o">=</span><span class="m">192</span>.168.1.100<span class="w"> </span>--render<span class="o">=</span><span class="s2">"errors.503"</span>
+
+<span class="c1"># Refrescar la caché de autoload de Composer</span>
+composer<span class="w"> </span>dump-autoload
+</code></pre></div>
+<hr>
+<p><a id="apartado-11"></a></p>
+<h2 id="11-tabla-resumen-de-comandos-esenciales">11. Tabla resumen de comandos esenciales</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>php artisan serve</code></td>
+<td>Servidor de desarrollo</td>
+</tr>
+<tr>
+<td><code>php artisan route:list</code></td>
+<td>Ver todas las rutas</td>
+</tr>
+<tr>
+<td><code>php artisan make:model X -mfsc</code></td>
+<td>Genera modelo con migracion, factory, seeder y controlador</td>
+</tr>
+<tr>
+<td><code>php artisan migrate</code></td>
+<td>Ejecuta migraciones</td>
+</tr>
+<tr>
+<td><code>php artisan migrate:fresh --seed</code></td>
+<td>BD limpia + datos de prueba</td>
+</tr>
+<tr>
+<td><code>php artisan tinker</code></td>
+<td>Consola interactiva</td>
+</tr>
+<tr>
+<td><code>php artisan optimize:clear</code></td>
+<td>Limpia toda la caché</td>
+</tr>
+<tr>
+<td><code>php artisan queue:work</code></td>
+<td>Procesa trabajos en cola</td>
+</tr>
+<tr>
+<td><code>php artisan down / up</code></td>
+<td>Modo mantenimiento</td>
+</tr>
+</tbody>
+</table>
+<p>Con <strong>Artisan</strong> dominas Laravel desde la terminal. En la siguiente lección escribirás tu primera ruta real y la harás responder con contenido de verdad.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/5.ArtisanCLI/1784386092181.png" data-desc-position="bottom"><img alt="1784386092181" src="../image/5.ArtisanCLI/1784386092181.png"></a></p>
+<p><a id="apartado-12"></a></p>
+<h2 id="12-ejemplo-adicional-inspeccionar-antes-de-ejecutar">12. Ejemplo adicional · Inspeccionar antes de ejecutar</h2>
+<p>Desde la raíz del proyecto, compara ayuda y listado:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>list
+php<span class="w"> </span>artisan<span class="w"> </span><span class="nb">help</span><span class="w"> </span>make:controller
+php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>DiagnosticoController
+php<span class="w"> </span>artisan<span class="w"> </span>route:list
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Captura de ejemplo · Artisan · rutas del proyecto</p>
+<p>Añade las capturas a tu documentación</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/visuales/resultado-artisan.png" data-desc-position="bottom"><img alt="Artisan · rutas del proyecto: resultado ilustrativo del código" src="../image/visuales/resultado-artisan.png"></a></p>
+<p>Salida ilustrativa abreviada: confirma método, URI y nombre de la ruta.</p>
+<div class="admonition success">
+<p class="admonition-title">Resultado y comprobación</p>
+<p>El generador crea un archivo, pero no registra una ruta automáticamente. Comprueba app/Http/Controllers/DiagnosticoController.php.</p>
+</div>
+<details class="question">
+<summary>Comprueba que lo has entendido</summary>
+<p><strong>¿make:controller garantiza que una URL ya funcione?</strong></p>
+<p>No: falta implementar el método y registrar una ruta que lo invoque.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Procedimiento</p>
+<ol>
+<li>Localiza el <strong>archivo</strong> indicado y verifica los requisitos del ejemplo.</li>
+<li>Aplica el cambio y ejecuta la <strong>comprobación</strong> propuesta.</li>
+<li>Documenta el <strong>resultado</strong> y explica la función del código.</li>
+</ol>
+</div>
+<div class="admonition alert">
+<p class="admonition-title">Diagnóstico</p>
+<p>Si no obtienes el resultado, revisa primero la <strong>ruta</strong>, los <strong>imports</strong> y los nombres de <strong>variables</strong>. En ejemplos con <strong>base de datos</strong>, comprueba además el <strong>modelo</strong>, la <strong>tabla</strong> y las <strong>migraciones</strong>.</p>
+</div>
+<p><a id="apartado-13"></a></p>
+<h2 id="13-recursos-para-profundizar">13. Recursos para profundizar</h2>
+<ul>
+<li><a href="https://laravel.com/docs/12.x/configuration">Documentación oficial: Inspeccionar antes de ejecutar</a>.</li>
+<li><a href="../">Guía de la sesión</a>: secuencia, recursos y comprobación final.</li>
+</ul>
+<p><a id="apartado-14"></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../2.2.%20El%20archivo%20env/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.2. El archivo env">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2.2. El archivo env
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Entregable/" class="md-footer__link md-footer__link--next" aria-label="Next: Entregable">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Entregable
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Curso 2026/27 - Antonio Marín - Contacto - pamarin@iesfranciscodelosrios.es - Licencia CC BY-NC-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "content.code.copy", "navigation.path", "navigation.prune", "navigation.top"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": true, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
